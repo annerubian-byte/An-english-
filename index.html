@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cozy Advanced English 🎀</title>
+  <title>CozyGarden 🎀 - Trạm từ vựng điện ảnh</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,14 +51,13 @@
   <!-- Top Navigation Bar -->
   <header class="bg-cottage-card/90 backdrop-blur-md border-b-2 border-dashed border-cottage-butter sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('garden')">
+      <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
         <div class="w-11 h-11 rounded-full bg-cottage-roseLight border-2 border-cottage-rose/30 flex items-center justify-center text-2xl group-hover:rotate-12 transition transform">🎀</div>
         <div>
           <div class="flex items-center gap-1.5">
-            <span class="font-display font-black text-xl text-cottage-roseDark">CozyAdvanced</span>
-            <span class="text-[9px] bg-cottage-greenLight text-cottage-greenDark font-extrabold px-2 py-0.5 rounded-full border border-cottage-green/30 uppercase tracking-wider">C1-C2</span>
+            <span class="font-display font-black text-xl text-cottage-roseDark">CozyGarden</span>
           </div>
-          <span class="text-[11px] text-cottage-brownLight font-semibold">Góc nhìn Ngôn ngữ học & Học thuật 🦢</span>
+          <span class="text-[11px] text-cottage-brownLight font-semibold">Gom nhặt từ vựng qua Phim Ảnh 🦢</span>
         </div>
       </div>
 
@@ -73,11 +72,8 @@
   <!-- Sub Header Navigation -->
   <div class="bg-transparent sticky top-16 z-30 pt-3 pb-1">
     <div class="max-w-6xl mx-auto px-4 flex gap-3 overflow-x-auto hide-scrollbar">
-      <button onclick="switchNav('garden')" id="nav-garden" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-seedling"></i> Kiến Thức Chuyên Sâu 🍄
-      </button>
-      <button onclick="switchNav('cinema')" id="nav-cinema" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-book-open"></i> Phân Tích Context 🧸
+      <button onclick="switchNav('cinema')" id="nav-cinema" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0">
+        <i class="fa-solid fa-film"></i> Rạp Chiếu Bóng Nhỏ 🎬
       </button>
       <button onclick="switchNav('arcade')" id="nav-arcade" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
         <i class="fa-solid fa-puzzle-piece"></i> Góc Chơi Chữ 🧩
@@ -88,48 +84,39 @@
   <!-- Main Container -->
   <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-8 mt-2">
 
-    <!-- ================= VIEW 1: GRAMMAR GARDEN ================= -->
-    <section id="view-garden" class="space-y-6">
+    <!-- ================= VIEW 1: CINEMA CONTEXT (VOCAB) ================= -->
+    <section id="view-cinema" class="space-y-6">
       <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-2 z-10">
-          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Ngôn ngữ qua lăng kính học thuật ☁️</h2>
-          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Nắm bắt gốc rễ của từ vựng qua hình thái học (Morphology) và nghệ thuật sắp đặt câu (Syntax) của người bản xứ.</p>
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học Từ Vựng Qua Ngữ Cảnh ☁️</h2>
+          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Không cần học vẹt! Hãy để âm thanh, hình ảnh và cảm xúc từ những bộ phim kinh điển giúp bạn ghim chặt từ vựng vào trí nhớ.</p>
         </div>
-        <div class="text-6xl animate-float-delayed select-none z-10">🧺</div>
+        <div class="text-6xl animate-float-delayed select-none z-10">📽️</div>
         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
       </div>
 
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="level-filters">
-          <button onclick="filterLessons('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Toàn bộ bài giảng</button>
-          <button onclick="filterLessons('C1')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">C1 Advanced</button>
-          <button onclick="filterLessons('C2')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">C2 Proficiency</button>
+          <button onclick="filterCinema('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại</button>
+          <button onclick="filterCinema('Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình Cảm 💌</button>
+          <button onclick="filterCinema('Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính Kịch 🎭</button>
+          <button onclick="filterCinema('Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn Tưởng ✨</button>
         </div>
-        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full"><span id="lesson-count">0</span> chủ điểm 🌷</span>
+        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full"><span id="cinema-count">0</span> bối cảnh 🌷</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="lessons-grid"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cinema-grid"></div>
     </section>
 
-    <!-- ================= VIEW 2: CINEMA & LITERATURE CONTEXT ================= -->
-    <section id="view-cinema" class="hidden space-y-6">
-      <div class="bg-white border-2 border-cottage-butter rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col items-center text-center gap-3">
-        <span class="text-4xl animate-float">📖</span>
-        <h2 class="text-2xl font-serif font-bold text-cottage-brown">Giải Mã Ngữ Cảnh (Contextual Analysis)</h2>
-        <p class="text-xs text-cottage-brownLight max-w-lg leading-relaxed">Cảm nhận sự tinh tế của tiếng Anh qua lăng kính triết học, văn học tâm lý, âm nhạc đại chúng và chương trình thực tế.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="cinema-grid"></div>
-    </section>
-
-    <!-- ================= VIEW 3: ARCADE ================= -->
+    <!-- ================= VIEW 2: ARCADE ================= -->
     <section id="view-arcade" class="hidden space-y-6 max-w-2xl mx-auto">
       <div class="bg-white border-2 border-cottage-butter rounded-3xl p-8 shadow-sm space-y-6 text-center relative">
         <div class="absolute top-4 left-4 text-2xl rotate-12">🐰</div>
         <div class="absolute top-4 right-4 text-2xl -rotate-12">🥕</div>
         
         <div class="space-y-1">
-          <span class="text-[10px] font-black text-cottage-rose uppercase tracking-widest">Trạm luyện tập C2</span>
-          <h3 class="text-xl font-display font-black text-cottage-brown">Hoàn Thiện Cú Pháp Học Thuật</h3>
+          <span class="text-[10px] font-black text-cottage-rose uppercase tracking-widest">Trạm luyện tập</span>
+          <h3 class="text-xl font-display font-black text-cottage-brown">Ghép Câu Thoại Kinh Điển</h3>
         </div>
         
         <div class="bg-cottage-roseLight/40 p-4 rounded-2xl border border-cottage-rose/20">
@@ -140,8 +127,8 @@
         <div id="scramble-pool" class="flex flex-wrap gap-2 justify-center pt-2"></div>
         
         <div class="flex justify-center gap-3 pt-4">
-          <button onclick="resetScramble()" class="px-5 py-2.5 text-xs font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition">Làm lại từ đầu ↻</button>
-          <button onclick="checkScramble()" class="px-6 py-2.5 text-xs font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95">Kiểm tra cấu trúc 🎀</button>
+          <button onclick="resetScramble()" class="px-5 py-2.5 text-xs font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition">Làm lại ↻</button>
+          <button onclick="checkScramble()" class="px-6 py-2.5 text-xs font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95">Kiểm tra kết quả 🎀</button>
         </div>
         <p id="scramble-feedback" class="text-xs font-bold hidden"></p>
       </div>
@@ -149,64 +136,56 @@
 
   </main>
 
-  <!-- ================= MODAL 1: LESSON STUDY & QUIZ ================= -->
-  <div id="modal-lesson" class="fixed inset-0 bg-cottage-brown/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white border-4 border-cottage-cream rounded-[2rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
-      <button onclick="closeModal('modal-lesson')" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm transition z-10"><i class="fa-solid fa-xmark"></i></button>
+  <!-- ================= MODAL: CINEMA LEARNING & QUIZ ================= -->
+  <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white border-4 border-cottage-cream rounded-[2rem] max-w-2xl w-full max-h-[95vh] overflow-y-auto shadow-2xl relative">
+      <button onclick="closeModal('modal-cinema')" class="absolute right-4 top-4 w-9 h-9 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm transition z-50 shadow-sm border border-cottage-butter"><i class="fa-solid fa-xmark"></i></button>
       
-      <div class="p-6 md:p-8 space-y-6">
-        <div class="flex justify-between items-start border-b-2 border-dashed border-cottage-butter pb-4">
-          <div>
-            <div class="flex items-center gap-2">
-              <span id="modal-lesson-level" class="text-[10px] font-black px-3 py-1 rounded-full bg-cottage-roseLight text-cottage-roseDark">C1</span>
-              <span class="text-xs text-cottage-brownLight font-bold">Lý thuyết Phân tích 📝</span>
-            </div>
-            <h2 id="modal-lesson-title" class="text-2xl md:text-3xl font-display font-black text-cottage-brown mt-2 leading-tight">Bài học</h2>
+      <div class="p-5 md:p-7 space-y-5">
+        <!-- Header -->
+        <div class="border-b-2 border-dashed border-cottage-butter pb-3 pr-8">
+          <span id="cinema-genre" class="text-[9px] font-black text-cottage-roseDark uppercase tracking-widest bg-cottage-roseLight px-2.5 py-1 rounded-md">Genre</span>
+          <h2 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown mt-2 leading-tight">Movie Title</h2>
+        </div>
+
+        <!-- Media Container (Video or Image) -->
+        <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- Quote & Translation -->
+        <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative">
+          <div class="absolute -top-3 -left-2 text-2xl">🪶</div>
+          <p id="cinema-quote" class="italic text-[15px] md:text-base text-cottage-brown font-serif leading-relaxed mt-1"></p>
+          <div class="w-10 h-0.5 bg-cottage-rose/30 my-3 mx-auto rounded-full"></div>
+          <p id="cinema-translation" class="text-xs text-cottage-brownLight text-center"></p>
+        </div>
+
+        <!-- Vocabulary Breakdown -->
+        <div class="space-y-3">
+          <p class="font-black text-cottage-greenDark uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-seedling text-cottage-green"></i> Bóc tách Từ Vựng:</p>
+          <div id="cinema-vocab" class="space-y-2.5">
+            <!-- Injected via JS -->
           </div>
         </div>
 
-        <div id="modal-lesson-theory" class="text-sm leading-relaxed space-y-4 text-cottage-brown"></div>
-
-        <!-- Quiz Section -->
-        <div class="bg-cottage-cream p-5 md:p-6 rounded-3xl border-2 border-cottage-butter space-y-4 relative overflow-hidden">
-          <div class="absolute -right-4 -bottom-4 text-6xl opacity-10">🪴</div>
-          <div class="flex justify-between items-center text-xs font-black text-cottage-greenDark uppercase tracking-wider">
-            <span>Bài tập củng cố <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
+        <!-- Interactive Quiz Section -->
+        <div class="bg-cottage-card p-5 rounded-3xl border-2 border-cottage-rose/30 space-y-4 relative overflow-hidden mt-6">
+          <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">🧩</div>
+          <div class="flex justify-between items-center text-[11px] font-black text-cottage-roseDark uppercase tracking-wider relative z-10">
+            <span>Thử thách trí nhớ <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
           </div>
+          
           <p id="modal-quiz-question" class="text-sm font-bold text-cottage-brown relative z-10"></p>
-          <div id="modal-quiz-options" class="space-y-2.5 relative z-10"></div>
+          <div id="modal-quiz-options" class="space-y-2 relative z-10"></div>
           <div id="modal-quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-semibold leading-relaxed mt-2 border-2 relative z-10"></div>
-          <button id="btn-next-quiz" onclick="nextLessonQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-green hover:bg-cottage-greenDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Tiếp tục phân tích →</button>
+          <button id="btn-next-quiz" onclick="nextCinemaQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-rose hover:bg-cottage-roseDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Câu tiếp theo nà →</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ================= MODAL 2: CINEMA ANALYSIS ================= -->
-  <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white border-4 border-cottage-cream rounded-[2rem] max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 space-y-5 shadow-2xl relative">
-      <button onclick="closeModal('modal-cinema')" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm"><i class="fa-solid fa-xmark"></i></button>
-      
-      <div class="border-b-2 border-dashed border-cottage-butter pb-4 pr-6">
-        <span id="cinema-source" class="text-[10px] font-black text-cottage-roseDark uppercase tracking-widest bg-cottage-roseLight px-2.5 py-1 rounded-md">Source</span>
-        <h3 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown mt-3 leading-snug">Title</h3>
-      </div>
-      
-      <div class="p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative">
-        <div class="absolute -top-3 -left-2 text-3xl">🪶</div>
-        <p id="cinema-quote" class="italic text-[15px] text-cottage-brown font-serif leading-relaxed mt-2"></p>
-        <div class="w-8 h-0.5 bg-cottage-brownLight/30 my-3 mx-auto"></div>
-        <p id="cinema-translation" class="text-xs text-cottage-brownLight text-center"></p>
-      </div>
-      
-      <div class="space-y-3 text-xs leading-relaxed text-cottage-brown mt-4">
-        <p class="font-black text-cottage-brown uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass text-cottage-rose"></i> Phân tích Ngữ dụng & Cú pháp:</p>
-        <div id="cinema-analysis" class="space-y-2 bg-cottage-card p-4 rounded-2xl border-2 border-cottage-butter/60"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= MODAL 3: VIETQR PAYWALL ================= -->
+  <!-- ================= MODAL: VIETQR PAYWALL ================= -->
   <div id="modal-vip" class="fixed inset-0 bg-cottage-brown/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white border-[6px] border-cottage-cream rounded-[2.5rem] max-w-3xl w-full max-h-[95vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative">
       <button onclick="closeModal('modal-vip')" class="absolute right-6 top-6 w-9 h-9 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
@@ -214,7 +193,7 @@
       <div class="text-center space-y-2 mb-8 relative">
         <div class="w-16 h-16 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-3xl mb-4 border-4 border-white shadow-sm animate-float">🌷</div>
         <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Hội Viên Thơ Mộng 🎀</h3>
-        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập kho tàng phân tích văn học, tâm lý và điện ảnh bản xứ.</p>
+        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập toàn bộ kho tàng từ vựng qua điện ảnh và văn học bản xứ.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -285,144 +264,128 @@
   </div>
 
   <script>
-    // ================= C1-C2 ADVANCED LESSON DATABASE =================
-    const lessonsData = [
-      {
-        id: 1, level: "C1", category: "Syntax & Cohesion",
-        title: "Participle Clauses (Mệnh đề phân từ)",
-        desc: "Lược bỏ chủ ngữ để tạo sự gắn kết chặt chẽ (Cohesion) và nhịp điệu học thuật cho câu văn.",
-        locked: false,
-        theory: `
-          <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2 text-sm">
-            <h4 class="font-bold text-cottage-roseDark flex items-center gap-1">📌 Syntax Analysis:</h4>
-            <p>Mệnh đề phân từ (V-ing cho chủ động, V3/ed cho bị động) thường được sử dụng trong văn bản hàn lâm để ghép nối hai mệnh đề có chung chủ ngữ, giúp câu văn cô đọng và liền mạch hơn (Cohesion).</p>
-            <p class="text-xs text-cottage-brownLight mt-2 border-t border-dashed border-cottage-butter pt-2">Ví dụ: <i>Exhausted by the cognitive demands of the task, the students requested a break.</i> (Thay vì nói "Because the students were exhausted...")</p>
-          </div>
-        `,
-        quizzes: [
-          {
-            q: "_____ by the rigorous pedagogical approach, the participants grasped the complex syntactic structures almost intuitively.",
-            options: ["Fascinating", "Fascinated", "Having fascinate", "To fascinate"],
-            correct: 1,
-            explanation: "Mệnh đề mang tính bị động (bị/được cuốn hút bởi phương pháp sư phạm), nên sử dụng quá khứ phân từ 'Fascinated'."
-          },
-          {
-            q: "_____ the profound implications of behavioral economics, she restructured the entire syllabus.",
-            options: ["Understood", "Understanding", "To understand", "Understand"],
-            correct: 1,
-            explanation: "Hành động chủ động của chủ thể 'she' (hiểu được những hàm ý sâu sắc), nên sử dụng hiện tại phân từ 'Understanding'."
-          }
-        ]
-      },
-      {
-        id: 2, level: "C2", category: "Morphology",
-        title: "Morphological Parsing (Phân tích Hình thái từ)",
-        desc: "Bóc tách gốc từ, tiền tố, hậu tố (Prefix-Root-Suffix) để giải mã các từ vựng thượng cấp mà không cần từ điển.",
-        locked: false,
-        theory: `
-          <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2">
-            <p><b>✨ Guided Discovery:</b> Hãy xem xét từ <b>"Unpredictability"</b>.</p>
-            <ul class="text-xs space-y-1 list-disc list-inside text-cottage-brown">
-              <li><b>Un-</b> (Prefix): Sự phủ định.</li>
-              <li><b>predict</b> (Root): Dự đoán.</li>
-              <li><b>-able / -abil</b> (Suffix): Có khả năng.</li>
-              <li><b>-ity</b> (Suffix): Danh từ hóa (Tính chất).</li>
-            </ul>
-            <p class="text-sm mt-2">=> Tính chất không thể dự đoán trước.</p>
-          </div>
-        `,
-        quizzes: [
-          {
-            q: "The researcher criticized the methodology for being highly _____, failing to adapt to the idiosyncratic needs of the learners.",
-            options: ["maladaptive", "malleable", "unprecedented", "inextricable"],
-            correct: 0,
-            explanation: "Tiền tố 'mal-' mang nghĩa tiêu cực (bad/poor). 'Maladaptive' nghĩa là thích nghi kém, phù hợp với vế 'failing to adapt'."
-          }
-        ]
-      },
-      {
-        id: 3, level: "C1", category: "Syntax",
-        title: "Inversion for Emphasis (Đảo ngữ Nhấn mạnh)",
-        desc: "Thay đổi trật tự Cú pháp (Syntax) bằng cách đưa trạng từ phủ định lên đầu câu (Fronting).",
-        locked: true,
-        theory: `
-          <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2">
-            <h4 class="font-bold text-cottage-roseDark">Cơ chế Cú pháp (Syntax):</h4>
-            <p>Khi các từ mang nghĩa phủ định (Never, Rarely, Seldom, Little) đứng đầu câu để nhấn mạnh một sự kiện hiếm gặp, ta bắt buộc phải mượn trợ động từ và đảo lên trước chủ ngữ.</p>
-          </div>
-        `,
-        quizzes: [
-          {
-            q: "Not until the linguistic data was thoroughly analyzed _____ the subtle shifts in dialect.",
-            options: ["did the researchers notice", "the researchers noticed", "noticed the researchers", "do the researchers notice"],
-            correct: 0,
-            explanation: "Cấu trúc 'Not until + Mệnh đề thời gian, Trợ động từ + S + V'. Mệnh đề đầu ở quá khứ nên mượn trợ động từ 'did'."
-          }
-        ]
-      },
-      {
-        id: 4, level: "C2", category: "Pragmatics",
-        title: "Nuances of Implicature (Hàm ý trong Giao tiếp)",
-        desc: "Nghệ thuật đọc vị ẩn ý (reading between the lines) qua cách chọn lọc từ ngữ và Discourse Markers.",
-        locked: true,
-        theory: `
-          <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2">
-            <h4 class="font-bold text-cottage-roseDark">Ngữ dụng học (Pragmatics):</h4>
-            <p>Người bản xứ ở trình độ cao hiếm khi nói thẳng (literal meaning). Họ sử dụng Implicature (Hàm ý) thông qua các từ nối (Discourse Markers) hoặc biện pháp nói giảm nói tránh (Euphemism) để giữ thể diện (Face-saving) trong giao tiếp học thuật.</p>
-          </div>
-        `,
-        quizzes: [
-          {
-            q: "When the professor said, 'That's certainly an... original way to approach the discourse analysis,' she was using implicature to suggest the approach was:",
-            options: ["Brilliant and groundbreaking", "Flawed and unconventional in a bad way", "Exactly what she expected", "Standard and acceptable"],
-            correct: 1,
-            explanation: "Dấu ngập ngừng '...' và từ 'original' trong ngữ cảnh học thuật thường là một cách nói giảm (Euphemism) để chê bai một cách lịch sự rằng phương pháp đó có vấn đề hoặc đi chệch hướng."
-          }
-        ]
-      }
-    ];
-
-    // ================= C1-C2 CINEMA & LITERATURE CONTEXT =================
+    // ================= VOCABULARY IN CONTEXT DATABASE =================
+    // Dữ liệu này tập trung vào bóc tách từ vựng (Vocab) thay vì ngữ pháp.
     const cinemaData = [
       {
-        id: 1, title: "Sự thấu cảm & Nỗi đau", source: "Crime and Punishment (Fyodor Dostoevsky)",
-        quote: "Pain and suffering are always inevitable for a large intelligence and a deep heart.",
-        translation: "Đớn đau và khổ ải luôn là điều tất yếu đối với một trí tuệ lớn và một trái tim sâu sắc.",
-        analysis: "<p><b>Vocabulary & Semantics:</b> Từ <i>'inevitable'</i> (không thể tránh khỏi) mang tính tuyệt đối, kết hợp với các danh từ trừu tượng <i>'large intelligence'</i> và <i>'deep heart'</i> tạo ra một chân lý mang tính định mệnh. Cú pháp đơn giản (Simple Sentence) nhưng sức nặng ngữ nghĩa (Semantics) lại rất đồ sộ, phản ánh chủ nghĩa hiện thực tâm lý sâu sắc.</p>"
+        id: 1, 
+        genre: "Drama", 
+        title: "The Devil Wears Prada (2006)",
+        thumbnail: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=600&auto=format&fit=crop", 
+        mediaType: "video", 
+        mediaUrl: "https://www.youtube.com/embed/vRQ-ZjaABq4?si=1&start=20", // Link YouTube nhúng
+        locked: false,
+        quote: "You go to your closet and you select... I don't know... that clunky blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
+        translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh thô kệch kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
+        vocabAnalysis: [
+          {
+            word: "Clunky (adj)", 
+            ipa: "/ˈklʌŋ.ki/", 
+            meaning: "Cục mịch, thô kệch, kém thanh lịch.", 
+            context: "Miranda dùng từ này để miệt thị một cách đanh đá về chiếc áo len thiếu thẩm mỹ của Andy."
+          },
+          {
+            word: "Take oneself too seriously", 
+            ipa: "(Idiom)", 
+            meaning: "Quá tự cao, nghĩ mình luôn quan trọng.", 
+            context: "Ám chỉ việc Andy nghĩ bản thân mình quá thông minh, quá bận rộn với lý tưởng cao cả để phải quan tâm đến thời trang."
+          }
+        ],
+        quizzes: [
+          {
+            q: "Từ 'clunky' trong ngữ cảnh này mang sắc thái gì?",
+            options: ["Khen ngợi sự độc đáo, phá cách", "Chê bai sự thô kệch, thiếu thẩm mỹ", "Chỉ sự đắt tiền, xa xỉ", "Chỉ sự thoải mái, ấm áp"],
+            correct: 1,
+            explanation: "Miranda nổi tiếng với gu thẩm mỹ khắt khe, bà dùng 'clunky' để mỉa mai sự thiếu tinh tế trong cách ăn mặc của Andy."
+          },
+          {
+            q: "Thành ngữ 'take yourself too seriously' ám chỉ điều gì về Andy?",
+            options: ["Andy rất nghiêm túc trong công việc", "Andy luôn lo lắng về ngoại hình", "Andy nghĩ mình ưu việt hơn những người làm thời trang", "Andy có khiếu hài hước"],
+            correct: 2,
+            explanation: "Miranda chỉ trích Andy vì Andy tỏ thái độ khinh khỉnh, cho rằng thời trang là nông cạn và trí tuệ của cô thì cao siêu hơn."
+          }
+        ]
       },
       {
-        id: 2, title: "Nghệ thuật kể chuyện & Sự sinh tồn", source: "The White Album (Joan Didion)",
-        quote: "We tell ourselves stories in order to live.",
-        translation: "Chúng ta kể cho chính mình nghe những câu chuyện, để mà tiếp tục sống.",
-        analysis: "<p><b>Pragmatics & Brevity:</b> Câu mở đầu kinh điển này là minh chứng cho sự tối giản (Brevity). Cụm <i>'in order to live'</i> biến hành động kể chuyện (một thứ tưởng chừng mang tính giải trí) thành một nhu cầu sinh học thiết yếu. Hàm ý (Implicature) ở đây là con người không thể tồn tại nếu thiếu đi những lớp màn ảo tưởng và những diễn ngôn (discourse) tự huyễn hoặc.</p>"
+        id: 2, 
+        genre: "Romance", 
+        title: "La La Land (2016)",
+        thumbnail: "https://images.unsplash.com/photo-1517430554945-88c9a661476f?q=80&w=600&auto=format&fit=crop", 
+        mediaType: "image", 
+        mediaUrl: "https://images.unsplash.com/photo-1517430554945-88c9a661476f?q=80&w=1000&auto=format&fit=crop",
+        locked: false,
+        quote: "Here's to the ones who dream, foolish as they may seem. Here's to the hearts that ache. Here's to the mess we make.",
+        translation: "Nâng ly vì những kẻ mộng mơ, dẫu họ có vẻ khờ dại. Nâng ly vì những con tim rỉ máu. Nâng ly vì những đống lộn xộn ta đã gây ra.",
+        vocabAnalysis: [
+          {
+            word: "Foolish (adj)", 
+            ipa: "/ˈfuː.lɪʃ/", 
+            meaning: "Ngốc nghếch, khờ dại.", 
+            context: "Không mang nghĩa chê bai, mà là sự trân trọng những người dám theo đuổi đam mê bất chấp việc bị xã hội coi là điên rồ."
+          },
+          {
+            word: "Ache (v)", 
+            ipa: "/eɪk/", 
+            meaning: "Đau đớn, nhức nhối (thể xác lẫn tinh thần).", 
+            context: "Chỉ những trái tim đã trải qua vấp ngã, tổn thương vì tình yêu và ước mơ."
+          }
+        ],
+        quizzes: [
+          {
+            q: "Cụm từ 'Here's to...' thường được sử dụng trong tình huống nào?",
+            options: ["Đưa ra một lời xin lỗi", "Nâng ly chúc mừng hoặc tôn vinh ai đó", "Chỉ trích một hành động", "Bắt đầu một câu chuyện buồn"],
+            correct: 1,
+            explanation: "'Here's to...' là cách nói truyền thống khi nâng ly (toast) để vinh danh hoặc chúc tụng một người/sự việc."
+          }
+        ]
       },
       {
-        id: 3, title: "Sự thao túng & Tính từ định hướng", source: "Mastermind (Taylor Swift)",
-        quote: "What if I told you I'm a mastermind? And now you're mine. It was all by design.",
-        translation: "Sẽ thế nào nếu em nói rằng em là một kẻ vạch chiến lược? Và giờ anh thuộc về em. Tất cả đều là do sắp đặt.",
-        analysis: "<p><b>Morphology & Idioms:</b> Từ <i>'mastermind'</i> (kẻ chủ mưu, người lên kế hoạch xuất chúng) kết hợp hoàn hảo với thành ngữ <i>'by design'</i> (có chủ đích, được sắp đặt sẵn). Việc sử dụng câu hỏi giả định <i>'What if I told you...'</i> phá vỡ bức tường thứ tư, thể hiện sự kiểm soát tuyệt đối về mặt tự sự (Narrative Control).</p>"
-      },
-      {
-        id: 4, title: "Áp lực định hình sự hoàn mỹ", source: "Culinary Class Wars",
-        quote: "In this kitchen, precision must transcend passion. One microscopic error dismantles the entire narrative of the dish.",
-        translation: "Trong căn bếp này, sự chuẩn xác phải vượt lên trên cả đam mê. Một sai sót nhỏ bé cũng đủ để phá vỡ toàn bộ câu chuyện của món ăn.",
-        analysis: "<p><b>Advanced Vocabulary (C2):</b> Sự tương phản (Juxtaposition) giữa <i>'precision'</i> (tính chính xác lý trí) và <i>'passion'</i> (đam mê cảm xúc) qua động từ <i>'transcend'</i> (vượt lên, siêu việt). Cụm <i>'dismantles the entire narrative'</i> nhân cách hóa món ăn thành một tác phẩm nghệ thuật có lớp lang, chỉ chực chờ sụp đổ bởi một tiểu tiết (microscopic error).</p>"
+        id: 3, 
+        genre: "Fantasy", 
+        title: "Harry Potter and the Sorcerer's Stone",
+        thumbnail: "https://images.unsplash.com/photo-1618944847023-38aa001235f0?q=80&w=600&auto=format&fit=crop", 
+        mediaType: "image", 
+        mediaUrl: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=1000&auto=format&fit=crop",
+        locked: true,
+        quote: "I can teach you how to bewitch the mind and ensnare the senses. I can tell you how to bottle fame, brew glory, and even put a stopper in death.",
+        translation: "Ta có thể dạy các trò cách mê hoặc tâm trí và giăng bẫy các giác quan. Ta có thể chỉ các trò cách đóng chai danh vọng, ủ nấu vinh quang, và thậm chí là chặn đứng cả cái chết.",
+        vocabAnalysis: [
+          {
+            word: "Bewitch (v)", 
+            ipa: "/bɪˈwɪtʃ/", 
+            meaning: "Bỏ bùa, mê hoặc.", 
+            context: "Một từ vựng hoàn hảo cho lớp Độc dược, ám chỉ sức mạnh thao túng tâm lý mãnh liệt."
+          },
+          {
+            word: "Ensnare (v)", 
+            ipa: "/ɪnˈsner/", 
+            meaning: "Giăng bẫy, bủa vây.", 
+            context: "Thường dùng để bắt động vật, Snape dùng nó với 'giác quan' để thể hiện sự thống trị tuyệt đối của Độc dược."
+          }
+        ],
+        quizzes: [
+          {
+            q: "Động từ 'bottle' và 'brew' trong câu thoại của Snape tạo ra hiệu ứng gì?",
+            options: ["Khiến câu văn trở nên khó hiểu", "Sử dụng các hành động vật lý (đóng chai, ủ nấu) cho những khái niệm trừu tượng (danh vọng, vinh quang)", "Giảm bớt sự đáng sợ của môn học", "Chỉ đơn thuần liệt kê dụng cụ làm bếp"],
+            correct: 1,
+            explanation: "Đó là nghệ thuật ẩn dụ (Metaphor). Snape vật chất hóa những thứ vô hình (fame, glory) để tôn vinh quyền năng của Độc dược."
+          }
+        ]
       }
     ];
 
     // ================= LOGIC & STATE =================
     let currentFilter = 'ALL';
-    let activeLessonId = null;
+    let activeCinemaId = null;
     let activeQuizIndex = 0;
 
     window.addEventListener('DOMContentLoaded', () => {
-      renderLessons();
-      renderCinema();
+      renderCinemaCards();
       initScrambleGame();
     });
 
     function switchNav(viewId) {
-      ['garden', 'cinema', 'arcade'].forEach(v => {
+      ['cinema', 'arcade'].forEach(v => {
         document.getElementById(`view-${v}`).classList.add('hidden');
         document.getElementById(`nav-${v}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0";
       });
@@ -430,57 +393,83 @@
       document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
     }
 
-    // --- Garden Logic ---
-    function renderLessons() {
-      const container = document.getElementById('lessons-grid');
-      const filtered = currentFilter === 'ALL' ? lessonsData : lessonsData.filter(l => l.level === currentFilter);
-      document.getElementById('lesson-count').innerText = filtered.length;
+    // --- Cinema Grid Render ---
+    function renderCinemaCards() {
+      const container = document.getElementById('cinema-grid');
+      const filtered = currentFilter === 'ALL' ? cinemaData : cinemaData.filter(c => c.genre === currentFilter);
+      document.getElementById('cinema-count').innerText = filtered.length;
 
-      container.innerHTML = filtered.map(l => `
-        <div onclick="openLessonModal(${l.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-5 rounded-3xl cursor-pointer transition shadow-sm hover:shadow-md flex flex-col justify-between group relative overflow-hidden transform hover:-translate-y-1">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center">
-              <span class="text-[11px] font-black px-3 py-1 rounded-full ${l.level === 'C1' ? 'bg-cottage-butter text-cottage-brown' : 'bg-cottage-roseLight text-cottage-roseDark'}">${l.level}</span>
-              ${l.locked ? '<span class="text-[10px] font-bold bg-cottage-card text-cottage-brownLight border-2 border-cottage-butter px-2.5 py-1 rounded-full"><i class="fa-solid fa-lock"></i> VIP</span>' : '<span class="text-[10px] font-bold text-cottage-greenDark bg-cottage-greenLight px-2.5 py-1 rounded-full border-2 border-cottage-green/20">✨ Mở</span>'}
+      container.innerHTML = filtered.map(c => `
+        <div onclick="openCinemaModal(${c.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-4 rounded-[2rem] cursor-pointer transition shadow-sm hover:shadow-md flex flex-col group relative overflow-hidden transform hover:-translate-y-1">
+          <div class="relative h-40 w-full rounded-2xl overflow-hidden mb-4">
+            <img src="${c.thumbnail}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            ${c.locked ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/90 text-cottage-roseDark px-3 py-1.5 rounded-full text-xs font-black shadow-lg"><i class="fa-solid fa-lock"></i> VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
+          </div>
+          <div class="flex-1 flex flex-col justify-between">
+            <div class="space-y-2">
+              <span class="text-[10px] font-black px-3 py-1 rounded-md bg-cottage-butter text-cottage-brown uppercase">${c.genre}</span>
+              <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-rose transition line-clamp-1">${c.title}</h3>
             </div>
-            <div>
-              <h3 class="font-display font-bold text-lg text-cottage-brown group-hover:text-cottage-rose transition">${l.title}</h3>
-              <p class="text-xs text-cottage-brownLight leading-relaxed line-clamp-2 mt-1.5">${l.desc}</p>
-            </div>
+            <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown group-hover:bg-cottage-roseLight group-hover:border-cottage-rose group-hover:text-cottage-roseDark transition">
+              ${c.locked ? 'Mở Khóa Ngay 🗝️' : 'Vào Học Từ Vựng 🎬'}
+            </button>
           </div>
         </div>
       `).join('');
     }
 
-    function filterLessons(lvl) {
-      currentFilter = lvl;
+    function filterCinema(genre) {
+      currentFilter = genre;
       document.querySelectorAll('#level-filters .filter-btn').forEach(btn => {
         btn.className = "filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition";
       });
       event.target.className = "filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
-      renderLessons();
+      renderCinemaCards();
     }
 
-    // --- Quiz Engine ---
-    function openLessonModal(id) {
-      const lesson = lessonsData.find(l => l.id === id);
-      if (lesson.locked) { openVipModal(); return; }
+    // --- Cinema Modal & Quiz Engine ---
+    function openCinemaModal(id) {
+      const item = cinemaData.find(c => c.id === id);
+      if (item.locked) { openVipModal(); return; }
       
-      activeLessonId = id; activeQuizIndex = 0;
+      activeCinemaId = id; 
+      activeQuizIndex = 0;
       
-      document.getElementById('modal-lesson-level').innerText = lesson.level;
-      document.getElementById('modal-lesson-title').innerText = lesson.title;
-      document.getElementById('modal-lesson-theory').innerHTML = lesson.theory;
+      document.getElementById('cinema-genre').innerText = item.genre;
+      document.getElementById('cinema-title').innerText = item.title;
+      document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
+      document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
+
+      // Handle Media (Image or YouTube embed)
+      const mediaContainer = document.getElementById('cinema-media-container');
+      if (item.mediaType === 'video') {
+        mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full" src="${item.mediaUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+      } else {
+        mediaContainer.innerHTML = `<img src="${item.mediaUrl}" alt="${item.title}" class="w-full h-48 md:h-64 object-cover">`;
+      }
+
+      // Render Vocab Analysis
+      const vocabContainer = document.getElementById('cinema-vocab');
+      vocabContainer.innerHTML = item.vocabAnalysis.map(v => `
+        <div class="bg-white p-3.5 rounded-2xl border-2 border-cottage-butter shadow-sm">
+          <div class="flex items-baseline gap-2 mb-1">
+            <h4 class="font-bold text-cottage-roseDark text-sm">${v.word}</h4>
+            <span class="text-[11px] text-cottage-brownLight font-mono">${v.ipa}</span>
+          </div>
+          <p class="text-xs font-bold text-cottage-brown mb-1">👉 ${v.meaning}</p>
+          <p class="text-[11px] text-cottage-brownLight italic leading-relaxed bg-cottage-cream p-2 rounded-lg border border-cottage-butter/50">Ngữ cảnh: ${v.context}</p>
+        </div>
+      `).join('');
       
-      renderQuizQuestion();
-      document.getElementById('modal-lesson').classList.remove('hidden');
+      renderCinemaQuiz();
+      document.getElementById('modal-cinema').classList.remove('hidden');
     }
 
-    function renderQuizQuestion() {
-      const lesson = lessonsData.find(l => l.id === activeLessonId);
-      const quiz = lesson.quizzes[activeQuizIndex];
+    function renderCinemaQuiz() {
+      const item = cinemaData.find(c => c.id === activeCinemaId);
+      const quiz = item.quizzes[activeQuizIndex];
 
-      document.getElementById('quiz-counter').innerText = `(${activeQuizIndex + 1}/${lesson.quizzes.length})`;
+      document.getElementById('quiz-counter').innerText = `(${activeQuizIndex + 1}/${item.quizzes.length})`;
       document.getElementById('modal-quiz-question').innerText = quiz.q;
 
       const optsContainer = document.getElementById('modal-quiz-options');
@@ -490,16 +479,16 @@
       feedback.classList.add('hidden'); nextBtn.classList.add('hidden');
 
       optsContainer.innerHTML = quiz.options.map((opt, idx) => `
-        <button onclick="checkLessonQuiz(${idx}, this)" class="w-full text-left p-4 rounded-2xl bg-white border-2 border-cottage-butter hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 text-sm font-bold text-cottage-brown transition flex items-center justify-between group">
+        <button onclick="checkCinemaQuiz(${idx}, this)" class="w-full text-left p-4 rounded-2xl bg-white border-2 border-cottage-butter hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 text-sm font-bold text-cottage-brown transition flex items-center justify-between group">
           <span>${opt}</span>
           <div class="w-4 h-4 rounded-full border-2 border-cottage-butter group-hover:border-cottage-rose"></div>
         </button>
       `).join('');
     }
 
-    function checkLessonQuiz(chosenIdx, btn) {
-      const lesson = lessonsData.find(l => l.id === activeLessonId);
-      const quiz = lesson.quizzes[activeQuizIndex];
+    function checkCinemaQuiz(chosenIdx, btn) {
+      const item = cinemaData.find(c => c.id === activeCinemaId);
+      const quiz = item.quizzes[activeQuizIndex];
       const feedback = document.getElementById('modal-quiz-feedback');
       const nextBtn = document.getElementById('btn-next-quiz');
       
@@ -511,52 +500,32 @@
       if (chosenIdx === quiz.correct) {
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
-        feedback.innerHTML = `🎉 <b>Phân tích xuất sắc!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
+        feedback.innerHTML = `🎉 <b>Chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       } else {
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-roseLight border-2 border-cottage-rose/40 text-cottage-roseDark";
         allBtns[quiz.correct].className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border-2 border-cottage-rose/30 block mt-3 relative z-10";
-        feedback.innerHTML = `🧸 <b>Khoan đã, hãy nhìn nhận lại ngữ cảnh!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
+        feedback.innerHTML = `🧸 <b>Khoan đã, hãy xem lại ngữ cảnh nhé!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       }
 
-      if (activeQuizIndex === lesson.quizzes.length - 1) {
-        nextBtn.innerHTML = "Đã thu nạp kiến thức xong 🧺";
-        nextBtn.onclick = () => closeModal('modal-lesson');
+      if (activeQuizIndex === item.quizzes.length - 1) {
+        nextBtn.innerHTML = "Tuyệt vời! Đóng bài học 🧺";
+        nextBtn.onclick = () => {
+          // Xóa iframe youtube để video ngưng phát khi đóng
+          document.getElementById('cinema-media-container').innerHTML = ''; 
+          closeModal('modal-cinema');
+        };
       } else {
-        nextBtn.innerHTML = "Phân tích câu tiếp theo nà →";
-        nextBtn.onclick = () => { activeQuizIndex++; renderQuizQuestion(); };
+        nextBtn.innerHTML = "Câu hỏi tiếp theo nà →";
+        nextBtn.onclick = () => { activeQuizIndex++; renderCinemaQuiz(); };
       }
     }
 
-    // --- Cinema Logic ---
-    function renderCinema() {
-      const container = document.getElementById('cinema-grid');
-      container.innerHTML = cinemaData.map(c => `
-        <div onclick="openCinemaModal(${c.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight rounded-3xl p-6 cursor-pointer transition shadow-sm hover:shadow-md space-y-3 flex flex-col justify-between transform hover:-translate-y-1">
-          <div class="space-y-3">
-            <span class="text-[9px] font-black text-cottage-brown uppercase tracking-widest bg-cottage-butter px-2.5 py-1 rounded-md inline-block">${c.source}</span>
-            <h3 class="font-serif font-bold text-lg text-cottage-brown">${c.title}</h3>
-            <p class="font-serif italic text-xs text-cottage-brownLight bg-cottage-cream p-4 rounded-2xl border border-cottage-butter/50 line-clamp-3">"${c.quote}"</p>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function openCinemaModal(id) {
-      const item = cinemaData.find(c => c.id === id);
-      document.getElementById('cinema-source').innerText = item.source;
-      document.getElementById('cinema-title').innerText = item.title;
-      document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
-      document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
-      document.getElementById('cinema-analysis').innerHTML = item.analysis;
-      document.getElementById('modal-cinema').classList.remove('hidden');
-    }
-
-    // --- Scramble Game (Advanced Level) ---
+    // --- Scramble Game (Arcade) ---
     let selectedScrambleWords = [];
     const scrambleData = { 
-      prompt: "Việc nắm bắt các sắc thái của hình thái học (morphology) trao cho chúng ta quyền năng để diễn đạt những ý tưởng phức tạp.", 
-      words: ["Grasping", "the nuances", "of morphology", "empowers us", "to articulate", "complex ideas"] 
+      prompt: "Cô đi đến tủ quần áo và chọn cái áo len xanh thô kệch kia...", 
+      words: ["You", "go to", "your closet", "and you", "select", "that clunky", "blue sweater"] 
     };
     
     function initScrambleGame() {
@@ -566,7 +535,7 @@
       const pool = document.getElementById('scramble-pool');
       const shuffled = [...scrambleData.words].sort(() => 0.5 - Math.random());
       pool.innerHTML = shuffled.map(w => `<button onclick="pickScrambleWord('${w}', this)" class="px-4 py-2 bg-white border-2 border-cottage-butter rounded-xl text-sm font-bold text-cottage-brown hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 transition transform active:scale-95 shadow-sm">${w}</button>`).join('');
-      document.getElementById('scramble-dropzone').innerHTML = '<span class="text-xs text-cottage-brownLight/60">Chạm vào các phân đoạn (segments) bên dưới để thiết lập cú pháp... ☁️</span>';
+      document.getElementById('scramble-dropzone').innerHTML = '<span class="text-xs text-cottage-brownLight/60">Chạm vào các từ bên dưới để ghép câu nha... ☁️</span>';
     }
 
     function pickScrambleWord(word, btn) {
@@ -585,9 +554,9 @@
     function checkScramble() {
       const fb = document.getElementById('scramble-feedback'); fb.classList.remove('hidden');
       if (selectedScrambleWords.join(' ') === scrambleData.words.join(' ')) {
-        fb.className = "text-sm font-bold text-cottage-greenDark block mt-2"; fb.innerText = "✨ Cấu trúc cú pháp hoàn hảo! Giỏi quá đi!";
+        fb.className = "text-sm font-bold text-cottage-greenDark block mt-2"; fb.innerText = "✨ Hoàn hảo! Bạn nhớ câu thoại rất giỏi!";
       } else {
-        fb.className = "text-sm font-bold text-cottage-roseDark block mt-2"; fb.innerText = "🧸 Trật tự câu chưa chuẩn xác, thử cấu trúc lại nhé!";
+        fb.className = "text-sm font-bold text-cottage-roseDark block mt-2"; fb.innerText = "🧸 Trật tự câu chưa đúng rồi, thử lại nhé!";
       }
     }
 
@@ -601,7 +570,7 @@
     function openVipModal() { document.getElementById('modal-vip').classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     function simulateSuccessPayment() {
-      alert("Hệ thống đang xác nhận giao dịch. Chúc bạn có những phút giây đào sâu ngôn ngữ thật thảnh thơi nha! 🌷");
+      alert("Hệ thống đang xác nhận giao dịch. Chúc bạn có những phút giây học từ vựng thật thư giãn nha! 🌷");
       closeModal('modal-vip');
     }
   </script>
