@@ -63,7 +63,7 @@
 
       <div class="flex items-center space-x-2">
         <button id="vip-header-btn" onclick="openVipModal()" class="bg-white border-2 border-cottage-rose text-cottage-roseDark hover:bg-cottage-rose hover:text-white text-xs font-black px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(230,164,180,0.2)] transition transform active:scale-95 flex items-center gap-1.5 animate-float">
-          <i class="fa-solid fa-crown text-[11px]"></i> <span>Hội Viên VIP 🌷</span>
+          <i class="fa-solid fa-crown text-[11px]"></i> <span>Mua Gói VIP 🌷</span>
         </button>
       </div>
     </div>
@@ -95,7 +95,6 @@
         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
       </div>
 
-      <!-- Bộ lọc thể loại phim phong cách Netflix -->
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="level-filters">
           <button onclick="filterCinema('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả (All)</button>
@@ -141,10 +140,41 @@
 
   </main>
 
-  <!-- Nút Kích Hoạt VIP (Dành Cho Học Viên Nhập Mã) -->
-  <button id="floating-vip-btn" onclick="toggleVipLogin()" class="fixed bottom-4 right-4 bg-cottage-brown/90 text-white text-[10px] px-4 py-2.5 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20 font-bold uppercase tracking-wider">
+  <!-- Nút Kích Hoạt VIP (Sẽ bị ẩn khi đã là VIP) -->
+  <button id="floating-vip-btn" onclick="openLoginModal()" class="fixed bottom-4 right-4 bg-cottage-brown/90 text-white text-[10px] px-4 py-2.5 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20 font-bold uppercase tracking-wider">
     🔑 Kích Hoạt VIP
   </button>
+
+  <!-- ================= MODAL: KÍCH HOẠT VIP (LOGIN) ================= -->
+  <div id="modal-login" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white border-[6px] border-cottage-cream rounded-[2.5rem] max-w-sm w-full p-6 md:p-8 shadow-2xl relative">
+      <button onclick="closeModal('modal-login')" class="absolute right-4 top-4 w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="text-center space-y-2 mb-6">
+        <div class="w-14 h-14 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-2xl mb-2 shadow-sm">🔑</div>
+        <h3 class="text-2xl font-display font-black text-cottage-brown tracking-tight">Kích Hoạt VIP</h3>
+        <p class="text-xs text-cottage-brownLight">Nhập mật khẩu nhận được qua Zalo để mở khóa trạm học tập nhé!</p>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Gói đã thanh toán</label>
+          <select id="vip-package-select" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition appearance-none">
+            <option value="3">Gói Trải Nghiệm (3 Ngày)</option>
+            <option value="30">Gói Chăm Chỉ (1 Tháng)</option>
+            <option value="365">Gói Trọn Vẹn (1 Năm)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Mật khẩu bí mật</label>
+          <input type="password" id="vip-password-input" placeholder="Nhập mật khẩu..." class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition">
+        </div>
+        <button onclick="verifyVipLogin()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
+          Xác Nhận Mở Khóa 🎀
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ================= MODAL: CINEMA LEARNING & QUIZ ================= -->
   <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
@@ -157,9 +187,7 @@
           <h2 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown mt-2 leading-tight">Movie Title</h2>
         </div>
 
-        <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative">
-          <!-- Injected via JS -->
-        </div>
+        <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative"></div>
 
         <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative">
           <div class="absolute -top-3 -left-2 text-2xl">🪶</div>
@@ -170,9 +198,7 @@
 
         <div class="space-y-3">
           <p class="font-black text-cottage-greenDark uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-seedling text-cottage-green"></i> Bóc tách Từ Vựng:</p>
-          <div id="cinema-vocab" class="space-y-2.5">
-            <!-- Injected via JS -->
-          </div>
+          <div id="cinema-vocab" class="space-y-2.5"></div>
         </div>
 
         <div class="bg-cottage-card p-5 rounded-3xl border-2 border-cottage-rose/30 space-y-4 relative overflow-hidden mt-6">
@@ -267,9 +293,6 @@
   </div>
 
   <script>
-    // Biến toàn cục quản lý trạng thái VIP
-    let isVip = false;
-
     // ================= VOCABULARY IN CONTEXT DATABASE =================
     const cinemaData = [
       {
@@ -377,11 +400,78 @@
     let currentFilter = 'ALL';
     let activeCinemaId = null;
     let activeQuizIndex = 0;
+    let isVip = false;
 
     window.addEventListener('DOMContentLoaded', () => {
+      checkVipStatus(); // Kiểm tra trạng thái lưu trong trình duyệt khi mở web
       renderCinemaCards();
       initScrambleGame();
     });
+
+    // Hàm kiểm tra thời hạn VIP trong localStorage
+    function checkVipStatus() {
+      const expiry = localStorage.getItem('cozyVipExpiry');
+      if (expiry) {
+        if (Date.now() < parseInt(expiry)) {
+          isVip = true;
+          applyVipUI();
+        } else {
+          localStorage.removeItem('cozyVipExpiry'); // Xóa khi hết hạn
+          alert("Gói VIP của bạn đã hết hạn. Vui lòng gia hạn để tiếp tục nhé 🌷");
+        }
+      }
+    }
+
+    // Hàm thay đổi giao diện khi đã là VIP
+    function applyVipUI() {
+      // Ẩn nút Kích Hoạt góc phải
+      const floatingBtn = document.getElementById('floating-vip-btn');
+      if (floatingBtn) floatingBtn.style.display = 'none';
+
+      // Thay đổi nút trên cùng (Header) -> Không mở bảng giá nữa mà thông báo ngày
+      const vipHeaderBtn = document.getElementById('vip-header-btn');
+      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội Viên Đã Kích Hoạt 🌟</span>';
+      vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+      vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
+      
+      vipHeaderBtn.onclick = () => {
+        const expiry = localStorage.getItem('cozyVipExpiry');
+        const dateStr = new Date(parseInt(expiry)).toLocaleDateString('vi-VN');
+        alert(`Chào mừng bạn! Gói VIP của bạn có thời hạn đến ngày: ${dateStr} 🌷\nChúc bạn học tập thật vui vẻ!`);
+      };
+
+      // Tắt luôn modal thanh toán và login
+      closeModal('modal-login');
+      closeModal('modal-vip');
+    }
+
+    // Modal Đăng Nhập VIP
+    function openLoginModal() {
+      document.getElementById('modal-login').classList.remove('hidden');
+    }
+
+    function verifyVipLogin() {
+      const daysInput = document.getElementById('vip-package-select').value;
+      const passInput = document.getElementById('vip-password-input').value;
+
+      if (passInput === "cosygardenhoctienganhquangucanh") {
+        // Tính thời gian sống của tài khoản
+        const durationInMs = parseInt(daysInput) * 24 * 60 * 60 * 1000;
+        const expiryDate = Date.now() + durationInMs;
+        
+        // Lưu vào trình duyệt
+        localStorage.setItem('cozyVipExpiry', expiryDate);
+        isVip = true;
+        
+        alert("🎉 Kích hoạt VIP thành công! Toàn bộ kho tàng điện ảnh đã được mở khóa.");
+        
+        // Chuyển đổi giao diện
+        applyVipUI();
+        renderCinemaCards(); // Reset lại ổ khóa
+      } else {
+        alert("Mật khẩu không chính xác! Vui lòng kiểm tra lại 🛑");
+      }
+    }
 
     function switchNav(viewId) {
       ['cinema', 'arcade'].forEach(v => {
@@ -390,34 +480,6 @@
       });
       document.getElementById(`view-${viewId}`).classList.remove('hidden');
       document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
-    }
-
-    // --- User VIP Login Toggle ---
-    function toggleVipLogin() {
-      if (isVip) {
-        alert("Bạn đã là Hội viên VIP rồi nha! 🌷");
-        return;
-      }
-      
-      const pass = prompt("Nhập mật khẩu Thành viên VIP (Nhắn Zalo 0362102905 để nhận mã):");
-      
-      if (pass === "anthinh1234") {
-        isVip = true; 
-        
-        const vipHeaderBtn = document.getElementById('vip-header-btn');
-        alert("🎉 Kích hoạt VIP thành công! Toàn bộ kho tàng điện ảnh đã được mở khóa.");
-        
-        vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Thành Viên VIP 🌟</span>';
-        vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
-        vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
-        
-        // Ẩn nút nhập mã đi sau khi đã kích hoạt thành công
-        document.getElementById('floating-vip-btn').style.display = 'none';
-        
-        renderCinemaCards(); // Render lại giao diện mở khóa
-      } else if (pass !== null) {
-        alert("Mật khẩu không chính xác! 🛑");
-      }
     }
 
     // --- Cinema Grid Render ---
@@ -457,6 +519,8 @@
     // --- Cinema Modal & Quiz Engine ---
     function openCinemaModal(id) {
       const item = cinemaData.find(c => c.id === id);
+      
+      // Nếu bài khóa và user chưa là VIP -> Hiện bảng giá
       if (item.locked && !isVip) { openVipModal(); return; }
       
       activeCinemaId = id; 
@@ -467,7 +531,6 @@
       document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
       document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
 
-      // Hỗ trợ hiển thị đúng định dạng (Hình, Video MP4 tự tải, hoặc Youtube nhúng)
       const mediaContainer = document.getElementById('cinema-media-container');
       if (item.mediaType === 'youtube') {
         mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
