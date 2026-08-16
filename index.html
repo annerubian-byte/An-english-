@@ -137,7 +137,7 @@
   </main>
 
   <!-- Nút Ẩn Dành Cho Admin Để Test Tính Năng Duyệt VIP -->
-  <button onclick="toggleAdminVip()" class="fixed bottom-4 right-4 bg-cottage-brown/80 text-white text-[10px] px-3 py-1.5 rounded-full z-50 hover:bg-cottage-brown transition">
+  <button onclick="toggleAdminVip()" class="fixed bottom-4 right-4 bg-cottage-brown/80 text-white text-[10px] px-4 py-2 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20">
     👑 Admin: Duyệt VIP
   </button>
 
@@ -152,8 +152,9 @@
           <h2 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown mt-2 leading-tight">Movie Title</h2>
         </div>
 
+        <!-- Khung chứa Video/Hình ảnh -->
         <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative">
-          <!-- Injected via JS -->
+          <!-- Nội dung media sẽ được nhúng bằng JavaScript -->
         </div>
 
         <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative">
@@ -166,7 +167,7 @@
         <div class="space-y-3">
           <p class="font-black text-cottage-greenDark uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-seedling text-cottage-green"></i> Bóc tách Từ Vựng:</p>
           <div id="cinema-vocab" class="space-y-2.5">
-            <!-- Injected via JS -->
+            <!-- Từ vựng nhúng qua JS -->
           </div>
         </div>
 
@@ -266,13 +267,16 @@
     let isVip = false;
 
     // ================= VOCABULARY IN CONTEXT DATABASE =================
+    // Chú ý: Ở phần mediaUrl và thumbnail, bạn hoàn toàn có thể thay bằng link file mp4/jpg trong máy tính của bạn
+    // Ví dụ: thumbnail: "./images/phim-1.jpg" hoặc mediaUrl: "./videos/phim-1.mp4"
     const cinemaData = [
       {
         id: 1, 
         genre: "Drama", 
         title: "The Devil Wears Prada (2006)",
-        thumbnail: "https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=600&auto=format&fit=crop", 
-        mediaType: "video", 
+        // Thumbnail dùng hình ảnh đáng tin cậy
+        thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=The+Devil+Wears+Prada", 
+        mediaType: "youtube", // Có thể chọn: "youtube", "video", hoặc "image"
         mediaUrl: "https://www.youtube.com/embed/vRQ-ZjaABq4?si=1&start=20", 
         locked: false,
         quote: "You go to your closet and you select... I don't know... that clunky blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
@@ -297,12 +301,6 @@
             options: ["Khen ngợi sự độc đáo, phá cách", "Chê bai sự thô kệch, thiếu thẩm mỹ", "Chỉ sự đắt tiền, xa xỉ", "Chỉ sự thoải mái, ấm áp"],
             correct: 1,
             explanation: "Miranda nổi tiếng với gu thẩm mỹ khắt khe, bà dùng 'clunky' để mỉa mai sự thiếu tinh tế trong cách ăn mặc của Andy."
-          },
-          {
-            q: "Thành ngữ 'take yourself too seriously' ám chỉ điều gì về Andy?",
-            options: ["Andy rất nghiêm túc trong công việc", "Andy luôn lo lắng về ngoại hình", "Andy nghĩ mình ưu việt hơn những người làm thời trang", "Andy có khiếu hài hước"],
-            correct: 2,
-            explanation: "Miranda chỉ trích Andy vì Andy tỏ thái độ khinh khỉnh, cho rằng thời trang là nông cạn và trí tuệ của cô thì cao siêu hơn."
           }
         ]
       },
@@ -310,9 +308,9 @@
         id: 2, 
         genre: "Romance", 
         title: "La La Land (2016)",
-        thumbnail: "https://images.unsplash.com/photo-1517430554945-88c9a661476f?q=80&w=600&auto=format&fit=crop", 
+        thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=La+La+Land", 
         mediaType: "image", 
-        mediaUrl: "https://images.unsplash.com/photo-1517430554945-88c9a661476f?q=80&w=1000&auto=format&fit=crop",
+        mediaUrl: "https://placehold.co/1000x500/EFE5D2/6A5B53?text=La+La+Land+Scene",
         locked: false,
         quote: "Here's to the ones who dream, foolish as they may seem. Here's to the hearts that ache. Here's to the mess we make.",
         translation: "Nâng ly vì những kẻ mộng mơ, dẫu họ có vẻ khờ dại. Nâng ly vì những con tim rỉ máu. Nâng ly vì những đống lộn xộn ta đã gây ra.",
@@ -342,10 +340,10 @@
       {
         id: 3, 
         genre: "Fantasy", 
-        title: "Harry Potter and the Sorcerer's Stone",
-        thumbnail: "https://images.unsplash.com/photo-1618944847023-38aa001235f0?q=80&w=600&auto=format&fit=crop", 
+        title: "Harry Potter",
+        thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=Harry+Potter", 
         mediaType: "image", 
-        mediaUrl: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=1000&auto=format&fit=crop",
+        mediaUrl: "https://placehold.co/1000x500/EFE5D2/6A5B53?text=Snape+Potions+Class",
         locked: true,
         quote: "I can teach you how to bewitch the mind and ensnare the senses. I can tell you how to bottle fame, brew glory, and even put a stopper in death.",
         translation: "Ta có thể dạy các trò cách mê hoặc tâm trí và giăng bẫy các giác quan. Ta có thể chỉ các trò cách đóng chai danh vọng, ủ nấu vinh quang, và thậm chí là chặn đứng cả cái chết.",
@@ -372,6 +370,7 @@
           }
         ]
       }
+      // ĐỂ THÊM BÀI MỚI, COPY VÀ DÁN VÀO ĐÂY NHÉ!
     ];
 
     // ================= LOGIC & STATE =================
@@ -393,25 +392,32 @@
       document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
     }
 
-    // --- Admin VIP Toggle ---
+    // --- Admin VIP Toggle (Với Mật khẩu) ---
     function toggleAdminVip() {
-      isVip = !isVip;
+      // Yêu cầu nhập mật khẩu để tránh người ngoài tự bấm
+      const pass = prompt("Nhập mật khẩu Admin (Gợi ý: navigator2026):");
       
-      const vipHeaderBtn = document.getElementById('vip-header-btn');
-      
-      if (isVip) {
-        alert("Thành công! Admin đã duyệt. Toàn bộ nội dung đã được mở khóa. 🗝️");
-        vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Thành Viên VIP 🌟</span>';
-        vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark');
-        vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white');
-      } else {
-        alert("Đã hủy trạng thái VIP.");
-        vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội Viên VIP 🌷</span>';
-        vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark');
-        vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white');
+      if (pass === "navigator2026") {
+        isVip = !isVip; // Bật / Tắt trạng thái
+        
+        const vipHeaderBtn = document.getElementById('vip-header-btn');
+        
+        if (isVip) {
+          alert("🎉 Đăng nhập Admin thành công! Toàn bộ nội dung đã được mở khóa.");
+          vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Admin Đã Duyệt 🌟</span>';
+          vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+          vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
+        } else {
+          alert("Đã tắt chế độ Admin.");
+          vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội Viên VIP 🌷</span>';
+          vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+          vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white', 'border-transparent');
+        }
+        
+        renderCinemaCards(); // Render lại giao diện
+      } else if (pass !== null) {
+        alert("Mật khẩu không chính xác! 🛑");
       }
-      
-      renderCinemaCards(); // Render lại UI bài học
     }
 
     // --- Cinema Grid Render ---
@@ -422,9 +428,9 @@
 
       container.innerHTML = filtered.map(c => `
         <div onclick="openCinemaModal(${c.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-4 rounded-[2rem] cursor-pointer transition shadow-sm hover:shadow-md flex flex-col group relative overflow-hidden transform hover:-translate-y-1">
-          <div class="relative h-40 w-full rounded-2xl overflow-hidden mb-4">
+          <div class="relative h-40 w-full rounded-2xl overflow-hidden mb-4 border border-cottage-butter/50">
             <img src="${c.thumbnail}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            ${(c.locked && !isVip) ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/90 text-cottage-roseDark px-3 py-1.5 rounded-full text-xs font-black shadow-lg"><i class="fa-solid fa-lock"></i> VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
+            ${(c.locked && !isVip) ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/95 text-cottage-roseDark px-3 py-1.5 rounded-full text-[11px] font-black shadow-lg uppercase tracking-wider"><i class="fa-solid fa-lock mr-1"></i> Yêu cầu VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
           </div>
           <div class="flex-1 flex flex-col justify-between">
             <div class="space-y-2">
@@ -461,9 +467,12 @@
       document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
       document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
 
+      // Hỗ trợ hiển thị đúng định dạng (Hình, Video MP4 tự tải, hoặc Youtube nhúng)
       const mediaContainer = document.getElementById('cinema-media-container');
-      if (item.mediaType === 'video') {
-        mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full" src="${item.mediaUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+      if (item.mediaType === 'youtube') {
+        mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
+      } else if (item.mediaType === 'video') {
+        mediaContainer.innerHTML = `<video controls class="w-full h-auto"><source src="${item.mediaUrl}" type="video/mp4">Trình duyệt không hỗ trợ video.</video>`;
       } else {
         mediaContainer.innerHTML = `<img src="${item.mediaUrl}" alt="${item.title}" class="w-full h-48 md:h-64 object-cover">`;
       }
@@ -530,7 +539,7 @@
       if (activeQuizIndex === item.quizzes.length - 1) {
         nextBtn.innerHTML = "Tuyệt vời! Đóng bài học 🧺";
         nextBtn.onclick = () => {
-          document.getElementById('cinema-media-container').innerHTML = ''; 
+          document.getElementById('cinema-media-container').innerHTML = ''; // Ngắt video khi tắt modal
           closeModal('modal-cinema');
         };
       } else {
@@ -589,7 +598,7 @@
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     
     function simulateSuccessPayment() {
-      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng chờ Admin kiểm tra giao dịch và duyệt mở khóa nhé.\n\n(Bạn có thể test bằng cách nhấn nút [👑 Admin: Duyệt VIP] ở góc phải bên dưới màn hình) 🌷");
+      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin cho Admin để kiểm tra giao dịch và duyệt mở khóa nha 🌷");
       closeModal('modal-vip');
     }
   </script>
