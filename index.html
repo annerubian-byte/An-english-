@@ -3,292 +3,367 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>English Self-Study Hub</title>
+  <title>Cozy Grammar Garden 🌱</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400..800;1,400..800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    .perspective { perspective: 1000px; }
-    .transform-style-3d { transform-style: preserve-3d; }
-    .backface-hidden { backface-visibility: hidden; }
-    .rotate-y-180 { transform: rotateY(180deg); }
-  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cottage: {
+              cream: '#FAF7F2',
+              card: '#FFFDF9',
+              green: '#8EA885',
+              greenDark: '#5E7A55',
+              rose: '#E8B4B8',
+              butter: '#F6E6C2',
+              brown: '#6C584C',
+              brownLight: '#A9927D'
+            }
+          },
+          fontFamily: {
+            sans: ['Nunito', 'sans-serif'],
+            display: ['Quicksand', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
+<body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans flex flex-col selection:bg-cottage-rose/30">
 
-  <!-- Header -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+  <!-- Navbar -->
+  <header class="bg-cottage-card/90 backdrop-blur border-b border-cottage-butter sticky top-0 z-40">
     <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-2">
-        <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">E</div>
-        <span class="font-bold text-xl tracking-tight text-slate-900">StudySpace</span>
+        <span class="text-2xl">🧺</span>
+        <div>
+          <span class="font-display font-bold text-lg text-cottage-greenDark block leading-none">CozyEnglish</span>
+          <span class="text-[10px] text-cottage-brownLight font-semibold tracking-wider uppercase">Grammar Garden 🌿</span>
+        </div>
       </div>
-      <nav class="flex space-x-2">
-        <button onclick="switchTab('flashcards')" id="tab-flashcards" class="px-4 py-2 rounded-lg text-sm font-semibold bg-indigo-50 text-indigo-700 transition">Flashcards</button>
-        <button onclick="switchTab('quiz')" id="tab-quiz" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100 transition">Practice Quiz</button>
-      </nav>
+      <div class="flex items-center space-x-3">
+        <div class="bg-cottage-butter/60 px-3 py-1 rounded-full text-xs font-bold text-cottage-brown flex items-center gap-1.5 border border-cottage-butter">
+          <span>🍓</span> <span id="user-berries">30</span> Berries
+        </div>
+        <button onclick="openModal('vip-modal')" class="bg-cottage-rose hover:opacity-90 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm transition transform active:scale-95 flex items-center gap-1">
+          <i class="fa-solid fa-crown text-[10px]"></i> Nâng cấp VIP
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6">
+  <main class="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 space-y-6">
     
-    <!-- SECTION 1: FLASHCARDS -->
-    <section id="section-flashcards" class="space-y-6">
-      <div class="text-center space-y-1">
-        <h1 class="text-2xl font-bold text-slate-900">Từ vựng học thuật</h1>
-        <p class="text-slate-500 text-sm">Bấm vào thẻ để xem nghĩa và ví dụ, bấm loa để nghe phát âm</p>
+    <!-- Hero Banner -->
+    <div class="bg-cottage-card border-2 border-dashed border-cottage-green/40 rounded-3xl p-6 relative overflow-hidden shadow-sm">
+      <div class="relative z-10 max-w-lg space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-cottage-green/20 text-cottage-greenDark">Khu vườn ngữ pháp A1 - B1</span>
+        <h1 class="text-2xl md:text-3xl font-display font-extrabold text-cottage-brown">Học Ngữ Pháp Thảnh Thơi Mỗi Ngày ☕</h1>
+        <p class="text-xs md:text-sm text-cottage-brownLight leading-relaxed">Mỗi bài học là một nụ hoa. Thu thập đủ Berry để mở khoá vườn nâng cao nhé!</p>
       </div>
+      <span class="absolute -right-4 -bottom-4 text-7xl opacity-20 select-none">🪴</span>
+    </div>
 
-      <!-- Flashcard Item -->
-      <div class="perspective max-w-md mx-auto h-72 cursor-pointer" onclick="flipCard()">
-        <div id="card-inner" class="relative w-full h-full duration-500 transform-style-3d bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
-          
-          <!-- Front Face -->
-          <div class="absolute inset-0 p-6 backface-hidden flex flex-col justify-between bg-white rounded-2xl">
-            <div class="flex justify-between items-start">
-              <span id="word-type" class="text-xs font-semibold px-2.5 py-1 rounded bg-indigo-50 text-indigo-600 uppercase tracking-wider">Verb</span>
-              <button onclick="speakWord(event)" class="text-slate-400 hover:text-indigo-600 transition p-1">
-                <i class="fa-solid fa-volume-high text-lg"></i>
-              </button>
-            </div>
-            <div class="text-center my-auto">
-              <h2 id="word-title" class="text-3xl font-extrabold text-slate-900 tracking-tight">Articulate</h2>
-              <p id="word-phonetic" class="text-slate-500 font-mono text-sm mt-1">/ɑːrˈtɪk.jə.leɪt/</p>
-            </div>
-            <div class="text-center text-xs text-slate-400 font-medium">Bấm để lật thẻ ↻</div>
-          </div>
+    <!-- Navigation Tabs -->
+    <div class="flex justify-center gap-2">
+      <button onclick="switchView('lessons')" id="tab-lessons" class="px-5 py-2 rounded-2xl font-display font-bold text-sm bg-cottage-green text-white shadow-sm transition">🌱 Bản Đồ Bài Học</button>
+      <button onclick="switchView('game')" id="tab-game" class="px-5 py-2 rounded-2xl font-display font-bold text-sm bg-cottage-card text-cottage-brown border border-cottage-butter hover:bg-cottage-butter/40 transition">🎮 Trò Chơi Nối Từ</button>
+    </div>
 
-          <!-- Back Face -->
-          <div class="absolute inset-0 p-6 backface-hidden rotate-y-180 flex flex-col justify-between bg-indigo-900 text-white rounded-2xl">
-            <div>
-              <span class="text-xs font-semibold text-indigo-300 uppercase tracking-wider">Định nghĩa & Ví dụ</span>
-              <p id="word-meaning" class="text-base font-semibold mt-2 text-indigo-50">Diễn đạt suy nghĩ hoặc cảm xúc một cách rõ ràng, mạch lạc.</p>
-            </div>
-            <div class="bg-indigo-800/60 p-3 rounded-lg border border-indigo-700/50">
-              <p id="word-example" class="text-xs italic text-indigo-200 leading-relaxed">"She was able to articulate her ideas clearly during the presentation."</p>
-            </div>
-            <div class="text-center text-xs text-indigo-300 font-medium">Bấm để quay lại ↺</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <div class="flex justify-center items-center space-x-4">
-        <button onclick="prevCard()" class="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium text-sm transition">Trước</button>
-        <span id="card-counter" class="text-sm font-medium text-slate-500">1 / 3</span>
-        <button onclick="nextCard()" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm transition">Tiếp theo</button>
+    <!-- VIEW 1: LESSONS ROADMAP -->
+    <section id="view-lessons" class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="lesson-list">
+        <!-- JS generates lessons -->
       </div>
     </section>
 
-    <!-- SECTION 2: QUIZ -->
-    <section id="section-quiz" class="hidden max-w-xl mx-auto space-y-6">
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-        <div class="flex justify-between items-center pb-4 border-b border-slate-100">
-          <span id="quiz-question-num" class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Câu hỏi 1 / 3</span>
-          <span id="quiz-score" class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">Điểm: 0</span>
+    <!-- VIEW 2: MINI GAME (Sentence Builder) -->
+    <section id="view-game" class="hidden space-y-4 max-w-xl mx-auto">
+      <div class="bg-cottage-card border border-cottage-butter rounded-3xl p-6 shadow-sm space-y-5 text-center">
+        <div class="flex justify-between items-center text-xs font-bold text-cottage-brownLight">
+          <span>Nhiệm vụ: Sắp xếp câu đúng</span>
+          <span class="bg-cottage-rose/20 text-cottage-brown px-2.5 py-1 rounded-full">+10 🍓</span>
         </div>
 
-        <div class="space-y-4">
-          <h3 id="quiz-question" class="text-base font-semibold text-slate-900 leading-relaxed">Loading question...</h3>
-          <div id="quiz-options" class="space-y-2.5"></div>
+        <p class="text-sm font-semibold text-cottage-greenDark italic" id="game-prompt">"Cô ấy thường đọc sách vào buổi sáng."</p>
+
+        <!-- Selected Words Box -->
+        <div id="drop-zone" class="min-h-[50px] bg-cottage-cream border-2 border-dashed border-cottage-green/30 rounded-2xl p-2 flex flex-wrap gap-2 items-center justify-center">
+          <span class="text-xs text-cottage-brownLight/60 select-none" id="drop-placeholder">Chạm vào từ bên dưới để ghép...</span>
         </div>
 
-        <div id="quiz-explanation" class="hidden p-4 rounded-xl text-sm leading-relaxed"></div>
+        <!-- Available Words Pool -->
+        <div id="words-pool" class="flex flex-wrap gap-2 justify-center pt-2"></div>
 
-        <div class="flex justify-end pt-2">
-          <button id="btn-next-question" onclick="nextQuestion()" class="hidden px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-lg transition">Câu tiếp theo</button>
+        <div class="flex justify-center gap-3 pt-2">
+          <button onclick="resetGame()" class="px-4 py-2 text-xs font-bold text-cottage-brown bg-cottage-butter/40 hover:bg-cottage-butter rounded-xl transition">Làm lại</button>
+          <button onclick="checkGame()" class="px-5 py-2 text-xs font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow transition">Kiểm tra ✨</button>
         </div>
+        <p id="game-feedback" class="text-xs font-bold hidden"></p>
       </div>
     </section>
 
   </main>
 
-  <!-- Script Logic -->
-  <script>
-    // Data Store
-    const vocabData = [
-      {
-        word: "Articulate",
-        phonetic: "/ɑːrˈtɪk.jə.leɪt/",
-        type: "Verb",
-        meaning: "Bày tỏ, diễn đạt ý tưởng hoặc cảm xúc một cách rõ ràng và mạch lạc.",
-        example: "She struggled to articulate her thoughts during the debate."
-      },
-      {
-        word: "Scrutinize",
-        phonetic: "/ˈskruː.t̬ən.aɪz/",
-        type: "Verb",
-        meaning: "Kiểm tra, xem xét kỹ lưỡng và cẩn thận từng chi tiết.",
-        example: "The research methodology was carefully scrutinized by the panel."
-      },
-      {
-        word: "Pragmatic",
-        phonetic: "/præɡˈmæt̬.ɪk/",
-        type: "Adjective",
-        meaning: "Thực tế, giải quyết vấn đề dựa trên điều kiện thực tế thay vì lý thuyết.",
-        example: "We need a pragmatic approach to solve this logistics issue."
-      }
-    ];
+  <!-- LESSON DETAIL MODAL -->
+  <div id="lesson-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-cottage-card border border-cottage-butter rounded-3xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 space-y-5 shadow-xl">
+      <div class="flex justify-between items-start border-b border-cottage-butter pb-3">
+        <div>
+          <span id="modal-level" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cottage-green/20 text-cottage-greenDark">A1</span>
+          <h3 id="modal-title" class="text-xl font-display font-bold text-cottage-brown mt-1">Bài học</h3>
+        </div>
+        <button onclick="closeModal('lesson-modal')" class="text-cottage-brownLight hover:text-cottage-brown text-lg"><i class="fa-solid fa-xmark"></i></button>
+      </div>
 
-    const quizData = [
-      {
-        question: "Choose the word closest in meaning to 'PRAGMATIC':",
-        options: ["Theoretical", "Practical", "Careless", "Ambiguous"],
-        correct: 1,
-        explanation: "<b>Practical</b> đồng nghĩa với <b>Pragmatic</b> (thực tế, thực dụng). 'Theoretical' là mang tính lý thuyết."
-      },
-      {
-        question: "Select the sentence with correct word usage:",
-        options: [
-          "He was unable to articulate his perspective.",
-          "She articulate the answer very well yesterday.",
-          "The document was articulate by three experts.",
-          "He spoke with great articulate."
-        ],
-        correct: 0,
-        explanation: "Cấu trúc 'be unable to + V(bare)': 'articulate' ở dạng nguyên mẫu đóng vai trò động từ."
-      },
-      {
-        question: "What does 'SCRUTINIZE' mean?",
-        options: ["To ignore completely", "To examine very carefully", "To create something new", "To speak loudly"],
-        correct: 1,
-        explanation: "'Scrutinize' nghĩa là kiểm tra, thẩm định tỉ mỉ từng chi tiết."
-      }
-    ];
+      <div id="modal-theory" class="text-xs leading-relaxed space-y-2 text-cottage-brown/90"></div>
 
-    // Navigation Logic
-    function switchTab(tab) {
-      const flashSection = document.getElementById('section-flashcards');
-      const quizSection = document.getElementById('section-quiz');
-      const tabFlash = document.getElementById('tab-flashcards');
-      const tabQuiz = document.getElementById('tab-quiz');
+      <!-- Practice Quiz inside Lesson -->
+      <div class="bg-cottage-cream p-4 rounded-2xl border border-cottage-butter space-y-3">
+        <p class="text-xs font-bold text-cottage-greenDark uppercase tracking-wider">🌿 Bài tập thử thách:</p>
+        <p id="quiz-question" class="text-sm font-semibold text-cottage-brown"></p>
+        <div id="quiz-options" class="space-y-2"></div>
+        <p id="quiz-feedback" class="text-xs font-bold hidden"></p>
+      </div>
+    </div>
+  </div>
 
-      if (tab === 'flashcards') {
-        flashSection.classList.remove('hidden');
-        quizSection.classList.add('hidden');
-        tabFlash.className = "px-4 py-2 rounded-lg text-sm font-semibold bg-indigo-50 text-indigo-700 transition";
-        tabQuiz.className = "px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100 transition";
-      } else {
-        flashSection.classList.add('hidden');
-        quizSection.classList.remove('hidden');
-        tabQuiz.className = "px-4 py-2 rounded-lg text-sm font-semibold bg-indigo-50 text-indigo-700 transition";
-        tabFlash.className = "px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:bg-slate-100 transition";
-        loadQuizQuestion();
-      }
-    }
-
-    // Flashcard Logic
-    let currentCardIndex = 0;
-    let isFlipped = false;
-
-    function renderCard() {
-      const card = vocabData[currentCardIndex];
-      document.getElementById('word-title').innerText = card.word;
-      document.getElementById('word-phonetic').innerText = card.phonetic;
-      document.getElementById('word-type').innerText = card.type;
-      document.getElementById('word-meaning').innerText = card.meaning;
-      document.getElementById('word-example').innerText = `"${card.example}"`;
-      document.getElementById('card-counter').innerText = `${currentCardIndex + 1} / ${vocabData.length}`;
+  <!-- VIP / PAYWALL MODAL -->
+  <div id="vip-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-cottage-card border-2 border-cottage-rose rounded-3xl max-w-md w-full p-6 text-center space-y-5 shadow-2xl relative">
+      <button onclick="closeModal('vip-modal')" class="absolute right-5 top-5 text-cottage-brownLight hover:text-cottage-brown"><i class="fa-solid fa-xmark"></i></button>
+      <div class="w-14 h-14 bg-cottage-rose/20 text-cottage-rose rounded-full flex items-center justify-center mx-auto text-2xl">👑</div>
       
-      const inner = document.getElementById('card-inner');
-      if (isFlipped) {
-        inner.classList.remove('rotate-y-180');
-        isFlipped = false;
+      <div class="space-y-1">
+        <h3 class="text-xl font-display font-black text-cottage-brown">Gói Hội Viên Thơ Mộng (VIP)</h3>
+        <p class="text-xs text-cottage-brownLight">Mở khoá toàn bộ lộ trình và kho tài nguyên không giới hạn</p>
+      </div>
+
+      <div class="bg-cottage-cream rounded-2xl p-4 text-left text-xs space-y-2.5 border border-cottage-butter">
+        <div class="flex items-center gap-2"><span>✨</span> <b>Toàn bộ 40+ chủ điểm Grammar A1 - B1</b></div>
+        <div class="flex items-center gap-2"><span>🎬</span> <b>Kho phân tích ngữ cảnh qua Phim & Tiểu thuyết</b></div>
+        <div class="flex items-center gap-2"><span>💌</span> <b>Bộ bài tập thiết kế độc quyền PDF tải về</b></div>
+        <div class="flex items-center gap-2"><span>🍓</span> <b>Không giới hạn Berries làm mini-game</b></div>
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-2xl font-black text-cottage-brown">199.000đ <span class="text-xs font-normal text-cottage-brownLight">/ trọn đời</span></div>
+        <button onclick="alert('Tính năng chuyển khoản đang kết nối! Vui lòng liên hệ Admin qua Fanpage.')" class="w-full py-3 bg-cottage-rose hover:bg-cottage-rose/90 text-white font-bold text-sm rounded-2xl shadow transition transform active:scale-95">Mở Khoá Ngay 🌷</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const grammarLessons = [
+      {
+        id: 1,
+        title: "Present Simple (Hiện tại đơn)",
+        level: "A1",
+        desc: "Thói quen, sự thật hiển nhiên và chân lý đời sống.",
+        locked: false,
+        theory: "<p><b>Công thức:</b> S + V(s/es) | S + do/does not + V</p><p><b>Ví dụ:</b> The sun rises in the east. / She reads books every evening.</p>",
+        quiz: {
+          q: "My sister usually _____ tea in the morning.",
+          options: ["drinks", "drink", "drinking", "drank"],
+          correct: 0,
+          tip: "Chủ ngữ 'My sister' là ngôi thứ 3 số ít nên động từ thêm -s."
+        }
+      },
+      {
+        id: 2,
+        title: "Past Simple (Quá khứ đơn)",
+        level: "A2",
+        desc: "Hành động đã bắt đầu và kết thúc trọn vẹn trong quá khứ.",
+        locked: false,
+        theory: "<p><b>Công thức:</b> S + V2/ed | S + did not + V(bare)</p><p><b>Ví dụ:</b> We visited the garden yesterday.</p>",
+        quiz: {
+          q: "They _____ a cute cottage last summer.",
+          options: ["buy", "bought", "buying", "buys"],
+          correct: 1,
+          tip: "'Last summer' là mốc thời gian quá khứ -> chọn bought."
+        }
+      },
+      {
+        id: 3,
+        title: "Present Perfect (Hiện tại hoàn thành)",
+        level: "B1",
+        desc: "Trải nghiệm hoặc sự việc bắt đầu trong quá khứ kéo dài đến nay.",
+        locked: true,
+        theory: "<p><b>Công thức:</b> S + have/has + V3/ed</p>",
+        quiz: { q: "", options: [], correct: 0, tip: "" }
+      },
+      {
+        id: 4,
+        title: "Relative Clauses (Mệnh đề quan hệ)",
+        level: "B1",
+        desc: "Cách ghép câu tinh tế dùng Who, Which, That, Whose.",
+        locked: true,
+        theory: "<p><b>Công thức:</b> N + who/which + Clause</p>",
+        quiz: { q: "", options: [], correct: 0, tip: "" }
+      }
+    ];
+
+    let berries = 30;
+
+    function renderLessons() {
+      const container = document.getElementById('lesson-list');
+      container.innerHTML = grammarLessons.map(l => `
+        <div onclick="openLesson(${l.id})" class="bg-cottage-card border border-cottage-butter hover:border-cottage-green/60 p-5 rounded-2xl cursor-pointer transition shadow-sm hover:shadow relative overflow-hidden group">
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full ${l.level === 'A1' ? 'bg-cottage-butter text-cottage-brown' : 'bg-cottage-green/20 text-cottage-greenDark'}">${l.level}</span>
+            ${l.locked ? '<span class="text-xs bg-cottage-rose/20 text-cottage-rose px-2 py-0.5 rounded-full font-bold"><i class="fa-solid fa-lock text-[10px]"></i> VIP</span>' : '<span class="text-xs text-cottage-green">✨ Mở</span>'}
+          </div>
+          <h3 class="font-display font-bold text-base text-cottage-brown mt-2 group-hover:text-cottage-greenDark transition">${l.title}</h3>
+          <p class="text-xs text-cottage-brownLight mt-1 line-clamp-2">${l.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    function openLesson(id) {
+      const l = grammarLessons.find(item => item.id === id);
+      if (l.locked) {
+        openModal('vip-modal');
+        return;
+      }
+      document.getElementById('modal-level').innerText = l.level;
+      document.getElementById('modal-title').innerText = l.title;
+      document.getElementById('modal-theory').innerHTML = l.theory;
+      
+      // Quiz inside
+      document.getElementById('quiz-question').innerText = l.quiz.q;
+      const opts = document.getElementById('quiz-options');
+      const fdb = document.getElementById('quiz-feedback');
+      fdb.classList.add('hidden');
+      opts.innerHTML = l.quiz.options.map((opt, i) => `
+        <button onclick="checkLessonQuiz(${l.id}, ${i})" class="w-full text-left px-3.5 py-2 rounded-xl bg-white border border-cottage-butter hover:bg-cottage-butter/30 text-xs font-semibold text-cottage-brown transition">${opt}</button>
+      `).join('');
+
+      openModal('lesson-modal');
+    }
+
+    function checkLessonQuiz(lessonId, chosenIndex) {
+      const l = grammarLessons.find(item => item.id === lessonId);
+      const fdb = document.getElementById('quiz-feedback');
+      fdb.classList.remove('hidden');
+      if (chosenIndex === l.quiz.correct) {
+        berries += 5;
+        document.getElementById('user-berries').innerText = berries;
+        fdb.className = "text-xs font-bold text-cottage-greenDark bg-cottage-green/20 p-2.5 rounded-xl block";
+        fdb.innerText = `Chính xác! Bạn được thưởng +5 🍓 (${l.quiz.tip})`;
+      } else {
+        fdb.className = "text-xs font-bold text-cottage-rose bg-cottage-rose/20 p-2.5 rounded-xl block";
+        fdb.innerText = `Chưa đúng rồi! Thử lại nhé.`;
       }
     }
 
-    function flipCard() {
-      const inner = document.getElementById('card-inner');
-      isFlipped = !isFlipped;
-      inner.classList.toggle('rotate-y-180', isFlipped);
+    // Mini-Game Data
+    const gameWords = ["She", "often", "reads", "books", "in the morning"];
+    let selectedWords = [];
+
+    function initGame() {
+      selectedWords = [];
+      renderGameBoxes();
     }
 
-    function nextCard() {
-      currentCardIndex = (currentCardIndex + 1) % vocabData.length;
-      renderCard();
+    function renderGameBoxes() {
+      const pool = document.getElementById('words-pool');
+      const drop = document.getElementById('drop-zone');
+      const placeholder = document.getElementById('drop-placeholder');
+      
+      const shuffled = [...gameWords].sort(() => 0.5 - Math.random());
+      pool.innerHTML = shuffled.map(w => `
+        <button onclick="pickWord('${w}', this)" class="px-3 py-1.5 bg-white border border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown shadow-sm hover:bg-cottage-butter/40 transition">${w}</button>
+      `).join('');
+
+      drop.innerHTML = '';
+      if(selectedWords.length === 0) {
+        drop.appendChild(placeholder);
+        placeholder.style.display = 'block';
+      } else {
+        selectedWords.forEach((w, idx) => {
+          const tag = document.createElement('span');
+          tag.className = "px-3 py-1 bg-cottage-green text-white text-xs font-bold rounded-lg cursor-pointer";
+          tag.innerText = w;
+          tag.onclick = () => removeWord(idx);
+          drop.appendChild(tag);
+        });
+      }
     }
 
-    function prevCard() {
-      currentCardIndex = (currentCardIndex - 1 + vocabData.length) % vocabData.length;
-      renderCard();
+    function pickWord(word, btn) {
+      selectedWords.push(word);
+      btn.style.display = 'none';
+      renderDropZoneOnly();
     }
 
-    function speakWord(e) {
-      e.stopPropagation();
-      const word = vocabData[currentCardIndex].word;
-      const utterance = new SpeechSynthesisUtterance(word);
-      utterance.lang = 'en-US';
-      window.speechSynthesis.speak(utterance);
+    function removeWord(index) {
+      selectedWords.splice(index, 1);
+      renderGameBoxes();
     }
 
-    // Quiz Logic
-    let currentQuizIndex = 0;
-    let score = 0;
-    let answered = false;
-
-    function loadQuizQuestion() {
-      answered = false;
-      const q = quizData[currentQuizIndex];
-      document.getElementById('quiz-question-num').innerText = `Câu hỏi ${currentQuizIndex + 1} / ${quizData.length}`;
-      document.getElementById('quiz-question').innerText = q.question;
-      document.getElementById('quiz-explanation').classList.add('hidden');
-      document.getElementById('btn-next-question').classList.add('hidden');
-
-      const optionsContainer = document.getElementById('quiz-options');
-      optionsContainer.innerHTML = '';
-
-      q.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = "w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-indigo-300 hover:bg-slate-50 transition text-sm font-medium text-slate-700 flex items-center justify-between";
-        btn.innerHTML = `<span>${opt}</span>`;
-        btn.onclick = () => selectOption(idx, btn);
-        optionsContainer.appendChild(btn);
+    function renderDropZoneOnly() {
+      const drop = document.getElementById('drop-zone');
+      drop.innerHTML = '';
+      selectedWords.forEach((w, idx) => {
+        const tag = document.createElement('span');
+        tag.className = "px-3 py-1 bg-cottage-green text-white text-xs font-bold rounded-lg cursor-pointer";
+        tag.innerText = w;
+        tag.onclick = () => removeWord(idx);
+        drop.appendChild(tag);
       });
     }
 
-    function selectOption(selectedIndex, selectedBtn) {
-      if (answered) return;
-      answered = true;
-
-      const q = quizData[currentQuizIndex];
-      const buttons = document.getElementById('quiz-options').querySelectorAll('button');
-      const explBox = document.getElementById('quiz-explanation');
-
-      if (selectedIndex === q.correct) {
-        score += 10;
-        document.getElementById('quiz-score').innerText = `Điểm: ${score}`;
-        selectedBtn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
-        explBox.className = "p-4 rounded-xl text-sm leading-relaxed bg-emerald-50 text-emerald-900 border border-emerald-200 block";
+    function checkGame() {
+      const feedback = document.getElementById('game-feedback');
+      feedback.classList.remove('hidden');
+      if (selectedWords.join(' ') === gameWords.join(' ')) {
+        berries += 10;
+        document.getElementById('user-berries').innerText = berries;
+        feedback.className = "text-xs font-bold text-cottage-greenDark block";
+        feedback.innerText = "Tuyệt vời! Bạn ghép đúng và nhận được 10 🍓!";
       } else {
-        selectedBtn.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
-        buttons[q.correct].classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
-        explBox.className = "p-4 rounded-xl text-sm leading-relaxed bg-rose-50 text-rose-900 border border-rose-200 block";
-      }
-
-      explBox.innerHTML = q.explanation;
-      document.getElementById('btn-next-question').classList.remove('hidden');
-    }
-
-    function nextQuestion() {
-      if (currentQuizIndex < quizData.length - 1) {
-        currentQuizIndex++;
-        loadQuizQuestion();
-      } else {
-        const container = document.getElementById('section-quiz');
-        container.innerHTML = `
-          <div class="bg-white border border-slate-200 rounded-2xl p-8 text-center space-y-4 shadow-sm">
-            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
-            <h3 class="text-xl font-bold text-slate-900">Hoàn thành bài luyện tập!</h3>
-            <p class="text-slate-600 text-sm">Tổng điểm đạt được: <span class="font-bold text-indigo-600 text-base">${score} / ${quizData.length * 10}</span></p>
-            <button onclick="location.reload()" class="px-5 py-2.5 bg-indigo-600 text-white rounded-lg text-sm font-semibold hover:bg-indigo-700 transition">Làm lại từ đầu</button>
-          </div>
-        `;
+        feedback.className = "text-xs font-bold text-cottage-rose block";
+        feedback.innerText = "Thứ tự chưa chuẩn xác rồi, hãy thử sắp xếp lại nhé!";
       }
     }
+
+    function resetGame() {
+      selectedWords = [];
+      document.getElementById('game-feedback').classList.add('hidden');
+      renderGameBoxes();
+    }
+
+    // Tab Navigation
+    function switchView(tab) {
+      const vLessons = document.getElementById('view-lessons');
+      const vGame = document.getElementById('view-game');
+      const tLessons = document.getElementById('tab-lessons');
+      const tGame = document.getElementById('tab-game');
+
+      if(tab === 'lessons') {
+        vLessons.classList.remove('hidden');
+        vGame.classList.add('hidden');
+        tLessons.className = "px-5 py-2 rounded-2xl font-display font-bold text-sm bg-cottage-green text-white shadow-sm transition";
+        tGame.className = "px-5 py-2 rounded-2xl font-display font-bold text-sm bg-cottage-card text-cottage-brown border border-cottage-butter hover:bg-cottage-butter/40 transition";
+      } else {
+        vLessons.classList.add('hidden');
+        vGame.classList.remove('hidden');
+        tGame.className = "px-5 py-2 rounded-2xl font-display font-bold text-sm bg-cottage-green text-white shadow-sm transition";
+        tLessons.className = "px-5 py-2 rounded-2xl font-display font-bold text-sm bg-cottage-card text-cottage-brown border border-cottage-butter hover:bg-cottage-butter/40 transition";
+        initGame();
+      }
+    }
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
     // Init
-    renderCard();
+    renderLessons();
   </script>
 </body>
 </html>
