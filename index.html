@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cozy Grammar Garden 🎀</title>
+  <title>Cozy Advanced English 🎀</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,10 +55,10 @@
         <div class="w-11 h-11 rounded-full bg-cottage-roseLight border-2 border-cottage-rose/30 flex items-center justify-center text-2xl group-hover:rotate-12 transition transform">🎀</div>
         <div>
           <div class="flex items-center gap-1.5">
-            <span class="font-display font-black text-xl text-cottage-roseDark">CozyGarden</span>
-            <span class="text-[9px] bg-cottage-greenLight text-cottage-greenDark font-extrabold px-2 py-0.5 rounded-full border border-cottage-green/30 uppercase tracking-wider">A1-C2</span>
+            <span class="font-display font-black text-xl text-cottage-roseDark">CozyAdvanced</span>
+            <span class="text-[9px] bg-cottage-greenLight text-cottage-greenDark font-extrabold px-2 py-0.5 rounded-full border border-cottage-green/30 uppercase tracking-wider">C1-C2</span>
           </div>
-          <span class="text-[11px] text-cottage-brownLight font-semibold">Trạm dừng chân chữa lành 🦢</span>
+          <span class="text-[11px] text-cottage-brownLight font-semibold">Góc nhìn Ngôn ngữ học & Học thuật 🦢</span>
         </div>
       </div>
 
@@ -74,10 +74,10 @@
   <div class="bg-transparent sticky top-16 z-30 pt-3 pb-1">
     <div class="max-w-6xl mx-auto px-4 flex gap-3 overflow-x-auto hide-scrollbar">
       <button onclick="switchNav('garden')" id="nav-garden" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-seedling"></i> Vườn Ngữ Pháp 🍄
+        <i class="fa-solid fa-seedling"></i> Kiến Thức Chuyên Sâu 🍄
       </button>
       <button onclick="switchNav('cinema')" id="nav-cinema" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-book-open"></i> Phim & Tiểu Thuyết 🧸
+        <i class="fa-solid fa-book-open"></i> Phân Tích Context 🧸
       </button>
       <button onclick="switchNav('arcade')" id="nav-arcade" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
         <i class="fa-solid fa-puzzle-piece"></i> Góc Chơi Chữ 🧩
@@ -92,8 +92,8 @@
     <section id="view-garden" class="space-y-6">
       <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-2 z-10">
-          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Chào mừng đến góc học tập nhỏ! ☁️</h2>
-          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Chọn một bài học, pha một tách trà ấm và cùng nhau khám phá sự kỳ diệu của ngôn từ nhé.</p>
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Ngôn ngữ qua lăng kính học thuật ☁️</h2>
+          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Nắm bắt gốc rễ của từ vựng qua hình thái học (Morphology) và nghệ thuật sắp đặt câu (Syntax) của người bản xứ.</p>
         </div>
         <div class="text-6xl animate-float-delayed select-none z-10">🧺</div>
         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
@@ -101,25 +101,22 @@
 
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="level-filters">
-          <button onclick="filterLessons('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả bài học</button>
-          <button onclick="filterLessons('A1')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">A1</button>
-          <button onclick="filterLessons('B1')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">B1</button>
-          <button onclick="filterLessons('B2')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">B2</button>
-          <button onclick="filterLessons('C1')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">C1</button>
-          <button onclick="filterLessons('C2')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">C2</button>
+          <button onclick="filterLessons('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Toàn bộ bài giảng</button>
+          <button onclick="filterLessons('C1')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">C1 Advanced</button>
+          <button onclick="filterLessons('C2')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">C2 Proficiency</button>
         </div>
-        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full"><span id="lesson-count">0</span> bài học đang chờ 🌷</span>
+        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full"><span id="lesson-count">0</span> chủ điểm 🌷</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="lessons-grid"></div>
     </section>
 
-    <!-- ================= VIEW 2: CINEMA & LITERATURE ================= -->
+    <!-- ================= VIEW 2: CINEMA & LITERATURE CONTEXT ================= -->
     <section id="view-cinema" class="hidden space-y-6">
       <div class="bg-white border-2 border-cottage-butter rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col items-center text-center gap-3">
         <span class="text-4xl animate-float">📖</span>
-        <h2 class="text-2xl font-serif font-bold text-cottage-brown">Học qua Ngữ Cảnh Tác Phẩm</h2>
-        <p class="text-xs text-cottage-brownLight max-w-lg leading-relaxed">Cảm nhận vẻ đẹp tinh tế của văn phong bản xứ qua những câu thoại kinh điển và những trang sách vượt thời gian.</p>
+        <h2 class="text-2xl font-serif font-bold text-cottage-brown">Giải Mã Ngữ Cảnh (Contextual Analysis)</h2>
+        <p class="text-xs text-cottage-brownLight max-w-lg leading-relaxed">Cảm nhận sự tinh tế của tiếng Anh qua lăng kính triết học, văn học tâm lý, âm nhạc đại chúng và chương trình thực tế.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="cinema-grid"></div>
     </section>
@@ -131,8 +128,8 @@
         <div class="absolute top-4 right-4 text-2xl -rotate-12">🥕</div>
         
         <div class="space-y-1">
-          <span class="text-[10px] font-black text-cottage-rose uppercase tracking-widest">Trạm luyện tập</span>
-          <h3 class="text-xl font-display font-black text-cottage-brown">Sắp Xếp Câu Hoàn Chỉnh</h3>
+          <span class="text-[10px] font-black text-cottage-rose uppercase tracking-widest">Trạm luyện tập C2</span>
+          <h3 class="text-xl font-display font-black text-cottage-brown">Hoàn Thiện Cú Pháp Học Thuật</h3>
         </div>
         
         <div class="bg-cottage-roseLight/40 p-4 rounded-2xl border border-cottage-rose/20">
@@ -144,7 +141,7 @@
         
         <div class="flex justify-center gap-3 pt-4">
           <button onclick="resetScramble()" class="px-5 py-2.5 text-xs font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition">Làm lại từ đầu ↻</button>
-          <button onclick="checkScramble()" class="px-6 py-2.5 text-xs font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95">Kiểm tra đáp án nà 🎀</button>
+          <button onclick="checkScramble()" class="px-6 py-2.5 text-xs font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95">Kiểm tra cấu trúc 🎀</button>
         </div>
         <p id="scramble-feedback" class="text-xs font-bold hidden"></p>
       </div>
@@ -161,8 +158,8 @@
         <div class="flex justify-between items-start border-b-2 border-dashed border-cottage-butter pb-4">
           <div>
             <div class="flex items-center gap-2">
-              <span id="modal-lesson-level" class="text-[10px] font-black px-3 py-1 rounded-full bg-cottage-roseLight text-cottage-roseDark">A1</span>
-              <span class="text-xs text-cottage-brownLight font-bold">Lý thuyết & Bài tập 📝</span>
+              <span id="modal-lesson-level" class="text-[10px] font-black px-3 py-1 rounded-full bg-cottage-roseLight text-cottage-roseDark">C1</span>
+              <span class="text-xs text-cottage-brownLight font-bold">Lý thuyết Phân tích 📝</span>
             </div>
             <h2 id="modal-lesson-title" class="text-2xl md:text-3xl font-display font-black text-cottage-brown mt-2 leading-tight">Bài học</h2>
           </div>
@@ -179,7 +176,7 @@
           <p id="modal-quiz-question" class="text-sm font-bold text-cottage-brown relative z-10"></p>
           <div id="modal-quiz-options" class="space-y-2.5 relative z-10"></div>
           <div id="modal-quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-semibold leading-relaxed mt-2 border-2 relative z-10"></div>
-          <button id="btn-next-quiz" onclick="nextLessonQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-green hover:bg-cottage-greenDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Câu tiếp theo nà →</button>
+          <button id="btn-next-quiz" onclick="nextLessonQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-green hover:bg-cottage-greenDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Tiếp tục phân tích →</button>
         </div>
       </div>
     </div>
@@ -203,7 +200,7 @@
       </div>
       
       <div class="space-y-3 text-xs leading-relaxed text-cottage-brown mt-4">
-        <p class="font-black text-cottage-brown uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass text-cottage-rose"></i> Phân tích Diễn ngôn & Cú pháp:</p>
+        <p class="font-black text-cottage-brown uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass text-cottage-rose"></i> Phân tích Ngữ dụng & Cú pháp:</p>
         <div id="cinema-analysis" class="space-y-2 bg-cottage-card p-4 rounded-2xl border-2 border-cottage-butter/60"></div>
       </div>
     </div>
@@ -217,13 +214,13 @@
       <div class="text-center space-y-2 mb-8 relative">
         <div class="w-16 h-16 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-3xl mb-4 border-4 border-white shadow-sm animate-float">🌷</div>
         <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Hội Viên Thơ Mộng 🎀</h3>
-        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa toàn bộ bài giảng phân tích cấu trúc, bài tập tự luyện và kho tàng ngữ cảnh điện ảnh - văn học.</p>
+        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập kho tàng phân tích văn học, tâm lý và điện ảnh bản xứ.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Cột chọn gói -->
         <div class="space-y-4">
-          <p class="text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1 flex items-center gap-2"><span>1</span> Chọn gói học thuật</p>
+          <p class="text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1 flex items-center gap-2"><span>1</span> Chọn gói truy cập</p>
           
           <label class="block cursor-pointer relative transform active:scale-[0.98] transition">
             <input type="radio" name="vip-plan" value="30000" class="peer sr-only" onclick="updateQR(30000, 'COZY3DAY')" checked>
@@ -288,84 +285,128 @@
   </div>
 
   <script>
-    // ================= DATABASE (Thêm dữ liệu ở đây) =================
+    // ================= C1-C2 ADVANCED LESSON DATABASE =================
     const lessonsData = [
       {
-        id: 1, level: "A1", category: "Tenses",
-        title: "Present Simple (Hiện tại đơn)",
-        desc: "Nền tảng của giao tiếp cơ bản: Thói quen, sự thật hiển nhiên.",
+        id: 1, level: "C1", category: "Syntax & Cohesion",
+        title: "Participle Clauses (Mệnh đề phân từ)",
+        desc: "Lược bỏ chủ ngữ để tạo sự gắn kết chặt chẽ (Cohesion) và nhịp điệu học thuật cho câu văn.",
         locked: false,
         theory: `
           <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2 text-sm">
-            <h4 class="font-bold text-cottage-roseDark flex items-center gap-1">📌 Công thức cốt lõi:</h4>
-            <p>• Khẳng định: S + V(s/es)</p>
-            <p>• Phủ định: S + do/does not + V</p>
+            <h4 class="font-bold text-cottage-roseDark flex items-center gap-1">📌 Syntax Analysis:</h4>
+            <p>Mệnh đề phân từ (V-ing cho chủ động, V3/ed cho bị động) thường được sử dụng trong văn bản hàn lâm để ghép nối hai mệnh đề có chung chủ ngữ, giúp câu văn cô đọng và liền mạch hơn (Cohesion).</p>
+            <p class="text-xs text-cottage-brownLight mt-2 border-t border-dashed border-cottage-butter pt-2">Ví dụ: <i>Exhausted by the cognitive demands of the task, the students requested a break.</i> (Thay vì nói "Because the students were exhausted...")</p>
           </div>
         `,
         quizzes: [
           {
-            q: "He often _____ books in the garden.",
-            options: ["reads", "read", "reading", "is read"],
-            correct: 0,
-            explanation: "Ngôi thứ 3 số ít (He) cần động từ thêm -s/-es."
+            q: "_____ by the rigorous pedagogical approach, the participants grasped the complex syntactic structures almost intuitively.",
+            options: ["Fascinating", "Fascinated", "Having fascinate", "To fascinate"],
+            correct: 1,
+            explanation: "Mệnh đề mang tính bị động (bị/được cuốn hút bởi phương pháp sư phạm), nên sử dụng quá khứ phân từ 'Fascinated'."
           },
           {
-            q: "_____ you like chamomile tea?",
-            options: ["Does", "Are", "Do", "Is"],
-            correct: 2,
-            explanation: "Chủ ngữ 'you' dùng trợ động từ 'Do' trong câu hỏi."
+            q: "_____ the profound implications of behavioral economics, she restructured the entire syllabus.",
+            options: ["Understood", "Understanding", "To understand", "Understand"],
+            correct: 1,
+            explanation: "Hành động chủ động của chủ thể 'she' (hiểu được những hàm ý sâu sắc), nên sử dụng hiện tại phân từ 'Understanding'."
           }
         ]
       },
       {
-        id: 2, level: "B1", category: "Syntax",
-        title: "Relative Clauses (Mệnh đề quan hệ)",
-        desc: "Cách ghép câu tinh tế tạo nên các câu phức (Complex Sentences).",
+        id: 2, level: "C2", category: "Morphology",
+        title: "Morphological Parsing (Phân tích Hình thái từ)",
+        desc: "Bóc tách gốc từ, tiền tố, hậu tố (Prefix-Root-Suffix) để giải mã các từ vựng thượng cấp mà không cần từ điển.",
         locked: false,
         theory: `
           <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2">
-            <p><b>✨ Guided Discovery:</b> Nhìn vào 2 câu sau:<br>
-            1. The girl is my sister. 2. The girl is holding a flower.<br>
-            -> Gộp lại: The girl <b>who</b> is holding a flower is my sister.</p>
+            <p><b>✨ Guided Discovery:</b> Hãy xem xét từ <b>"Unpredictability"</b>.</p>
+            <ul class="text-xs space-y-1 list-disc list-inside text-cottage-brown">
+              <li><b>Un-</b> (Prefix): Sự phủ định.</li>
+              <li><b>predict</b> (Root): Dự đoán.</li>
+              <li><b>-able / -abil</b> (Suffix): Có khả năng.</li>
+              <li><b>-ity</b> (Suffix): Danh từ hóa (Tính chất).</li>
+            </ul>
+            <p class="text-sm mt-2">=> Tính chất không thể dự đoán trước.</p>
           </div>
         `,
         quizzes: [
           {
-            q: "The old cottage _____ we rented last summer was beautiful.",
-            options: ["who", "which", "whom", "where"],
-            correct: 1,
-            explanation: "'Cottage' (ngôi nhà) là vật thể, đóng vai trò tân ngữ -> dùng 'which'."
+            q: "The researcher criticized the methodology for being highly _____, failing to adapt to the idiosyncratic needs of the learners.",
+            options: ["maladaptive", "malleable", "unprecedented", "inextricable"],
+            correct: 0,
+            explanation: "Tiền tố 'mal-' mang nghĩa tiêu cực (bad/poor). 'Maladaptive' nghĩa là thích nghi kém, phù hợp với vế 'failing to adapt'."
           }
         ]
       },
       {
         id: 3, level: "C1", category: "Syntax",
-        title: "Inversion (Đảo ngữ nhấn mạnh)",
-        desc: "Đảo trợ động từ lên trước chủ ngữ khi có trạng từ phủ định đứng đầu câu.",
+        title: "Inversion for Emphasis (Đảo ngữ Nhấn mạnh)",
+        desc: "Thay đổi trật tự Cú pháp (Syntax) bằng cách đưa trạng từ phủ định lên đầu câu (Fronting).",
         locked: true,
         theory: `
           <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2">
             <h4 class="font-bold text-cottage-roseDark">Cơ chế Cú pháp (Syntax):</h4>
-            <p>Khi các từ mang nghĩa phủ định (Never, Rarely, Seldom, Little) đứng đầu câu để nhấn mạnh (Fronting), mệnh đề theo sau bắt buộc phải đảo ngữ.</p>
+            <p>Khi các từ mang nghĩa phủ định (Never, Rarely, Seldom, Little) đứng đầu câu để nhấn mạnh một sự kiện hiếm gặp, ta bắt buộc phải mượn trợ động từ và đảo lên trước chủ ngữ.</p>
           </div>
         `,
         quizzes: [
           {
-            q: "Rarely _____ such a beautifully articulated lesson plan.",
-            options: ["I have seen", "have I seen", "do I saw", "I saw"],
+            q: "Not until the linguistic data was thoroughly analyzed _____ the subtle shifts in dialect.",
+            options: ["did the researchers notice", "the researchers noticed", "noticed the researchers", "do the researchers notice"],
+            correct: 0,
+            explanation: "Cấu trúc 'Not until + Mệnh đề thời gian, Trợ động từ + S + V'. Mệnh đề đầu ở quá khứ nên mượn trợ động từ 'did'."
+          }
+        ]
+      },
+      {
+        id: 4, level: "C2", category: "Pragmatics",
+        title: "Nuances of Implicature (Hàm ý trong Giao tiếp)",
+        desc: "Nghệ thuật đọc vị ẩn ý (reading between the lines) qua cách chọn lọc từ ngữ và Discourse Markers.",
+        locked: true,
+        theory: `
+          <div class="p-4 bg-white rounded-2xl border-2 border-cottage-butter space-y-2">
+            <h4 class="font-bold text-cottage-roseDark">Ngữ dụng học (Pragmatics):</h4>
+            <p>Người bản xứ ở trình độ cao hiếm khi nói thẳng (literal meaning). Họ sử dụng Implicature (Hàm ý) thông qua các từ nối (Discourse Markers) hoặc biện pháp nói giảm nói tránh (Euphemism) để giữ thể diện (Face-saving) trong giao tiếp học thuật.</p>
+          </div>
+        `,
+        quizzes: [
+          {
+            q: "When the professor said, 'That's certainly an... original way to approach the discourse analysis,' she was using implicature to suggest the approach was:",
+            options: ["Brilliant and groundbreaking", "Flawed and unconventional in a bad way", "Exactly what she expected", "Standard and acceptable"],
             correct: 1,
-            explanation: "'Rarely' đứng đầu câu -> Đảo trợ động từ 'have' lên trước chủ ngữ 'I'."
+            explanation: "Dấu ngập ngừng '...' và từ 'original' trong ngữ cảnh học thuật thường là một cách nói giảm (Euphemism) để chê bai một cách lịch sự rằng phương pháp đó có vấn đề hoặc đi chệch hướng."
           }
         ]
       }
     ];
 
+    // ================= C1-C2 CINEMA & LITERATURE CONTEXT =================
     const cinemaData = [
       {
-        id: 1, title: "Sự phân tách Chủ-Vị", source: "Dead Poets Society (1989)",
-        quote: "No matter what anybody tells you, words and ideas can change the world.",
-        translation: "Dù ai có nói gì đi nữa, ngôn từ và ý tưởng có thể thay đổi thế giới.",
-        analysis: "<p><b>Discourse Marker:</b> 'No matter what' tạo ra một mệnh đề nhượng bộ mạnh mẽ. Ở mệnh đề chính, chủ ngữ ghép 'words and ideas' được đặt trọng tâm để truyền tải triết lý cốt lõi của giáo dục (pedagogy).</p>"
+        id: 1, title: "Sự thấu cảm & Nỗi đau", source: "Crime and Punishment (Fyodor Dostoevsky)",
+        quote: "Pain and suffering are always inevitable for a large intelligence and a deep heart.",
+        translation: "Đớn đau và khổ ải luôn là điều tất yếu đối với một trí tuệ lớn và một trái tim sâu sắc.",
+        analysis: "<p><b>Vocabulary & Semantics:</b> Từ <i>'inevitable'</i> (không thể tránh khỏi) mang tính tuyệt đối, kết hợp với các danh từ trừu tượng <i>'large intelligence'</i> và <i>'deep heart'</i> tạo ra một chân lý mang tính định mệnh. Cú pháp đơn giản (Simple Sentence) nhưng sức nặng ngữ nghĩa (Semantics) lại rất đồ sộ, phản ánh chủ nghĩa hiện thực tâm lý sâu sắc.</p>"
+      },
+      {
+        id: 2, title: "Nghệ thuật kể chuyện & Sự sinh tồn", source: "The White Album (Joan Didion)",
+        quote: "We tell ourselves stories in order to live.",
+        translation: "Chúng ta kể cho chính mình nghe những câu chuyện, để mà tiếp tục sống.",
+        analysis: "<p><b>Pragmatics & Brevity:</b> Câu mở đầu kinh điển này là minh chứng cho sự tối giản (Brevity). Cụm <i>'in order to live'</i> biến hành động kể chuyện (một thứ tưởng chừng mang tính giải trí) thành một nhu cầu sinh học thiết yếu. Hàm ý (Implicature) ở đây là con người không thể tồn tại nếu thiếu đi những lớp màn ảo tưởng và những diễn ngôn (discourse) tự huyễn hoặc.</p>"
+      },
+      {
+        id: 3, title: "Sự thao túng & Tính từ định hướng", source: "Mastermind (Taylor Swift)",
+        quote: "What if I told you I'm a mastermind? And now you're mine. It was all by design.",
+        translation: "Sẽ thế nào nếu em nói rằng em là một kẻ vạch chiến lược? Và giờ anh thuộc về em. Tất cả đều là do sắp đặt.",
+        analysis: "<p><b>Morphology & Idioms:</b> Từ <i>'mastermind'</i> (kẻ chủ mưu, người lên kế hoạch xuất chúng) kết hợp hoàn hảo với thành ngữ <i>'by design'</i> (có chủ đích, được sắp đặt sẵn). Việc sử dụng câu hỏi giả định <i>'What if I told you...'</i> phá vỡ bức tường thứ tư, thể hiện sự kiểm soát tuyệt đối về mặt tự sự (Narrative Control).</p>"
+      },
+      {
+        id: 4, title: "Áp lực định hình sự hoàn mỹ", source: "Culinary Class Wars",
+        quote: "In this kitchen, precision must transcend passion. One microscopic error dismantles the entire narrative of the dish.",
+        translation: "Trong căn bếp này, sự chuẩn xác phải vượt lên trên cả đam mê. Một sai sót nhỏ bé cũng đủ để phá vỡ toàn bộ câu chuyện của món ăn.",
+        analysis: "<p><b>Advanced Vocabulary (C2):</b> Sự tương phản (Juxtaposition) giữa <i>'precision'</i> (tính chính xác lý trí) và <i>'passion'</i> (đam mê cảm xúc) qua động từ <i>'transcend'</i> (vượt lên, siêu việt). Cụm <i>'dismantles the entire narrative'</i> nhân cách hóa món ăn thành một tác phẩm nghệ thuật có lớp lang, chỉ chực chờ sụp đổ bởi một tiểu tiết (microscopic error).</p>"
       }
     ];
 
@@ -399,7 +440,7 @@
         <div onclick="openLessonModal(${l.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-5 rounded-3xl cursor-pointer transition shadow-sm hover:shadow-md flex flex-col justify-between group relative overflow-hidden transform hover:-translate-y-1">
           <div class="space-y-3">
             <div class="flex justify-between items-center">
-              <span class="text-[11px] font-black px-3 py-1 rounded-full ${l.level.startsWith('A') ? 'bg-cottage-butter text-cottage-brown' : (l.level.startsWith('B') ? 'bg-cottage-greenLight text-cottage-greenDark' : 'bg-cottage-roseLight text-cottage-roseDark')}">${l.level}</span>
+              <span class="text-[11px] font-black px-3 py-1 rounded-full ${l.level === 'C1' ? 'bg-cottage-butter text-cottage-brown' : 'bg-cottage-roseLight text-cottage-roseDark'}">${l.level}</span>
               ${l.locked ? '<span class="text-[10px] font-bold bg-cottage-card text-cottage-brownLight border-2 border-cottage-butter px-2.5 py-1 rounded-full"><i class="fa-solid fa-lock"></i> VIP</span>' : '<span class="text-[10px] font-bold text-cottage-greenDark bg-cottage-greenLight px-2.5 py-1 rounded-full border-2 border-cottage-green/20">✨ Mở</span>'}
             </div>
             <div>
@@ -470,19 +511,19 @@
       if (chosenIdx === quiz.correct) {
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
-        feedback.innerHTML = `🎉 <b>Rất chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
+        feedback.innerHTML = `🎉 <b>Phân tích xuất sắc!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       } else {
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-roseLight border-2 border-cottage-rose/40 text-cottage-roseDark";
         allBtns[quiz.correct].className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border-2 border-cottage-rose/30 block mt-3 relative z-10";
-        feedback.innerHTML = `🧸 <b>Khoan đã, có chút nhầm lẫn!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
+        feedback.innerHTML = `🧸 <b>Khoan đã, hãy nhìn nhận lại ngữ cảnh!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       }
 
       if (activeQuizIndex === lesson.quizzes.length - 1) {
-        nextBtn.innerHTML = "Thu hoạch xong rồi, đóng lại thôi 🧺";
+        nextBtn.innerHTML = "Đã thu nạp kiến thức xong 🧺";
         nextBtn.onclick = () => closeModal('modal-lesson');
       } else {
-        nextBtn.innerHTML = "Câu tiếp theo nà →";
+        nextBtn.innerHTML = "Phân tích câu tiếp theo nà →";
         nextBtn.onclick = () => { activeQuizIndex++; renderQuizQuestion(); };
       }
     }
@@ -511,9 +552,12 @@
       document.getElementById('modal-cinema').classList.remove('hidden');
     }
 
-    // --- Scramble Game ---
+    // --- Scramble Game (Advanced Level) ---
     let selectedScrambleWords = [];
-    const scrambleData = { prompt: "Cách diễn đạt ý tưởng rõ ràng là một nghệ thuật.", words: ["Articulating", "ideas", "clearly", "is", "an art"] };
+    const scrambleData = { 
+      prompt: "Việc nắm bắt các sắc thái của hình thái học (morphology) trao cho chúng ta quyền năng để diễn đạt những ý tưởng phức tạp.", 
+      words: ["Grasping", "the nuances", "of morphology", "empowers us", "to articulate", "complex ideas"] 
+    };
     
     function initScrambleGame() {
       selectedScrambleWords = [];
@@ -522,7 +566,7 @@
       const pool = document.getElementById('scramble-pool');
       const shuffled = [...scrambleData.words].sort(() => 0.5 - Math.random());
       pool.innerHTML = shuffled.map(w => `<button onclick="pickScrambleWord('${w}', this)" class="px-4 py-2 bg-white border-2 border-cottage-butter rounded-xl text-sm font-bold text-cottage-brown hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 transition transform active:scale-95 shadow-sm">${w}</button>`).join('');
-      document.getElementById('scramble-dropzone').innerHTML = '<span class="text-xs text-cottage-brownLight/60">Chạm vào các thẻ từ bên dưới để ghép câu nha... ☁️</span>';
+      document.getElementById('scramble-dropzone').innerHTML = '<span class="text-xs text-cottage-brownLight/60">Chạm vào các phân đoạn (segments) bên dưới để thiết lập cú pháp... ☁️</span>';
     }
 
     function pickScrambleWord(word, btn) {
@@ -541,9 +585,9 @@
     function checkScramble() {
       const fb = document.getElementById('scramble-feedback'); fb.classList.remove('hidden');
       if (selectedScrambleWords.join(' ') === scrambleData.words.join(' ')) {
-        fb.className = "text-sm font-bold text-cottage-greenDark block mt-2"; fb.innerText = "✨ Rất chuẩn xác! Giỏi quá đi!";
+        fb.className = "text-sm font-bold text-cottage-greenDark block mt-2"; fb.innerText = "✨ Cấu trúc cú pháp hoàn hảo! Giỏi quá đi!";
       } else {
-        fb.className = "text-sm font-bold text-cottage-roseDark block mt-2"; fb.innerText = "🧸 Chưa đúng mất rồi, thử xếp lại nhé!";
+        fb.className = "text-sm font-bold text-cottage-roseDark block mt-2"; fb.innerText = "🧸 Trật tự câu chưa chuẩn xác, thử cấu trúc lại nhé!";
       }
     }
 
@@ -557,7 +601,7 @@
     function openVipModal() { document.getElementById('modal-vip').classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     function simulateSuccessPayment() {
-      alert("Hệ thống đang xác nhận giao dịch. Chúc bạn có những giờ phút học tập thật thảnh thơi nha! 🌷");
+      alert("Hệ thống đang xác nhận giao dịch. Chúc bạn có những phút giây đào sâu ngôn ngữ thật thảnh thơi nha! 🌷");
       closeModal('modal-vip');
     }
   </script>
