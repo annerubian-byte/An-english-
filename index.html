@@ -95,14 +95,19 @@
         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
       </div>
 
+      <!-- Bộ lọc thể loại phim phong cách Netflix -->
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="level-filters">
-          <button onclick="filterCinema('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại (All)</button>
+          <button onclick="filterCinema('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả (All)</button>
           <button onclick="filterCinema('Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình Cảm (Romance) 💌</button>
           <button onclick="filterCinema('Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính Kịch (Drama) 🎭</button>
-          <button onclick="filterCinema('Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn Tưởng (Fantasy) ✨</button>
+          <button onclick="filterCinema('Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài Hước (Comedy) 😂</button>
+          <button onclick="filterCinema('Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành Động (Action) 💥</button>
+          <button onclick="filterCinema('Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn Tưởng (Sci-Fi) 🛸</button>
+          <button onclick="filterCinema('Thriller')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Giật Gân (Thriller) 🔪</button>
+          <button onclick="filterCinema('Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài Liệu (Docuseries) 🌍</button>
         </div>
-        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full"><span id="cinema-count">0</span> bối cảnh 🌷</span>
+        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="cinema-count">0</span> bài học 🌷</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cinema-grid"></div>
@@ -136,9 +141,9 @@
 
   </main>
 
-  <!-- Nút Ẩn Dành Cho Admin Để Test Tính Năng Duyệt VIP -->
-  <button onclick="toggleAdminVip()" class="fixed bottom-4 right-4 bg-cottage-brown/80 text-white text-[10px] px-4 py-2 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20">
-    👑 Admin: Duyệt VIP
+  <!-- Nút Kích Hoạt VIP (Dành Cho Học Viên Nhập Mã) -->
+  <button id="floating-vip-btn" onclick="toggleVipLogin()" class="fixed bottom-4 right-4 bg-cottage-brown/90 text-white text-[10px] px-4 py-2.5 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20 font-bold uppercase tracking-wider">
+    🔑 Kích Hoạt VIP
   </button>
 
   <!-- ================= MODAL: CINEMA LEARNING & QUIZ ================= -->
@@ -335,7 +340,7 @@
       },
       {
         id: 3, 
-        genre: "Fantasy", 
+        genre: "Sci-Fi", 
         title: "Harry Potter",
         thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=Harry+Potter", 
         mediaType: "image", 
@@ -387,29 +392,29 @@
       document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
     }
 
-    // --- Admin VIP Toggle (Với Mật khẩu) ---
-    function toggleAdminVip() {
-      // Yêu cầu nhập mật khẩu bảo mật của Admin
-      const pass = prompt("Nhập mật khẩu Admin:");
+    // --- User VIP Login Toggle ---
+    function toggleVipLogin() {
+      if (isVip) {
+        alert("Bạn đã là Hội viên VIP rồi nha! 🌷");
+        return;
+      }
+      
+      const pass = prompt("Nhập mật khẩu Thành viên VIP (Nhắn Zalo 0362102905 để nhận mã):");
       
       if (pass === "anthinh1234") {
-        isVip = !isVip; // Bật / Tắt trạng thái
+        isVip = true; 
         
         const vipHeaderBtn = document.getElementById('vip-header-btn');
+        alert("🎉 Kích hoạt VIP thành công! Toàn bộ kho tàng điện ảnh đã được mở khóa.");
         
-        if (isVip) {
-          alert("🎉 Đăng nhập Admin thành công! Toàn bộ nội dung đã được mở khóa.");
-          vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Admin Đã Duyệt 🌟</span>';
-          vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
-          vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
-        } else {
-          alert("Đã tắt chế độ Admin.");
-          vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội Viên VIP 🌷</span>';
-          vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
-          vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white', 'border-transparent');
-        }
+        vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Thành Viên VIP 🌟</span>';
+        vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+        vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
         
-        renderCinemaCards(); // Render lại giao diện
+        // Ẩn nút nhập mã đi sau khi đã kích hoạt thành công
+        document.getElementById('floating-vip-btn').style.display = 'none';
+        
+        renderCinemaCards(); // Render lại giao diện mở khóa
       } else if (pass !== null) {
         alert("Mật khẩu không chính xác! 🛑");
       }
@@ -593,7 +598,7 @@
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     
     function simulateSuccessPayment() {
-      alert("Hệ thống đã tiếp nhận yêu cầu! Bạn vui lòng đợi Admin kiểm tra giao dịch và duyệt mở khóa nhé 🌷");
+      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin Zalo qua SĐT 0362102905 (Vũ Thái An) kèm biên lai để nhận mật khẩu kích hoạt VIP nha 🌷");
       closeModal('modal-vip');
     }
   </script>
