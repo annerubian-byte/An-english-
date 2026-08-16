@@ -152,9 +152,8 @@
           <h2 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown mt-2 leading-tight">Movie Title</h2>
         </div>
 
-        <!-- Khung chứa Video/Hình ảnh -->
         <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative">
-          <!-- Nội dung media sẽ được nhúng bằng JavaScript -->
+          <!-- Injected via JS -->
         </div>
 
         <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative">
@@ -167,7 +166,7 @@
         <div class="space-y-3">
           <p class="font-black text-cottage-greenDark uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-seedling text-cottage-green"></i> Bóc tách Từ Vựng:</p>
           <div id="cinema-vocab" class="space-y-2.5">
-            <!-- Từ vựng nhúng qua JS -->
+            <!-- Injected via JS -->
           </div>
         </div>
 
@@ -267,16 +266,13 @@
     let isVip = false;
 
     // ================= VOCABULARY IN CONTEXT DATABASE =================
-    // Chú ý: Ở phần mediaUrl và thumbnail, bạn hoàn toàn có thể thay bằng link file mp4/jpg trong máy tính của bạn
-    // Ví dụ: thumbnail: "./images/phim-1.jpg" hoặc mediaUrl: "./videos/phim-1.mp4"
     const cinemaData = [
       {
         id: 1, 
         genre: "Drama", 
         title: "The Devil Wears Prada (2006)",
-        // Thumbnail dùng hình ảnh đáng tin cậy
         thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=The+Devil+Wears+Prada", 
-        mediaType: "youtube", // Có thể chọn: "youtube", "video", hoặc "image"
+        mediaType: "youtube", 
         mediaUrl: "https://www.youtube.com/embed/vRQ-ZjaABq4?si=1&start=20", 
         locked: false,
         quote: "You go to your closet and you select... I don't know... that clunky blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
@@ -370,7 +366,6 @@
           }
         ]
       }
-      // ĐỂ THÊM BÀI MỚI, COPY VÀ DÁN VÀO ĐÂY NHÉ!
     ];
 
     // ================= LOGIC & STATE =================
@@ -394,10 +389,10 @@
 
     // --- Admin VIP Toggle (Với Mật khẩu) ---
     function toggleAdminVip() {
-      // Yêu cầu nhập mật khẩu để tránh người ngoài tự bấm
-      const pass = prompt("Nhập mật khẩu Admin (Gợi ý: navigator2026):");
+      // Yêu cầu nhập mật khẩu bảo mật của Admin
+      const pass = prompt("Nhập mật khẩu Admin:");
       
-      if (pass === "navigator2026") {
+      if (pass === "anthinh1234") {
         isVip = !isVip; // Bật / Tắt trạng thái
         
         const vipHeaderBtn = document.getElementById('vip-header-btn');
@@ -598,7 +593,7 @@
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     
     function simulateSuccessPayment() {
-      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin cho Admin để kiểm tra giao dịch và duyệt mở khóa nha 🌷");
+      alert("Hệ thống đã tiếp nhận yêu cầu! Bạn vui lòng đợi Admin kiểm tra giao dịch và duyệt mở khóa nhé 🌷");
       closeModal('modal-vip');
     }
   </script>
