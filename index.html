@@ -15,19 +15,10 @@
         extend: {
           colors: {
             cottage: {
-              cream: '#FAF6F0',
-              card: '#FFFDF9',
-              cardHover: '#FFF8EE',
-              green: '#7D9D74',
-              greenDark: '#4D6845',
-              greenLight: '#E8EFE6',
-              rose: '#D98A8F',
-              roseDark: '#B8656A',
-              roseLight: '#FCEBEC',
-              butter: '#EFE5D2',
-              brown: '#534338',
-              brownLight: '#8C7A6B',
-              amber: '#D99B43'
+              cream: '#FAF6F0', card: '#FFFDF9', cardHover: '#FFF8EE',
+              green: '#7D9D74', greenDark: '#4D6845', greenLight: '#E8EFE6',
+              rose: '#D98A8F', roseDark: '#B8656A', roseLight: '#FCEBEC',
+              butter: '#EFE5D2', brown: '#534338', brownLight: '#8C7A6B', amber: '#D99B43'
             }
           },
           fontFamily: {
@@ -54,16 +45,15 @@
         <div>
           <div class="flex items-center gap-2">
             <span class="font-display font-black text-lg text-cottage-greenDark">CozyGarden</span>
-            <span class="text-[9px] bg-cottage-roseLight text-cottage-roseDark font-extrabold px-2 py-0.5 rounded-full border border-cottage-rose/30 uppercase tracking-wider">A1 - B1</span>
+            <span class="text-[9px] bg-cottage-roseLight text-cottage-roseDark font-extrabold px-2 py-0.5 rounded-full border border-cottage-rose/30 uppercase tracking-wider">A1 - C2</span>
           </div>
-          <span class="text-[11px] text-cottage-brownLight font-medium">Học ngữ pháp & phim ảnh thảnh thơi</span>
+          <span class="text-[11px] text-cottage-brownLight font-medium">Học ngữ pháp học thuật & thực tế</span>
         </div>
       </div>
 
-      <!-- User Stats & Action -->
       <div class="flex items-center space-x-3">
         <div class="hidden sm:flex items-center gap-1.5 bg-cottage-butter/50 border border-cottage-butter px-3 py-1.5 rounded-full text-xs font-bold text-cottage-brown">
-          <span>🔥</span> <span id="user-streak">3 ngày</span>
+          <span>🔥</span> <span id="user-streak">1 ngày</span>
         </div>
         <div class="flex items-center gap-1.5 bg-cottage-roseLight border border-cottage-rose/30 px-3.5 py-1.5 rounded-full text-xs font-bold text-cottage-roseDark">
           <span>🍓</span> <span id="user-berries">45</span> <span class="hidden sm:inline">Berries</span>
@@ -82,13 +72,10 @@
         <i class="fa-solid fa-seedling"></i> Khu Vườn Ngữ Pháp
       </button>
       <button onclick="switchNav('cinema')" id="nav-cinema" class="px-4 py-1.5 rounded-xl font-display font-bold text-xs bg-transparent text-cottage-brownLight hover:bg-cottage-butter/40 transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-film"></i> Cinema & Literature
+        <i class="fa-solid fa-film"></i> Cinema Context
       </button>
       <button onclick="switchNav('arcade')" id="nav-arcade" class="px-4 py-1.5 rounded-xl font-display font-bold text-xs bg-transparent text-cottage-brownLight hover:bg-cottage-butter/40 transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-gamepad"></i> Game Rèn Phản Xạ
-      </button>
-      <button onclick="switchNav('cheatsheet')" id="nav-cheatsheet" class="px-4 py-1.5 rounded-xl font-display font-bold text-xs bg-transparent text-cottage-brownLight hover:bg-cottage-butter/40 transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-book-bookmark"></i> Sổ Tay Tóm Tắt
+        <i class="fa-solid fa-gamepad"></i> Game Phản Xạ
       </button>
     </div>
   </div>
@@ -98,508 +85,370 @@
 
     <!-- ================= VIEW 1: GRAMMAR GARDEN ================= -->
     <section id="view-garden" class="space-y-6">
-      <!-- Filter Badges -->
       <div class="flex flex-wrap gap-2 items-center justify-between">
         <div class="flex flex-wrap gap-1.5" id="level-filters">
           <button onclick="filterLessons('ALL')" class="filter-btn active px-3.5 py-1 rounded-full text-xs font-bold bg-cottage-brown text-white transition">Tất cả</button>
-          <button onclick="filterLessons('A1')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">A1 Cơ Bản</button>
-          <button onclick="filterLessons('A2')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">A2 Sơ Trung Cấp</button>
-          <button onclick="filterLessons('B1')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">B1 Tự Tin Giao Tiếp</button>
+          <button onclick="filterLessons('A1')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">A1</button>
+          <button onclick="filterLessons('B1')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">B1</button>
+          <button onclick="filterLessons('B2')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">B2</button>
+          <button onclick="filterLessons('C1')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">C1</button>
+          <button onclick="filterLessons('C2')" class="filter-btn px-3.5 py-1 rounded-full text-xs font-bold bg-white border border-cottage-butter text-cottage-brown hover:bg-cottage-butter/30 transition">C2</button>
         </div>
-        <span class="text-xs text-cottage-brownLight font-semibold"><span id="lesson-count">0</span> bài học đang sẵn sàng</span>
+        <span class="text-xs text-cottage-brownLight font-semibold"><span id="lesson-count">0</span> chủ điểm</span>
       </div>
 
-      <!-- Lesson Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="lessons-grid">
-        <!-- Injected by JavaScript -->
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="lessons-grid"></div>
     </section>
 
     <!-- ================= VIEW 2: CINEMA & LITERATURE ================= -->
     <section id="view-cinema" class="hidden space-y-6">
       <div class="bg-cottage-card border border-cottage-butter rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-2 z-10">
-          <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-cottage-roseLight text-cottage-roseDark border border-cottage-rose/30">Ngữ Pháp Trong Ngữ Cảnh</span>
-          <h2 class="text-2xl font-serif font-bold text-cottage-brown">Thưởng Thức Phim Ảnh & Trích Đoạn Văn Học 🎬📖</h2>
-          <p class="text-xs text-cottage-brownLight max-w-xl leading-relaxed">Khám phá cách người bản xứ, các nhà văn và biên kịch sử dụng thì, mệnh đề và đảo ngữ để truyền tải cảm xúc trọn vẹn.</p>
+          <h2 class="text-2xl font-serif font-bold text-cottage-brown">Học qua Phim Ảnh & Tiểu Thuyết 🎬</h2>
+          <p class="text-xs text-cottage-brownLight max-w-xl leading-relaxed">Phân tích dụng ý nghệ thuật trong việc sử dụng thì, mệnh đề và đảo ngữ của người bản xứ.</p>
         </div>
-        <div class="text-6xl opacity-30 select-none">📽️</div>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="cinema-grid">
-        <!-- Injected by JavaScript -->
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="cinema-grid"></div>
     </section>
 
-    <!-- ================= VIEW 3: ARCADE / MINI GAMES ================= -->
+    <!-- ================= VIEW 3: ARCADE ================= -->
     <section id="view-arcade" class="hidden space-y-6 max-w-2xl mx-auto">
-      <div class="flex justify-center gap-2">
-        <button onclick="switchGameMode('scramble')" id="game-btn-scramble" class="px-4 py-2 rounded-xl text-xs font-bold bg-cottage-green text-white transition">🧩 Ghép Câu Hoàn Chỉnh</button>
-        <button onclick="switchGameMode('hunter')" id="game-btn-hunter" class="px-4 py-2 rounded-xl text-xs font-bold bg-white border border-cottage-butter text-cottage-brown transition">🔍 Thợ Săn Lỗi Sai</button>
-      </div>
-
-      <!-- Game Mode 1: Sentence Scramble -->
       <div id="game-scramble-container" class="bg-cottage-card border border-cottage-butter rounded-3xl p-6 shadow-sm space-y-5 text-center">
         <div class="flex justify-between items-center text-xs font-bold text-cottage-brownLight border-b border-cottage-butter/60 pb-3">
-          <span>Nhiệm vụ sắp xếp</span>
+          <span>Nhiệm vụ sắp xếp câu (Syntax Practice)</span>
           <span class="bg-cottage-roseLight text-cottage-roseDark px-2.5 py-1 rounded-full">+10 🍓</span>
         </div>
         <div>
-          <span class="text-xs text-cottage-brownLight">Dịch nghĩa câu sau:</span>
           <p class="text-base font-bold text-cottage-greenDark italic mt-1" id="scramble-prompt">Loading...</p>
         </div>
         <div id="scramble-dropzone" class="min-h-[56px] bg-cottage-cream border-2 border-dashed border-cottage-green/40 rounded-2xl p-3 flex flex-wrap gap-2 items-center justify-center"></div>
         <div id="scramble-pool" class="flex flex-wrap gap-2 justify-center pt-2"></div>
         <div class="flex justify-center gap-3 pt-2">
           <button onclick="resetScramble()" class="px-4 py-2 text-xs font-bold text-cottage-brown bg-cottage-butter/50 hover:bg-cottage-butter rounded-xl transition">Xếp lại</button>
-          <button onclick="checkScramble()" class="px-5 py-2 text-xs font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow transition">Kiểm tra kết quả ✨</button>
+          <button onclick="checkScramble()" class="px-5 py-2 text-xs font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow transition">Kiểm tra ✨</button>
         </div>
         <p id="scramble-feedback" class="text-xs font-bold hidden"></p>
-      </div>
-
-      <!-- Game Mode 2: Error Hunter -->
-      <div id="game-hunter-container" class="hidden bg-cottage-card border border-cottage-butter rounded-3xl p-6 shadow-sm space-y-5">
-        <div class="flex justify-between items-center text-xs font-bold text-cottage-brownLight border-b border-cottage-butter/60 pb-3">
-          <span>Tìm 1 từ/cụm từ chứa lỗi sai</span>
-          <span class="bg-cottage-roseLight text-cottage-roseDark px-2.5 py-1 rounded-full">+15 🍓</span>
-        </div>
-        <div class="space-y-3 text-center">
-          <span class="text-xs text-cottage-brownLight">Chạm trực tiếp vào phần gạch chân bị sai ngữ pháp:</span>
-          <div id="hunter-sentence" class="text-lg font-semibold text-cottage-brown py-4 flex flex-wrap justify-center gap-2"></div>
-        </div>
-        <div id="hunter-feedback" class="text-xs font-bold hidden p-3 rounded-xl"></div>
-        <div class="flex justify-end">
-          <button onclick="nextHunterQuestion()" id="hunter-next-btn" class="hidden px-4 py-2 text-xs font-bold text-white bg-cottage-green rounded-xl">Câu tiếp theo</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= VIEW 4: CHEATSHEET ================= -->
-    <section id="view-cheatsheet" class="hidden space-y-4 max-w-3xl mx-auto">
-      <div class="bg-cottage-card border border-cottage-butter rounded-3xl p-6 shadow-sm space-y-4">
-        <h2 class="text-xl font-display font-bold text-cottage-brown">Bảng Tóm Tắt 12 Thì & Dấu Hiệu Nhận Biết 📝</h2>
-        <div class="overflow-x-auto">
-          <table class="w-full text-xs text-left border-collapse">
-            <thead>
-              <tr class="bg-cottage-cream text-cottage-greenDark border-b border-cottage-butter font-bold">
-                <th class="p-3">Thì</th>
-                <th class="p-3">Cấu trúc cốt lõi</th>
-                <th class="p-3">Dấu hiệu đặc trưng</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-cottage-butter/60 text-cottage-brown">
-              <tr>
-                <td class="p-3 font-bold">Hiện tại đơn</td>
-                <td class="p-3 font-mono">S + V(s/es)</td>
-                <td class="p-3">always, usually, every day, on Sundays</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-bold">Hiện tại tiếp diễn</td>
-                <td class="p-3 font-mono">S + am/is/are + V-ing</td>
-                <td class="p-3">now, right now, at the moment, Look!</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-bold">Hiện tại hoàn thành</td>
-                <td class="p-3 font-mono">S + have/has + V3/ed</td>
-                <td class="p-3">already, yet, since, for, ever, just</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-bold">Quá khứ đơn</td>
-                <td class="p-3 font-mono">S + V2/ed</td>
-                <td class="p-3">yesterday, last week, ago, in 1999</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-bold">Quá khứ tiếp diễn</td>
-                <td class="p-3 font-mono">S + was/were + V-ing</td>
-                <td class="p-3">at 8 PM yesterday, while, when</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-bold">Tương lai đơn</td>
-                <td class="p-3 font-mono">S + will + V(bare)</td>
-                <td class="p-3">tomorrow, next month, in the future, think</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     </section>
 
   </main>
 
   <!-- ================= MODAL 1: LESSON STUDY & QUIZ ================= -->
-  <div id="modal-lesson" class="fixed inset-0 bg-cottage-brown/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-cottage-card border border-cottage-butter rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 space-y-6 shadow-2xl">
+  <div id="modal-lesson" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-cottage-card border border-cottage-butter rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 space-y-6 shadow-2xl relative">
       <div class="flex justify-between items-start border-b border-cottage-butter/80 pb-4">
         <div>
           <div class="flex items-center gap-2">
             <span id="modal-lesson-level" class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-cottage-greenLight text-cottage-greenDark border border-cottage-green/30">A1</span>
-            <span id="modal-lesson-topic" class="text-xs text-cottage-brownLight font-bold">Chủ điểm ngữ pháp</span>
+            <span class="text-xs text-cottage-brownLight font-bold">Lý thuyết & Bài tập</span>
           </div>
-          <h2 id="modal-lesson-title" class="text-2xl font-display font-extrabold text-cottage-brown mt-1">Bài học</h2>
+          <h2 id="modal-lesson-title" class="text-xl md:text-2xl font-display font-extrabold text-cottage-brown mt-2 leading-tight">Bài học</h2>
         </div>
         <button onclick="closeModal('modal-lesson')" class="w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm transition"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
-      <!-- Theory Content -->
-      <div id="modal-lesson-theory" class="text-xs leading-relaxed space-y-4 text-cottage-brown"></div>
+      <div id="modal-lesson-theory" class="text-sm leading-relaxed space-y-4 text-cottage-brown"></div>
 
-      <!-- Interactive Quiz Section -->
+      <!-- Quiz Section -->
       <div class="bg-cottage-cream p-5 rounded-2xl border border-cottage-butter space-y-4">
         <div class="flex justify-between items-center text-xs font-bold text-cottage-greenDark uppercase tracking-wider">
-          <span>🌱 Thử thách củng cố</span>
-          <span id="quiz-streak-badge" class="text-cottage-roseDark">+5 🍓</span>
+          <span>🌱 Thực hành <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-2 tracking-normal">(1/1)</span></span>
+          <span class="text-cottage-roseDark">+5 🍓/câu</span>
         </div>
         <p id="modal-quiz-question" class="text-sm font-bold text-cottage-brown"></p>
         <div id="modal-quiz-options" class="space-y-2"></div>
-        <div id="modal-quiz-feedback" class="hidden p-3.5 rounded-xl text-xs font-semibold leading-relaxed"></div>
+        <div id="modal-quiz-feedback" class="hidden p-3.5 rounded-xl text-xs font-semibold leading-relaxed mt-2"></div>
+        <button id="btn-next-quiz" onclick="nextLessonQuiz()" class="hidden w-full py-3 mt-2 bg-cottage-green hover:bg-cottage-greenDark text-white font-bold text-xs rounded-xl shadow transition">Câu tiếp theo →</button>
       </div>
     </div>
   </div>
 
   <!-- ================= MODAL 2: CINEMA ANALYSIS ================= -->
-  <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+  <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-cottage-card border border-cottage-butter rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-7 space-y-5 shadow-2xl">
       <div class="flex justify-between items-start border-b border-cottage-butter pb-3">
         <div>
-          <span id="cinema-source" class="text-[10px] font-bold text-cottage-roseDark uppercase tracking-wider">Pride and Prejudice (2005)</span>
-          <h3 id="cinema-title" class="text-xl font-serif font-bold text-cottage-brown mt-0.5">Lời bộc bạch của Mr. Darcy</h3>
+          <span id="cinema-source" class="text-[10px] font-bold text-cottage-roseDark uppercase tracking-wider">Source</span>
+          <h3 id="cinema-title" class="text-xl font-serif font-bold text-cottage-brown mt-0.5">Title</h3>
         </div>
         <button onclick="closeModal('modal-cinema')" class="w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
-      <!-- Quote Box -->
       <div class="p-4 bg-cottage-cream rounded-2xl border-l-4 border-cottage-rose italic text-sm text-cottage-brown space-y-2 font-serif">
-        <p id="cinema-quote">"You have bewitched me, body and soul, and I love, I love, I love you."</p>
-        <p id="cinema-translation" class="text-xs text-cottage-brownLight font-sans not-italic">"Nàng đã bỏ bùa mê tâm trí và linh hồn ta, và ta yêu, ta yêu nàng vô cùng."</p>
+        <p id="cinema-quote"></p>
+        <p id="cinema-translation" class="text-xs text-cottage-brownLight font-sans not-italic"></p>
       </div>
-
-      <!-- Linguistic Breakdown -->
       <div class="space-y-3 text-xs leading-relaxed text-cottage-brown">
-        <p class="font-bold text-cottage-greenDark uppercase text-[11px]">✨ Bóc tách cấu trúc ngữ pháp:</p>
+        <p class="font-bold text-cottage-greenDark uppercase text-[11px]">✨ Phân tích diễn ngôn & Cú pháp:</p>
         <div id="cinema-analysis" class="space-y-2 bg-white p-4 rounded-xl border border-cottage-butter"></div>
       </div>
     </div>
   </div>
 
-  <!-- ================= MODAL 3: VIETQR PAYWALL (CHUYỂN KHOẢN TỰ ĐỘNG) ================= -->
-  <div id="modal-vip" class="fixed inset-0 bg-cottage-brown/50 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-cottage-card border-2 border-cottage-rose rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-6 md:p-7 space-y-6 shadow-2xl relative">
+  <!-- ================= MODAL 3: VIETQR PAYWALL ================= -->
+  <div id="modal-vip" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-cottage-card border-2 border-cottage-rose rounded-3xl max-w-2xl w-full max-h-[95vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative">
       <button onclick="closeModal('modal-vip')" class="absolute right-5 top-5 w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm"><i class="fa-solid fa-xmark"></i></button>
 
-      <div class="text-center space-y-2">
+      <div class="text-center space-y-2 mb-6">
         <div class="w-12 h-12 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-xl">👑</div>
-        <h3 class="text-2xl font-display font-extrabold text-cottage-brown">Mở Khoá Gói VIP Học Viện Thơ Mộng</h3>
-        <p class="text-xs text-cottage-brownLight">Sở hữu trọn đời toàn bộ tài nguyên ngữ pháp, rèn ngữ cảnh và khoá học nâng cao.</p>
+        <h3 class="text-2xl font-display font-extrabold text-cottage-brown">Nâng cấp Học Viện Thơ Mộng</h3>
+        <p class="text-xs text-cottage-brownLight">Truy cập toàn bộ lộ trình sư phạm A1-C2 và phân tích học thuật.</p>
       </div>
 
-      <!-- Benefits -->
-      <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="bg-cottage-cream p-3 rounded-xl border border-cottage-butter flex items-center gap-2">
-          <span>🌿</span> <b>40+ bài ngữ pháp A1-B1</b>
-        </div>
-        <div class="bg-cottage-cream p-3 rounded-xl border border-cottage-butter flex items-center gap-2">
-          <span>🎬</span> <b>50+ trích đoạn Cinema</b>
-        </div>
-        <div class="bg-cottage-cream p-3 rounded-xl border border-cottage-butter flex items-center gap-2">
-          <span>🍓</span> <b>Không giới hạn Berries</b>
-        </div>
-        <div class="bg-cottage-cream p-3 rounded-xl border border-cottage-butter flex items-center gap-2">
-          <span>💌</span> <b>File PDF in sổ tay Cozy</b>
-        </div>
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Cột chọn gói -->
+        <div class="space-y-3">
+          <p class="text-xs font-bold text-cottage-greenDark uppercase tracking-wider mb-2">1. Chọn gói học thuật</p>
+          
+          <label class="block cursor-pointer relative">
+            <input type="radio" name="vip-plan" value="30000" class="peer sr-only" onclick="updateQR(30000, 'COZY3DAY')" checked>
+            <div class="p-4 rounded-2xl border-2 border-cottage-butter bg-white peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight transition">
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-sm text-cottage-brown">Gói Trải Nghiệm 3 Ngày</span>
+                <span class="font-black text-cottage-roseDark text-base">30.000đ</span>
+              </div>
+            </div>
+          </label>
 
-      <!-- VietQR Transfer Box -->
-      <div class="bg-white p-5 rounded-2xl border-2 border-dashed border-cottage-rose/50 text-center space-y-4">
-        <div class="flex justify-between items-center text-xs">
-          <span class="font-bold text-cottage-brown">Số tiền thanh toán:</span>
-          <span class="text-lg font-black text-cottage-roseDark">199.000 VNĐ <span class="text-[10px] font-normal text-cottage-brownLight line-through">499.000đ</span></span>
+          <label class="block cursor-pointer relative">
+            <input type="radio" name="vip-plan" value="100000" class="peer sr-only" onclick="updateQR(100000, 'COZY1MONTH')">
+            <div class="p-4 rounded-2xl border-2 border-cottage-butter bg-white peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight transition">
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-sm text-cottage-brown">Gói Chăm Chỉ 1 Tháng</span>
+                <span class="font-black text-cottage-roseDark text-base">100.000đ</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="block cursor-pointer relative">
+            <input type="radio" name="vip-plan" value="300000" class="peer sr-only" onclick="updateQR(300000, 'COZY1YEAR')">
+            <div class="p-4 rounded-2xl border-2 border-cottage-butter bg-white peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight transition relative overflow-hidden">
+              <span class="absolute top-0 right-0 bg-cottage-rose text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg">BEST SELLER</span>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-sm text-cottage-brown">Gói Trọn Vẹn 1 Năm</span>
+                <span class="font-black text-cottage-roseDark text-base">300.000đ</span>
+              </div>
+            </div>
+          </label>
         </div>
 
-        <!-- VietQR Dynamic Image -->
-        <div class="flex justify-center">
-          <div class="p-2 bg-white rounded-xl shadow-sm border border-slate-100">
-            <!-- VietQR QuickLink API (Dùng demo tài khoản ngân hàng, có thể tuỳ chỉnh) -->
-            <img id="vietqr-image" src="https://img.vietqr.io/image/MB-0358899888-compact2.png?amount=199000&addInfo=COZYVIP%20ANENG&accountName=VU%20THAI%20AN" alt="Mã QR Chuyển Khoản" class="w-48 h-48 object-contain rounded-lg">
+        <!-- Cột Thanh toán -->
+        <div class="bg-cottage-cream p-5 rounded-2xl border-2 border-dashed border-cottage-rose/50 text-center space-y-4 flex flex-col justify-center">
+          <p class="text-xs font-bold text-cottage-greenDark uppercase tracking-wider">2. Quét mã thanh toán</p>
+          
+          <div class="flex justify-center">
+            <div class="p-2 bg-white rounded-xl shadow-sm border border-slate-100 relative">
+              <img id="vietqr-image" src="https://img.vietqr.io/image/NCB-101459124207-compact2.png?amount=30000&addInfo=COZY3DAY&accountName=VU%20THAI%20AN" alt="Mã QR Chuyển Khoản" class="w-40 h-40 object-contain rounded-lg">
+            </div>
+          </div>
+
+          <div class="text-[11px] text-cottage-brown space-y-1 text-left font-mono bg-white p-3 rounded-xl border border-cottage-butter">
+            <div class="flex justify-between"><span>Ngân hàng:</span> <b class="font-sans">NCB</b></div>
+            <div class="flex justify-between"><span>STK:</span> <b>101459124207</b></div>
+            <div class="flex justify-between"><span>Tên:</span> <b>VU THAI AN</b></div>
+            <div class="flex justify-between items-center mt-1 pt-1 border-t border-dashed border-slate-200">
+              <span>Nội dung:</span> <b id="qr-content" class="text-cottage-roseDark text-xs bg-cottage-roseLight px-2 py-0.5 rounded">COZY3DAY</b>
+            </div>
           </div>
         </div>
-
-        <div class="text-[11px] text-cottage-brown space-y-1 bg-cottage-cream p-3 rounded-xl text-left font-mono">
-          <div class="flex justify-between"><span>Ngân hàng:</span> <b class="font-sans">MB Bank (Quân Đội)</b></div>
-          <div class="flex justify-between"><span>Số tài khoản:</span> <b>0358899888</b></div>
-          <div class="flex justify-between"><span>Chủ tài khoản:</span> <b>VU THAI AN</b></div>
-          <div class="flex justify-between"><span>Nội dung chuyển:</span> <b class="text-cottage-roseDark">COZYVIP ANENG</b></div>
-        </div>
-
-        <p class="text-[10px] text-cottage-brownLight italic">Hệ thống kích hoạt tài khoản tự động trong vòng 2-5 phút sau khi quét mã QR thành công.</p>
       </div>
 
-      <button onclick="simulateSuccessPayment()" class="w-full py-3 bg-cottage-green hover:bg-cottage-greenDark text-white font-bold text-xs rounded-2xl shadow transition transform active:scale-95 flex items-center justify-center gap-2">
-        <i class="fa-solid fa-check"></i> Tôi Đã Chuyển Khoản Thành Công
+      <button onclick="simulateSuccessPayment()" class="w-full mt-6 py-3.5 bg-cottage-green hover:bg-cottage-greenDark text-white font-bold text-sm rounded-2xl shadow transition transform active:scale-95">
+        Xác nhận đã chuyển khoản thành công ✨
       </button>
     </div>
   </div>
 
-  <!-- JavaScript Database & Application Engine -->
   <script>
-    // ================= 1. DATABASE NGỮ PHÁP (GRAMMAR LESSONS) =================
+    // ================= 1. PEDAGOGICAL DATABASE (A1 - C2) =================
+    // Áp dụng Guided Discovery cho các bài tập nâng cao.
     const lessonsData = [
       {
-        id: 1,
-        level: "A1",
-        category: "Tenses",
+        id: 1, level: "A1", category: "Tenses",
         title: "Present Simple (Hiện tại đơn)",
-        desc: "Thói quen hàng ngày, lịch trình cố định và chân lý khoa học bất biến.",
+        desc: "Nền tảng của giao tiếp cơ bản: Thói quen, sự thật hiển nhiên.",
         locked: false,
         theory: `
-          <div class="p-3.5 bg-cottage-cream rounded-xl border border-cottage-butter space-y-1.5">
-            <h4 class="font-bold text-cottage-greenDark">1. Cấu trúc ngữ pháp:</h4>
-            <p><b>Khẳng định:</b> S + V(s/es) <i>(He/She/It đi với động từ thêm -s/-es)</i></p>
-            <p><b>Phủ định:</b> S + do/does not + V(nguyên mẫu)</p>
-            <p><b>Nghi vấn:</b> Do/Does + S + V(nguyên mẫu)?</p>
-          </div>
-          <div class="space-y-1">
-            <h4 class="font-bold text-cottage-greenDark">2. Cách dùng thực tế:</h4>
-            <p>• <b>Thói quen:</b> I drink warm chamomile tea every night before bed.</p>
-            <p>• <b>Sự thật:</b> The earth revolves around the sun.</p>
-          </div>
-          <div class="bg-cottage-roseLight/50 p-2.5 rounded-lg text-cottage-roseDark font-medium text-[11px]">
-            💡 Mẹo nhớ: Gặp các trạng từ <i>always, usually, often, seldom, every day</i> thì ưu tiên chia thì này nhé!
+          <div class="p-4 bg-cottage-cream rounded-xl border border-cottage-butter space-y-2 text-sm">
+            <h4 class="font-bold text-cottage-greenDark">Công thức cốt lõi:</h4>
+            <p>• Khẳng định: S + V(s/es)</p>
+            <p>• Phủ định: S + do/does not + V</p>
           </div>
         `,
-        quiz: {
-          q: "Every morning, my mother _____ fresh rosemary from our small garden.",
-          options: ["picks", "pick", "picking", "is pick"],
-          correct: 0,
-          explanation: "Chủ ngữ 'my mother' là danh từ số ít (ngôi thứ 3), kết hợp trạng từ 'Every morning' nên động từ thêm -s -> picks."
-        }
+        quizzes: [
+          {
+            q: "He often _____ books in the garden.",
+            options: ["reads", "read", "reading", "is read"],
+            correct: 0,
+            explanation: "Ngôi thứ 3 số ít (He) cần động từ thêm -s/-es."
+          },
+          {
+            q: "_____ you like chamomile tea?",
+            options: ["Does", "Are", "Do", "Is"],
+            correct: 2,
+            explanation: "Chủ ngữ 'you' dùng trợ động từ 'Do' trong câu hỏi."
+          }
+        ]
       },
       {
-        id: 2,
-        level: "A1",
-        category: "Tenses",
-        title: "Present Continuous (Hiện tại tiếp diễn)",
-        desc: "Hành động đang diễn ra ngay lúc nói hoặc xu hướng tạm thời.",
-        locked: false,
-        theory: `
-          <div class="p-3.5 bg-cottage-cream rounded-xl border border-cottage-butter space-y-1.5">
-            <h4 class="font-bold text-cottage-greenDark">1. Cấu trúc ngữ pháp:</h4>
-            <p><b>Khẳng định:</b> S + am/is/are + V-ing</p>
-            <p><b>Ví dụ:</b> Listen! The birds are singing outside the window.</p>
-          </div>
-          <div class="bg-cottage-amber/10 p-2.5 rounded-lg text-cottage-brown font-medium text-[11px]">
-            ⚠️ Chú ý: Các động từ chỉ cảm giác, sở hữu (stative verbs) như <i>know, like, want, understand, believe</i> không dùng ở thì tiếp diễn!
-          </div>
-        `,
-        quiz: {
-          q: "Be quiet! The baby _____ peacefully in the wooden crib.",
-          options: ["sleeps", "is sleeping", "slept", "are sleeping"],
-          correct: 1,
-          explanation: "'Be quiet!' là câu mệnh lệnh báo hiệu hành động đang diễn ra -> dùng 'is sleeping'."
-        }
-      },
-      {
-        id: 3,
-        level: "A2",
-        category: "Tenses",
-        title: "Past Simple (Quá khứ đơn)",
-        desc: "Sự việc đã diễn ra và chấm dứt hoàn toàn tại một thời điểm trong quá khứ.",
-        locked: false,
-        theory: `
-          <div class="p-3.5 bg-cottage-cream rounded-xl border border-cottage-butter space-y-1.5">
-            <h4 class="font-bold text-cottage-greenDark">1. Cấu trúc ngữ pháp:</h4>
-            <p><b>Động từ to be:</b> S + was/were</p>
-            <p><b>Động từ thường:</b> S + V2/ed (Phủ định: S + did not + V-bare)</p>
-          </div>
-          <p><b>Dấu hiệu nhận biết:</b> yesterday, ago, last night/month/year, in 2020.</p>
-        `,
-        quiz: {
-          q: "Last autumn, we _____ a cozy wooden cottage in the countryside.",
-          options: ["buy", "bought", "buying", "have bought"],
-          correct: 1,
-          explanation: "'Last autumn' là mốc thời gian xác định trong quá khứ -> dùng thì Quá khứ đơn (V2 của buy là bought)."
-        }
-      },
-      {
-        id: 4,
-        level: "A2",
-        category: "Modals",
-        title: "Modal Verbs (Động từ khuyết thiếu)",
-        desc: "Cách dùng Can, Could, Must, Should để biểu thị sự cho phép, nghĩa vụ và lời khuyên.",
-        locked: false,
-        theory: `
-          <div class="p-3.5 bg-cottage-cream rounded-xl border border-cottage-butter space-y-1.5">
-            <p>• <b>Should + V:</b> Khuyên nên làm gì (You should rest more).</p>
-            <p>• <b>Must + V:</b> Bắt buộc phải làm (quy tắc, luật lệ).</p>
-            <p>• <b>Can / Could:</b> Diễn tả khả năng hoặc xin phép lịch sự.</p>
-          </div>
-        `,
-        quiz: {
-          q: "You look exhausted after baking all morning. You _____ take a short nap.",
-          options: ["must", "should", "couldn't", "have to"],
-          correct: 1,
-          explanation: "Câu đưa ra lời khuyên nhẹ nhàng, thân thiện -> sử dụng 'should'."
-        }
-      },
-      {
-        id: 5,
-        level: "B1",
-        category: "Tenses",
-        title: "Present Perfect (Hiện tại hoàn thành)",
-        desc: "Kết nối quá khứ với hiện tại: Trải nghiệm, kết quả còn lưu lại hoặc hành động vừa mới xảy ra.",
-        locked: true,
-        theory: `
-          <div class="p-3.5 bg-cottage-cream rounded-xl border border-cottage-butter space-y-1.5">
-            <h4 class="font-bold text-cottage-greenDark">1. Cấu trúc ngữ pháp:</h4>
-            <p>S + have/has + V3/ed</p>
-          </div>
-          <p><b>Phân biệt Since và For:</b></p>
-          <p>• <b>Since + mốc thời gian:</b> since 2018, since last morning.</p>
-          <p>• <b>For + khoảng thời gian:</b> for 5 years, for two weeks.</p>
-        `,
-        quiz: {
-          q: "She _____ in this vintage bookstore since she graduated from university.",
-          options: ["worked", "works", "has worked", "is working"],
-          correct: 2,
-          explanation: "Mệnh đề có 'since + mốc quá khứ' -> mệnh đề chính chia thì Hiện tại hoàn thành (has worked)."
-        }
-      },
-      {
-        id: 6,
-        level: "B1",
-        category: "Clauses",
+        id: 2, level: "B1", category: "Syntax",
         title: "Relative Clauses (Mệnh đề quan hệ)",
-        desc: "Bổ nghĩa cho danh từ một cách uyển chuyển dùng Who, Which, That, Whose, Where.",
-        locked: true,
+        desc: "Cách ghép câu tinh tế tạo nên các câu phức (Complex Sentences).",
+        locked: false,
         theory: `
-          <div class="p-3.5 bg-cottage-cream rounded-xl border border-cottage-butter space-y-1.5">
-            <p>• <b>Who:</b> Thay thế danh từ chỉ người làm chủ ngữ.</p>
-            <p>• <b>Which:</b> Thay thế danh từ chỉ đồ vật, động vật.</p>
-            <p>• <b>Whose:</b> Chỉ sự sở hữu (whose book, whose garden).</p>
+          <div class="p-4 bg-cottage-cream rounded-xl border border-cottage-butter space-y-2">
+            <p><b>Guided Discovery:</b> Nhìn vào 2 câu sau:<br>
+            1. The girl is my sister. 2. The girl is holding a flower.<br>
+            -> Gộp lại: The girl <b>who</b> is holding a flower is my sister.</p>
+            <p class="text-xs text-cottage-brownLight mt-2">Dùng 'who' cho người, 'which' cho vật để tránh lặp từ.</p>
           </div>
         `,
-        quiz: {
-          q: "The gardener _____ planted these lavender bushes was very kind.",
-          options: ["which", "who", "whom", "whose"],
-          correct: 1,
-          explanation: "'The gardener' là danh từ chỉ người đóng vai trò chủ ngữ của hành động 'planted' -> dùng 'who'."
-        }
+        quizzes: [
+          {
+            q: "The old cottage _____ we rented last summer was beautiful.",
+            options: ["who", "which", "whom", "where"],
+            correct: 1,
+            explanation: "'Cottage' (ngôi nhà) là vật thể, đóng vai trò tân ngữ -> dùng 'which'."
+          },
+          {
+            q: "I met the artist _____ paintings are displayed in the museum.",
+            options: ["who", "whom", "whose", "which"],
+            correct: 2,
+            explanation: "Mối quan hệ sở hữu giữa 'artist' và 'paintings' -> dùng 'whose'."
+          }
+        ]
+      },
+      {
+        id: 3, level: "B2", category: "Conditionals",
+        title: "Mixed Conditionals (Câu điều kiện hỗn hợp)",
+        desc: "Diễn tả giả định trái ngược quá khứ nhưng để lại hệ quả ở hiện tại.",
+        locked: true,
+        theory: `
+          <div class="p-4 bg-cottage-cream rounded-xl border border-cottage-butter space-y-2">
+            <h4 class="font-bold text-cottage-greenDark">Cấu trúc Type 3 + 2:</h4>
+            <p>If + S + had V3/ed (Trái với quá khứ), S + would + V(bare) (Trái với hiện tại).</p>
+            <p class="italic text-xs text-cottage-brownLight mt-1">VD: If I had studied pedagogy (past), I would be a teacher now (present).</p>
+          </div>
+        `,
+        quizzes: [
+          {
+            q: "If she _____ the map at home yesterday, she wouldn't be lost right now.",
+            options: ["didn't leave", "hadn't left", "doesn't leave", "hasn't left"],
+            correct: 1,
+            explanation: "Vế 'yesterday' cần lùi về Quá khứ hoàn thành (hadn't left). Vế 'right now' dùng would + V."
+          }
+        ]
+      },
+      {
+        id: 4, level: "C1", category: "Syntax",
+        title: "Inversion (Đảo ngữ nhấn mạnh)",
+        desc: "Đảo trợ động từ lên trước chủ ngữ khi có trạng từ phủ định đứng đầu câu.",
+        locked: true,
+        theory: `
+          <div class="p-4 bg-cottage-cream rounded-xl border border-cottage-butter space-y-2">
+            <h4 class="font-bold text-cottage-greenDark">Cơ chế Cú pháp (Syntax):</h4>
+            <p>Khi các từ mang nghĩa phủ định (Never, Rarely, Seldom, Little) hoặc cụm từ giới hạn (Only after, Not until) đứng đầu câu để nhấn mạnh (Fronting), mệnh đề theo sau bắt buộc phải đảo ngữ như câu hỏi.</p>
+          </div>
+        `,
+        quizzes: [
+          {
+            q: "Rarely _____ such a beautifully articulated lesson plan.",
+            options: ["I have seen", "have I seen", "do I saw", "I saw"],
+            correct: 1,
+            explanation: "'Rarely' đứng đầu câu -> Đảo trợ động từ 'have' lên trước chủ ngữ 'I'."
+          },
+          {
+            q: "Not until she explained the morphological rules _____ the concept.",
+            options: ["did I understand", "I understood", "I did understand", "do I understand"],
+            correct: 0,
+            explanation: "Cấu trúc 'Not until + Clause/Time, Trợ Động Từ + S + V'. Động từ ở quá khứ nên mượn trợ động từ 'did'."
+          }
+        ]
+      },
+      {
+        id: 5, level: "C2", category: "Morphology & Discourse",
+        title: "Ellipsis & Morphological Parsing",
+        desc: "Lược bỏ từ ngữ (Ellipsis) và phân tách hình thái từ trong văn bản học thuật.",
+        locked: true,
+        theory: `
+          <div class="p-4 bg-cottage-cream rounded-xl border border-cottage-butter space-y-2">
+            <h4 class="font-bold text-cottage-greenDark">1. Ellipsis (Lược âm/Lược từ):</h4>
+            <p>Tránh lặp lại thông tin đã rõ ràng trong văn cảnh (Discourse).<br>
+            VD: Some students prefer theoretical linguistics, others (prefer) applied pedagogy.</p>
+            <h4 class="font-bold text-cottage-greenDark mt-3">2. Morphology (Hình thái học):</h4>
+            <p>Hiểu cấu tạo từ: Prefix + Root + Suffix.<br>
+            VD: Un-predict-abil-ity (Tiền tố phủ định + Gốc từ + Hậu tố tính từ + Hậu tố danh từ).</p>
+          </div>
+        `,
+        quizzes: [
+          {
+            q: "The methodology was highly _____, adapting easily to different learning styles.",
+            options: ["rigid", "maladaptive", "malleable", "unprecedented"],
+            correct: 2,
+            explanation: "'Malleable' (dễ uốn nắn, linh hoạt) phù hợp với bối cảnh 'adapting easily' (dễ dàng thích nghi). 'Maladaptive' có tiền tố 'mal-' mang nghĩa tiêu cực (thích nghi kém)."
+          },
+          {
+            q: "John meticulously reviewed the syllabus, and Mary _____.",
+            options: ["did too", "reviewed", "did so meticulously", "also"],
+            correct: 0,
+            explanation: "Sử dụng 'did too' là hình thức Ellipsis phổ biến để thay thế cho toàn bộ cụm động từ quá khứ 'meticulously reviewed the syllabus'."
+          }
+        ]
       }
     ];
 
-    // ================= 2. DATABASE CINEMA & LITERATURE =================
+    // ================= 2. CINEMA DATABASE =================
     const cinemaData = [
       {
-        id: 1,
-        title: "Lời tỏ tình của Mr. Darcy",
-        source: "Pride and Prejudice (2005)",
-        quote: "You have bewitched me, body and soul, and I love, I love, I love you.",
-        translation: "Nàng đã bỏ bùa mê tâm trí và linh hồn ta, và ta yêu, ta yêu nàng vô cùng.",
-        tag: "Hiện tại hoàn thành & Lặp từ nhấn mạnh",
-        analysis: `
-          <p><b>1. 'You have bewitched me':</b> Tác giả sử dụng thì <b>Hiện tại hoàn thành (Present Perfect)</b> để nhấn mạnh trạng thái bị "mê hoặc" bắt đầu từ những lần gặp trước và cảm xúc đó vẫn đang lấp đầy tâm trí Darcy ở hiện tại.</p>
-          <p><b>2. Điệp từ 'I love, I love, I love you':</b> Nghệ thuật lặp cú pháp (Repetition) để phá vỡ sự kiêu hãnh lạnh lùng thường thấy của giới quý tộc Anh thế kỷ 19.</p>
-        `
+        id: 1, title: "Sự phân tách Chủ-Vị", source: "Dead Poets Society (1989)",
+        quote: "No matter what anybody tells you, words and ideas can change the world.",
+        translation: "Dù ai có nói gì đi nữa, ngôn từ và ý tưởng có thể thay đổi thế giới.",
+        analysis: "<p><b>Discourse Marker:</b> 'No matter what' tạo ra một mệnh đề nhượng bộ mạnh mẽ. Ở mệnh đề chính, chủ ngữ ghép 'words and ideas' được đặt trọng tâm để truyền tải triết lý cốt lõi của giáo dục (pedagogy).</p>"
       },
       {
-        id: 2,
-        title: "Lời nhắn gửi Carpe Diem",
-        source: "Dead Poets Society (1989)",
-        quote: "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
-        translation: "Hãy nắm bắt từng khoảnh khắc. Hãy sống một cuộc đời phi thường.",
-        tag: "Câu mệnh lệnh (Imperative Sentences)",
-        analysis: `
-          <p><b>1. Cấu trúc câu mệnh lệnh (Imperatives):</b> Động từ nguyên mẫu đứng đầu câu (<i>Seize, Make</i>) không cần chủ ngữ 'You'.</p>
-          <p><b>2. Ứng dụng:</b> Dùng để truyền cảm hứng mãnh liệt, đưa ra lời khuyên mang tính chân lý hoặc chỉ dẫn trực tiếp.</p>
-        `
-      },
-      {
-        id: 3,
-        title: "Cuộc đối thoại trên đồi hoàng hôn",
-        source: "La La Land (2016)",
-        quote: "There's not a spark in sight. What a waste of a lovely night.",
-        translation: "Chẳng có lấy một tia lửa cảm xúc nào. Thật phí hoài một buổi tối thơ mộng.",
-        tag: "Câu cảm thán 'What a...' & Đảo ngữ",
-        analysis: `
-          <p><b>1. Câu cảm thán:</b> Cấu trúc <i>What + a/an + Adj + Noun!</i> -> 'What a waste of a lovely night' thể hiện sự trêu đùa đầy hóm hỉnh giữa Mia và Sebastian.</p>
-          <p><b>2. 'There's not a spark in sight':</b> Cụm từ thành ngữ biểu thị không có sự rung động tình cảm (romantic chemistry).</p>
-        `
+        id: 2, title: "Cấu trúc song song (Parallelism)", source: "Pride and Prejudice (2005)",
+        quote: "You are too generous to trifle with me. If your feelings are still what they were last April, tell me so at once.",
+        translation: "Nàng quá cao thượng để đùa cợt với ta. Nếu cảm xúc của nàng vẫn như tháng Tư năm ngoái, hãy nói cho ta biết ngay lập tức.",
+        analysis: "<p><b>Syntax:</b> Tác giả sử dụng cấu trúc 'too + adj + to V' (quá... để có thể làm gì). Mệnh đề danh từ 'what they were last April' làm bổ ngữ cho động từ to be, so sánh tinh tế sự bất biến của tình cảm.</p>"
       }
     ];
 
-    // ================= 3. MINI-GAME DATA =================
-    const scrambleGames = [
-      { prompt: "Cô ấy thích thưởng thức trà nóng vào buổi chiều se lạnh.", words: ["She", "enjoys", "drinking", "hot tea", "on chilly afternoons"] },
-      { prompt: "Chúng tôi đã cùng nhau đi dạo qua khu vườn hoa oải hương.", words: ["We", "walked", "through", "the lavender garden", "together"] },
-      { prompt: "Nếu trời mưa, chúng tôi sẽ ở nhà đọc sách.", words: ["If", "it rains,", "we will", "stay home", "and read"] }
-    ];
-
-    const hunterQuestions = [
-      {
-        sentenceParts: [
-          { text: "She", isError: false },
-          { text: "don't like", isError: true, fix: "doesn't like (Vì 'She' là ngôi thứ 3 số ít)" },
-          { text: "drinking coffee", isError: false },
-          { text: "in the evening.", isError: false }
-        ]
-      },
-      {
-        sentenceParts: [
-          { text: "They", isError: false },
-          { text: "has lived", isError: true, fix: "have lived (Chủ ngữ 'They' đi với 'have')" },
-          { text: "in this village", isError: false },
-          { text: "since 2015.", isError: false }
-        ]
-      }
-    ];
-
-    // State Variables
+    // ================= 3. LOGIC & STATE =================
     let berries = 45;
     let currentFilter = 'ALL';
-    let currentScrambleIdx = 0;
-    let selectedScrambleWords = [];
-    let currentHunterIdx = 0;
+    let activeLessonId = null;
+    let activeQuizIndex = 0;
 
-    // ================= DOM INITIALIZATION & RENDER =================
     window.addEventListener('DOMContentLoaded', () => {
       renderLessons();
       renderCinema();
       initScrambleGame();
-      initHunterGame();
     });
 
-    // Navigation Switcher
     function switchNav(viewId) {
-      const views = ['garden', 'cinema', 'arcade', 'cheatsheet'];
-      views.forEach(v => {
+      ['garden', 'cinema', 'arcade'].forEach(v => {
         document.getElementById(`view-${v}`).classList.add('hidden');
-        const btn = document.getElementById(`nav-${v}`);
-        btn.className = "px-4 py-1.5 rounded-xl font-display font-bold text-xs bg-transparent text-cottage-brownLight hover:bg-cottage-butter/40 transition flex items-center gap-2 shrink-0";
+        document.getElementById(`nav-${v}`).className = "px-4 py-1.5 rounded-xl font-display font-bold text-xs bg-transparent text-cottage-brownLight hover:bg-cottage-butter/40 transition flex items-center gap-2 shrink-0";
       });
-
       document.getElementById(`view-${viewId}`).classList.remove('hidden');
-      const activeBtn = document.getElementById(`nav-${viewId}`);
-      activeBtn.className = "px-4 py-1.5 rounded-xl font-display font-bold text-xs bg-cottage-green text-white transition flex items-center gap-2 shrink-0";
+      document.getElementById(`nav-${viewId}`).className = "px-4 py-1.5 rounded-xl font-display font-bold text-xs bg-cottage-green text-white transition flex items-center gap-2 shrink-0";
     }
 
-    // Render Grammar Cards
+    // --- Garden Logic ---
     function renderLessons() {
       const container = document.getElementById('lessons-grid');
       const filtered = currentFilter === 'ALL' ? lessonsData : lessonsData.filter(l => l.level === currentFilter);
       document.getElementById('lesson-count').innerText = filtered.length;
 
       container.innerHTML = filtered.map(l => `
-        <div onclick="openLessonModal(${l.id})" class="bg-cottage-card hover:bg-cottage-cardHover border border-cottage-butter hover:border-cottage-green/50 p-5 rounded-2xl cursor-pointer transition shadow-xs hover:shadow-md flex flex-col justify-between group">
+        <div onclick="openLessonModal(${l.id})" class="bg-cottage-card hover:bg-cottage-cardHover border border-cottage-butter hover:border-cottage-green/50 p-5 rounded-2xl cursor-pointer transition shadow-xs hover:shadow-md flex flex-col justify-between group relative overflow-hidden">
           <div class="space-y-2">
             <div class="flex justify-between items-center">
-              <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full ${l.level === 'A1' ? 'bg-cottage-butter text-cottage-brown' : (l.level === 'A2' ? 'bg-cottage-greenLight text-cottage-greenDark' : 'bg-cottage-roseLight text-cottage-roseDark')} border border-black/5">${l.level}</span>
-              ${l.locked ? '<span class="text-[11px] font-bold bg-cottage-roseLight text-cottage-roseDark px-2 py-0.5 rounded-full border border-cottage-rose/30 flex items-center gap-1"><i class="fa-solid fa-lock text-[9px]"></i> VIP</span>' : '<span class="text-[11px] font-bold text-cottage-green flex items-center gap-1">✨ Sẵn sàng</span>'}
+              <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full ${l.level.startsWith('A') ? 'bg-cottage-butter text-cottage-brown' : (l.level.startsWith('B') ? 'bg-cottage-greenLight text-cottage-greenDark' : 'bg-rose-100 text-rose-800')} border border-black/5">${l.level}</span>
+              ${l.locked ? '<span class="text-[10px] font-bold bg-cottage-roseLight text-cottage-roseDark px-2 py-0.5 rounded-full border border-cottage-rose/30"><i class="fa-solid fa-lock"></i> VIP</span>' : '<span class="text-[10px] font-bold text-cottage-green">✨ Free</span>'}
             </div>
             <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-greenDark transition mt-1">${l.title}</h3>
             <p class="text-xs text-cottage-brownLight leading-relaxed line-clamp-2">${l.desc}</p>
-          </div>
-          <div class="pt-4 mt-2 border-t border-cottage-butter/50 flex justify-between items-center text-[11px] font-bold text-cottage-brownLight">
-            <span>Bài tập củng cố</span>
-            <span class="group-hover:translate-x-1 transition text-cottage-greenDark">Vào học →</span>
           </div>
         </div>
       `).join('');
@@ -614,56 +463,78 @@
       renderLessons();
     }
 
-    // Modal Lesson
+    // --- Quiz Engine ---
     function openLessonModal(id) {
       const lesson = lessonsData.find(l => l.id === id);
-      if (lesson.locked) {
-        openVipModal();
-        return;
-      }
+      if (lesson.locked) { openVipModal(); return; }
+      
+      activeLessonId = id;
+      activeQuizIndex = 0;
+      
       document.getElementById('modal-lesson-level').innerText = lesson.level;
       document.getElementById('modal-lesson-title').innerText = lesson.title;
       document.getElementById('modal-lesson-theory').innerHTML = lesson.theory;
       
-      // Setup Quiz
-      document.getElementById('modal-quiz-question').innerText = lesson.quiz.q;
-      const optsContainer = document.getElementById('modal-quiz-options');
-      const feedback = document.getElementById('modal-quiz-feedback');
-      feedback.classList.add('hidden');
-
-      optsContainer.innerHTML = lesson.quiz.options.map((opt, idx) => `
-        <button onclick="checkLessonQuiz(${lesson.id}, ${idx}, this)" class="w-full text-left p-3 rounded-xl bg-white border border-cottage-butter hover:bg-cottage-butter/30 text-xs font-semibold text-cottage-brown transition flex items-center justify-between">
-          <span>${opt}</span>
-          <i class="fa-regular fa-circle text-[10px] text-cottage-brownLight"></i>
-        </button>
-      `).join('');
-
+      renderQuizQuestion();
       document.getElementById('modal-lesson').classList.remove('hidden');
     }
 
-    function checkLessonQuiz(lessonId, chosenIdx, btn) {
-      const lesson = lessonsData.find(l => l.id === lessonId);
+    function renderQuizQuestion() {
+      const lesson = lessonsData.find(l => l.id === activeLessonId);
+      const quiz = lesson.quizzes[activeQuizIndex];
+
+      document.getElementById('quiz-counter').innerText = `(${activeQuizIndex + 1}/${lesson.quizzes.length})`;
+      document.getElementById('modal-quiz-question').innerText = quiz.q;
+
+      const optsContainer = document.getElementById('modal-quiz-options');
       const feedback = document.getElementById('modal-quiz-feedback');
+      const nextBtn = document.getElementById('btn-next-quiz');
+
+      feedback.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+
+      optsContainer.innerHTML = quiz.options.map((opt, idx) => `
+        <button onclick="checkLessonQuiz(${idx}, this)" class="w-full text-left p-3.5 rounded-xl bg-white border border-cottage-butter hover:bg-cottage-butter/30 text-sm font-semibold text-cottage-brown transition flex items-center justify-between group">
+          <span>${opt}</span>
+          <div class="w-4 h-4 rounded-full border border-cottage-brownLight/50 group-hover:border-cottage-green flex items-center justify-center"></div>
+        </button>
+      `).join('');
+    }
+
+    function checkLessonQuiz(chosenIdx, btn) {
+      const lesson = lessonsData.find(l => l.id === activeLessonId);
+      const quiz = lesson.quizzes[activeQuizIndex];
+      const feedback = document.getElementById('modal-quiz-feedback');
+      const nextBtn = document.getElementById('btn-next-quiz');
+      
       feedback.classList.remove('hidden');
+      nextBtn.classList.remove('hidden');
 
       const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
       allBtns.forEach(b => b.disabled = true);
 
-      if (chosenIdx === lesson.quiz.correct) {
-        berries += 5;
-        document.getElementById('user-berries').innerText = berries;
-        btn.classList.add('bg-cottage-greenLight', 'border-cottage-green', 'text-cottage-greenDark');
-        feedback.className = "p-3.5 rounded-xl text-xs font-semibold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border border-cottage-green/30 block";
-        feedback.innerHTML = `🎉 <b>Chính xác! (+5 🍓)</b><br>${lesson.quiz.explanation}`;
+      if (chosenIdx === quiz.correct) {
+        berries += 5; document.getElementById('user-berries').innerText = berries;
+        btn.className = "w-full text-left p-3.5 rounded-xl text-sm font-semibold flex items-center justify-between bg-cottage-greenLight border border-cottage-green text-cottage-greenDark";
+        feedback.className = "p-4 rounded-xl text-sm font-semibold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border border-cottage-green/30 block mt-3";
+        feedback.innerHTML = `🎉 <b>Chính xác! (+5 🍓)</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       } else {
-        btn.classList.add('bg-cottage-roseLight', 'border-cottage-rose', 'text-cottage-roseDark');
-        allBtns[lesson.quiz.correct].classList.add('bg-cottage-greenLight', 'border-cottage-green', 'text-cottage-greenDark');
-        feedback.className = "p-3.5 rounded-xl text-xs font-semibold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border border-cottage-rose/30 block";
-        feedback.innerHTML = `🌿 <b>Chưa chuẩn xác!</b><br>${lesson.quiz.explanation}`;
+        btn.className = "w-full text-left p-3.5 rounded-xl text-sm font-semibold flex items-center justify-between bg-cottage-roseLight border border-cottage-rose text-cottage-roseDark";
+        allBtns[quiz.correct].className = "w-full text-left p-3.5 rounded-xl text-sm font-semibold flex items-center justify-between bg-cottage-greenLight border border-cottage-green text-cottage-greenDark";
+        feedback.className = "p-4 rounded-xl text-sm font-semibold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border border-cottage-rose/30 block mt-3";
+        feedback.innerHTML = `🌿 <b>Chưa chuẩn xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
+      }
+
+      if (activeQuizIndex === lesson.quizzes.length - 1) {
+        nextBtn.innerHTML = "✨ Hoàn thành bài học";
+        nextBtn.onclick = () => closeModal('modal-lesson');
+      } else {
+        nextBtn.innerHTML = "Câu tiếp theo →";
+        nextBtn.onclick = () => { activeQuizIndex++; renderQuizQuestion(); };
       }
     }
 
-    // Render Cinema
+    // --- Cinema Logic ---
     function renderCinema() {
       const container = document.getElementById('cinema-grid');
       container.innerHTML = cinemaData.map(c => `
@@ -671,11 +542,7 @@
           <div class="space-y-2">
             <span class="text-[10px] font-bold text-cottage-roseDark uppercase tracking-wider block">${c.source}</span>
             <h3 class="font-serif font-bold text-base text-cottage-brown">${c.title}</h3>
-            <p class="font-serif italic text-xs text-cottage-brown/80 bg-cottage-cream p-3 rounded-xl border border-cottage-butter/60">"${c.quote}"</p>
-          </div>
-          <div class="flex items-center justify-between text-[11px] font-bold text-cottage-greenDark pt-2">
-            <span>${c.tag}</span>
-            <span>Xem phân tích →</span>
+            <p class="font-serif italic text-xs text-cottage-brownLight bg-cottage-cream p-3 rounded-xl line-clamp-3">"${c.quote}"</p>
           </div>
         </div>
       `).join('');
@@ -691,142 +558,60 @@
       document.getElementById('modal-cinema').classList.remove('hidden');
     }
 
-    // Mini Games Logic
-    function switchGameMode(mode) {
-      if (mode === 'scramble') {
-        document.getElementById('game-scramble-container').classList.remove('hidden');
-        document.getElementById('game-hunter-container').classList.add('hidden');
-        document.getElementById('game-btn-scramble').className = "px-4 py-2 rounded-xl text-xs font-bold bg-cottage-green text-white transition";
-        document.getElementById('game-btn-hunter').className = "px-4 py-2 rounded-xl text-xs font-bold bg-white border border-cottage-butter text-cottage-brown transition";
-      } else {
-        document.getElementById('game-scramble-container').classList.add('hidden');
-        document.getElementById('game-hunter-container').classList.remove('hidden');
-        document.getElementById('game-btn-hunter').className = "px-4 py-2 rounded-xl text-xs font-bold bg-cottage-green text-white transition";
-        document.getElementById('game-btn-scramble').className = "px-4 py-2 rounded-xl text-xs font-bold bg-white border border-cottage-butter text-cottage-brown transition";
-      }
-    }
-
+    // --- Scramble Game (Basic Setup) ---
+    let selectedScrambleWords = [];
+    const scrambleData = { prompt: "Cách diễn đạt ý tưởng rõ ràng là một nghệ thuật.", words: ["Articulating", "ideas", "clearly", "is", "an art"] };
+    
     function initScrambleGame() {
       selectedScrambleWords = [];
-      const data = scrambleGames[currentScrambleIdx];
-      document.getElementById('scramble-prompt').innerText = `"${data.prompt}"`;
+      document.getElementById('scramble-prompt').innerText = `"${scrambleData.prompt}"`;
       document.getElementById('scramble-feedback').classList.add('hidden');
-      
       const pool = document.getElementById('scramble-pool');
-      const drop = document.getElementById('scramble-dropzone');
-      drop.innerHTML = '<span class="text-xs text-cottage-brownLight/60 select-none">Chạm vào các từ bên dưới để ghép câu...</span>';
-
-      const shuffled = [...data.words].sort(() => 0.5 - Math.random());
-      pool.innerHTML = shuffled.map(w => `
-        <button onclick="pickScrambleWord('${w}', this)" class="px-3.5 py-1.5 bg-white border border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown shadow-xs hover:bg-cottage-butter/40 transition">${w}</button>
-      `).join('');
+      const shuffled = [...scrambleData.words].sort(() => 0.5 - Math.random());
+      pool.innerHTML = shuffled.map(w => `<button onclick="pickScrambleWord('${w}', this)" class="px-3.5 py-1.5 bg-white border border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown hover:bg-cottage-butter/40">${w}</button>`).join('');
+      document.getElementById('scramble-dropzone').innerHTML = '<span class="text-xs text-cottage-brownLight/60">Chạm vào các từ bên dưới để ghép câu...</span>';
     }
 
     function pickScrambleWord(word, btn) {
-      selectedScrambleWords.push(word);
-      btn.style.display = 'none';
-      renderScrambleDrop();
-    }
-
-    function renderScrambleDrop() {
+      selectedScrambleWords.push(word); btn.style.display = 'none';
       const drop = document.getElementById('scramble-dropzone');
       drop.innerHTML = '';
-      if(selectedScrambleWords.length === 0) {
-        drop.innerHTML = '<span class="text-xs text-cottage-brownLight/60 select-none">Chạm vào các từ bên dưới để ghép câu...</span>';
-        return;
-      }
-      selectedScrambleWords.forEach((w, idx) => {
+      selectedScrambleWords.forEach((w) => {
         const tag = document.createElement('span');
-        tag.className = "px-3 py-1 bg-cottage-green text-white text-xs font-bold rounded-lg cursor-pointer transform active:scale-95 transition";
-        tag.innerText = w;
-        tag.onclick = () => removeScrambleWord(idx);
-        drop.appendChild(tag);
+        tag.className = "px-3 py-1 bg-cottage-green text-white text-xs font-bold rounded-lg cursor-pointer";
+        tag.innerText = w; drop.appendChild(tag);
       });
     }
 
-    function removeScrambleWord(idx) {
-      selectedScrambleWords.splice(idx, 1);
-      initScrambleGame();
-      // Re-add remaining
-      const currentRemaining = [...selectedScrambleWords];
-      selectedScrambleWords = [];
-      currentRemaining.forEach(w => {
-        const btns = Array.from(document.getElementById('scramble-pool').querySelectorAll('button'));
-        const targetBtn = btns.find(b => b.innerText === w && b.style.display !== 'none');
-        if(targetBtn) pickScrambleWord(w, targetBtn);
-      });
-    }
-
+    function resetScramble() { initScrambleGame(); }
+    
     function checkScramble() {
-      const data = scrambleGames[currentScrambleIdx];
-      const feedback = document.getElementById('scramble-feedback');
-      feedback.classList.remove('hidden');
-
-      if (selectedScrambleWords.join(' ') === data.words.join(' ')) {
-        berries += 10;
-        document.getElementById('user-berries').innerText = berries;
-        feedback.className = "text-xs font-bold text-cottage-greenDark block";
-        feedback.innerText = "✨ Tuyệt vời! Bạn đã sắp xếp chính xác và nhận được 10 🍓!";
-        setTimeout(() => {
-          currentScrambleIdx = (currentScrambleIdx + 1) % scrambleGames.length;
-          initScrambleGame();
-        }, 1800);
+      const fb = document.getElementById('scramble-feedback'); fb.classList.remove('hidden');
+      if (selectedScrambleWords.join(' ') === scrambleData.words.join(' ')) {
+        berries += 10; document.getElementById('user-berries').innerText = berries;
+        fb.className = "text-xs font-bold text-cottage-greenDark block"; fb.innerText = "✨ Chính xác! (+10 🍓)";
       } else {
-        feedback.className = "text-xs font-bold text-cottage-roseDark block";
-        feedback.innerText = "Thứ tự chưa chuẩn xác rồi, hãy thử lại nhé!";
+        fb.className = "text-xs font-bold text-cottage-roseDark block"; fb.innerText = "Chưa đúng cấu trúc ngữ pháp, thử lại nhé!";
       }
     }
 
-    function resetScramble() {
-      initScrambleGame();
-    }
-
-    // Error Hunter Logic
-    function initHunterGame() {
-      const q = hunterQuestions[currentHunterIdx];
-      const container = document.getElementById('hunter-sentence');
-      const feedback = document.getElementById('hunter-feedback');
-      const nextBtn = document.getElementById('hunter-next-btn');
+    // --- VietQR & VIP Logic ---
+    function updateQR(amount, addInfo) {
+      // Thông tin chuyển khoản được trích xuất từ hình ảnh của user
+      const accountName = "VU THAI AN";
+      const bankCode = "NCB"; // National Citizen Bank
+      const accountNo = "101459124207";
       
-      feedback.classList.add('hidden');
-      nextBtn.classList.add('hidden');
-
-      container.innerHTML = q.sentenceParts.map((part, idx) => `
-        <span onclick="checkHunterPart(${idx}, this)" class="px-2.5 py-1 rounded-lg border-b-2 border-dashed border-cottage-brown/40 hover:bg-cottage-butter/50 cursor-pointer font-bold transition">${part.text}</span>
-      `).join('');
+      const qrUrl = `https://img.vietqr.io/image/${bankCode}-${accountNo}-compact2.png?amount=${amount}&addInfo=${addInfo}&accountName=${encodeURIComponent(accountName)}`;
+      
+      document.getElementById('vietqr-image').src = qrUrl;
+      document.getElementById('qr-content').innerText = addInfo;
     }
 
-    function checkHunterPart(idx, el) {
-      const q = hunterQuestions[currentHunterIdx];
-      const part = q.sentenceParts[idx];
-      const feedback = document.getElementById('hunter-feedback');
-      const nextBtn = document.getElementById('hunter-next-btn');
-      feedback.classList.remove('hidden');
-
-      if (part.isError) {
-        berries += 15;
-        document.getElementById('user-berries').innerText = berries;
-        el.classList.add('bg-cottage-greenLight', 'text-cottage-greenDark', 'border-cottage-green');
-        feedback.className = "text-xs font-bold text-cottage-greenDark bg-cottage-greenLight p-3 rounded-xl border border-cottage-green/30 block";
-        feedback.innerHTML = `🎯 <b>Bắt trúng lỗi sai!</b> Sửa lại thành: <u>${part.fix}</u> (+15 🍓)`;
-        nextBtn.classList.remove('hidden');
-      } else {
-        el.classList.add('bg-cottage-roseLight', 'text-cottage-roseDark', 'border-cottage-rose');
-        feedback.className = "text-xs font-bold text-cottage-roseDark bg-cottage-roseLight p-3 rounded-xl border border-cottage-rose/30 block";
-        feedback.innerText = "Phần này ngữ pháp đã đúng rồi, hãy tìm cụm từ khác nhé!";
-      }
-    }
-
-    function nextHunterQuestion() {
-      currentHunterIdx = (currentHunterIdx + 1) % hunterQuestions.length;
-      initHunterGame();
-    }
-
-    // Modals
     function openVipModal() { document.getElementById('modal-vip').classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     function simulateSuccessPayment() {
-      alert("Cảm ơn bạn! Hệ thống đã ghi nhận giao dịch của bạn. Chúc bạn có những giờ học thật thảnh thơi tại CozyGarden 🌱");
+      alert("Hệ thống đang xác nhận giao dịch. Chúc bạn có những trải nghiệm học tập sâu sắc cùng CozyGarden 🌱");
       closeModal('modal-vip');
     }
   </script>
