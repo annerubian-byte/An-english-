@@ -453,11 +453,21 @@
       document.getElementById('modal-login').classList.remove('hidden');
     }
 
-    function verifyVipLogin() {
+function verifyVipLogin() {
       const daysInput = document.getElementById('vip-package-select').value;
       const passInput = document.getElementById('vip-password-input').value;
 
-      if (passInput === "cosygardenhoctienganhquangucanh") {
+      // Xác định mật khẩu đúng cho từng gói
+      let correctPassword = "";
+      if (daysInput === "3") {
+        correctPassword = "cosygardenhoctienganhquangucanh3days";
+      } else if (daysInput === "30") {
+        correctPassword = "cosygardenhoctienganhquangucanh1m";
+      } else if (daysInput === "365") {
+        correctPassword = "cosygardenhoctienganhquangucanh1y";
+      }
+
+      if (passInput === correctPassword) {
         // Tính thời gian sống của tài khoản
         const durationInMs = parseInt(daysInput) * 24 * 60 * 60 * 1000;
         const expiryDate = Date.now() + durationInMs;
