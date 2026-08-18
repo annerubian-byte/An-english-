@@ -57,7 +57,7 @@
           <div class="flex items-center gap-1.5">
             <span class="font-display font-black text-xl text-cottage-roseDark">Cozy Garden</span>
           </div>
-          <span class="text-[11px] text-cottage-brownLight font-semibold">Cùng chill và học từ vựng qua phim ảnh cùng Cozy nha! 🦢</span>
+          <span class="text-[11px] text-cottage-brownLight font-semibold">Cùng chill và học từ vựng qua phim ảnh với Cozy nha! 🦢</span>
         </div>
       </div>
 
@@ -962,7 +962,7 @@
 
       // Nếu đã làm hết câu hỏi
       if (remainingSentences.length === 0) {
-        document.getElementById('scramble-prompt').innerHTML = "<span class='text-cottage-greenDark'>🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi hiện có. Bạn có thể mở khóa gói VIP để học thêm nhé!</span>";
+        document.getElementById('scramble-prompt').innerHTML = "<span class='text-cottage-greenDark'>🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi hiện có.</span>";
         document.getElementById('scramble-pool').innerHTML = "";
         document.getElementById('btn-reset-scramble').style.display = "none";
         document.getElementById('btn-check-scramble').style.display = "none";
@@ -1094,7 +1094,7 @@
 
       } else {
         fb.className = "text-sm font-bold text-cottage-roseDark block mt-4 text-center"; 
-        fb.innerText = "🤔 Vẫn còn từ chưa chính xác, hãy nhấp vào từ bị sai để chọn lại nhé!";
+        fb.innerText = "🤔 Chưa chính xác, bạn hãy nhấp vào từ bị sai để chọn lại nhé!";
       }
     }
 
