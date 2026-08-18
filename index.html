@@ -98,9 +98,9 @@
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="level-filters">
           <button onclick="filterCinema('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả (All)</button>
-          <button onclick="filterCinema('Romance & Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Lãng mạn & Nhạc kịch 💌</button>
-          <button onclick="filterCinema('Workplace & Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Công sở & Hài kịch 👠</button>
-          <button onclick="filterCinema('Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo 🧚‍♀️</button>
+          <button onclick="filterCinema('Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình Cảm (Romance) 💌</button>
+          <button onclick="filterCinema('Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính Kịch (Drama) 🎭</button>
+          <button onclick="filterCinema('Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo (Fantasy) 🧚‍♀️</button>
         </div>
         <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="cinema-count">0</span> bài học 🌷</span>
       </div>
@@ -284,7 +284,7 @@
     const cinemaData = [
       {
         id: 1, 
-        genre: "Workplace & Comedy", 
+        genre: "Drama", 
         title: "The Devil Wears Prada (2006)",
         thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", 
         mediaType: "youtube", 
@@ -325,7 +325,7 @@
       },
       {
         id: 2, 
-        genre: "Workplace & Comedy", 
+        genre: "Drama", 
         title: "The Intern (2015)",
         thumbnail: "https://m.media-amazon.com/images/M/MV5BMTUyNjE5NjI5OF5BMl5BanBnXkFtZTgwNzExNDU2NjE@._V1_FMjpg_UX1000_.jpg", 
         mediaType: "youtube", 
@@ -366,7 +366,7 @@
       },
       {
         id: 3, 
-        genre: "Romance & Musical", 
+        genre: "Romance", 
         title: "La La Land (2016)",
         thumbnail: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", 
         mediaType: "youtube", 
@@ -407,6 +407,47 @@
       },
       {
         id: 4, 
+        genre: "Romance", 
+        title: "The Greatest Showman (2017)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMjI1NDYzMzY5Ml5BMl5BanBnXkFtZTgwNTA2NTYzNDM@._V1_FMjpg_UX1000_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", 
+        locked: true,
+        quizzes: [
+          {
+            q: "Trong bài hát The Greatest Show, Barnum nhắc đến từ <b>'spectacle'</b> để mô tả rạp xiếc của mình. Theo bạn, 'spectacle' mang đến cảm giác gì cho người xem?",
+            options: ["A. Nhà chán, tẻ nhạt", "B. Buồn ngủ", "C. Mãn nhãn, hoành tráng, khó quên", "D. Đáng sợ"],
+            correct: 2,
+            explanation: "<b>'Spectacle'</b> chỉ một màn trình diễn hoành tráng, mãn nhãn, được thiết kế để gây ấn tượng mạnh mẽ cho người xem."
+          },
+          {
+            q: "Các diễn viên trong rạp xiếc thường hát rằng họ từng là những kẻ <b>'outcasts'</b> trước khi Barnum tìm thấy họ. 'Outcast' là những người như thế nào?",
+            options: ["A. Được xã hội tôn vinh", "B. Bị xã hội ruồng rẫy, xa lánh", "C. Vô cùng giàu có", "D. Nổi tiếng từ nhỏ"],
+            correct: 1,
+            explanation: "<b>'Outcast'</b> (kẻ bị ruồng bỏ). Những diễn viên này có ngoại hình khác thường nên từng bị xã hội xa lánh trước khi tìm được mái nhà chung tại rạp xiếc."
+          },
+          {
+            q: "Barnum được xem là một <b>'visionary'</b> thực thụ khi dám tạo ra một loại hình giải trí mới. 'Visionary' ám chỉ người có đặc điểm gì?",
+            options: ["A. Sống hoài niệm về quá khứ", "B. Không có ý chí tiến thủ", "C. Có tầm nhìn xa trông rộng, có ý tưởng đột phá", "D. Cực kỳ bảo thủ"],
+            correct: 2,
+            explanation: "<b>'Visionary'</b> (người nhìn xa trông rộng). Barnum nhìn thấy tiềm năng và vẻ đẹp ở những điều mà người bình thường chê cười, từ đó tiên phong tạo ra ngành kinh doanh rạp xiếc."
+          },
+          {
+            q: "Sự mới lạ của rạp xiếc đã phải chịu sự <b>'scrutiny'</b> gắt gao từ giới quý tộc. Từ này có nghĩa là gì?",
+            options: ["A. Sự ủng hộ tuyệt đối", "B. Sự tài trợ vô điều kiện", "C. Sự thờ ơ, phớt lờ", "D. Sự soi xét, đánh giá khắt khe"],
+            correct: 3,
+            explanation: "<b>'Scrutiny'</b> là sự soi mói, giám sát kỹ lưỡng. Giới phê bình nghệ thuật thượng lưu luôn 'soi xét' và coi thường các tiết mục của Barnum."
+          },
+          {
+            q: "Xuyên suốt bài hát, từ <b>'noble'</b> được sử dụng để miêu tả nghệ thuật. 'Noble' nghĩa là gì?",
+            options: ["A. Cao quý, đáng kính trọng", "B. Thấp hèn, rẻ mạt", "C. Rất nhàm chán", "D. Mang tính bạo lực"],
+            correct: 0,
+            explanation: "Bộ phim muốn truyền tải thông điệp: Nghệ thuật cao quý (<b>noble</b>) nhất chính là mang lại nụ cười và hạnh phúc cho mọi người."
+          }
+        ]
+      },
+      {
+        id: 5, 
         genre: "Fantasy", 
         title: "Harry Potter and the Half-Blood Prince (2009)",
         thumbnail: "https://m.media-amazon.com/images/M/MV5BODg1NjE0YjctYWVmMC00NmE5LWFkOWMtOTdkYWQ2MTFiZDI0XkEyXkFqcGc@._V1_.jpg", 
@@ -445,12 +486,52 @@
             explanation: "<b>'Half-Blood'</b> (Máu lai) là từ chỉ phù thủy mang dòng máu pha trộn (Snape có mẹ là phù thủy họ Prince, bố là Muggle)."
           }
         ]
+      },
+      {
+        id: 6, 
+        genre: "Fantasy", 
+        title: "Alice in Wonderland (2010)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", 
+        locked: true,
+        quizzes: [
+          {
+            q: "Khi Alice đến cung điện, cô giải thích lý do quần áo của mình bị rách: <i>'I <b>outgrew</b> them'</i>. Từ 'outgrow' mang nghĩa gì?",
+            options: ["A. Quần áo bị co rút lại do giặt", "B. Tôi lớn nhanh quá nên mặc không còn vừa quần áo cũ nữa", "C. Quần áo bị lỗi thời", "D. Tôi cố tình xé rách chúng"],
+            correct: 1,
+            explanation: "Do ăn phải bánh phép thuật, Alice phình to khổng lồ nên cơ thể cô đã 'phát triển vượt kích cỡ' (outgrew) quần áo đang mặc."
+          },
+          {
+            q: "Nữ hoàng Đỏ nhìn thấy thân hình khổng lồ của Alice và đã ra lệnh cho tùy tùng: <i>'clothe this <b>enormous</b> girl'</i>. Từ 'enormous' mang sắc thái nào?",
+            options: ["A. Rất nhỏ bé, tí hon", "B. Rất xấu xí", "C. Vô cùng to lớn, khổng lồ", "D. Rất xinh đẹp"],
+            correct: 2,
+            explanation: "<b>'Enormous'</b> (khổng lồ, to lớn) được Nữ hoàng dùng để miêu tả kích thước hiện tại của Alice sau khi bị phép thuật làm cho to ra."
+          },
+          {
+            q: "Wonderland là một nơi rất <b>'peculiar'</b>, hoàn toàn khác biệt với thế giới loài người. 'Peculiar' có nghĩa là gì?",
+            options: ["A. Bình thường, quen thuộc", "B. Lộng lẫy, xa hoa", "C. Kỳ lạ, khác thường, có phần hơi lập dị", "D. Nhàm chán"],
+            correct: 2,
+            explanation: "Mọi thứ ở Wonderland từ sinh vật đến con người đều không tuân theo logic thông thường, chúng rất 'kỳ lạ' ('peculiar')."
+          },
+          {
+            q: "Sự phán xét của Nữ hoàng Đỏ với những kẻ làm trái ý luôn rất <b>'tyrannical'</b>. Bạn hiểu từ này như thế nào?",
+            options: ["A. Rất công bằng và dân chủ", "B. Độc tài, tàn bạo, lạm dụng quyền lực", "C. Hiền từ, độ lượng", "D. Không có tiếng nói"],
+            correct: 1,
+            explanation: "Nữ hoàng Đỏ nổi tiếng với câu nói 'Off with his head!' (Chém đầu hắn!), cho thấy sự trị vì 'độc tài, bạo chúa' ('tyrannical') của bà."
+          },
+          {
+            q: "Alice là cô bé mang trong mình một sự tò mò <b>'insatiable'</b>. Cụm từ này diễn tả điều gì?",
+            options: ["A. Không thể thỏa mãn, khát khao vô tận", "B. Rất dễ chán nản", "C. Luôn cảm thấy mệt mỏi", "D. Không có mục tiêu"],
+            correct: 0,
+            explanation: "Chính sự tò mò 'không đáy' ('insatiable') đã thôi thúc Alice bám theo thỏ trắng và rơi xuống hang thỏ, mở ra chuyến phiêu lưu."
+          }
+        ]
       }
     ];
 
     // ================= LOGIC CHO TRẠM LUYỆN TẬP (FILL IN THE BLANK) =================
-    // Thay vì sắp xếp câu vô nghĩa, hệ thống sẽ chọn ngẫu nhiên 1 câu (từ các bài đã học) 
-    // và đục lỗ từ vựng quan trọng để học sinh kéo thả.
+    // Các câu hỏi được lấy trực tiếp từ video/đoạn hội thoại đã cho
     
     const practiceSentences = [
       {
@@ -496,21 +577,29 @@
           { text: " Prince.", isBlank: false }
         ],
         wordsToPick: ["against", "Half-Blood", "coward", "belong"]
+      },
+      {
+        id: "alice_1",
+        fullText: "I outgrew them. I've been growing an awful lot lately.",
+        parts: [
+          { text: "I ", isBlank: false },
+          { text: "outgrew", isBlank: true },
+          { text: " them. I've been growing an awful lot lately.", isBlank: false }
+        ],
+        wordsToPick: ["enormous", "outgrew", "peculiar"]
       }
     ];
 
     let currentPractice = null;
-    let selectedAnswers = {}; // Lưu đáp án người dùng chọn cho từng ô trống { index: word }
+    let selectedAnswers = {}; 
 
     function initScrambleGame() {
-      // Chọn ngẫu nhiên 1 câu bài tập
       currentPractice = practiceSentences[Math.floor(Math.random() * practiceSentences.length)];
       selectedAnswers = {};
       
       const promptContainer = document.getElementById('scramble-prompt');
       promptContainer.innerHTML = '';
       
-      // Render câu đục lỗ
       currentPractice.parts.forEach((part, index) => {
         if (part.isBlank) {
           const blankSpan = document.createElement('span');
@@ -524,7 +613,6 @@
         }
       });
 
-      // Render danh sách từ (có đảo lộn)
       const pool = document.getElementById('scramble-pool');
       const shuffledWords = [...currentPractice.wordsToPick].sort(() => 0.5 - Math.random());
       
@@ -536,7 +624,6 @@
     }
 
     function pickWordForBlank(word) {
-      // Tìm ô trống đầu tiên chưa có chữ
       let firstEmptyBlankIdx = -1;
       for (let i = 0; i < currentPractice.parts.length; i++) {
         if (currentPractice.parts[i].isBlank && !selectedAnswers[i]) {
@@ -547,11 +634,9 @@
 
       if (firstEmptyBlankIdx !== -1) {
         selectedAnswers[firstEmptyBlankIdx] = word;
-        // Hiện chữ lên ô trống
         const blankEl = document.getElementById(`blank-${firstEmptyBlankIdx}`);
         blankEl.innerText = word;
         blankEl.classList.add('border-solid', 'bg-cottage-roseLight/30');
-        // Ẩn nút ở pool
         document.getElementById(`pool-word-${word.replace(/\s+/g, '-')}`).style.display = 'none';
       }
     }
@@ -561,12 +646,10 @@
         const word = selectedAnswers[blankIndex];
         delete selectedAnswers[blankIndex];
         
-        // Trả lại giao diện ô trống
         const blankEl = document.getElementById(`blank-${blankIndex}`);
         blankEl.innerText = '';
         blankEl.classList.remove('border-solid', 'bg-cottage-roseLight/30');
         
-        // Hiện lại nút ở pool
         document.getElementById(`pool-word-${word.replace(/\s+/g, '-')}`).style.display = 'inline-block';
       }
     }
