@@ -103,6 +103,8 @@
           <button onclick="filterCinema('Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài (Comedy) 😂</button>
           <button onclick="filterCinema('Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc Kịch (Musical) 🎵</button>
           <button onclick="filterCinema('Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo (Fantasy) 🧚‍♀️</button>
+          <button onclick="filterCinema('Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành Động (Action) 💥</button>
+          <button onclick="filterCinema('Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn Tưởng (Sci-Fi) 🛸</button>
           <button onclick="filterCinema('Thriller & Mystery')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh thám & Giật gân (Thriller & Mystery) 🔪</button>
           <button onclick="filterCinema('Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài Liệu (Documentary) 🌍</button>
         </div>
@@ -193,7 +195,7 @@
         <p class="text-xs text-cottage-brownLight text-center mt-2 italic"><i class="fa-solid fa-headphones text-[10px] mr-1"></i> Vừa xem video vừa làm bài tập bên dưới để đoán nghĩa của từ nhé!</p>
       </div>
 
-      <!-- Đã KHÔI PHỤC phần Quote và Vocab ở đây -->
+      <!-- Đã gộp Quote và Vocab Analysis lại vào đúng khối HTML -->
       <div class="p-5 md:p-7 pt-0 flex-shrink-0">
         <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative">
           <div class="absolute -top-3 -left-2 text-2xl">🪶</div>
@@ -208,6 +210,7 @@
         </div>
       </div>
 
+      <!-- Phần Quiz -->
       <div class="p-5 md:p-7 bg-cottage-card flex-1 rounded-b-[1.75rem] border-t-2 border-cottage-rose/30 space-y-4 relative overflow-hidden">
         <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">🧩</div>
         <div class="flex justify-between items-center text-[11px] font-black text-cottage-roseDark uppercase tracking-wider relative z-10">
@@ -642,12 +645,124 @@
             explanation: "Chính sự tò mò 'không đáy' ('insatiable') đã thôi thúc Alice bám theo thỏ trắng và rơi xuống hang thỏ, mở ra chuyến phiêu lưu."
           }
         ]
+      },
+      {
+        id: 7, 
+        genre: "Action", 
+        title: "John Wick (2014)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/C0BMx-qxsP4?rel=0", 
+        locked: true,
+        quote: "People keep asking if I'm back, and I haven't really had an answer. But now, yeah, I'm thinking I'm back.",
+        translation: "Mọi người cứ hỏi tôi đã trở lại chưa, và tôi chưa bao giờ thực sự có câu trả lời. Nhưng bây giờ, ừ, tôi nghĩ tôi đã trở lại.",
+        vocabAnalysis: [
+          {
+            word: "Retirement (n)", 
+            ipa: "/rɪˈtaɪər.mənt/", 
+            meaning: "Sự nghỉ hưu, rút lui khỏi giới giang hồ.", 
+            context: "John Wick từng là một sát thủ huyền thoại đã 'rửa tay gác kiếm' (retirement) trước khi bị ép phải quay lại."
+          },
+          {
+            word: "Vengeance (n)", 
+            ipa: "/ˈven.dʒəns/", 
+            meaning: "Sự báo thù, trả thù.", 
+            context: "Cái chết của chú chó đã đánh thức cơn thịnh nộ và khao khát 'báo thù' (vengeance) trong John."
+          }
+        ],
+        quizzes: [
+          {
+            q: "Kẻ thù miêu tả John Wick là một người có sự tập trung <b>'sheer'</b> (<i>'sheer will'</i>). 'Sheer' ở đây mang ý nghĩa gì?",
+            options: ["A. Mỏng manh, dễ vỡ", "B. Hoàn toàn, tuyệt đối (dùng để nhấn mạnh mức độ)", "C. Rất tàn nhẫn", "D. Thiếu quyết đoán"],
+            correct: 1,
+            explanation: "<b>'Sheer will'</b> nghĩa là một ý chí 'tuyệt đối', không gì có thể lay chuyển được."
+          },
+          {
+            q: "Danh tiếng của John Wick trong giới sát thủ được xem là <b>'unparalleled'</b>. Từ này có nghĩa là gì?",
+            options: ["A. Không ai biết đến", "B. Vô song, không có đối thủ", "C. Rất bình thường", "D. Dễ dàng bị đánh bại"],
+            correct: 1,
+            explanation: "Khả năng giết chóc của John Wick là 'không thể sánh kịp' (<b>unparalleled</b>), khiến ai cũng phải khiếp sợ."
+          },
+          {
+            q: "Kẻ thù đã làm một hành động <b>'foolhardy'</b> khi chọc giận John. 'Foolhardy' ám chỉ hành động như thế nào?",
+            options: ["A. Rất dũng cảm", "B. Thông minh và có tính toán", "C. Liều lĩnh một cách ngu ngốc, thiếu suy nghĩ", "D. Hèn nhát"],
+            correct: 2,
+            explanation: "Việc đánh cắp xe và giết chó của John Wick là một quyết định 'liều lĩnh điên rồ' (<b>foolhardy</b>)."
+          },
+          {
+            q: "Màn trả thù của John Wick cực kỳ <b>'lethal'</b>. Từ 'lethal' mang nghĩa gì?",
+            options: ["A. Gây chết người, có tính sát thương cao", "B. Khá ồn ào", "C. Chậm chạp", "D. Buồn cười"],
+            correct: 0,
+            explanation: "Mọi đòn tấn công của John Wick đều chí mạng (<b>lethal</b>)."
+          },
+          {
+            q: "Anh ta hạ gục kẻ thù bằng sự <b>'precision'</b> đáng kinh ngạc. 'Precision' là gì?",
+            options: ["A. Sự hoảng loạn", "B. Sự may mắn", "C. Sự tàn nhẫn", "D. Độ chính xác, sự chuẩn xác"],
+            correct: 3,
+            explanation: "John Wick nổi tiếng với kỹ năng bắn súng 'bách phát bách trúng' (<b>precision</b>)."
+          }
+        ]
+      },
+      {
+        id: 8, 
+        genre: "Sci-Fi", 
+        title: "Interstellar (2014)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/zSWdZVtXT7E?rel=0", 
+        locked: true,
+        quote: "Mankind was born on Earth. It was never meant to die here.",
+        translation: "Nhân loại được sinh ra trên Trái Đất. Nhưng không có nghĩa là chúng ta phải chết ở đây.",
+        vocabAnalysis: [
+          {
+            word: "Gravity (n)", 
+            ipa: "/ˈɡræv.ə.t̬i/", 
+            meaning: "Trọng lực, lực hấp dẫn.", 
+            context: "Một trong những rào cản lớn nhất để khám phá vũ trụ là vượt qua 'trọng lực' của Trái đất."
+          },
+          {
+            word: "Endurance (n)", 
+            ipa: "/ɪnˈdʊr.əns/", 
+            meaning: "Sự chịu đựng, sức chịu đựng.", 
+            context: "Tàu vũ trụ mang tên 'Endurance' mang theo hy vọng sống còn của cả nhân loại trong không gian khắc nghiệt."
+          }
+        ],
+        quizzes: [
+          {
+            q: "Tình trạng thiếu lương thực trên Trái đất đã đạt đến mức <b>'catastrophic'</b>. 'Catastrophic' nghĩa là gì?",
+            options: ["A. Rất khả quan", "B. Có thể giải quyết được", "C. Thảm khốc, gây thiệt hại nặng nề", "D. Diễn ra từ từ"],
+            correct: 2,
+            explanation: "Bệnh khô héo thực vật gây ra một nạn đói mang tính 'thảm họa toàn cầu' (<b>catastrophic</b>)."
+          },
+          {
+            q: "Mục tiêu của phi hành đoàn là tìm kiếm một hành tinh <b>'habitable'</b>. 'Habitable' có nghĩa là?",
+            options: ["A. Có thể ở được, đủ điều kiện cho sự sống", "B. Vô cùng lạnh giá", "C. Rất gần Trái đất", "D. Hoàn toàn bằng nước"],
+            correct: 0,
+            explanation: "Nhân loại cần một hành tinh mới 'có thể sinh sống được' (<b>habitable</b>) để di cư."
+          },
+          {
+            q: "Không gian vũ trụ là một môi trường vô cùng <b>'hostile'</b>. Từ 'hostile' mang ý nghĩa gì?",
+            options: ["A. Thân thiện, chào đón", "B. Khắc nghiệt, thù địch", "C. Trống rỗng", "D. Ấm áp"],
+            correct: 1,
+            explanation: "Vũ trụ đầy rẫy hiểm nguy và 'khắc nghiệt' (<b>hostile</b>) đối với con người."
+          },
+          {
+            q: "Trong thuyết tương đối, thời gian có thể bị <b>'dilated'</b> (time dilation). Nghĩa của từ này là gì?",
+            options: ["A. Bị dừng lại hoàn toàn", "B. Chạy ngược lại", "C. Bị giãn nở, kéo dài ra", "D. Trôi qua nhanh hơn"],
+            correct: 2,
+            explanation: "Khi ở gần hố đen, thời gian sẽ bị 'giãn nở' (<b>dilated</b>) - một giờ ở đó có thể bằng bảy năm trên Trái đất."
+          },
+          {
+            q: "Hố đen trong không gian có một sức hút <b>'inescapable'</b>. 'Insapable' là gì?",
+            options: ["A. Dễ dàng thoát ra", "B. Không thể trốn thoát", "C. Rất yếu ớt", "D. Có thể nhìn thấy được"],
+            correct: 1,
+            explanation: "Trọng lực của hố đen lớn đến mức ánh sáng cũng 'không thể thoát ra' (<b>inescapable</b>)."
+          }
+        ]
       }
     ];
 
     // ================= LOGIC CHO TRẠM LUYỆN TẬP (FILL IN THE BLANK) =================
-    // Các câu hỏi được lấy trực tiếp từ video/đoạn hội thoại đã cho
-    
     const practiceSentences = [
       {
         id: "prada_1",
@@ -659,7 +774,7 @@
           { text: "seriously", isBlank: true },
           { text: ".", isBlank: false }
         ],
-        wordsToPick: ["clunky", "seriously", "ephemeral", "coward"] // Có từ gây nhiễu
+        wordsToPick: ["clunky", "seriously", "ephemeral", "coward"] 
       },
       {
         id: "intern_1",
@@ -702,6 +817,30 @@
           { text: " them. I've been growing an awful lot lately.", isBlank: false }
         ],
         wordsToPick: ["enormous", "outgrew", "peculiar"]
+      },
+      {
+        id: "johnwick_1",
+        fullText: "People keep asking if I'm back, and I haven't really had an answer.",
+        parts: [
+          { text: "People keep asking if I'm back, and I haven't ", isBlank: false },
+          { text: "really", isBlank: true },
+          { text: " had an ", isBlank: false },
+          { text: "answer", isBlank: true },
+          { text: ".", isBlank: false }
+        ],
+        wordsToPick: ["really", "answer", "vengeance", "lethal"]
+      },
+      {
+        id: "interstellar_1",
+        fullText: "Mankind was born on Earth. It was never meant to die here.",
+        parts: [
+          { text: "Mankind was ", isBlank: false },
+          { text: "born", isBlank: true },
+          { text: " on Earth. It was never meant to ", isBlank: false },
+          { text: "die", isBlank: true },
+          { text: " here.", isBlank: false }
+        ],
+        wordsToPick: ["born", "die", "gravity", "habitable"]
       }
     ];
 
@@ -929,13 +1068,15 @@
       
       document.getElementById('cinema-genre').innerText = item.genre;
       document.getElementById('cinema-title').innerText = item.title;
-      document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
-      document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
 
       const mediaContainer = document.getElementById('cinema-media-container');
       if (item.mediaType === 'youtube') {
         mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
       }
+
+      // Đã khôi phục phần hiển thị Quote, Translation và Vocab Analysis
+      document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
+      document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
       
       const vocabContainer = document.getElementById('cinema-vocab');
       vocabContainer.innerHTML = item.vocabAnalysis.map(v => `
@@ -948,7 +1089,7 @@
           <p class="text-[11px] text-cottage-brownLight italic leading-relaxed bg-cottage-cream p-2 rounded-lg border border-cottage-butter/50">Ngữ cảnh: ${v.context}</p>
         </div>
       `).join('');
-
+      
       renderCinemaQuiz();
       document.getElementById('modal-cinema').classList.remove('hidden');
     }
