@@ -63,7 +63,7 @@
 
       <div class="flex items-center space-x-2">
         <button id="vip-header-btn" onclick="openVipModal()" class="bg-white border-2 border-cottage-rose text-cottage-roseDark hover:bg-cottage-rose hover:text-white text-xs font-black px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(230,164,180,0.2)] transition transform active:scale-95 flex items-center gap-1.5 animate-float">
-          <i class="fa-solid fa-crown text-[11px]"></i> <span>Mua Gói VIP 🌷</span>
+          <i class="fa-solid fa-crown text-[11px]"></i> <span>Mua gói VIP 🌷</span>
         </button>
       </div>
     </div>
@@ -156,17 +156,17 @@
 
       <div class="text-center space-y-2 mb-6">
         <div class="w-14 h-14 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-2xl mb-2 shadow-sm">🔑</div>
-        <h3 class="text-2xl font-display font-black text-cottage-brown tracking-tight">Kích Hoạt VIP</h3>
-        <p class="text-xs text-cottage-brownLight">Nhập mật khẩu nhận được qua Zalo để mở khóa trạm học tập nhé!</p>
+        <h3 class="text-2xl font-display font-black text-cottage-brown tracking-tight">Kích hoạt VIP</h3>
+        <p class="text-xs text-cottage-brownLight">Nhập mật khẩu bạn nhận được qua Zalo để mở khóa toàn bộ bài học nhé!</p>
       </div>
 
       <div class="space-y-4">
         <div>
           <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Gói đã thanh toán</label>
           <select id="vip-package-select" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition appearance-none">
-            <option value="3">Gói Trải Nghiệm (3 Ngày)</option>
-            <option value="30">Gói Chăm Chỉ (1 Tháng)</option>
-            <option value="365">Gói Trọn Vẹn (1 Năm)</option>
+            <option value="3">Gói trải nghiệm (3 Ngày)</option>
+            <option value="30">Gói chăm chỉ (1 Tháng)</option>
+            <option value="365">Gói trọn vẹn (1 Năm)</option>
           </select>
         </div>
         <div>
@@ -174,7 +174,7 @@
           <input type="password" id="vip-password-input" placeholder="Nhập mật khẩu..." class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition">
         </div>
         <button onclick="verifyVipLogin()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
-          Xác Nhận Mở Khóa 🎀
+          Xác nhận mở khóa 🗝️
         </button>
       </div>
     </div>
@@ -242,7 +242,7 @@
       <div class="text-center space-y-2 mb-8 relative">
         <div class="w-16 h-16 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-3xl mb-4 border-4 border-white shadow-sm animate-float">🌷</div>
         <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Hội Viên Thơ Mộng 🎀</h3>
-        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập toàn bộ kho tàng từ vựng qua điện ảnh và văn học bản xứ.</p>
+        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập toàn bộ kho tàng từ vựng trong các bộ phim nổi tiếng.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -250,10 +250,10 @@
           <p class="text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1 flex items-center gap-2"><span>1</span> Chọn gói truy cập</p>
           
           <label class="block cursor-pointer relative transform active:scale-[0.98] transition">
-            <input type="radio" name="vip-plan" value="30000" class="peer sr-only" onclick="updateQR(30000, 'COZY3DAY')" checked>
+            <input type="radio" name="vip-plan" value="30000" class="peer sr-only" onclick="updateQR(30000, 'COZY3DAYS')" checked>
             <div class="p-4 rounded-3xl border-2 border-cottage-butter bg-cottage-cream peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight/40 transition shadow-sm">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌱 Gói 3 Ngày</span>
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌱 Gói 3 ngày</span>
                 <span class="font-black text-cottage-roseDark text-base">30.000đ</span>
               </div>
             </div>
@@ -263,7 +263,7 @@
             <input type="radio" name="vip-plan" value="100000" class="peer sr-only" onclick="updateQR(100000, 'COZY1MONTH')">
             <div class="p-4 rounded-3xl border-2 border-cottage-butter bg-cottage-cream peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight/40 transition shadow-sm">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌻 Gói 1 Tháng</span>
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌻 Gói 1 tháng</span>
                 <span class="font-black text-cottage-roseDark text-base">100.000đ</span>
               </div>
             </div>
@@ -272,9 +272,9 @@
           <label class="block cursor-pointer relative transform active:scale-[0.98] transition">
             <input type="radio" name="vip-plan" value="300000" class="peer sr-only" onclick="updateQR(300000, 'COZY1YEAR')">
             <div class="p-4 rounded-3xl border-2 border-cottage-rose bg-white peer-checked:bg-cottage-roseLight/40 transition shadow-md relative overflow-hidden">
-              <span class="absolute top-0 right-0 bg-cottage-rose text-white text-[9px] font-black px-3 py-1 rounded-bl-xl tracking-wider">BEST CHOICE 🧸</span>
+              <span class="absolute top-0 right-0 bg-cottage-rose text-white text-[9px] font-black px-3 py-1 rounded-bl-xl tracking-wider">BEST SELLER 🔥</span>
               <div class="flex justify-between items-center mt-2">
-                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🎀 Gói 1 Năm</span>
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🎀 Gói 1 năm</span>
                 <span class="font-black text-cottage-roseDark text-base">300.000đ</span>
               </div>
             </div>
@@ -1051,7 +1051,7 @@
               <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-rose transition line-clamp-1">${c.title}</h3>
             </div>
             <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown group-hover:bg-cottage-roseLight group-hover:border-cottage-rose group-hover:text-cottage-roseDark transition">
-              ${(c.locked && !isVip) ? 'Mở Khóa Ngay 🗝️' : 'Vào Học Từ Vựng 🎬'}
+              ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học từ vựng 🎬'}
             </button>
           </div>
         </div>
@@ -1152,7 +1152,7 @@
           closeModal('modal-cinema');
         };
       } else {
-        nextBtn.innerHTML = "Câu hỏi tiếp theo nà →";
+        nextBtn.innerHTML = "Câu hỏi tiếp theo →";
         nextBtn.onclick = () => { activeQuizIndex++; renderCinemaQuiz(); };
       }
     }
@@ -1168,7 +1168,7 @@
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     
     function simulateSuccessPayment() {
-      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin Zalo qua SĐT 0362102905 (Vũ Thái An) kèm biên lai để nhận mật khẩu kích hoạt VIP nha 🌷");
+      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin Zalo qua SĐT 0362102905 (Vũ Thái An) kèm ảnh chụp màn hình chuyển khoản để nhận mật khẩu kích hoạt VIP nha 🌷");
       closeModal('modal-vip');
     }
   </script>
