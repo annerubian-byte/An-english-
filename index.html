@@ -330,67 +330,127 @@
       },
       {
         id: 2, 
-        genre: "Romance", 
-        title: "La La Land (2016)",
-        thumbnail: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", // Đã cập nhật hình ảnh bìa
-        mediaType: "image", // ĐỊNH DẠNG: ẢNH TĨNH
-        mediaUrl: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", // URL ảnh lớn hiển thị trong modal
-        locked: false,
-        quote: "Here's to the ones who dream, foolish as they may seem. Here's to the hearts that ache. Here's to the mess we make.",
-        translation: "Nâng ly vì những kẻ mộng mơ, dẫu họ có vẻ khờ dại. Nâng ly vì những con tim rỉ máu. Nâng ly vì những đống lộn xộn ta đã gây ra.",
+        genre: "Sci-Fi", 
+        title: "Harry Potter and the Half-Blood Prince (2009)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BODg1NjE0YjctYWVmMC00NmE5LWFkOWMtOTdkYWQ2MTFiZDI0XkEyXkFqcGc@._V1_.jpg", // Hình ảnh bìa
+        mediaType: "youtube", // ĐỊNH DẠNG: YOUTUBE
+        mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", // Cảnh I'm the Half-Blood Prince
+        locked: true, // Khóa bài này lại
+        quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.",
+        translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
         vocabAnalysis: [
           {
-            word: "Foolish (adj)", 
-            ipa: "/ˈfuː.lɪʃ/", 
-            meaning: "Ngốc nghếch, khờ dại.", 
-            context: "Không mang nghĩa chê bai, mà là sự trân trọng những người dám theo đuổi đam mê bất chấp việc bị xã hội coi là điên rồ."
+            word: "Coward (n)", 
+            ipa: "/ˈkaʊ.ərd/", 
+            meaning: "Kẻ hèn nhát.", 
+            context: "Harry đã dùng từ này để hét vào mặt Snape khi anh chạy trốn, thể hiện sự phẫn nộ tột cùng."
           },
           {
-            word: "Ache (v)", 
-            ipa: "/eɪk/", 
-            meaning: "Đau đớn, nhức nhối (thể xác lẫn tinh thần).", 
-            context: "Chỉ những trái tim đã trải qua vấp ngã, tổn thương vì tình yêu và ước mơ."
+            word: "Fight back (Phrasal Verb)", 
+            ipa: "/faɪt bæk/", 
+            meaning: "Đánh trả, phản công.", 
+            context: "Harry thách thức Snape ở lại chiến đấu thay vì bỏ chạy."
+          },
+          {
+            word: "Belong to (Phrasal Verb)", 
+            ipa: "/bɪˈlɔŋ tuː/", 
+            meaning: "Thuộc về (ai đó).", 
+            context: "Snape nói Harry thuộc về Chúa tể Hắc ám (The Dark Lord), ý nói Voldemort mới là người sẽ định đoạt mạng sống của Harry."
           }
         ],
         quizzes: [
           {
-            q: "Cụm từ 'Here's to...' thường được sử dụng trong tình huống nào?",
-            options: ["Đưa ra một lời xin lỗi", "Nâng ly chúc mừng hoặc tôn vinh ai đó", "Chỉ trích một hành động", "Bắt đầu một câu chuyện buồn"],
+            q: "Trong cảnh này, Harry đã gọi Snape là gì khi Snape không chịu đấu tay đôi?",
+            options: ["Traitor (Kẻ phản bội)", "Coward (Kẻ hèn nhát)", "Monster (Quái vật)", "Liar (Kẻ nói dối)"],
             correct: 1,
-            explanation: "'Here's to...' là cách nói truyền thống khi nâng ly (toast) để vinh danh hoặc chúc tụng một người/sự việc."
+            explanation: "Harry đã hét lên: 'Fight back! You coward, fight back!' (Đánh trả đi! Đồ hèn nhát, đánh trả đi!)."
+          },
+          {
+            q: "Cụm từ 'Fight back' mang ý nghĩa gì?",
+            options: ["Bỏ chạy", "Đầu hàng", "Đánh trả, phản công", "Lùi lại"],
+            correct: 2,
+            explanation: "Fight back có nghĩa là chống cự hoặc phản công lại một cuộc tấn công."
+          },
+          {
+            q: "Snape nói rằng Harry thuộc về ai ('He belongs to...')?",
+            options: ["Dumbledore", "The Dark Lord (Chúa tể Hắc ám)", "Hogwarts", "The Death Eaters (Tử thần Thực tử)"],
+            correct: 1,
+            explanation: "Snape đã nói: 'No! He belongs to the Dark Lord' (Không! Nó thuộc về Chúa tể Hắc ám)."
+          },
+          {
+            q: "Harry đã cố gắng dùng bùa chú gì lên Snape?",
+            options: ["Expelliarmus", "Avada Kedavra", "Sectumsempra", "Crucio"],
+            correct: 2,
+            explanation: "Harry đã niệm chú Sectumsempra, một bùa chú do chính Snape sáng tạo ra."
+          },
+          {
+            q: "Cuối đoạn video, Snape đã tiết lộ sự thật gây sốc nào?",
+            options: ["Ông là cha của Harry", "Ông là Hoàng tử Lai (The Half-Blood Prince)", "Ông làm việc cho Dumbledore", "Ông đã giết Sirius Black"],
+            correct: 1,
+            explanation: "Snape đã nói: 'Yes... I'm the Half-Blood Prince.' (Đúng vậy... Ta chính là Hoàng tử Lai)."
           }
         ]
       },
       {
         id: 3, 
-        genre: "Sci-Fi", 
-        title: "Harry Potter",
-        thumbnail: "https://m.media-amazon.com/images/M/MV5BODg1NjE0YjctYWVmMC00NmE5LWFkOWMtOTdkYWQ2MTFiZDI0XkEyXkFqcGc@._V1_.jpg", // Đã cập nhật hình ảnh bìa
-        mediaType: "video", // ĐỊNH DẠNG: VIDEO MP4
-        mediaUrl: "https://www.w3schools.com/html/mov_bbb.mp4", // URL video .mp4 (Thay bằng link video thật của bạn, ví dụ upload lên cloudinary)
-        locked: true,
-        quote: "I can teach you how to bewitch the mind and ensnare the senses. I can tell you how to bottle fame, brew glory, and even put a stopper in death.",
-        translation: "Ta có thể dạy các trò cách mê hoặc tâm trí và giăng bẫy các giác quan. Ta có thể chỉ các trò cách đóng chai danh vọng, ủ nấu vinh quang, và thậm chí là chặn đứng cả cái chết.",
+        genre: "Romance", 
+        title: "La La Land (2016)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", // Hình ảnh bìa
+        mediaType: "youtube", // ĐỊNH DẠNG: YOUTUBE
+        mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", // Cảnh I'm Not Good Enough
+        locked: true, // Khóa bài này
+        quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.",
+        translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
         vocabAnalysis: [
           {
-            word: "Bewitch (v)", 
-            ipa: "/bɪˈwɪtʃ/", 
-            meaning: "Bỏ bùa, mê hoặc.", 
-            context: "Một từ vựng hoàn hảo cho lớp Độc dược, ám chỉ sức mạnh thao túng tâm lý mãnh liệt."
+            word: "Pipe dream (Idiom)", 
+            ipa: "/ˈpaɪp ˌdriːm/", 
+            meaning: "Giấc mơ viển vông, hão huyền.", 
+            context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực."
           },
           {
-            word: "Ensnare (v)", 
-            ipa: "/ɪnˈsner/", 
-            meaning: "Giăng bẫy, bủa vây.", 
-            context: "Thường dùng để bắt động vật, Snape dùng nó với 'giác quan' để thể hiện sự thống trị tuyệt đối của Độc dược."
+            word: "Good enough (Phrase)", 
+            ipa: "/ɡʊd ɪˈnʌf/", 
+            meaning: "Đủ giỏi, đủ tốt.", 
+            context: "Mia nói 'maybe I'm not good enough' (có lẽ em không đủ giỏi), thể hiện sự tự ti sau nhiều lần thất bại."
+          },
+          {
+            word: "Interrupt (v)", 
+            ipa: "/ˌɪn.təˈrʌpt/", 
+            meaning: "Làm gián đoạn, ngắt lời.", 
+            context: "Mia kể về việc những buổi thử vai của mình luôn bị ngắt quãng ('I get interrupted') bởi những lý do ngớ ngẩn."
           }
         ],
         quizzes: [
           {
-            q: "Động từ 'bottle' và 'brew' trong câu thoại của Snape tạo ra hiệu ứng gì?",
-            options: ["Khiến câu văn trở nên khó hiểu", "Sử dụng các hành động vật lý cho những khái niệm trừu tượng", "Giảm bớt sự đáng sợ của môn học", "Chỉ đơn thuần liệt kê dụng cụ làm bếp"],
+            q: "Sebastian đến gặp Mia để báo tin gì?",
+            options: ["Anh ấy đã tìm được công việc mới", "Mia có một buổi thử vai (audition) cho một bộ phim lớn", "Vở kịch của Mia được lên báo", "Họ sẽ chuyển đến Paris"],
             correct: 1,
-            explanation: "Snape vật chất hóa những thứ vô hình (fame, glory) để tôn vinh quyền năng của Độc dược."
+            explanation: "Sebastian nói rằng giám đốc tuyển casting đã xem kịch của Mia và muốn cô đến thử vai cho một bộ phim lớn."
+          },
+          {
+            q: "Ban đầu, Mia phản ứng thế nào với lời đề nghị đi thử vai?",
+            options: ["Cô ấy rất hào hứng", "Cô ấy lập tức đồng ý", "Cô ấy từ chối và nói 'I'm not going' (Em sẽ không đi)", "Cô ấy muốn dẫn Sebastian theo"],
+            correct: 2,
+            explanation: "Do quá tổn thương và tự ti, Mia đã từ chối cơ hội này."
+          },
+          {
+            q: "Từ 'Pipe dream' ám chỉ điều gì trong đoạn hội thoại này?",
+            options: ["Một giấc mơ tuyệt đẹp", "Một giấc mơ viển vông, không thể thành hiện thực", "Một công việc liên quan đến ống nước", "Một kế hoạch rõ ràng"],
+            correct: 1,
+            explanation: "'Pipe dream' là một thành ngữ chỉ một ý tưởng, giấc mơ không thực tế."
+          },
+          {
+            q: "Theo Mia, lý do nào khiến cô ấy không muốn làm diễn viên nữa?",
+            options: ["Vì cô ấy không có thời gian", "Vì cô ấy nghĩ mình không đủ giỏi và việc đó quá đau đớn ('it hurts too much')", "Vì cô ấy muốn làm ca sĩ", "Vì cô ấy ghét đạo diễn"],
+            correct: 1,
+            explanation: "Mia nói: 'Maybe I'm not good enough' và 'it hurts a little bit too much'."
+          },
+          {
+            q: "Sebastian đã chốt lịch hẹn với Mia như thế nào vào cuối đoạn video?",
+            options: ["Anh sẽ gọi điện cho cô vào lúc 8h sáng", "Anh sẽ đợi cô ở trước nhà lúc 8h sáng, dù cô có đi hay không", "Họ sẽ gặp nhau ở quán cà phê", "Anh bảo cô tự đi đến buổi thử vai"],
+            correct: 1,
+            explanation: "Sebastian nói: 'I'll be out front at 8:00 a.m. You'll be out front or not.' (Anh sẽ đợi trước cửa lúc 8 giờ sáng. Em ra hay không thì tùy)."
           }
         ]
       }
