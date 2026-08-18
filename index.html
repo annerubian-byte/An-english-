@@ -146,7 +146,7 @@
 
   <!-- Nút Kích Hoạt VIP -->
   <button id="floating-vip-btn" onclick="openLoginModal()" class="fixed bottom-4 right-4 bg-cottage-brown/90 text-white text-[10px] px-4 py-2.5 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20 font-bold uppercase tracking-wider">
-    🔑 Kích Hoạt VIP
+    🔑 Kích hoạt VIP
   </button>
 
   <!-- ================= MODAL: KÍCH HOẠT VIP (LOGIN) ================= -->
@@ -978,7 +978,7 @@
       if (floatingBtn) floatingBtn.style.display = 'none';
 
       const vipHeaderBtn = document.getElementById('vip-header-btn');
-      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội Viên Đã Kích Hoạt 🌟</span>';
+      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội viên đã kích hoạt 🌟</span>';
       vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
       vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
       
@@ -1016,7 +1016,7 @@
         localStorage.setItem('cozyVipExpiry', expiryDate);
         isVip = true;
         
-        alert("🎉 Kích hoạt VIP thành công! Toàn bộ kho tàng điện ảnh đã được mở khóa.");
+        alert("🎉 Kích hoạt VIP thành công! Toàn bộ kho tàng điện ảnh đã được mở khóa!");
         
         applyVipUI();
         renderCinemaCards(); 
@@ -1146,7 +1146,7 @@
       }
 
       if (activeQuizIndex === item.quizzes.length - 1) {
-        nextBtn.innerHTML = "Tuyệt vời! Đóng bài học 🧺";
+        nextBtn.innerHTML = "Tuyệt vời! Đóng bài học";
         nextBtn.onclick = () => {
           document.getElementById('cinema-media-container').innerHTML = ''; 
           closeModal('modal-cinema');
