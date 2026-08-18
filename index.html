@@ -181,22 +181,29 @@
   </div>
 
   <!-- ================= MODAL: CINEMA LEARNING & QUIZ ================= -->
+  <!-- FIX: Cấu trúc lại toàn bộ modal thành một khối scroll duy nhất -->
   <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white border-4 border-cottage-cream rounded-[2rem] max-w-2xl w-full max-h-[95vh] overflow-y-auto shadow-2xl relative flex flex-col">
+    <div class="bg-white border-4 border-cottage-cream rounded-[2rem] max-w-2xl w-full max-h-[95vh] overflow-y-auto shadow-2xl relative">
+      
+      <!-- Nút đóng -->
       <button onclick="closeModal('modal-cinema')" class="absolute right-4 top-4 w-9 h-9 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm transition z-50 shadow-sm border border-cottage-butter"><i class="fa-solid fa-xmark"></i></button>
       
-      <div class="p-5 md:p-7 flex-shrink-0">
+      <!-- Container chính của modal -->
+      <div class="p-5 md:p-7 space-y-6">
+        
+        <!-- Header: Thể loại & Tên phim -->
         <div class="border-b-2 border-dashed border-cottage-butter pb-3 pr-8">
           <span id="cinema-genre" class="text-[9px] font-black text-cottage-roseDark uppercase tracking-widest bg-cottage-roseLight px-2.5 py-1 rounded-md">Genre</span>
           <h2 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown mt-2 leading-tight">Movie Title</h2>
         </div>
         
-        <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative mt-5"></div>
-        <p class="text-xs text-cottage-brownLight text-center mt-2 italic"><i class="fa-solid fa-headphones text-[10px] mr-1"></i> Vừa xem video vừa làm bài tập bên dưới để đoán nghĩa của từ nhé!</p>
-      </div>
+        <!-- Video -->
+        <div>
+          <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative"></div>
+          <p class="text-xs text-cottage-brownLight text-center mt-2 italic"><i class="fa-solid fa-headphones text-[10px] mr-1"></i> Vừa xem video vừa làm bài tập bên dưới để đoán nghĩa của từ nhé!</p>
+        </div>
 
-      <!-- Đã gộp Quote và Vocab Analysis lại vào đúng khối HTML -->
-      <div class="p-5 md:p-7 pt-0 flex-shrink-0">
+        <!-- Thoại phim & Dịch -->
         <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative">
           <div class="absolute -top-3 -left-2 text-2xl">🪶</div>
           <p id="cinema-quote" class="italic text-[15px] md:text-base text-cottage-brown font-serif leading-relaxed mt-1"></p>
@@ -204,23 +211,25 @@
           <p id="cinema-translation" class="text-xs text-cottage-brownLight text-center"></p>
         </div>
 
-        <div class="space-y-3 mt-6">
+        <!-- Giải nghĩa từ vựng -->
+        <div class="space-y-3">
           <p class="font-black text-cottage-greenDark uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-seedling text-cottage-green"></i> Bóc tách Từ Vựng:</p>
           <div id="cinema-vocab" class="space-y-2.5"></div>
         </div>
-      </div>
 
-      <!-- Phần Quiz -->
-      <div class="p-5 md:p-7 bg-cottage-card flex-1 rounded-b-[1.75rem] border-t-2 border-cottage-rose/30 space-y-4 relative overflow-hidden">
-        <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">🧩</div>
-        <div class="flex justify-between items-center text-[11px] font-black text-cottage-roseDark uppercase tracking-wider relative z-10">
-          <span>Khám phá từ vựng qua ngữ cảnh <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
+        <!-- Trắc nghiệm (Quiz) -->
+        <div class="bg-cottage-card p-5 rounded-3xl border-2 border-cottage-rose/30 space-y-4 relative overflow-hidden mt-2">
+          <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">🧩</div>
+          <div class="flex justify-between items-center text-[11px] font-black text-cottage-roseDark uppercase tracking-wider relative z-10">
+            <span>Khám phá từ vựng qua ngữ cảnh <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
+          </div>
+          
+          <p id="modal-quiz-question" class="text-sm font-bold text-cottage-brown relative z-10 leading-relaxed"></p>
+          <div id="modal-quiz-options" class="space-y-2 relative z-10"></div>
+          <div id="modal-quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-semibold leading-relaxed mt-2 border-2 relative z-10"></div>
+          <button id="btn-next-quiz" onclick="nextCinemaQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-rose hover:bg-cottage-roseDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Câu tiếp theo nà →</button>
         </div>
         
-        <p id="modal-quiz-question" class="text-sm font-bold text-cottage-brown relative z-10 leading-relaxed"></p>
-        <div id="modal-quiz-options" class="space-y-2 relative z-10"></div>
-        <div id="modal-quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-semibold leading-relaxed mt-2 border-2 relative z-10"></div>
-        <button id="btn-next-quiz" onclick="nextCinemaQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-rose hover:bg-cottage-roseDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Câu tiếp theo nà →</button>
       </div>
     </div>
   </div>
@@ -306,7 +315,7 @@
     const cinemaData = [
       {
         id: 1, 
-        genre: "Comedy", 
+        genre: "Drama", 
         title: "The Devil Wears Prada (2006)",
         thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", 
         mediaType: "youtube", 
@@ -363,7 +372,7 @@
       },
       {
         id: 2, 
-        genre: "Comedy", 
+        genre: "Drama", 
         title: "The Intern (2015)",
         thumbnail: "https://m.media-amazon.com/images/M/MV5BMTUyNjE5NjI5OF5BMl5BanBnXkFtZTgwNzExNDU2NjE@._V1_FMjpg_UX1000_.jpg", 
         mediaType: "youtube", 
@@ -1074,7 +1083,6 @@
         mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
       }
 
-      // Đã khôi phục phần hiển thị Quote, Translation và Vocab Analysis
       document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
       document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
       
