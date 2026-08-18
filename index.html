@@ -127,8 +127,15 @@
           <h3 class="text-xl font-display font-black text-cottage-brown">Điền từ vào ngữ cảnh</h3>
           <p class="text-xs text-cottage-brownLight mt-2">Dựa vào các bài học bạn đã xem, hãy chọn từ phù hợp để điền vào chỗ trống nhé!</p>
         </div>
+
+        <!-- Movie Badge -->
+        <div id="scramble-movie-tag" class="flex justify-center pt-1">
+          <span id="scramble-movie-name" class="inline-flex items-center gap-1.5 bg-cottage-roseLight text-cottage-roseDark border border-cottage-rose/30 px-3.5 py-1 rounded-full text-xs font-bold shadow-sm">
+            <i class="fa-solid fa-clapperboard text-[11px]"></i> Phim: <span class="font-black"></span>
+          </span>
+        </div>
         
-        <div class="bg-cottage-roseLight/40 p-5 rounded-2xl border border-cottage-rose/20 mt-4 text-left">
+        <div class="bg-cottage-roseLight/40 p-5 rounded-2xl border border-cottage-rose/20 mt-2 text-left">
           <p class="text-sm font-bold text-cottage-roseDark leading-loose" id="scramble-prompt"></p>
         </div>
         
@@ -310,7 +317,7 @@
         thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", 
         mediaType: "youtube", 
         mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", 
-        locked: false, // <-- CÁI NÀY MIỄN PHÍ TỪ ĐẦU
+        locked: false,
         quote: "You go to your closet and you select... I don't know... that lumpy blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
         translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh sần sùi kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
         vocabAnalysis: [
@@ -367,7 +374,7 @@
         thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", 
         mediaType: "youtube", 
         mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", 
-        locked: false, // <-- ĐÃ ĐƯỢC CHUYỂN THÀNH FALSE CHO BẠN TRẢI NGHIỆM
+        locked: false,
         quote: "You're never wrong to do the right thing.",
         translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
@@ -515,7 +522,7 @@
             q: "Barnum được xem là một <b>'visionary'</b> thực thụ khi dám tạo ra một loại hình giải trí mới. 'Visionary' ám chỉ người có đặc điểm gì?",
             options: ["A. Sống hoài niệm về quá khứ", "B. Không có ý chí tiến thủ", "C. Có tầm nhìn xa trông rộng, có ý tưởng đột phá", "D. Cực kỳ bảo thủ"],
             correct: 2,
-            explanation: "<b>'Visionary'</b> (người nhìn xa trông rộng). Barnum nhìn thấy tiềm năng và vẻ đẹp ở những điều mà người bình thường chê cười, từ đó tiên phong tạo ra ngành kinh doanh rạp xiếc."
+            explanation: "<b>'Visionary'</b> (người nhìn xa trông rộng). Barnum nhìn thấy tiềm năng và vẻ đẹp ở những điều mà người bình thường chê cười, từ đó tiên phong tạo ra ngành kinhdong rạp xiếc."
           },
           {
             q: "Sự mới lạ của rạp xiếc đã phải chịu sự <b>'scrutiny'</b> gắt gao từ giới quý tộc. Từ này có nghĩa là gì?",
@@ -595,7 +602,7 @@
         thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", 
         mediaType: "youtube", 
         mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", 
-        locked: false, // <-- ĐÃ ĐƯỢC CHUYỂN THÀNH FALSE CHO BẠN TRẢI NGHIỆM
+        locked: false,
         quote: "Anyone with a head that large is welcome in my court.",
         translation: "Bất kỳ ai với một cái đầu to như vậy đều được hoan nghênh tại triều đình của ta.",
         vocabAnalysis: [
@@ -762,11 +769,10 @@
     ];
 
     // ================= LOGIC CHO TRẠM LUYỆN TẬP (FILL IN THE BLANK) =================
-    // Danh sách toàn bộ câu hỏi (mỗi câu liên kết với 1 ID của bài học)
     const allPracticeSentences = [
       {
         id: "prada_1",
-        cinemaId: 1, // Liên kết với bài The Devil Wears Prada
+        cinemaId: 1,
         fullText: "You go to your closet and you select that lumpy blue sweater because you take yourself too seriously.",
         parts: [
           { text: "You go to your closet and you select that ", isBlank: false },
@@ -779,7 +785,7 @@
       },
       {
         id: "intern_1",
-        cinemaId: 2, // Liên kết với The Intern
+        cinemaId: 2,
         fullText: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping potential.",
         parts: [
           { text: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping ", isBlank: false },
@@ -790,7 +796,7 @@
       },
       {
         id: "lalaland_1",
-        cinemaId: 3, // Liên kết với La La Land
+        cinemaId: 3,
         fullText: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.",
         parts: [
           { text: "Maybe I'm one of those people that has always wanted to do it, but it's like a ", isBlank: false },
@@ -801,7 +807,7 @@
       },
       {
         id: "showman_1",
-        cinemaId: 4, // Liên kết với The Greatest Showman
+        cinemaId: 4,
         fullText: "No one ever made a difference by being like everyone else.",
         parts: [
           { text: "No one ever made a ", isBlank: false },
@@ -812,7 +818,7 @@
       },
       {
         id: "harry_1",
-        cinemaId: 5, // Liên kết với Harry Potter
+        cinemaId: 5,
         fullText: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.",
         parts: [
           { text: "You dare use my own spells ", isBlank: false },
@@ -825,7 +831,7 @@
       },
       {
         id: "alice_1",
-        cinemaId: 6, // Liên kết với Alice in Wonderland
+        cinemaId: 6,
         fullText: "I outgrew them. I've been growing an enormous lot lately.",
         parts: [
           { text: "I ", isBlank: false },
@@ -838,7 +844,7 @@
       },
       {
         id: "johnwick_1",
-        cinemaId: 7, // Liên kết với John Wick
+        cinemaId: 7,
         fullText: "He is a man of focus, commitment, and sheer will.",
         parts: [
           { text: "He is a man of focus, commitment, and ", isBlank: false },
@@ -849,7 +855,7 @@
       },
       {
         id: "interstellar_1",
-        cinemaId: 8, // Liên kết với Interstellar
+        cinemaId: 8,
         fullText: "We must find a habitable planet before it's too late.",
         parts: [
           { text: "We must find a ", isBlank: false },
@@ -938,50 +944,59 @@
     ];
 
     // ================= MAIN STATE LOGIC =================
-    let isVip = false; // <-- FIX LỖI Ở ĐÂY
+    let isVip = false;
     let currentFilter = 'ALL';
     let activeCinemaId = null;
     let activeQuizIndex = 0;
 
-    let availableSentences = []; // Danh sách các câu hỏi khả dụng dựa trên quyền VIP
-    let remainingSentences = []; // Danh sách các câu hỏi chưa làm đúng
+    let availableSentences = [];
+    let remainingSentences = [];
     let currentPractice = null;
     let selectedAnswers = {}; 
 
-    // Cập nhật danh sách câu hỏi dựa trên quyền VIP
     function updateAvailableSentences() {
       if (isVip) {
         availableSentences = [...allPracticeSentences];
       } else {
-        // Nếu chưa VIP, chỉ lấy câu hỏi của những bài học KHÔNG bị khóa
         const unlockedCinemaIds = cinemaData.filter(c => !c.locked).map(c => c.id);
         availableSentences = allPracticeSentences.filter(s => unlockedCinemaIds.includes(s.cinemaId));
       }
-      // Reset lại danh sách câu hỏi cần làm
       remainingSentences = [...availableSentences];
     }
 
     function initScrambleGame() {
-      // Nếu chưa khởi tạo danh sách, tiến hành khởi tạo
       if (availableSentences.length === 0) {
         updateAvailableSentences();
       }
 
-      // Nếu đã làm hết câu hỏi
+      const movieTag = document.getElementById('scramble-movie-tag');
+
       if (remainingSentences.length === 0) {
-        document.getElementById('scramble-prompt').innerHTML = "<span class='text-cottage-greenDark'>🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi hiện có. Bạn có thể mở khóa gói VIP để học thêm nhé!</span>";
+        const completionMsg = isVip 
+          ? "🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi hiện có."
+          : "🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi hiện có. Bạn có thể mở khóa gói VIP để học thêm nhé!";
+          
+        document.getElementById('scramble-prompt').innerHTML = `<span class='text-cottage-greenDark font-bold'>${completionMsg}</span>`;
         document.getElementById('scramble-pool').innerHTML = "";
         document.getElementById('btn-reset-scramble').style.display = "none";
         document.getElementById('btn-check-scramble').style.display = "none";
         document.getElementById('scramble-feedback').classList.add('hidden');
+        if (movieTag) movieTag.classList.add('hidden');
         return;
       }
 
-      // Chọn 1 câu ngẫu nhiên từ những câu CÒN LẠI
       const randomIndex = Math.floor(Math.random() * remainingSentences.length);
       currentPractice = remainingSentences[randomIndex];
       selectedAnswers = {};
       
+      // Hiển thị tên phim (đã lược bỏ năm trong ngoặc)
+      const matchedMovie = cinemaData.find(c => c.id === currentPractice.cinemaId);
+      if (matchedMovie && movieTag) {
+        const cleanMovieTitle = matchedMovie.title.replace(/\s*\(\d{4}\)$/, '').trim();
+        document.querySelector('#scramble-movie-name span').innerText = cleanMovieTitle;
+        movieTag.classList.remove('hidden');
+      }
+
       const promptContainer = document.getElementById('scramble-prompt');
       promptContainer.innerHTML = '';
       
@@ -1021,7 +1036,6 @@
       feedback.classList.add('hidden');
       feedback.innerText = '';
       
-      // Hiện lại các nút nếu trước đó bị ẩn
       document.getElementById('btn-reset-scramble').style.display = "inline-block";
       document.getElementById('btn-check-scramble').style.display = "inline-block";
     }
@@ -1092,7 +1106,6 @@
         fb.className = "text-sm font-bold text-cottage-greenDark block mt-4 text-center animate-bounce"; 
         fb.innerText = "✨ Chính xác! Chuẩn bị sang câu tiếp theo...";
         
-        // Loại bỏ câu hỏi hiện tại khỏi danh sách chưa làm
         remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
         
         setTimeout(() => {
@@ -1105,11 +1118,9 @@
       }
     }
 
-
     window.addEventListener('DOMContentLoaded', () => {
       checkVipStatus(); 
       renderCinemaCards();
-      // updateAvailableSentences được gọi bên trong initScrambleGame
       initScrambleGame();
     });
 
@@ -1173,8 +1184,6 @@
         
         applyVipUI();
         renderCinemaCards(); 
-        
-        // Khi lên VIP, cập nhật lại danh sách câu hỏi Trạm luyện tập để bao gồm các câu khóa
         updateAvailableSentences();
         initScrambleGame();
 
