@@ -98,13 +98,9 @@
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="level-filters">
           <button onclick="filterCinema('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả (All)</button>
-          <button onclick="filterCinema('Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình Cảm (Romance) 💌</button>
-          <button onclick="filterCinema('Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính Kịch (Drama) 🎭</button>
-          <button onclick="filterCinema('Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài (Comedy) 😂</button>
-          <button onclick="filterCinema('Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành Động (Action) 💥</button>
-          <button onclick="filterCinema('Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn Tưởng (Sci-Fi) 🛸</button>
-          <button onclick="filterCinema('Thriller')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh Thám & Giật Gân (Mystery & Thriller) 🔪</button>
-          <button onclick="filterCinema('Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài Liệu (Documentary) 🌍</button>
+          <button onclick="filterCinema('Romance & Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Lãng mạn & Nhạc kịch 💌</button>
+          <button onclick="filterCinema('Workplace & Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Công sở & Hài kịch 👠</button>
+          <button onclick="filterCinema('Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo 🧚‍♀️</button>
         </div>
         <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="cinema-count">0</span> bài học 🌷</span>
       </div>
@@ -297,11 +293,11 @@
     const cinemaData = [
       {
         id: 1, 
-        genre: "Drama", 
+        genre: "Workplace & Comedy", 
         title: "The Devil Wears Prada (2006)",
         thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", 
-        mediaType: "youtube", // ĐỊNH DẠNG: YOUTUBE
-        mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", // URL video YouTube
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", 
         locked: false,
         quote: "You go to your closet and you select... I don't know... that clunky blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
         translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh thô kệch kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
@@ -321,21 +317,216 @@
         ],
         quizzes: [
           {
-            q: "Từ 'clunky' trong ngữ cảnh này mang sắc thái gì?",
-            options: ["Khen ngợi sự độc đáo, phá cách", "Chê bai sự thô kệch, thiếu thẩm mỹ", "Chỉ sự đắt tiền, xa xỉ", "Chỉ sự thoải mái, ấm áp"],
+            q: "Từ 'impeccable' dùng để miêu tả gu thời trang của Miranda Priestly có nghĩa là gì?",
+            options: ["A. Hoàn hảo, không tì vết (Flawless)", "B. Lỗi thời và cổ hủ", "C. Kỳ dị và khó hiểu", "D. Rẻ tiền"],
+            correct: 0,
+            explanation: "Miranda là tổng biên tập một tạp chí thời trang danh tiếng nên gu thẩm mỹ của bà ấy phải ở mức 'impeccable' (không thể chê vào đâu được)."
+          },
+          {
+            q: "Khi Miranda mỉa mai ý tưởng 'Florals? For spring?' là 'Groundbreaking', từ 'groundbreaking' thực chất nghĩa là gì?",
+            options: ["A. Cực kỳ nhàm chán", "B. Xấu xí", "C. Đột phá, mang tính tiên phong (Innovative)", "D. Rất đắt tiền"],
+            correct: 2,
+            explanation: "Miranda dùng từ 'groundbreaking' một cách mỉa mai, vì việc dùng họa tiết hoa cho mùa xuân là một ý tưởng quá cũ rích, hoàn toàn không có gì là 'đột phá' cả."
+          },
+          {
+            q: "Nigel gọi bộ trang phục đầu tiên của Andy là một 'catastrophe'. 'Catastrophe' có nghĩa là gì?",
+            options: ["A. Một sự kiện rất thành công", "B. Một thảm họa, thảm kịch (Disaster)", "C. Một sự cản trở nhỏ", "D. Một trò đùa"],
             correct: 1,
-            explanation: "Miranda nổi tiếng với gu thẩm mỹ khắt khe, bà dùng 'clunky' để mỉa mai sự thiếu tinh tế trong cách ăn mặc của Andy."
+            explanation: "Với đôi mắt của một chuyên gia thời trang như Nigel, cách ăn mặc lôi thôi của Andy thực sự là một thảm họa thị giác ('catastrophe')."
+          },
+          {
+            q: "Tạp chí Runway được xem là 'vanguard' của ngành thời trang cao cấp. 'Vanguard' nghĩa là gì?",
+            options: ["A. Bộ phận thừa thãi nhất", "B. Hàng nhái rẻ tiền", "C. Những người tiên phong, dẫn đầu (Leading the way)", "D. Khách hàng trung thành"],
+            correct: 2,
+            explanation: "Runway là tạp chí định hình xu hướng thời trang thế giới, do đó nó đóng vai trò 'tiên phong' ('vanguard')."
+          },
+          {
+            q: "Miranda là một người sếp rất 'formidable'. Từ này ám chỉ đặc điểm gì?",
+            options: ["A. Rất thân thiện, dễ gần", "B. Yếu đuối, dễ bị thao túng", "C. Đáng nể, đáng gờm, khiến người khác phải e sợ (Inspiring fear/respect)", "D. Hay quên và đãng trí"],
+            correct: 2,
+            explanation: "Phong thái quyền lực và những đòi hỏi khắt khe của Miranda khiến bà trở thành một người cực kỳ 'đáng gờm' ('formidable')."
           }
         ]
       },
       {
         id: 2, 
-        genre: "Sci-Fi", 
+        genre: "Workplace & Comedy", 
+        title: "The Intern (2015)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMTUyNjE5NjI5OF5BMl5BanBnXkFtZTgwNzExNDU2NjE@._V1_FMjpg_UX1000_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", 
+        locked: true,
+        quote: "You're never wrong to do the right thing.",
+        translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
+        vocabAnalysis: [
+          {
+            word: "Diversion (n)", 
+            ipa: "/dɪˈvɜːr.ʒən/", 
+            meaning: "Sự giải trí, thứ làm phân tâm.", 
+            context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' (một việc gì đó để làm cho đỡ buồn chán)."
+          },
+          {
+            word: "Brownnose (v)", 
+            ipa: "/ˈbraʊn.noʊz/", 
+            meaning: "Nịnh bợ, xu nịnh (mang nghĩa tiêu cực).", 
+            context: "Ben khẳng định anh không cố ý 'nịnh nọt' Jules khi khen ngợi cô ấy."
+          }
+        ],
+        quizzes: [
+          {
+            q: "Ben chứng tỏ mình là một nhân viên rất 'proactive'. 'Proactive' có nghĩa là gì?",
+            options: ["A. Rất lười biếng", "B. Chủ động giải quyết vấn đề trước khi nó xảy ra (Taking initiative)", "C. Chỉ làm khi được bảo", "D. Hay phàn nàn"],
+            correct: 1,
+            explanation: "Ben không ngồi chờ việc mà tự 'chủ động' ('proactive') tìm hiểu và giúp đỡ mọi người xung quanh."
+          },
+          {
+            q: "Jules cực kỳ 'meticulous' trong việc đóng gói sản phẩm. 'Meticulous' nghĩa là gì?",
+            options: ["A. Bất cẩn, bừa bộn", "B. Làm việc rất chậm chạp", "C. Tỉ mỉ, cực kỳ cẩn thận và chú ý đến từng chi tiết (Attention to detail)", "D. Hay quên"],
+            correct: 2,
+            explanation: "Jules tự mình kiểm tra và hướng dẫn nhân viên cách gấp quần áo sao cho hoàn hảo nhất, chứng tỏ cô ấy rất 'tỉ mỉ' ('meticulous')."
+          },
+          {
+            q: "Ben được miêu tả là một chuyên gia 'seasoned'. Từ 'seasoned' ở đây ám chỉ điều gì?",
+            options: ["A. Nêm nếm nhiều gia vị", "B. Hoàn toàn mới trong nghề", "C. Dày dặn kinh nghiệm (Experienced)", "D. Sắp nghỉ hưu"],
+            correct: 2,
+            explanation: "Ben đã làm việc trong ngành kinh doanh suốt hàng chục năm nên ông là một người rất 'dày dặn kinh nghiệm' ('seasoned')."
+          },
+          {
+            q: "Ben luôn giữ thái độ chừng mực để không bao giờ 'overstep' giới hạn của mình với sếp. 'Overstep' nghĩa là?",
+            options: ["A. Hoàn thành trước hạn", "B. Vượt quá giới hạn, can thiệp vào chuyện không phải của mình (Go beyond acceptable limits)", "C. Vô tình giẫm lên chân ai đó", "D. Làm thêm giờ"],
+            correct: 1,
+            explanation: "Dù rất quan tâm Jules, Ben luôn biết đâu là ranh giới giữa sếp và nhân viên để không 'vượt quyền' ('overstep')."
+          },
+          {
+            q: "Chẳng bao lâu, Ben đã trở thành một phần 'indispensable' trong cuộc sống của Jules. 'Indispensable' có nghĩa là gì?",
+            options: ["A. Dễ dàng thay thế", "B. Rất phiền phức", "C. Không thể thiếu được, vô cùng quan trọng (Absolutely necessary)", "D. Đắt đỏ"],
+            correct: 2,
+            explanation: "Từ chỗ bị Jules bỏ lơ, Ben đã trở thành người mà cô 'không thể thiếu' ('indispensable') để tâm sự và nhờ cậy."
+          }
+        ]
+      },
+      {
+        id: 3, 
+        genre: "Romance & Musical", 
+        title: "La La Land (2016)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", 
+        locked: true, 
+        quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.",
+        translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
+        vocabAnalysis: [
+          {
+            word: "Pipe dream (Idiom)", 
+            ipa: "/ˈpaɪp ˌdriːm/", 
+            meaning: "Giấc mơ viển vông, hão huyền.", 
+            context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực."
+          },
+          {
+            word: "Interrupt (v)", 
+            ipa: "/ˌɪn.təˈrʌpt/", 
+            meaning: "Làm gián đoạn, ngắt lời.", 
+            context: "Mia kể về việc những buổi thử vai của mình luôn bị ngắt quãng ('I get interrupted') bởi những lý do ngớ ngẩn."
+          }
+        ],
+        quizzes: [
+          {
+            q: "Trong cảnh cuối, Mia đắm chìm vào một 'reverie' tuyệt đẹp về những gì đáng lẽ đã có thể xảy ra. 'Reverie' nghĩa là gì?",
+            options: ["A. Một cảm giác buồn bã tột độ", "B. Trạng thái mơ màng, mộng tưởng (Daydream)", "C. Sự hoảng loạn bất chợt", "D. Một cơn ác mộng"],
+            correct: 1,
+            explanation: "Phân cảnh cuối khi Mia tưởng tượng ra một cuộc sống hạnh phúc bên Sebastian chính là một 'cơn mộng tưởng' ('reverie')."
+          },
+          {
+            q: "Sebastian là một 'purist' về nhạc Jazz, anh ghét việc thay đổi âm thanh truyền thống. Từ 'purist' ám chỉ người như thế nào?",
+            options: ["A. Người chơi được nhiều nhạc cụ", "B. Người thích thay đổi quan điểm liên tục", "C. Người theo chủ nghĩa thuần túy, cực kỳ tuân thủ các quy tắc truyền thống", "D. Người ghét âm nhạc"],
+            correct: 2,
+            explanation: "Sebastian từ chối thỏa hiệp với âm nhạc thị trường vì anh là một 'người theo chủ nghĩa thuần túy' ('purist') bảo vệ nhạc Jazz cổ điển."
+          },
+          {
+            q: "Bộ phim đã lột tả xuất sắc nỗi 'melancholy' của việc phải hy sinh tình yêu cho sự nghiệp. 'Melancholy' nghĩa là gì?",
+            options: ["A. Nỗi buồn man mác, u sầu sâu thẳm (Pensive sadness)", "B. Sự vui sướng tột độ", "C. Sự tức giận bùng phát", "D. Sự thờ ơ, vô cảm"],
+            correct: 0,
+            explanation: "Dù thành công, cả hai nhân vật đều mang một 'nỗi u sầu' ('melancholy') khi nhớ về mối tình đã qua."
+          },
+          {
+            q: "Danh tiếng và thành công ở Hollywood thường được miêu tả là rất 'ephemeral'. Nghĩa của 'ephemeral' là?",
+            options: ["A. Tồn tại mãi mãi", "B. Sớm nở tối tàn, phù du (Lasting for a very short time)", "C. Vô cùng nặng nề", "D. Đắt giá"],
+            correct: 1,
+            explanation: "Sự nổi tiếng ở Hollywood trôi qua rất nhanh, nó có tính 'phù du' ('ephemeral')."
+          },
+          {
+            q: "Họ cuối cùng đã phải đạt được một 'compromise' giữa ước mơ và thực tại. 'Compromise' là gì?",
+            options: ["A. Một sự thất bại hoàn toàn", "B. Một lời tuyên chiến", "C. Sự thỏa hiệp, nhượng bộ (An agreement reached by making concessions)", "D. Một lời hứa hẹn"],
+            correct: 2,
+            explanation: "Cả Mia và Sebastian đều phải 'thỏa hiệp' ('compromise') - từ bỏ điều này để đạt được điều khác."
+          }
+        ]
+      },
+      {
+        id: 4, 
+        genre: "Romance & Musical", 
+        title: "The Greatest Showman (2017)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMjI1NDYzMzY5Ml5BMl5BanBnXkFtZTgwNTA2NTYzNDM@._V1_FMjpg_UX1000_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", 
+        locked: true,
+        quote: "No one ever made a difference by being like everyone else.",
+        translation: "Chưa từng có ai tạo ra sự khác biệt bằng cách sống giống như những người khác.",
+        vocabAnalysis: [
+          {
+            word: "Noble (adj)", 
+            ipa: "/ˈnoʊ.bəl/", 
+            meaning: "Cao quý, đáng kính.", 
+            context: "Bộ phim trích dẫn câu nói của P.T. Barnum: 'Nghệ thuật cao quý nhất là làm cho người khác hạnh phúc'."
+          },
+          {
+            word: "Run away (Phrasal Verb)", 
+            ipa: "/rʌn əˈweɪ/", 
+            meaning: "Bỏ chạy, trốn đi.", 
+            context: "Giai điệu lặp lại 'Runaways are running the night' ám chỉ những kẻ từng bị xã hội ruồng bỏ nay đã tỏa sáng."
+          }
+        ],
+        quizzes: [
+          {
+            q: "P.T. Barnum đã tạo ra một 'spectacle' đầy mê hoặc khiến cả thành phố sững sờ. 'Spectacle' nghĩa là gì?",
+            options: ["A. Một chiếc kính viễn vọng", "B. Một cuộc trò chuyện thì thầm", "C. Một màn trình diễn hoành tráng, mãn nhãn (Visually striking performance)", "D. Một trò ảo thuật lừa đảo"],
+            correct: 2,
+            explanation: "Rạp xiếc của Barnum không chỉ là các tiết mục đơn lẻ mà là một 'buổi diễn hoành tráng' ('spectacle') đầy ánh sáng và âm nhạc."
+          },
+          {
+            q: "Các diễn viên trong rạp xiếc từng bị xã hội coi là những kẻ 'outcasts'. 'Outcast' là gì?",
+            options: ["A. Người được cộng đồng kính trọng", "B. Người bị xã hội ruồng rẫy, xa lánh (Rejected by society)", "C. Những nhà đầu tư giàu có", "D. Các diễn viên nổi tiếng"],
+            correct: 1,
+            explanation: "Vì ngoại hình khác biệt, họ đã từng bị xem là 'kẻ bị ruồng bỏ' ('outcasts') trước khi đến với rạp xiếc."
+          },
+          {
+            q: "Những động tác nhào lộn trên không trung thực sự rất 'spellbinding'. 'Spellbinding' có nghĩa là gì?",
+            options: ["A. Hấp dẫn, lôi cuốn đến mức mê hoặc (Fascinating)", "B. Rất vụng về", "C. Nhàm chán và lặp đi lặp lại", "D. Đáng sợ"],
+            correct: 0,
+            explanation: "Màn trình diễn đu dây đẹp đến mức khiến người xem 'bị mê hoặc' ('spellbinding')."
+          },
+          {
+            q: "Barnum là một 'visionary' đích thực trong ngành công nghiệp giải trí. Từ này có nghĩa là gì?",
+            options: ["A. Người sống theo quy tắc cũ", "B. Kẻ hay phàn nàn", "C. Người có tầm nhìn xa trông rộng, có ý tưởng đột phá (Having original ideas about the future)", "D. Người ảo tưởng"],
+            correct: 2,
+            explanation: "Barnum nhìn thấy vẻ đẹp và tiềm năng ở những thứ mà người khác khinh rẻ, chứng tỏ ông là người 'có tầm nhìn' ('visionary')."
+          },
+          {
+            q: "Rạp xiếc đã phải đối mặt với sự 'scrutiny' gay gắt từ giới phê bình thượng lưu. 'Scrutiny' là gì?",
+            options: ["A. Sự ủng hộ vô điều kiện", "B. Sự soi xét, đánh giá kỹ lưỡng và khắt khe (Critical observation)", "C. Sự phớt lờ hoàn toàn", "D. Sự tài trợ tài chính"],
+            correct: 1,
+            explanation: "Nhà phê bình nghệ thuật liên tục dùng ngòi bút của mình để 'soi xét' ('scrutiny') rạp xiếc của Barnum."
+          }
+        ]
+      },
+      {
+        id: 5, 
+        genre: "Fantasy", 
         title: "Harry Potter and the Half-Blood Prince (2009)",
-        thumbnail: "https://m.media-amazon.com/images/M/MV5BODg1NjE0YjctYWVmMC00NmE5LWFkOWMtOTdkYWQ2MTFiZDI0XkEyXkFqcGc@._V1_.jpg", // Hình ảnh bìa
-        mediaType: "youtube", // ĐỊNH DẠNG: YOUTUBE
-        mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", // Cảnh I'm the Half-Blood Prince
-        locked: true, // Khóa bài này lại
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BODg1NjE0YjctYWVmMC00NmE5LWFkOWMtOTdkYWQ2MTFiZDI0XkEyXkFqcGc@._V1_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", 
+        locked: true,
         quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.",
         translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
         vocabAnalysis: [
@@ -350,107 +541,95 @@
             ipa: "/faɪt bæk/", 
             meaning: "Đánh trả, phản công.", 
             context: "Harry thách thức Snape ở lại chiến đấu thay vì bỏ chạy."
-          },
-          {
-            word: "Belong to (Phrasal Verb)", 
-            ipa: "/bɪˈlɔŋ tuː/", 
-            meaning: "Thuộc về (ai đó).", 
-            context: "Snape nói Harry thuộc về Chúa tể Hắc ám (The Dark Lord), ý nói Voldemort mới là người sẽ định đoạt mạng sống của Harry."
           }
         ],
         quizzes: [
           {
-            q: "Trong cảnh này, Harry đã gọi Snape là gì khi Snape không chịu đấu tay đôi?",
-            options: ["Traitor (Kẻ phản bội)", "Coward (Kẻ hèn nhát)", "Monster (Quái vật)", "Liar (Kẻ nói dối)"],
-            correct: 1,
-            explanation: "Harry đã hét lên: 'Fight back! You coward, fight back!' (Đánh trả đi! Đồ hèn nhát, đánh trả đi!)."
+            q: "Sự hiện diện của Chúa tể Voldemort mang tính 'malevolent' khiến cả thế giới phép thuật khiếp sợ. 'Malevolent' nghĩa là gì?",
+            options: ["A. Ác độc, có dã tâm muốn làm hại người khác (Showing a wish to do evil)", "B. Có nhiều quyền năng nhưng không dùng", "C. Rất tử tế nhưng bị hiểu lầm", "D. Thần thánh"],
+            correct: 0,
+            explanation: "Voldemort là hiện thân của cái ác, nên bản chất của hắn cực kỳ 'ác độc' ('malevolent')."
           },
           {
-            q: "Cụm từ 'Fight back' mang ý nghĩa gì?",
-            options: ["Bỏ chạy", "Đầu hàng", "Đánh trả, phản công", "Lùi lại"],
+            q: "Dấu hiệu Hắc ám trên bầu trời là một điềm báo 'ominous' về mối nguy hiểm cận kề. 'Ominous' có nghĩa là gì?",
+            options: ["A. Điềm báo đáng ngại, gở (Giving the impression that something bad will happen)", "B. Dấu hiệu của sự ăn mừng", "C. Rất sáng và rực rỡ", "D. Dấu hiệu an toàn"],
+            correct: 0,
+            explanation: "Khi Dấu hiệu Hắc ám xuất hiện, nó luôn mang lại cảm giác 'đáng gở, chẳng lành' ('ominous')."
+          },
+          {
+            q: "Hermione có vốn kiến thức 'encyclopedic' về lịch sử phép thuật. 'Encyclopedic' nghĩa là?",
+            options: ["A. Rất hạn hẹp", "B. Phong phú, uyên bác như một cuốn bách khoa toàn thư (Comprehensive)", "C. Hoàn toàn hư cấu", "D. Lỗi thời"],
+            correct: 1,
+            explanation: "Hermione biết rất nhiều thứ, khối lượng kiến thức của cô được ví như một 'bách khoa toàn thư' ('encyclopedic')."
+          },
+          {
+            q: "Áo khoác Tàng hình giúp Harry trở nên 'imperceptible' trước mắt người khác. 'Imperceptible' là gì?",
+            options: ["A. Gây ồn ào và chú ý", "B. Bất khả chiến bại", "C. Không thể nhận thấy, vô hình (Impossible to perceive)", "D. Rất nặng nề"],
             correct: 2,
-            explanation: "Fight back có nghĩa là chống cự hoặc phản công lại một cuộc tấn công."
+            explanation: "Khi mặc áo choàng vào, Harry hoàn toàn 'không thể bị phát hiện' ('imperceptible')."
           },
           {
-            q: "Snape nói rằng Harry thuộc về ai ('He belongs to...')?",
-            options: ["Dumbledore", "The Dark Lord (Chúa tể Hắc ám)", "Hogwarts", "The Death Eaters (Tử thần Thực tử)"],
-            correct: 1,
-            explanation: "Snape đã nói: 'No! He belongs to the Dark Lord' (Không! Nó thuộc về Chúa tể Hắc ám)."
-          },
-          {
-            q: "Harry đã cố gắng dùng bùa chú gì lên Snape?",
-            options: ["Expelliarmus", "Avada Kedavra", "Sectumsempra", "Crucio"],
-            correct: 2,
-            explanation: "Harry đã niệm chú Sectumsempra, một bùa chú do chính Snape sáng tạo ra."
-          },
-          {
-            q: "Cuối đoạn video, Snape đã tiết lộ sự thật gây sốc nào?",
-            options: ["Ông là cha của Harry", "Ông là Hoàng tử Lai (The Half-Blood Prince)", "Ông làm việc cho Dumbledore", "Ông đã giết Sirius Black"],
-            correct: 1,
-            explanation: "Snape đã nói: 'Yes... I'm the Half-Blood Prince.' (Đúng vậy... Ta chính là Hoàng tử Lai)."
+            q: "Đũa phép Cơm nguội được mệnh danh là chiếc đũa 'potent' nhất từng được tạo ra. 'Potent' có nghĩa là gì?",
+            options: ["A. Rất mỏng manh, dễ gãy", "B. Vô dụng", "C. Cổ đại", "D. Có quyền năng, sức mạnh to lớn (Having great power)"],
+            correct: 3,
+            explanation: "Elder Wand là Bảo bối Tử thần, do đó nó cực kỳ 'hùng mạnh, quyền năng' ('potent')."
           }
         ]
       },
       {
-        id: 3, 
-        genre: "Romance", 
-        title: "La La Land (2016)",
-        thumbnail: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", // Hình ảnh bìa
-        mediaType: "youtube", // ĐỊNH DẠNG: YOUTUBE
-        mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", // Cảnh I'm Not Good Enough
-        locked: true, // Khóa bài này
-        quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.",
-        translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
+        id: 6, 
+        genre: "Fantasy", 
+        title: "Alice in Wonderland (2010)",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", 
+        mediaType: "youtube", 
+        mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", 
+        locked: true,
+        quote: "Anyone with a head that large is welcome in my court.",
+        translation: "Bất kỳ ai với một cái đầu to như vậy đều được hoan nghênh tại triều đình của ta.",
         vocabAnalysis: [
           {
-            word: "Pipe dream (Idiom)", 
-            ipa: "/ˈpaɪp ˌdriːm/", 
-            meaning: "Giấc mơ viển vông, hão huyền.", 
-            context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực."
+            word: "Outgrow (v)", 
+            ipa: "/ˌaʊtˈɡroʊ/", 
+            meaning: "Lớn vượt quá kích cỡ (của quần áo).", 
+            context: "Alice giải thích rằng do ăn bánh phép thuật nên cơ thể cô đã phình to, khiến cô 'mặc không vừa' những bộ quần áo cũ nữa."
           },
           {
-            word: "Good enough (Phrase)", 
-            ipa: "/ɡʊd ɪˈnʌf/", 
-            meaning: "Đủ giỏi, đủ tốt.", 
-            context: "Mia nói 'maybe I'm not good enough' (có lẽ em không đủ giỏi), thể hiện sự tự ti sau nhiều lần thất bại."
-          },
-          {
-            word: "Interrupt (v)", 
-            ipa: "/ˌɪn.təˈrʌpt/", 
-            meaning: "Làm gián đoạn, ngắt lời.", 
-            context: "Mia kể về việc những buổi thử vai của mình luôn bị ngắt quãng ('I get interrupted') bởi những lý do ngớ ngẩn."
+            word: "Enormous (adj)", 
+            ipa: "/ɪˈnɔːr.məs/", 
+            meaning: "To lớn khổng lồ.", 
+            context: "Nữ hoàng Đỏ ra lệnh cho lính hầu phải tìm vải may đồ cho cô gái 'khổng lồ' này."
           }
         ],
         quizzes: [
           {
-            q: "Sebastian đến gặp Mia để báo tin gì?",
-            options: ["Anh ấy đã tìm được công việc mới", "Mia có một buổi thử vai (audition) cho một bộ phim lớn", "Vở kịch của Mia được lên báo", "Họ sẽ chuyển đến Paris"],
+            q: "Alice lạc vào một thế giới vô cùng 'peculiar', nơi động vật có thể nói chuyện. 'Peculiar' nghĩa là gì?",
+            options: ["A. Hoàn toàn bình thường", "B. Kỳ lạ, khác thường (Strange or odd)", "C. Rất hiện đại", "D. Vô hình"],
             correct: 1,
-            explanation: "Sebastian nói rằng giám đốc tuyển casting đã xem kịch của Mia và muốn cô đến thử vai cho một bộ phim lớn."
+            explanation: "Wonderland là một vùng đất không tuân theo logic thông thường, vì thế nó rất 'kỳ lạ' ('peculiar')."
           },
           {
-            q: "Ban đầu, Mia phản ứng thế nào với lời đề nghị đi thử vai?",
-            options: ["Cô ấy rất hào hứng", "Cô ấy lập tức đồng ý", "Cô ấy từ chối và nói 'I'm not going' (Em sẽ không đi)", "Cô ấy muốn dẫn Sebastian theo"],
+            q: "Những câu đố của Mad Hatter (Thợ làm mũ điên) thường rất 'nonsensical'. 'Nonsensical' có nghĩa là gì?",
+            options: ["A. Cực kỳ thông minh và triết lý", "B. Rất dễ giải", "C. Vô nghĩa, kỳ cục (Making no sense)", "D. Rất logic"],
             correct: 2,
-            explanation: "Do quá tổn thương và tự ti, Mia đã từ chối cơ hội này."
+            explanation: "Đúng như tên gọi, những điều Mad Hatter nói ra thường rất 'vô nghĩa' ('nonsensical')."
           },
           {
-            q: "Từ 'Pipe dream' ám chỉ điều gì trong đoạn hội thoại này?",
-            options: ["Một giấc mơ tuyệt đẹp", "Một giấc mơ viển vông, không thể thành hiện thực", "Một công việc liên quan đến ống nước", "Một kế hoạch rõ ràng"],
+            q: "Nữ hoàng Đỏ là một vị vua 'tyrannical', luôn bắt mọi người phải tuân lệnh mình. 'Tyrannical' là gì?",
+            options: ["A. Cai trị một cách dân chủ", "B. Độc tài, tàn bạo (Exercising power in a cruel way)", "C. Không có quyền lực thực sự", "D. Rất hiền từ"],
             correct: 1,
-            explanation: "'Pipe dream' là một thành ngữ chỉ một ý tưởng, giấc mơ không thực tế."
+            explanation: "Nữ hoàng Đỏ cai trị bằng sự sợ hãi và bạo lực, đó là biểu hiện của sự 'độc tài' ('tyrannical')."
           },
           {
-            q: "Theo Mia, lý do nào khiến cô ấy không muốn làm diễn viên nữa?",
-            options: ["Vì cô ấy không có thời gian", "Vì cô ấy nghĩ mình không đủ giỏi và việc đó quá đau đớn ('it hurts too much')", "Vì cô ấy muốn làm ca sĩ", "Vì cô ấy ghét đạo diễn"],
+            q: "Cheshire Cat nổi tiếng với cơ thể tàng hình và nụ cười 'enigmatic'. 'Enigmatic' nghĩa là?",
+            options: ["A. Rất buồn bã", "B. Bí ẩn, khó hiểu (Mysterious)", "C. Ồn ào, phiền phức", "D. Ngốc nghếch"],
             correct: 1,
-            explanation: "Mia nói: 'Maybe I'm not good enough' và 'it hurts a little bit too much'."
+            explanation: "Nụ cười của Cheshire Cat luôn mang theo vẻ 'bí ẩn, khó đoán' ('enigmatic')."
           },
           {
-            q: "Sebastian đã chốt lịch hẹn với Mia như thế nào vào cuối đoạn video?",
-            options: ["Anh sẽ gọi điện cho cô vào lúc 8h sáng", "Anh sẽ đợi cô ở trước nhà lúc 8h sáng, dù cô có đi hay không", "Họ sẽ gặp nhau ở quán cà phê", "Anh bảo cô tự đi đến buổi thử vai"],
-            correct: 1,
-            explanation: "Sebastian nói: 'I'll be out front at 8:00 a.m. You'll be out front or not.' (Anh sẽ đợi trước cửa lúc 8 giờ sáng. Em ra hay không thì tùy)."
+            q: "Alice có một sự tò mò 'insatiable' đã dẫn cô rơi xuống hang thỏ. 'Insatiable' có nghĩa là gì?",
+            options: ["A. Dễ dàng bị phân tâm", "B. Không có hứng thú", "C. Rất lười biếng", "D. Không thể thỏa mãn, vô hạn (Impossible to satisfy)"],
+            correct: 3,
+            explanation: "Sự tò mò của Alice là 'không đáy, không thể thỏa mãn' ('insatiable'), thôi thúc cô khám phá những điều mới lạ."
           }
         ]
       }
@@ -463,12 +642,11 @@
     let isVip = false;
 
     window.addEventListener('DOMContentLoaded', () => {
-      checkVipStatus(); // Kiểm tra trạng thái lưu trong trình duyệt khi mở web
+      checkVipStatus(); 
       renderCinemaCards();
       initScrambleGame();
     });
 
-    // Hàm kiểm tra thời hạn VIP trong localStorage
     function checkVipStatus() {
       const expiry = localStorage.getItem('cozyVipExpiry');
       if (expiry) {
@@ -476,19 +654,16 @@
           isVip = true;
           applyVipUI();
         } else {
-          localStorage.removeItem('cozyVipExpiry'); // Xóa khi hết hạn
+          localStorage.removeItem('cozyVipExpiry'); 
           alert("Gói VIP của bạn đã hết hạn. Vui lòng gia hạn để tiếp tục nhé 🌷");
         }
       }
     }
 
-    // Hàm thay đổi giao diện khi đã là VIP
     function applyVipUI() {
-      // Ẩn nút Kích Hoạt góc phải
       const floatingBtn = document.getElementById('floating-vip-btn');
       if (floatingBtn) floatingBtn.style.display = 'none';
 
-      // Thay đổi nút trên cùng (Header) -> Không mở bảng giá nữa mà thông báo ngày
       const vipHeaderBtn = document.getElementById('vip-header-btn');
       vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội Viên Đã Kích Hoạt 🌟</span>';
       vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
@@ -500,21 +675,18 @@
         alert(`Chào mừng bạn! Gói VIP của bạn có thời hạn đến ngày: ${dateStr} 🌷\nChúc bạn học tập thật vui vẻ!`);
       };
 
-      // Tắt luôn modal thanh toán và login
       closeModal('modal-login');
       closeModal('modal-vip');
     }
 
-    // Modal Đăng Nhập VIP
     function openLoginModal() {
       document.getElementById('modal-login').classList.remove('hidden');
     }
 
-function verifyVipLogin() {
+    function verifyVipLogin() {
       const daysInput = document.getElementById('vip-package-select').value;
       const passInput = document.getElementById('vip-password-input').value;
 
-      // Xác định mật khẩu đúng cho từng gói
       let correctPassword = "";
       if (daysInput === "3") {
         correctPassword = "cosygardenhoctienganhquangucanh3days";
@@ -525,19 +697,16 @@ function verifyVipLogin() {
       }
 
       if (passInput === correctPassword) {
-        // Tính thời gian sống của tài khoản
         const durationInMs = parseInt(daysInput) * 24 * 60 * 60 * 1000;
         const expiryDate = Date.now() + durationInMs;
         
-        // Lưu vào trình duyệt
         localStorage.setItem('cozyVipExpiry', expiryDate);
         isVip = true;
         
         alert("🎉 Kích hoạt VIP thành công! Toàn bộ kho tàng điện ảnh đã được mở khóa.");
         
-        // Chuyển đổi giao diện
         applyVipUI();
-        renderCinemaCards(); // Reset lại ổ khóa
+        renderCinemaCards(); 
       } else {
         alert("Mật khẩu không chính xác! Vui lòng kiểm tra lại 🛑");
       }
@@ -552,7 +721,6 @@ function verifyVipLogin() {
       document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
     }
 
-    // --- Cinema Grid Render ---
     function renderCinemaCards() {
       const container = document.getElementById('cinema-grid');
       const filtered = currentFilter === 'ALL' ? cinemaData : cinemaData.filter(c => c.genre === currentFilter);
@@ -586,11 +754,9 @@ function verifyVipLogin() {
       renderCinemaCards();
     }
 
-    // --- Cinema Modal & Quiz Engine ---
     function openCinemaModal(id) {
       const item = cinemaData.find(c => c.id === id);
       
-      // Nếu bài khóa và user chưa là VIP -> Hiện bảng giá
       if (item.locked && !isVip) { openVipModal(); return; }
       
       activeCinemaId = id; 
@@ -672,7 +838,7 @@ function verifyVipLogin() {
       if (activeQuizIndex === item.quizzes.length - 1) {
         nextBtn.innerHTML = "Tuyệt vời! Đóng bài học 🧺";
         nextBtn.onclick = () => {
-          document.getElementById('cinema-media-container').innerHTML = ''; // Ngắt video khi tắt modal
+          document.getElementById('cinema-media-container').innerHTML = ''; 
           closeModal('modal-cinema');
         };
       } else {
