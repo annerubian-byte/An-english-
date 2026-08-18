@@ -144,6 +144,9 @@
         <div class="flex justify-center gap-3 pt-4">
           <button onclick="resetScramble()" class="px-5 py-2.5 text-xs font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition" id="btn-reset-scramble">Bỏ chọn ↻</button>
           <button onclick="checkScramble()" class="px-6 py-2.5 text-xs font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95" id="btn-check-scramble">Kiểm tra kết quả ✔️</button>
+          
+          <!-- Nút Làm lại (ẩn mặc định) -->
+          <button onclick="restartPractice()" class="hidden px-6 py-2.5 text-xs font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow-[0_4px_15px_rgba(142,168,133,0.3)] transition transform active:scale-95" id="btn-restart-practice">Làm lại từ đầu 🔄</button>
         </div>
         <p id="scramble-feedback" class="text-xs font-bold hidden"></p>
       </div>
@@ -451,7 +454,7 @@
         quizzes: [
           {
             q: "Trong video, khi Mia quá chán nản vì liên tục thất bại ở các buổi thử vai, cô nói: <i>'Maybe I'm not <b>good enough</b>'</i>. Cụm từ này thường dùng để diễn tả cảm xúc gì?",
-            options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân (không đủ giỏi)", "C. Sự tức giận với người khác", "D. Sự mệt mỏi về thể chất"],
+            options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân (không đủ giỏi)", "C. Sự tức diễn với người khác", "D. Sự mệt mỏi về thể chất"],
             correct: 1,
             explanation: "<b>'Not good enough'</b> (không đủ tốt/giỏi) là cụm từ kinh điển diễn tả sự tự ti (insecurity) khi ai đó đối mặt với sự từ chối quá nhiều lần."
           },
@@ -522,7 +525,7 @@
             q: "Barnum được xem là một <b>'visionary'</b> thực thụ khi dám tạo ra một loại hình giải trí mới. 'Visionary' ám chỉ người có đặc điểm gì?",
             options: ["A. Sống hoài niệm về quá khứ", "B. Không có ý chí tiến thủ", "C. Có tầm nhìn xa trông rộng, có ý tưởng đột phá", "D. Cực kỳ bảo thủ"],
             correct: 2,
-            explanation: "<b>'Visionary'</b> (người nhìn xa trông rộng). Barnum nhìn thấy tiềm năng và vẻ đẹp ở những điều mà người bình thường chê cười, từ đó tiên phong tạo ra ngành kinhdong rạp xiếc."
+            explanation: "<b>'Visionary'</b> (người nhìn xa trông rộng). Barnum nhìn thấy tiềm năng và vẻ đẹp ở những điều mà người bình thường chê cười, từ đó tiên phong tạo ra ngành kinh doanh rạp xiếc."
           },
           {
             q: "Sự mới lạ của rạp xiếc đã phải chịu sự <b>'scrutiny'</b> gắt gao từ giới quý tộc. Từ này có nghĩa là gì?",
@@ -964,6 +967,12 @@
       remainingSentences = [...availableSentences];
     }
 
+    // Hàm gọi khi người dùng muốn làm lại từ đầu
+    function restartPractice() {
+      updateAvailableSentences();
+      initScrambleGame();
+    }
+
     function initScrambleGame() {
       if (availableSentences.length === 0) {
         updateAvailableSentences();
@@ -980,10 +989,16 @@
         document.getElementById('scramble-pool').innerHTML = "";
         document.getElementById('btn-reset-scramble').style.display = "none";
         document.getElementById('btn-check-scramble').style.display = "none";
+        
+        // Hiện nút Làm Lại và ẩn đi một số UI thừa
+        document.getElementById('btn-restart-practice').classList.remove('hidden');
         document.getElementById('scramble-feedback').classList.add('hidden');
         if (movieTag) movieTag.classList.add('hidden');
         return;
       }
+
+      // Đảm bảo nút làm lại bị ẩn đi khi đang chơi
+      document.getElementById('btn-restart-practice').classList.add('hidden');
 
       const randomIndex = Math.floor(Math.random() * remainingSentences.length);
       currentPractice = remainingSentences[randomIndex];
