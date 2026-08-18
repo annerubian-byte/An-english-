@@ -74,10 +74,13 @@
     <div class="max-w-6xl mx-auto px-4 flex gap-3 overflow-x-auto hide-scrollbar">
       <button onclick="switchNav('cinema')" id="nav-cinema" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0">
         <i class="fa-solid fa-film"></i> Rạp chiếu bóng nhỏ 
+      </button>
       <button onclick="switchNav('arcade')" id="nav-arcade" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
         <i class="fa-solid fa-puzzle-piece"></i> Góc chơi chữ 
       </button>
-        </button>
+      <button onclick="switchNav('arcade')" id="nav-reading" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
+        <i class="fa-solid fa-book"></i> Trạm đọc nhân văn
+      </button>
     </div>
   </div>
 
@@ -299,9 +302,9 @@
         id: 1, 
         genre: "Drama", 
         title: "The Devil Wears Prada (2006)",
-        thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=The+Devil+Wears+Prada", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/vRQ-ZjaABq4?si=1&start=20", 
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BZjQ3ZTIzOTItMGNjNC00MWRmLWJlMGEtMjJmMDM5ZDIzZGM3XkEyXkFqcGc@._V1_.jpg", // Đã cập nhật hình ảnh bìa
+        mediaType: "youtube", // ĐỊNH DẠNG: YOUTUBE
+        mediaUrl: "https://www.youtube.com/embed/vRQ-ZjaABq4?si=1&start=20", // URL video YouTube
         locked: false,
         quote: "You go to your closet and you select... I don't know... that clunky blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
         translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh thô kệch kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
@@ -332,9 +335,9 @@
         id: 2, 
         genre: "Romance", 
         title: "La La Land (2016)",
-        thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=La+La+Land", 
-        mediaType: "image", 
-        mediaUrl: "https://placehold.co/1000x500/EFE5D2/6A5B53?text=La+La+Land+Scene",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", // Đã cập nhật hình ảnh bìa
+        mediaType: "image", // ĐỊNH DẠNG: ẢNH TĨNH
+        mediaUrl: "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg", // URL ảnh lớn hiển thị trong modal
         locked: false,
         quote: "Here's to the ones who dream, foolish as they may seem. Here's to the hearts that ache. Here's to the mess we make.",
         translation: "Nâng ly vì những kẻ mộng mơ, dẫu họ có vẻ khờ dại. Nâng ly vì những con tim rỉ máu. Nâng ly vì những đống lộn xộn ta đã gây ra.",
@@ -365,9 +368,9 @@
         id: 3, 
         genre: "Sci-Fi", 
         title: "Harry Potter",
-        thumbnail: "https://placehold.co/600x400/EFE5D2/6A5B53?text=Harry+Potter", 
-        mediaType: "image", 
-        mediaUrl: "https://placehold.co/1000x500/EFE5D2/6A5B53?text=Snape+Potions+Class",
+        thumbnail: "https://m.media-amazon.com/images/M/MV5BODg1NjE0YjctYWVmMC00NmE5LWFkOWMtOTdkYWQ2MTFiZDI0XkEyXkFqcGc@._V1_.jpg", // Đã cập nhật hình ảnh bìa
+        mediaType: "video", // ĐỊNH DẠNG: VIDEO MP4
+        mediaUrl: "https://www.w3schools.com/html/mov_bbb.mp4", // URL video .mp4 (Thay bằng link video thật của bạn, ví dụ upload lên cloudinary)
         locked: true,
         quote: "I can teach you how to bewitch the mind and ensnare the senses. I can tell you how to bottle fame, brew glory, and even put a stopper in death.",
         translation: "Ta có thể dạy các trò cách mê hoặc tâm trí và giăng bẫy các giác quan. Ta có thể chỉ các trò cách đóng chai danh vọng, ủ nấu vinh quang, và thậm chí là chặn đứng cả cái chết.",
