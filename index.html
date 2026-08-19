@@ -160,9 +160,8 @@
         <!-- Khối Avatar & Info -->
         <div class="flex-shrink-0 flex flex-col items-center space-y-4 z-10 w-full md:w-1/3">
           <div class="w-44 h-44 rounded-full border-4 border-white shadow-xl overflow-hidden bg-cottage-roseLight flex items-center justify-center relative hover:scale-105 transition duration-500 ring-4 ring-cottage-roseLight/50">
-            <!-- Sử dụng thuộc tính object-position và scale để zoom cận mặt vào ảnh IMG_9074.jpg -->
-            <img src="IMG_9074.jpg" alt="Vũ Thái An" class="w-full h-full object-cover object-[center_15%] scale-[1.3] hover:scale-[1.4] transition-transform duration-700">
-            <div class="absolute bottom-2 right-4 bg-white text-xl p-2 rounded-full shadow-md rotate-12">👩‍🏫</div>
+            <!-- Ảnh đã được căn góc lấy khuôn mặt. Nhớ để file IMG_9074.jpg chung thư mục với HTML -->
+            <img src="IMG_9074.jpg" alt="Vũ Thái An" class="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700">
           </div>
           <div class="text-center space-y-1.5 mt-2">
             <h2 class="text-2xl font-display font-black text-cottage-brown">Vũ Thái An</h2>
@@ -185,12 +184,6 @@
             <p>
               Mình xây dựng <b>Cozy garden</b> vì tin rằng việc tiếp thu ngôn ngữ không nên chỉ khô khan qua sách vở hay thi cử, mà cần được gắn liền với ngữ cảnh thực tế, âm thanh và cảm xúc khi xem một bộ phim hay hoặc nghe một bài nhạc yêu thích. Đó cũng chính là cách mình đã học và trở nên đam mê với Tiếng Anh.
             </p>
-            <div class="bg-white p-4 rounded-2xl border-2 border-cottage-butter shadow-sm relative">
-              <span class="absolute -top-3 -left-2 text-2xl">💡</span>
-              <p class="text-xs text-cottage-brown italic">
-                Nằm trong định hướng phát triển kỹ năng tự học mà mình hướng tới, khu vườn nhỏ này được thiết kế dựa trên các phương pháp sư phạm bài bản và sự bền bỉ theo đuổi mục tiêu (như cách mà thần tượng Taylor Swift của mình luôn cống hiến 🌟).
-              </p>
-            </div>
             <p>
                Với mục tiêu giúp học sinh tự học Tiếng Anh để có thể sử dụng thành thạo và tự nhiên như người bản xứ, Cozy garden cung cấp những trích đoạn phim kinh điển được bóc tách từng cấu trúc ngữ pháp và từ vựng một cách sâu sắc nhất đi kèm với bộ câu hỏi ôn tập hay ho. Chúc bạn có những giờ phút học tập thật hiệu quả và đầy thú vị tại Cozy garden nhé!
             </p>
@@ -198,7 +191,7 @@
           
           <div class="pt-3 flex gap-4">
             <a href="https://www.facebook.com/thaiann001/" target="_blank" class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition-all transform hover:-translate-y-1 shadow-sm"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="mailto:cozy@gmail.com" class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition-all transform hover:-translate-y-1 shadow-sm"><i class="fa-solid fa-envelope"></i></a>
+            <a href="mailto:annerubian@gmail.com" class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition-all transform hover:-translate-y-1 shadow-sm"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
 
@@ -485,7 +478,7 @@
           { q: "Nữ hoàng Đỏ nhìn thấy thân hình khổng lồ của Alice và đã ra lệnh cho tùy tùng: <i>'clothe this <b>enormous</b> girl'</i>. Từ 'enormous' mang sắc thái nào?", options: ["A. Rất nhỏ bé, tí hon", "B. Rất xấu xí", "C. Vô cùng to lớn, khổng lồ", "D. Rất xinh đẹp"], correct: 2, explanation: "<b>'Enormous'</b> (khổng lồ, to lớn) được Nữ hoàng dùng để miêu tả kích thước hiện tại của Alice sau khi bị phép thuật làm cho to ra." },
           { q: "Wonderland là một nơi rất <b>'peculiar'</b>, hoàn toàn khác biệt với thế giới loài người. 'Peculiar' có nghĩa là gì?", options: ["A. Bình thường, quen thuộc", "B. Lộng lẫy, xa hoa", "C. Kỳ lạ, khác thường, có phần hơi lập dị", "D. Nhàm chán"], correct: 2, explanation: "Mọi thứ ở Wonderland từ sinh vật đến con người đều không tuân theo logic thông thường, chúng rất 'kỳ lạ' ('peculiar')." },
           { q: "Sự phán xét của Nữ hoàng Đỏ với những kẻ làm trái ý luôn rất <b>'tyrannical'</b>. Bạn hiểu từ này như thế nào?", options: ["A. Rất công bằng và dân chủ", "B. Độc tài, tàn bạo, lạm dụng quyền lực", "C. Hiền từ, độ lượng", "D. Không có tiếng nói"], correct: 1, explanation: "Nữ hoàng Đỏ nổi tiếng với câu nói 'Off with his head!' (Chém đầu hắn!), cho thấy sự trị vì 'độc tài, bạo chúa' ('tyrannical') của bà." },
-          { q: "Alice là cô bé mang trong mình một sự tò mò <b>'insatiable'</b>. Cụm từ này diễn tả điều gì?", options: ["A. Không thể thỏa mãn, khát khao vô tận", "B. Rất dễ chán nản", "C. Luôn cảm thấy mệt mỏi", "D. Không có mục tiêu"], correct: 0, explanation: "Chính sự tò mò 'không đáy' ('insatiable') đã thôi thúc Alice bám theo thỏ trắng và rơi xuống hang thỏ, mở ra chuyến phiêu lưu." }
+          { q: "Alice là cô bé mang trong mình một sự tò mò <b>'insatiable'</b>. Cụm từ diễn tả điều gì?", options: ["A. Không thể thỏa mãn, khát khao vô tận", "B. Rất dễ chán nản", "C. Luôn cảm thấy mệt mỏi", "D. Không có mục tiêu"], correct: 0, explanation: "Chính sự tò mò 'không đáy' ('insatiable') đã thôi thúc Alice bám theo thỏ trắng và rơi xuống hang thỏ, mở ra chuyến phiêu lưu." }
         ]
       },
       {
