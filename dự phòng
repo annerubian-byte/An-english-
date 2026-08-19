@@ -4,6 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cozy Garden ‧₊˚ ⛲️ ‧₊𓏲 ๋࣭ ࣪ ˖🎐 - Học tiếng Anh qua ngữ cảnh </title>
+  
+  <!-- ================= SEO & OPEN GRAPH META TAGS ================= -->
+  <meta name="description" content="Cùng chill và học từ vựng qua ngữ cảnh với những bộ phim kinh điển tại Cozy Garden nhé! 🦢">
+  
+  <!-- Facebook, Zalo, LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://an-english.vercel.app">
+  <meta property="og:title" content="Cozy Garden 🌷 - Học Tiếng Anh qua phim ảnh">
+  <meta property="og:description" content="Khám phá từ vựng và cấu trúc ngữ pháp Tiếng Anh tự nhiên như người bản xứ qua các bộ phim điện ảnh kinh điển. Cùng chill với Cozy nhé! 🎬">
+  <!-- DÁN LINK ẢNH THUMBNAIL CỦA BẠN VÀO ĐÂY (Phải là link bắt đầu bằng https://...) -->
+  <meta property="og:image" content="https://i.imgur.com/LINK_ANH_CUA_BAN.jpg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://an-english.vercel.app">
+  <meta name="twitter:title" content="Cozy Garden 🌷 - Học Tiếng Anh qua phim ảnh">
+  <meta name="twitter:description" content="Khám phá từ vựng và cấu trúc ngữ pháp Tiếng Anh tự nhiên như người bản xứ qua các bộ phim điện ảnh kinh điển.">
+  <!-- DÁN LINK ẢNH THUMBNAIL TƯƠNG TỰ VÀO ĐÂY -->
+  <meta name="twitter:image" content="https://i.imgur.com/LINK_ANH_CUA_BAN.jpg">
+  <!-- ============================================================ -->
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,13 +67,15 @@
     body { background-image: radial-gradient(#EFE5D2 1px, transparent 1px); background-size: 20px 20px; }
   </style>
 </head>
-<body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans flex flex-col selection:bg-cottage-roseLight selection:text-cottage-roseDark relative pb-10">
+
+<!-- THÊM LỆNH KHÓA COPY (oncopy), CẮT (oncut), CHUỘT PHẢI (oncontextmenu), CHỌN VĂN BẢN (select-none) VÀO THẺ BODY -->
+<body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans flex flex-col selection:bg-cottage-roseLight selection:text-cottage-roseDark relative pb-10 select-none" oncopy="return false;" oncut="return false;" oncontextmenu="return false;">
 
   <header class="bg-cottage-card/90 backdrop-blur-md border-b-2 border-dashed border-cottage-butter sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
         <div class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-rose/30 flex items-center justify-center text-xl overflow-hidden shadow-sm group-hover:scale-105 transition transform">
-        🎬
+        🌷
         </div>
         <div>
           <div class="flex items-center gap-1.5">
@@ -87,13 +110,26 @@
   <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-8">
 
     <section id="view-cinema" class="space-y-6">
-      <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="space-y-2 z-10">
-          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học từ vựng qua phim ảnh ☁️</h2>
+      <div class="bg-gradient-to-br from-cottage-card to-cottage-roseLight/30 border-2 border-dashed border-cottage-rose/40 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <!-- Decor nền: các icon garden ẩn nhẹ (ko lạm dụng emoji) -->
+        <i class="fa-solid fa-leaf absolute top-6 left-10 text-4xl text-cottage-green/5 -rotate-12 z-0"></i>
+        <i class="fa-solid fa-seedling absolute bottom-4 left-1/3 text-5xl text-cottage-green/10 rotate-12 z-0"></i>
+        <i class="fa-solid fa-spa absolute top-1/2 right-1/4 text-6xl text-cottage-rose/10 -rotate-12 z-0"></i>
+        
+        <!-- Các đốm sáng blur cho nền có chiều sâu -->
+        <div class="absolute -top-10 -left-10 w-32 h-32 bg-cottage-butter rounded-full blur-3xl opacity-60 z-0"></div>
+        <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-cottage-rose rounded-full blur-3xl opacity-20 z-0"></div>
+
+        <div class="space-y-2 z-10 relative">
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học từ vựng qua phim ảnh</h2>
           <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Hãy để âm thanh, hình ảnh và cảm xúc từ những bộ phim kinh điển giúp bạn ghim chặt từ vựng vào trí nhớ!</p>
         </div>
-        <div class="text-6xl animate-float-delayed select-none z-10">📽️</div>
-        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
+        
+        <!-- Thay emoji bằng icon chuyên nghiệp có bọc khung mờ -->
+        <div class="w-20 h-20 md:w-24 md:h-24 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-3xl md:text-4xl animate-float-delayed select-none z-10 relative shadow-[0_8px_30px_rgb(230,164,180,0.3)] text-cottage-roseDark">
+          <i class="fa-solid fa-film"></i>
+        </div>
       </div>
 
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
@@ -160,7 +196,7 @@
         <!-- Khối Avatar & Info -->
         <div class="flex-shrink-0 flex flex-col items-center space-y-4 z-10 w-full md:w-1/3">
           <div class="w-44 h-44 rounded-full border-4 border-white shadow-xl overflow-hidden bg-cottage-roseLight flex items-center justify-center relative hover:scale-105 transition duration-500 ring-4 ring-cottage-roseLight/50">
-            <!-- Ảnh đã được căn góc lấy khuôn mặt. Nhớ để file IMG_9074.jpg chung thư mục với HTML -->
+            <!-- ĐỂ ẢNH HIỆN ĐƯỢC, HÃY DÁN LINK ẢNH VÀO SRC NHƯ HƯỚNG DẪN BÊN TRÊN NHÉ -->
             <img src="IMG_9074.jpg" alt="Vũ Thái An" class="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700">
           </div>
           <div class="text-center space-y-1.5 mt-2">
@@ -213,11 +249,11 @@
       <div class="space-y-4">
         <div>
           <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Email của bạn</label>
-          <input type="email" id="auth-email" placeholder="ví dụ: cozy@gmail.com" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition">
+          <input type="email" id="auth-email" placeholder="ví dụ: cozy@gmail.com" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition select-text">
         </div>
         <div>
           <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Mật khẩu</label>
-          <input type="password" id="auth-password" placeholder="Nhập mật khẩu (từ 6 ký tự)" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition">
+          <input type="password" id="auth-password" placeholder="Nhập mật khẩu (từ 6 ký tự)" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition select-text">
         </div>
         
         <button id="btn-auth-submit" onclick="handleAuth()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
@@ -429,7 +465,7 @@
           { word: "Interrupt (v)", ipa: "/ˌɪn.təˈrʌpt/", meaning: "Làm gián đoạn, ngắt lời.", context: "Mia kể về việc những buổi thử vai của mình luôn bị ngắt quãng ('I get interrupted') bởi những lý do ngớ ngẩn." }
         ],
         quizzes: [
-          { q: "Trong video, khi Mia quá chán nản vì liên tục thất bại ở các buổi thử vai, cô nói: <i>'Maybe I'm not <b>good enough</b>'</i>. Cụm từ này thường dùng để diễn tả cảm xúc gì?", options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân (không đủ giỏi)", "C. Sự tức diễn với người khác", "D. Sự mệt mỏi về thể chất"], correct: 1, explanation: "<b>'Not good enough'</b> (không đủ tốt/giỏi) là cụm từ kinh điển diễn tả sự tự ti (insecurity) khi ai đó đối mặt với sự từ chối quá nhiều lần." },
+          { q: "Trong video, khi Mia quá chán nản vì liên tục thất bại ở các buổi thử vai, cô nói: <i>'Maybe I'm not <b>good enough</b>'</i>. Cụm từ này thường dùng để diễn tả cảm xúc gì?", options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân (không đủ giỏi)", "C. Sự tức diễn với người khác", "D. Sự mệt mỏi về thể chất"], correct: 1, explanation: "<b>'Not good enough'</b> (không đủ tốt/giỏi) là cụm kinh điển diễn tả sự tự ti (insecurity) khi ai đó đối mặt với sự từ chối quá nhiều lần." },
           { q: "Mia kể lại trải nghiệm tồi tệ: <i>'I get <b>interrupted</b> because someone wants to get a sandwich'</i>. Theo bạn, hành động 'interrupt' ở đây gây ra cảm giác gì cho cô ấy?", options: ["A. Vui vẻ vì được nghỉ ngơi", "B. Thiếu tôn trọng, bị ngắt lời giữa chừng khi đang diễn xuất", "C. Hào hứng vì được mời ăn", "D. Không có cảm xúc gì"], correct: 1, explanation: "<b>'Interrupt'</b> nghĩa là ngắt lời/cắt ngang. Khi Mia đang diễn cảnh khóc đầy cảm xúc mà đạo diễn lại 'cắt ngang' đi mua bánh mì, điều đó cho thấy sự thiếu tôn trọng nghiêm trọng." },
           { q: "Mia tự nhận định giấc mơ diễn xuất của mình có thể chỉ là một <b>'pipe dream'</b>. Dựa vào hoàn cảnh tuyệt vọng của cô ấy, từ này có nghĩa là gì?", options: ["A. Một giấc mơ đẹp và lãng mạn", "B. Một kế hoạch chắc chắn sẽ thành công", "C. Một giấc mơ viển vông, hão huyền, khó thành hiện thực", "D. Giấc mơ liên quan đến việc sửa ống nước"], correct: 2, explanation: "<b>'Pipe dream'</b> là một thành ngữ chỉ những hi vọng, ảo tưởng không có cơ sở thực tế. Mia đang nghĩ mình đã quá hão huyền khi theo đuổi nghề này." },
           { q: "Sebastian cố gắng thuyết phục Mia đi thử vai: <i>'If you want me, then you have to <b>make sense</b>'</i>. Anh ấy yêu cầu Mia điều gì?", options: ["A. Phải nói chuyện có lý, có logic thay vì để cảm xúc lấn át", "B. Phải kiếm ra nhiều tiền", "C. Phải từ bỏ ngay lập tức", "D. Phải diễn kịch cho anh ấy xem"], correct: 0, explanation: "<b>'Make sense'</b> nghĩa là có ý nghĩa, có lý. Sebastian đang muốn Mia bình tĩnh lại và đưa ra một lý do từ chối hợp lý (điều mà Mia không có)." },
