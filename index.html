@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cozy Garden ‧₊˚ ⛲️ ‧₊𓏲 ๋࣭ ࣪ ˖🎐 - Học tiếng Anh qua ngữ cảnh </title>
+  <title>Cozy Garden ‧₊˚ 🌿 ‧₊𓏲 ๋࣭ ࣪ ˖🦋 - Học tiếng Anh qua ngữ cảnh </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +15,10 @@
         extend: {
           colors: {
             cottage: {
-              cream: '#FDFBF7', card: '#FFFDF9', cardHover: '#FFF5F6',
-              green: '#8EA885', greenDark: '#5E7A55', greenLight: '#F1F7EE',
-              rose: '#E6A4B4', roseDark: '#C87A8B', roseLight: '#FCEBEC',
-              butter: '#F9F1E6', brown: '#6A5B53', brownLight: '#A39387', amber: '#E6B87D'
+              cream: '#FBF7F3', card: '#FFFFFF', cardHover: '#F7EFE9',
+              green: '#A3B8A8', greenDark: '#758A7A', greenLight: '#EBF0EC',
+              rose: '#F0C4D3', roseDark: '#B87A8D', roseLight: '#FAEDF1',
+              butter: '#F7D2BA', brown: '#5B4336', brownLight: '#8F7A6E', amber: '#E0B59A'
             }
           },
           fontFamily: {
@@ -43,7 +43,10 @@
   <style>
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    body { background-image: radial-gradient(#EFE5D2 1px, transparent 1px); background-size: 20px 20px; }
+    body { 
+      background-color: #FBF7F3; 
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"); 
+    }
   </style>
 </head>
 <body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans flex flex-col selection:bg-cottage-roseLight selection:text-cottage-roseDark relative pb-10">
@@ -51,8 +54,8 @@
   <header class="bg-cottage-card/90 backdrop-blur-md border-b-2 border-dashed border-cottage-butter sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
-        <div class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-rose/30 flex items-center justify-center text-xl overflow-hidden shadow-sm group-hover:scale-105 transition transform">
-        🎬
+        <div class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-rose/30 flex items-center justify-center text-xl overflow-hidden shadow-sm group-hover:scale-105 transition transform text-cottage-roseDark">
+        🦋
         </div>
         <div>
           <div class="flex items-center gap-1.5">
@@ -86,10 +89,10 @@
     <section id="view-cinema" class="space-y-6">
       <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-2 z-10">
-          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học từ vựng qua phim ảnh ☁️</h2>
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học từ vựng qua phim ảnh 🌿</h2>
           <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Hãy để âm thanh, hình ảnh và cảm xúc từ những bộ phim kinh điển giúp bạn ghim chặt từ vựng vào trí nhớ!</p>
         </div>
-        <div class="text-6xl animate-float-delayed select-none z-10">📽️</div>
+        <div class="text-6xl animate-float-delayed select-none z-10">🎞️</div>
         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
       </div>
 
@@ -114,8 +117,8 @@
 
     <section id="view-arcade" class="hidden space-y-6 max-w-2xl mx-auto">
       <div class="bg-white border-2 border-cottage-butter rounded-3xl p-8 shadow-sm space-y-6 text-center relative">
-        <div class="absolute top-4 left-4 text-2xl rotate-12">📝</div>
-        <div class="absolute top-4 right-4 text-2xl -rotate-12">💡</div>
+        <div class="absolute top-4 left-4 text-2xl rotate-12">🖋️</div>
+        <div class="absolute top-4 right-4 text-2xl -rotate-12">🕯️</div>
         
         <div class="space-y-1">
           <span class="text-[10px] font-black text-cottage-rose uppercase tracking-widest">Trạm luyện tập</span>
@@ -168,7 +171,7 @@
         </div>
         
         <button id="btn-auth-submit" onclick="handleAuth()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
-          Vào học ngay 🚀
+          Vào học ngay ✨
         </button>
         
         <div class="text-center mt-4">
@@ -196,7 +199,7 @@
         </div>
 
         <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative mt-4">
-          <div class="absolute -top-3 -left-2 text-2xl">📝</div>
+          <div class="absolute -top-3 -left-2 text-2xl">🖋️</div>
           <p id="cinema-quote" class="italic text-[15px] md:text-base text-cottage-brown font-serif leading-relaxed mt-1"></p>
           <div class="w-10 h-0.5 bg-cottage-rose/30 my-3 mx-auto rounded-full"></div>
           <p id="cinema-translation" class="text-xs text-cottage-brownLight text-center"></p>
@@ -208,7 +211,7 @@
         </div>
 
         <div class="bg-cottage-card p-5 rounded-3xl border-2 border-cottage-rose/30 space-y-4 relative overflow-hidden mt-6">
-          <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">💡</div>
+          <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">🕯️</div>
           <div class="flex justify-between items-center text-[11px] font-black text-cottage-roseDark uppercase tracking-wider relative z-10">
             <span>Khám phá từ vựng qua ngữ cảnh <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
           </div>
@@ -227,8 +230,8 @@
       <button onclick="closeModal('modal-vip')" class="absolute right-6 top-6 w-9 h-9 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
 
       <div class="text-center space-y-2 mb-8 relative">
-        <div class="w-16 h-16 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-3xl mb-4 border-4 border-white shadow-sm animate-float">🌷</div>
-        <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Hội viên thơ mộng 🎀</h3>
+        <div class="w-16 h-16 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-3xl mb-4 border-4 border-white shadow-sm animate-float">🌸</div>
+        <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Hội viên thơ mộng 🌸</h3>
         <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập toàn bộ kho tàng từ vựng trong các bộ phim nổi tiếng.</p>
       </div>
 
@@ -240,7 +243,7 @@
             <input type="radio" name="vip-plan" value="30000" class="peer sr-only" onclick="updateQR(30000, 'COZY3DAYS')" checked>
             <div class="p-4 rounded-3xl border-2 border-cottage-butter bg-cottage-cream peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight/40 transition shadow-sm">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌱 Gói 3 ngày</span>
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌿 Gói 3 ngày</span>
                 <span class="font-black text-cottage-roseDark text-base">30.000đ</span>
               </div>
             </div>
@@ -250,7 +253,7 @@
             <input type="radio" name="vip-plan" value="100000" class="peer sr-only" onclick="updateQR(100000, 'COZY1MONTH')">
             <div class="p-4 rounded-3xl border-2 border-cottage-butter bg-cottage-cream peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight/40 transition shadow-sm">
               <div class="flex justify-between items-center">
-                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌻 Gói 1 tháng</span>
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌾 Gói 1 tháng</span>
                 <span class="font-black text-cottage-roseDark text-base">100.000đ</span>
               </div>
             </div>
@@ -261,7 +264,7 @@
             <div class="p-4 rounded-3xl border-2 border-cottage-rose bg-white peer-checked:bg-cottage-roseLight/40 transition shadow-md relative overflow-hidden">
               <span class="absolute top-0 right-0 bg-cottage-rose text-white text-[9px] font-black px-3 py-1 rounded-bl-xl tracking-wider">BEST SELLER 🔥</span>
               <div class="flex justify-between items-center mt-2">
-                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🎀 Gói 1 năm</span>
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🌸 Gói 1 năm</span>
                 <span class="font-black text-cottage-roseDark text-base">300.000đ</span>
               </div>
             </div>
@@ -272,7 +275,7 @@
             <div class="p-4 rounded-3xl border-2 border-cottage-butter bg-cottage-cream peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight/40 transition shadow-sm relative overflow-hidden">
               <span class="absolute top-0 right-0 bg-cottage-rose text-white text-[9px] font-black px-3 py-1 rounded-bl-xl tracking-wider">ĐẦU TƯ NHẤT 💎</span>
               <div class="flex justify-between items-center mt-2">
-                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">♾️ Gói trọn đời</span>
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🕊️ Gói trọn đời</span>
                 <span class="font-black text-cottage-roseDark text-base">1.000.000đ</span>
               </div>
             </div>
@@ -280,8 +283,8 @@
         </div>
 
         <div class="bg-cottage-card p-6 rounded-[2rem] border-2 border-dashed border-cottage-rose/40 text-center flex flex-col justify-center shadow-inner relative overflow-hidden">
-          <div class="absolute top-2 left-2 text-2xl opacity-20">☁️</div>
-          <div class="absolute bottom-2 right-2 text-2xl opacity-20">🍄</div>
+          <div class="absolute top-2 left-2 text-2xl opacity-20">🌿</div>
+          <div class="absolute bottom-2 right-2 text-2xl opacity-20">🦋</div>
           
           <p class="text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-4 flex items-center justify-center gap-2"><span>2</span> Quét mã thanh toán</p>
           
@@ -365,7 +368,7 @@
           { q: "Khi Ben lập tài khoản mạng xã hội, ông bảo Jules: <i>'You're never wrong to do the right thing'</i>. Bạn hãy chọn cụm từ có cấu trúc <b>'never wrong to...'</b> hợp lý nhất:", options: ["A. You're never wrong to lying.", "B. You're never wrong to apologize.", "C. You're never wrong to ignored them.", "D. You're never wrong to rude."], correct: 1, explanation: "Cấu trúc <b>'never wrong to + Verb (nguyên mẫu)'</b>. 'Apologize' (xin lỗi) là hành động đúng đắn và phù hợp ngữ pháp nhất." },
           { q: "Khi khen ngợi Jules, Ben rào trước: <i>'I'm not trying to <b>brownnose</b> you...'</i>. Dựa vào bối cảnh nhân viên nói chuyện với sếp, từ này có nghĩa gì?", options: ["A. Đe dọa, uy hiếp", "B. Nịnh bợ, xu nịnh để lấy lòng", "C. Che giấu sự thật", "D. Làm bạn xấu hổ"], correct: 1, explanation: "<b>'Brownnose'</b> (hoặc kiss up) là một từ lóng chỉ hành động nịnh nọt sếp quá mức để được ưu ái. Ben muốn khẳng định lời khen của mình là thật lòng." },
           { q: "Jules nói: <i>'A woman with a glass of wine and a laptop had real shopping <b>potential</b>'</i>. Từ 'potential' ở đây chỉ điều gì?", options: ["A. Khả năng, tiềm năng (mua sắm)", "B. Sự nguy hiểm", "C. Thói quen xấu", "D. Vấn đề tài chính"], correct: 0, explanation: "<b>'Potential'</b> (tiềm năng). Jules nhận ra cơ hội kinh doanh khi thấy phụ nữ rảnh rỗi lướt mạng, họ có 'tiềm năng' chốt đơn mua hàng rất cao." },
-          { q: "Khi Ben mới tham gia mạng xã hội, Jules nói đùa: <i>'Better <b>late</b> than never'</i>. Thành ngữ này khuyên chúng ta điều gì?", options: ["A. Đã trễ thì không nên làm nữa", "B. Thà trễ hẹn còn hơn không đến", "C. Muộn màng bắt đầu một việc gì đó vẫn tốt hơn là không bao giờ làm", "D. Phải luôn luôn đúng giờ"], correct: 2, explanation: "<b>'Better late than never'</b> là một câu cửa miệng rất phổ biến, ý nói việc bắt đầu muộn vẫn tốt hơn là bỏ cuộc hoàn toàn." }
+          { q: "Khi Ben mới tham gia mạng xã hội, Jules nói đùa: <i>'Better <b>late</b> than never'</i>. Thành ngữ này khuyên chúng xuất điều gì?", options: ["A. Đã trễ thì không nên làm nữa", "B. Thà trễ hẹn còn hơn không đến", "C. Muộn màng bắt đầu một việc gì đó vẫn tốt hơn là không bao giờ làm", "D. Phải luôn luôn đúng giờ"], correct: 2, explanation: "<b>'Better late than never'</b> là một câu cửa miệng rất phổ biến, ý nói việc bắt đầu muộn vẫn tốt hơn là bỏ cuộc hoàn toàn." }
         ]
       },
       {
@@ -601,7 +604,7 @@
       isLoginMode = !isLoginMode;
       document.getElementById('auth-title').innerText = isLoginMode ? "Đăng Nhập" : "Tạo Tài Khoản";
       document.getElementById('auth-subtitle').innerText = isLoginMode ? "Đăng nhập để xem phim VIP nhé!" : "Chào mừng thành viên mới của Cozy Garden!";
-      document.getElementById('btn-auth-submit').innerHTML = isLoginMode ? "Vào học ngay 🚀" : "Đăng ký tài khoản 🌱";
+      document.getElementById('btn-auth-submit').innerHTML = isLoginMode ? "Vào học ngay ✨" : "Đăng ký tài khoản 🌱";
       document.getElementById('btn-auth-toggle').innerText = isLoginMode ? "Chưa có tài khoản? Đăng ký ngay" : "Đã có tài khoản? Đăng nhập";
     };
 
@@ -794,7 +797,7 @@
               <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-rose transition line-clamp-1">${c.title}</h3>
             </div>
             <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown group-hover:bg-cottage-roseLight group-hover:border-cottage-rose group-hover:text-cottage-roseDark transition">
-              ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học từ vựng 🎬'}
+              ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học từ vựng 🎞️'}
             </button>
           </div>
         </div>
