@@ -147,6 +147,7 @@
         <p id="scramble-feedback" class="text-xs font-bold hidden"></p>
       </div>
     </section>
+
     <!-- ================= SECTION: GIỚI THIỆU ================= -->
     <section id="view-about" class="hidden space-y-6 max-w-4xl mx-auto">
       <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden shadow-sm flex flex-col md:flex-row gap-8 items-center">
@@ -156,14 +157,14 @@
         <div class="absolute bottom-6 left-8 text-3xl animate-float-delayed opacity-50">✨</div>
         <div class="absolute -bottom-16 -right-16 w-52 h-52 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
 
-        <!-- Khối Avatar & Info ngắn -->
+        <!-- Khối Avatar & Info -->
         <div class="flex-shrink-0 flex flex-col items-center space-y-4 z-10 w-full md:w-1/3">
-          <div class="w-40 h-40 rounded-[2rem] border-4 border-white shadow-lg overflow-hidden bg-cottage-roseLight flex items-center justify-center relative rotate-3 hover:rotate-0 transition duration-500">
-            <!-- Thay link ảnh cá nhân của bạn vào đây nếu muốn, hiện tại để avatar hoạt hình -->
-            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=An&backgroundColor=FCEBEC" alt="Thái An" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 right-2 bg-white text-xl p-1.5 rounded-xl shadow-sm rotate-12">👩‍🏫</div>
+          <div class="w-44 h-44 rounded-full border-4 border-white shadow-xl overflow-hidden bg-cottage-roseLight flex items-center justify-center relative hover:scale-105 transition duration-500 ring-4 ring-cottage-roseLight/50">
+            <!-- Sử dụng thuộc tính object-position và scale để zoom cận mặt vào ảnh IMG_9074.jpg -->
+            <img src="IMG_9074.jpg" alt="Vũ Thái An" class="w-full h-full object-cover object-[center_15%] scale-[1.3] hover:scale-[1.4] transition-transform duration-700">
+            <div class="absolute bottom-2 right-4 bg-white text-xl p-2 rounded-full shadow-md rotate-12">👩‍🏫</div>
           </div>
-          <div class="text-center space-y-1.5">
+          <div class="text-center space-y-1.5 mt-2">
             <h2 class="text-2xl font-display font-black text-cottage-brown">Vũ Thái An</h2>
             <p class="text-[11px] font-black text-cottage-roseDark uppercase tracking-widest bg-cottage-roseLight/50 px-3 py-1 rounded-lg inline-block">Giáo viên & Người thiết kế học liệu</p>
           </div>
@@ -176,7 +177,7 @@
         <!-- Khối Nội dung Giới thiệu -->
         <div class="flex-1 space-y-5 z-10 text-cottage-brown">
           <div class="space-y-2">
-            <h3 class="text-xl md:text-2xl font-display font-black text-cottage-brown">Chào bạn, chào mừng bạn ghé thăm Cozy garden! 🌷</h3>
+            <h3 class="text-xl md:text-2xl font-display font-black text-cottage-brown">Chào bạn, mừng bạn ghé thăm Cozy garden! 🌷</h3>
             <div class="w-12 h-1 bg-cottage-rose/50 rounded-full"></div>
           </div>
           
@@ -184,16 +185,20 @@
             <p>
               Mình xây dựng <b>Cozy garden</b> vì tin rằng việc tiếp thu ngôn ngữ không nên chỉ khô khan qua sách vở hay thi cử, mà cần được gắn liền với ngữ cảnh thực tế, âm thanh và cảm xúc khi xem một bộ phim hay hoặc nghe một bài nhạc yêu thích. Đó cũng chính là cách mình đã học và trở nên đam mê với Tiếng Anh.
             </p>
+            <div class="bg-white p-4 rounded-2xl border-2 border-cottage-butter shadow-sm relative">
+              <span class="absolute -top-3 -left-2 text-2xl">💡</span>
+              <p class="text-xs text-cottage-brown italic">
+                Nằm trong định hướng phát triển kỹ năng tự học mà mình hướng tới, khu vườn nhỏ này được thiết kế dựa trên các phương pháp sư phạm bài bản và sự bền bỉ theo đuổi mục tiêu (như cách mà thần tượng Taylor Swift của mình luôn cống hiến 🌟).
+              </p>
+            </div>
             <p>
                Với mục tiêu giúp học sinh tự học Tiếng Anh để có thể sử dụng thành thạo và tự nhiên như người bản xứ, Cozy garden cung cấp những trích đoạn phim kinh điển được bóc tách từng cấu trúc ngữ pháp và từ vựng một cách sâu sắc nhất đi kèm với bộ câu hỏi ôn tập hay ho. Chúc bạn có những giờ phút học tập thật hiệu quả và đầy thú vị tại Cozy garden nhé!
             </p>
-            </div>
           </div>
           
-          <div class="pt-2 flex gap-3">
-            <a href="#" class="w-10 h-10 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition shadow-sm"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="w-10 h-10 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition shadow-sm"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#" class="w-10 h-10 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition shadow-sm"><i class="fa-solid fa-envelope"></i></a>
+          <div class="pt-3 flex gap-4">
+            <a href="https://www.facebook.com/thaiann001/" target="_blank" class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition-all transform hover:-translate-y-1 shadow-sm"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="mailto:cozy@gmail.com" class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition-all transform hover:-translate-y-1 shadow-sm"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
 
@@ -536,7 +541,7 @@
     // ================= 4. BIẾN TOÀN CỤC TRẠNG THÁI =================
     let isVip = false;
     let currentUser = null;
-    let isLoginMode = true; // Chuyển đổi giữa Đăng nhập / Đăng ký
+    let isLoginMode = true; 
     
     let currentFilter = 'ALL';
     let activeCinemaId = null;
@@ -547,24 +552,24 @@
     let currentPractice = null;
     let selectedAnswers = {}; 
     
-    let currentVipExpiry = 0; // Thêm biến lưu thời gian
-    let vipTimer = null; // Thêm biến đồng hồ
+    let currentVipExpiry = 0; 
+    let vipTimer = null; 
 
 // ================= 5. LOGIC FIREBASE AUTH & FIRESTORE (REAL-TIME) =================
     
-    let userDocListener = null; // Biến lưu kết nối lắng nghe Firebase
+    let userDocListener = null; 
 
     // Lắng nghe thay đổi đăng nhập/đăng xuất
     onAuthStateChanged(auth, (user) => {
       if (user) {
         currentUser = user;
         window.closeModal('modal-login');
-        startRealtimeVipCheck(user.uid); // Kích hoạt lắng nghe dữ liệu
+        startRealtimeVipCheck(user.uid); 
       } else {
         currentUser = null;
         isVip = false;
         if (vipTimer) clearInterval(vipTimer);
-        if (userDocListener) { userDocListener(); userDocListener = null; } // Ngắt kết nối
+        if (userDocListener) { userDocListener(); userDocListener = null; } 
         applyGuestUI();
       }
     });
@@ -578,23 +583,20 @@
           const data = userSnap.data();
           let expTime = 0;
           
-          // Khắc phục lỗi nếu Admin nhập ngày sai chuẩn vào Firebase
           if (data.vipExpiryDate) {
             if (typeof data.vipExpiryDate === 'object' && data.vipExpiryDate.toDate) {
-              expTime = data.vipExpiryDate.toDate().getTime(); // Dạng Timestamp
+              expTime = data.vipExpiryDate.toDate().getTime(); 
             } else {
               const dateStr = String(data.vipExpiryDate).trim();
               if (dateStr.includes('/')) {
-                // Xử lý nếu Admin gõ tay dạng DD/MM/YYYY (vd: 30/08/2026)
                 const parts = dateStr.split('/');
                 if (parts.length === 3) expTime = new Date(`${parts[2]}-${parts[1]}-${parts[0]}T23:59:59`).getTime();
               } else {
-                expTime = new Date(dateStr).getTime(); // Chuẩn ISO
+                expTime = new Date(dateStr).getTime(); 
               }
             }
           }
 
-          // Tránh lỗi biến thành NaN (Not a Number)
           currentVipExpiry = isNaN(expTime) ? 0 : expTime;
 
           if (currentVipExpiry > Date.now()) {
@@ -614,14 +616,12 @@
           kickIfInVipCinema();
         }
 
-        // Cập nhật thẻ phim và bài tập lập tức
         window.renderCinemaCards();
         window.updateAvailableSentences();
         window.initScrambleGame();
       });
     }
 
-    // Hàm đá khách ra nếu đang ở trong phim VIP mà hết hạn
     function kickIfInVipCinema() {
       const modalCinema = document.getElementById('modal-cinema');
       if (modalCinema && !modalCinema.classList.contains('hidden') && activeCinemaId) {
@@ -634,22 +634,20 @@
       }
     }
 
-    // Hàm đồng hồ chạy ngầm kiểm tra lố giờ
     function startVipTimer() {
         if (vipTimer) clearInterval(vipTimer);
         
         vipTimer = setInterval(() => {
             if (isVip && Date.now() > currentVipExpiry) {
-                // Đã lố giờ -> Tước VIP ngay lập tức
                 isVip = false;
-                clearInterval(vipTimer); // Ngừng đồng hồ ngay để đỡ nặng máy
+                clearInterval(vipTimer); 
                 applyExpiredUI(); 
                 window.renderCinemaCards(); 
                 window.updateAvailableSentences();
                 window.initScrambleGame(); 
                 kickIfInVipCinema();
             }
-        }, 5000); // Kiểm tra 5 giây 1 lần
+        }, 5000); 
     }
 
     window.toggleAuthMode = function() {
@@ -682,7 +680,7 @@
           const userCred = await createUserWithEmailAndPassword(auth, email, password);
           await setDoc(doc(db, "users", userCred.user.uid), {
             email: email,
-            vipExpiryDate: "2000-01-01T00:00:00", // Chuẩn ISO tránh lỗi ngày
+            vipExpiryDate: "2000-01-01T00:00:00", 
             createdAt: new Date().toISOString()
           });
           alert("Tạo tài khoản thành công! Vui lòng nạp VIP để xem các phim bị khóa nhé 🌿");
@@ -725,7 +723,6 @@
     // ================= 6. CẬP TRẠNG THÁI GIAO DIỆN =================
     function applyVipUI(expiryTimestamp) {
       const vipHeaderBtn = document.getElementById('vip-header-btn');
-      // Nếu hạn hơn 50 năm thì báo Vĩnh viễn
       const isLifetime = expiryTimestamp - Date.now() > 50 * 365 * 24 * 60 * 60 * 1000;
       const textDate = isLifetime ? "Vĩnh viễn" : new Date(expiryTimestamp).toLocaleDateString('vi-VN');
 
@@ -767,7 +764,6 @@
 
     window.openLoginModal = function() { document.getElementById('modal-login').classList.remove('hidden'); };
 
-    // [FIX 1: Xóa Video Youtube đang phát ngầm khi tắt Modal Cinema]
     window.closeModal = function(id) { 
       document.getElementById(id).classList.add('hidden'); 
       if (id === 'modal-cinema') {
@@ -794,12 +790,10 @@
 
     window.simulateSuccessPayment = function() {
       const userEmail = currentUser ? currentUser.email : "Chưa đăng nhập";
-      alert(`Yêu cầu nạp VIP đã được ghi nhận!\n\nVui lòng nhắn tin Zalo cho Admin Thái An (0362102905) báo đã chuyển khoản kèm tài khoản email của bạn là:\n[ ${userEmail} ]\nđể được mở khóa ngay lập tức nha 🌷`);
+      alert(`Yêu cầu nạp VIP đã được ghi nhận!\n\nVui lòng nhắn tin Zalo cho Admin Thái An báo đã chuyển khoản kèm tài khoản email của bạn là:\n[ ${userEmail} ]\nđể được mở khóa ngay lập tức nha 🌷`);
       window.closeModal('modal-vip');
     };
 
-
-    // [FIX 3: Cập nhật chức năng Navigation (Routing) để hỗ trợ nút Back]
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.replace('#', '') || 'cinema';
       handleViewSwitch(hash);
@@ -822,7 +816,6 @@
       if(activeNav) activeNav.className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
     }
 
-    // Nút trên giao diện giờ đây chỉ làm nhiệm vụ thay đổi URL hash
     window.switchNav = function(viewId) {
       if (window.location.hash !== `#${viewId}`) {
         window.location.hash = viewId;
@@ -1129,11 +1122,9 @@
       }
     };
 
-    // Khởi chạy khi DOM load xong [ĐÃ CẬP NHẬT KÈM LOGIC ROUTING BÊN TRÊN]
     window.addEventListener('DOMContentLoaded', () => {
       applyGuestUI(); 
       
-      // Xử lý đọc URL Hash để kích hoạt đúng Tab
       const initialHash = window.location.hash.replace('#', '') || 'cinema';
       handleViewSwitch(initialHash);
     });
