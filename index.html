@@ -632,8 +632,26 @@
         }
       } catch (error) {
         let friendlyMessage = "Có lỗi xảy ra, vui lòng thử lại!";
-        // ... (phần switch error của bạn giữ nguyên, mình rút gọn ở đây)
-        alert(error.message); // Có thể dán lại mảng báo lỗi tiếng việt của bạn vào
+       switch (error.code) {
+          case 'auth/invalid-credential':
+            friendlyMessage = "🤔 Thông tin đăng nhập không chính xác! Email này chưa được đăng ký hoặc bạn gõ nhầm mật khẩu. Nếu chưa có tài khoản, hãy chuyển sang phần Đăng ký nhé!";
+            break;
+          case 'auth/email-already-in-use':
+            friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi. Hãy chuyển sang phần Đăng nhập nha!";
+            break;
+          case 'auth/invalid-email':
+            friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com).";
+            break;
+          case 'auth/weak-password':
+            friendlyMessage = "🛑 Mật khẩu hơi yếu, bạn hãy chọn mật khẩu dài từ 6 ký tự trở lên nhé.";
+            break;
+          case 'auth/network-request-failed':
+            friendlyMessage = "🌐 Lỗi kết nối mạng. Bạn kiểm tra lại Wifi/4G nhé!";
+            break;
+          default:
+            friendlyMessage = "Lỗi hệ thống: " + error.message;
+        }
+        alert(friendlyMessage);
       } finally {
         btn.innerHTML = originalText;
         btn.disabled = false;
