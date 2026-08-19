@@ -568,17 +568,25 @@
       isLoginMode = !isLoginMode;
       document.getElementById('auth-title').innerText = isLoginMode ? "Đăng Nhập" : "Tạo Tài Khoản";
       document.getElementById('auth-subtitle').innerText = isLoginMode ? "Đăng nhập để lưu tiến độ và xem phim VIP nhé!" : "Chào mừng thành viên mới của Cozy Garden!";
-      document.getElementById('btn-auth-submit').innerText = isLoginMode ? "Vào học ngay 🚀" : "Đăng ký tài khoản 🌱";
+      document.getElementById('btn-auth-submit').innerHTML = isLoginMode ? "Vào học ngay 🚀" : "Đăng ký tài khoản 🌱";
       document.getElementById('btn-auth-toggle').innerText = isLoginMode ? "Chưa có tài khoản? Đăng ký ngay" : "Đã có tài khoản? Đăng nhập";
     };
 
+    // [FIX 2: Thêm UX Trạng thái Loading lúc Đăng Nhập/Đăng ký]
     window.handleAuth = async function() {
       const email = document.getElementById('auth-email').value.trim();
       const password = document.getElementById('auth-password').value.trim();
+      const btn = document.getElementById('btn-auth-submit');
 
       if (!email || password.length < 6) {
         alert("Email không hợp lệ hoặc mật khẩu dưới 6 ký tự!"); return;
       }
+
+      // Khóa nút và bật hiệu ứng loading
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+      btn.disabled = true;
+      btn.classList.add('opacity-70', 'cursor-not-allowed');
 
       try {
         if (isLoginMode) {
@@ -596,7 +604,6 @@
         }
       } catch (error) {
         let friendlyMessage = "Có lỗi xảy ra, vui lòng thử lại!";
-        
         switch (error.code) {
           case 'auth/invalid-credential':
             friendlyMessage = "🤔 Thông tin đăng nhập không chính xác! Email này chưa được đăng ký hoặc bạn gõ nhầm mật khẩu. Nếu chưa có tài khoản, hãy chuyển sang phần Đăng ký nhé!";
@@ -616,8 +623,12 @@
           default:
             friendlyMessage = "Lỗi hệ thống: " + error.message;
         }
-        
         alert(friendlyMessage);
+      } finally {
+        // Trả lại trạng thái nút bấm bình thường
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.classList.remove('opacity-70', 'cursor-not-allowed');
       }
     };
 
@@ -678,10 +689,16 @@
     }
 
     // ================= 7. GÁN CÁC HÀM XỬ LÝ SỰ KIỆN LÊN WINDOW =================
-    // (Bắt buộc phải gán lên window để HTML gọi được do dùng type="module")
 
     window.openLoginModal = function() { document.getElementById('modal-login').classList.remove('hidden'); };
-    window.closeModal = function(id) { document.getElementById(id).classList.add('hidden'); };
+
+    // [FIX 1: Xóa Video Youtube đang phát ngầm khi tắt Modal Cinema]
+    window.closeModal = function(id) { 
+      document.getElementById(id).classList.add('hidden'); 
+      if (id === 'modal-cinema') {
+         document.getElementById('cinema-media-container').innerHTML = ''; 
+      }
+    };
 
     window.openVipModal = function() { 
       if(!currentUser) { 
@@ -693,9 +710,7 @@
     };
 
     window.updateQR = function(amount, addInfo) {
-      // Lấy tên email đính kèm vào nội dung CK để admin dễ quản lý
       const userEmail = currentUser ? currentUser.email.split('@')[0].toUpperCase() : "KHACH";
-      // Chữ không dấu, độ dài max của VietQR thường hạn chế
       const finalInfo = `${addInfo} ${userEmail}`.substring(0, 25); 
       const qrUrl = `https://img.vietqr.io/image/NCB-101459124207-compact2.png?amount=${amount}&addInfo=${finalInfo}&accountName=VU%20THAI%20AN`;
       document.getElementById('vietqr-image').src = qrUrl;
@@ -708,14 +723,35 @@
       window.closeModal('modal-vip');
     };
 
-    window.switchNav = function(viewId) {
+
+    // [FIX 3: Cập nhật chức năng Navigation (Routing) để hỗ trợ nút Back]
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '') || 'cinema';
+      handleViewSwitch(hash);
+    });
+
+    function handleViewSwitch(viewId) {
       ['cinema', 'arcade'].forEach(v => {
-        document.getElementById(`view-${v}`).classList.add('hidden');
-        document.getElementById(`nav-${v}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0";
+        const viewEl = document.getElementById(`view-${v}`);
+        const navEl = document.getElementById(`nav-${v}`);
+        if(viewEl) viewEl.classList.add('hidden');
+        if(navEl) navEl.className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0";
       });
-      document.getElementById(`view-${viewId}`).classList.remove('hidden');
-      document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
+      const activeView = document.getElementById(`view-${viewId}`);
+      const activeNav = document.getElementById(`nav-${viewId}`);
+      if(activeView) activeView.classList.remove('hidden');
+      if(activeNav) activeNav.className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
+    }
+
+    // Nút trên giao diện giờ đây chỉ làm nhiệm vụ thay đổi URL hash
+    window.switchNav = function(viewId) {
+      if (window.location.hash !== `#${viewId}`) {
+        window.location.hash = viewId;
+      } else {
+        handleViewSwitch(viewId);
+      }
     };
+
 
     window.renderCinemaCards = function() {
       const container = document.getElementById('cinema-grid');
@@ -840,7 +876,6 @@
     };
 
     window.nextCinemaQuiz = function() {
-        // Fallback function in case it's called directly from HTML
         activeQuizIndex++; 
         window.renderCinemaQuiz();
     };
@@ -1015,9 +1050,13 @@
       }
     };
 
-    // Khởi chạy khi DOM load xong
+    // Khởi chạy khi DOM load xong [ĐÃ CẬP NHẬT KÈM LOGIC ROUTING BÊN TRÊN]
     window.addEventListener('DOMContentLoaded', () => {
-      applyGuestUI(); // Ban đầu load trạng thái khách (Guest)
+      applyGuestUI(); 
+      
+      // Xử lý đọc URL Hash để kích hoạt đúng Tab
+      const initialHash = window.location.hash.replace('#', '') || 'cinema';
+      handleViewSwitch(initialHash);
     });
 
   </script>
