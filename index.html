@@ -48,7 +48,6 @@
 </head>
 <body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans flex flex-col selection:bg-cottage-roseLight selection:text-cottage-roseDark relative pb-10">
 
-  <!-- Top Navigation Bar -->
   <header class="bg-cottage-card/90 backdrop-blur-md border-b-2 border-dashed border-cottage-butter sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
@@ -71,7 +70,6 @@
     </div>
   </header>
 
-  <!-- Sub Header Navigation -->
   <div class="bg-transparent pt-4 pb-2 z-30">
     <div class="max-w-6xl mx-auto px-4 flex gap-3 overflow-x-auto hide-scrollbar">
       <button onclick="switchNav('cinema')" id="nav-cinema" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0">
@@ -83,10 +81,8 @@
     </div>
   </div>
 
-  <!-- Main Container -->
   <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-8">
 
-    <!-- ================= VIEW 1: CINEMA CONTEXT (VOCAB) ================= -->
     <section id="view-cinema" class="space-y-6">
       <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-3xl p-6 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="space-y-2 z-10">
@@ -116,7 +112,6 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cinema-grid"></div>
     </section>
 
-    <!-- ================= VIEW 2: ARCADE ================= -->
     <section id="view-arcade" class="hidden space-y-6 max-w-2xl mx-auto">
       <div class="bg-white border-2 border-cottage-butter rounded-3xl p-8 shadow-sm space-y-6 text-center relative">
         <div class="absolute top-4 left-4 text-2xl rotate-12">📝</div>
@@ -128,7 +123,6 @@
           <p class="text-xs text-cottage-brownLight mt-2">Dựa vào các bài học bạn đã xem, hãy chọn từ phù hợp để điền vào chỗ trống nhé!</p>
         </div>
 
-        <!-- Movie Badge -->
         <div id="scramble-movie-tag" class="flex justify-center pt-1">
           <span id="scramble-movie-name" class="inline-flex items-center gap-1.5 bg-cottage-roseLight text-cottage-roseDark border border-cottage-rose/30 px-3.5 py-1 rounded-full text-xs font-bold shadow-sm">
             <i class="fa-solid fa-clapperboard text-[11px]"></i> Phim: <span class="font-black"></span>
@@ -145,7 +139,6 @@
           <button onclick="resetScramble()" class="px-5 py-2.5 text-xs font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition" id="btn-reset-scramble">Bỏ chọn ↻</button>
           <button onclick="checkScramble()" class="px-6 py-2.5 text-xs font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95" id="btn-check-scramble">Kiểm tra kết quả ✔️</button>
           
-          <!-- Nút Làm lại (ẩn mặc định) -->
           <button onclick="restartPractice()" class="hidden px-6 py-2.5 text-xs font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow-[0_4px_15px_rgba(142,168,133,0.3)] transition transform active:scale-95" id="btn-restart-practice">Làm lại từ đầu 🔄</button>
         </div>
         <p id="scramble-feedback" class="text-xs font-bold hidden"></p>
@@ -153,12 +146,10 @@
     </section>
   </main>
 
-  <!-- Nút Kích Hoạt VIP -->
   <button id="floating-vip-btn" onclick="openLoginModal()" class="fixed bottom-4 right-4 bg-cottage-brown/90 text-white text-[10px] px-4 py-2.5 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20 font-bold uppercase tracking-wider">
     🔑 Kích hoạt VIP
   </button>
 
-  <!-- ================= MODAL: KÍCH HOẠT VIP (LOGIN) ================= -->
   <div id="modal-login" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white border-[6px] border-cottage-cream rounded-[2.5rem] max-w-sm w-full p-6 md:p-8 shadow-2xl relative">
       <button onclick="closeModal('modal-login')" class="absolute right-4 top-4 w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
@@ -166,7 +157,7 @@
       <div class="text-center space-y-2 mb-6">
         <div class="w-14 h-14 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-2xl mb-2 shadow-sm">🔑</div>
         <h3 class="text-2xl font-display font-black text-cottage-brown tracking-tight">Kích hoạt VIP</h3>
-        <p class="text-xs text-cottage-brownLight">Nhập mật khẩu bạn nhận được qua Zalo để mở khóa toàn bộ bài học nhé!</p>
+        <p class="text-xs text-cottage-brownLight">Nhập mã kích hoạt bạn nhận được qua Zalo để mở khóa toàn bộ bài học nhé!</p>
       </div>
 
       <div class="space-y-4">
@@ -176,11 +167,12 @@
             <option value="3">Gói trải nghiệm (3 Ngày)</option>
             <option value="30">Gói chăm chỉ (1 Tháng)</option>
             <option value="365">Gói trọn vẹn (1 Năm)</option>
+            <option value="99999">Gói vĩnh cửu (Trọn đời) 💎</option>
           </select>
         </div>
         <div>
-          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Mật khẩu</label>
-          <input type="password" id="vip-password-input" placeholder="Nhập mật khẩu..." class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition">
+          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Mã kích hoạt</label>
+          <input type="text" id="vip-password-input" placeholder="Nhập mã vào đây..." class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition uppercase">
         </div>
         <button onclick="verifyVipLogin()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
           Xác nhận mở khóa 🗝️
@@ -189,7 +181,6 @@
     </div>
   </div>
 
-  <!-- ================= MODAL: CINEMA LEARNING & QUIZ ================= -->
   <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
     <div class="bg-white border-4 border-cottage-cream rounded-[2rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
       
@@ -234,7 +225,6 @@
     </div>
   </div>
 
-  <!-- ================= MODAL: VIETQR PAYWALL ================= -->
   <div id="modal-vip" class="fixed inset-0 bg-cottage-brown/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white border-[6px] border-cottage-cream rounded-[2.5rem] max-w-3xl w-full max-h-[95vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative">
       <button onclick="closeModal('modal-vip')" class="absolute right-6 top-6 w-9 h-9 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
@@ -276,6 +266,17 @@
               <div class="flex justify-between items-center mt-2">
                 <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">🎀 Gói 1 năm</span>
                 <span class="font-black text-cottage-roseDark text-base">300.000đ</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="block cursor-pointer relative transform active:scale-[0.98] transition">
+            <input type="radio" name="vip-plan" value="500000" class="peer sr-only" onclick="updateQR(500000, 'COZYTRONDOI')">
+            <div class="p-4 rounded-3xl border-2 border-cottage-butter bg-cottage-cream peer-checked:border-cottage-rose peer-checked:bg-cottage-roseLight/40 transition shadow-sm relative overflow-hidden">
+              <span class="absolute top-0 right-0 bg-cottage-rose text-white text-[9px] font-black px-3 py-1 rounded-bl-xl tracking-wider">ĐẦU TƯ NHẤT 💎</span>
+              <div class="flex justify-between items-center mt-2">
+                <span class="font-bold text-sm text-cottage-brown flex items-center gap-2">♾️ Gói trọn đời</span>
+                <span class="font-black text-cottage-roseDark text-base">500.000đ</span>
               </div>
             </div>
           </label>
@@ -967,7 +968,6 @@
       remainingSentences = [...availableSentences];
     }
 
-    // Hàm gọi khi người dùng muốn làm lại từ đầu
     function restartPractice() {
       updateAvailableSentences();
       initScrambleGame();
@@ -990,21 +990,18 @@
         document.getElementById('btn-reset-scramble').style.display = "none";
         document.getElementById('btn-check-scramble').style.display = "none";
         
-        // Hiện nút Làm Lại và ẩn đi một số UI thừa
         document.getElementById('btn-restart-practice').classList.remove('hidden');
         document.getElementById('scramble-feedback').classList.add('hidden');
         if (movieTag) movieTag.classList.add('hidden');
         return;
       }
 
-      // Đảm bảo nút làm lại bị ẩn đi khi đang chơi
       document.getElementById('btn-restart-practice').classList.add('hidden');
 
       const randomIndex = Math.floor(Math.random() * remainingSentences.length);
       currentPractice = remainingSentences[randomIndex];
       selectedAnswers = {};
       
-      // Hiển thị tên phim (đã lược bỏ năm trong ngoặc)
       const matchedMovie = cinemaData.find(c => c.id === currentPractice.cinemaId);
       if (matchedMovie && movieTag) {
         const cleanMovieTitle = matchedMovie.title.replace(/\s*\(\d{4}\)$/, '').trim();
@@ -1163,8 +1160,14 @@
       
       vipHeaderBtn.onclick = () => {
         const expiry = localStorage.getItem('cozyVipExpiry');
-        const dateStr = new Date(parseInt(expiry)).toLocaleDateString('vi-VN');
-        alert(`Chào mừng bạn! Gói VIP của bạn có thời hạn đến ngày: ${dateStr} 🌷\nChúc bạn học tập thật vui vẻ!`);
+        const now = Date.now();
+        // Nếu hạn còn hơn 50 năm thì báo là vĩnh viễn
+        if (expiry - now > 50 * 365 * 24 * 60 * 60 * 1000) {
+          alert(`Chào mừng bạn! Gói VIP của bạn là gói TRỌN ĐỜI (Vĩnh viễn) 💎\nChúc bạn học tập thật vui vẻ!`);
+        } else {
+          const dateStr = new Date(parseInt(expiry)).toLocaleDateString('vi-VN');
+          alert(`Chào mừng bạn! Gói VIP của bạn có thời hạn đến ngày: ${dateStr} 🌷\nChúc bạn học tập thật vui vẻ!`);
+        }
       };
 
       closeModal('modal-login');
@@ -1175,35 +1178,79 @@
       document.getElementById('modal-login').classList.remove('hidden');
     }
 
+    // ================= THUẬT TOÁN KIỂM TRA MÃ VIP MỚI =================
     function verifyVipLogin() {
       const daysInput = document.getElementById('vip-package-select').value;
-      const passInput = document.getElementById('vip-password-input').value;
+      // Dùng .trim().toUpperCase() để người dùng nhập chữ hoa hay thường đều được
+      const passInput = document.getElementById('vip-password-input').value.trim().toUpperCase();
 
-      let correctPassword = "";
-      if (daysInput === "3") {
-        correctPassword = "cosygardenhoctienganhquangucanh3days";
-      } else if (daysInput === "30") {
-        correctPassword = "cosygardenhoctienganhquangucanh1m";
-      } else if (daysInput === "365") {
-        correctPassword = "cosygardenhoctienganhquangucanh1y";
+      // 1. KHO TÀNG MÃ KÍCH HOẠT (Bạn có thể thêm bớt tùy ý vào đây)
+      // Khi phát mã nào, bạn lưu ý gạch bỏ mã đó trong sổ tay của bạn
+      const VIP_CODES = {
+        "3": [
+          "COZY-3D-A1B2", "COZY-3D-C3D4", "COZY-3D-E5F6", "COZY-3D-G7H8", "COZY-3D-I9J0"
+        ],
+        "30": [
+          "COZY-1M-QWER", "COZY-1M-ASDF", "COZY-1M-ZXCV", "COZY-1M-1234", "COZY-1M-5678"
+        ],
+        "365": [
+          "COZY-1Y-LOVE", "COZY-1Y-STAR", "COZY-1Y-MOON", "COZY-1Y-SUNS", "COZY-1Y-WIND"
+        ],
+        "99999": [
+          "COZY-LIFE-KING", "COZY-LIFE-QUEEN", "COZY-LIFE-BOSS", "COZY-LIFE-VIP1"
+        ]
+      };
+
+      // 2. KIỂM TRA MÃ ĐÃ QUA SỬ DỤNG TRÊN MÁY NÀY CHƯA
+      let usedPasswords = JSON.parse(localStorage.getItem('cozyUsedPasswords')) || [];
+      if (usedPasswords.includes(passInput)) {
+        alert("Mã này đã được sử dụng rồi! Nếu bạn vừa gia hạn, vui lòng nhập mã mới nhận được từ Admin nhé 🌷");
+        return;
       }
 
-      if (passInput === correctPassword) {
-        const durationInMs = parseInt(daysInput) * 24 * 60 * 60 * 1000;
-        const expiryDate = Date.now() + durationInMs;
+      // 3. KIỂM TRA MÃ CÓ HỢP LỆ VỚI GÓI ĐÃ CHỌN KHÔNG
+      if (VIP_CODES[daysInput] && VIP_CODES[daysInput].includes(passInput)) {
         
-        localStorage.setItem('cozyVipExpiry', expiryDate);
+        // 4. LOGIC CỘNG DỒN THỜI GIAN (GIA HẠN)
+        const durationInMs = parseInt(daysInput) * 24 * 60 * 60 * 1000;
+        const now = Date.now();
+        let currentExpiry = parseInt(localStorage.getItem('cozyVipExpiry')) || 0;
+        
+        let newExpiry;
+        if (daysInput === "99999") {
+            // Gói trọn đời: set hạn sử dụng 100 năm
+            newExpiry = now + (100 * 365 * 24 * 60 * 60 * 1000);
+        } else if (currentExpiry > now) {
+            // Nếu gói cũ vẫn còn hạn -> Cộng dồn thêm thời gian
+            newExpiry = currentExpiry + durationInMs;
+        } else {
+            // Nếu gói cũ đã hết hạn hoặc mua lần đầu
+            newExpiry = now + durationInMs;
+        }
+
+        // Lưu lại thời gian hết hạn mới
+        localStorage.setItem('cozyVipExpiry', newExpiry);
+
+        // Lưu mã này vào danh sách "ĐÃ SỬ DỤNG" để chặn nhập lại
+        usedPasswords.push(passInput);
+        localStorage.setItem('cozyUsedPasswords', JSON.stringify(usedPasswords));
+
         isVip = true;
         
-        alert("🎉 Kích hoạt VIP thành công! Toàn bộ kho tàng điện ảnh đã được mở khóa!");
+        if (daysInput === "99999") {
+          alert("💎 Kích hoạt thành công GÓI TRỌN ĐỜI! Cảm ơn bạn đã đồng hành cùng Cozy Garden!");
+        } else {
+          alert("🎉 Kích hoạt/Gia hạn VIP thành công! Thời gian của bạn đã được cộng thêm.");
+        }
         
+        // Cập nhật lại giao diện
         applyVipUI();
         renderCinemaCards(); 
         updateAvailableSentences();
         initScrambleGame();
 
       } else {
-        alert("Mật khẩu không chính xác! Vui lòng kiểm tra lại 🛑");
+        alert("Mã kích hoạt không hợp lệ cho gói này! Vui lòng kiểm tra lại 🛑");
       }
     }
 
@@ -1350,7 +1397,7 @@
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
     
     function simulateSuccessPayment() {
-      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin Zalo qua SĐT 0362102905 (Vũ Thái An) kèm ảnh chụp màn hình chuyển khoản để nhận mật khẩu kích hoạt VIP nha 🌷");
+      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin Zalo qua SĐT 0362102905 kèm ảnh chụp màn hình chuyển khoản để nhận mã kích hoạt VIP nha 🌷");
       closeModal('modal-vip');
     }
   </script>
