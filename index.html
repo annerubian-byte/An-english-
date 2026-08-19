@@ -63,8 +63,8 @@
       </div>
 
       <div class="flex items-center space-x-2">
-        <button id="vip-header-btn" onclick="openVipModal()" class="bg-white border-2 border-cottage-rose text-cottage-roseDark hover:bg-cottage-rose hover:text-white text-xs font-black px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(230,164,180,0.2)] transition transform active:scale-95 flex items-center gap-1.5 animate-float">
-          <i class="fa-solid fa-crown text-[11px]"></i> <span>Mua gói VIP 🗝️</span>
+        <button id="vip-header-btn" onclick="openLoginModal()" class="bg-white border-2 border-cottage-rose text-cottage-roseDark hover:bg-cottage-rose hover:text-white text-xs font-black px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(230,164,180,0.2)] transition transform active:scale-95 flex items-center gap-1.5 animate-float">
+          <i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>
         </button>
       </div>
     </div>
@@ -146,44 +146,42 @@
     </section>
   </main>
 
-  <button id="floating-vip-btn" onclick="openLoginModal()" class="fixed bottom-4 right-4 bg-cottage-brown/90 text-white text-[10px] px-4 py-2.5 rounded-full z-50 hover:bg-cottage-brown transition shadow-lg border border-white/20 font-bold uppercase tracking-wider">
-    🔑 Kích hoạt VIP
-  </button>
-
+  <!-- ================= MODAL: ĐĂNG NHẬP / ĐĂNG KÝ ================= -->
   <div id="modal-login" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white border-[6px] border-cottage-cream rounded-[2.5rem] max-w-sm w-full p-6 md:p-8 shadow-2xl relative">
       <button onclick="closeModal('modal-login')" class="absolute right-4 top-4 w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
 
       <div class="text-center space-y-2 mb-6">
-        <div class="w-14 h-14 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-2xl mb-2 shadow-sm">🔑</div>
-        <h3 class="text-2xl font-display font-black text-cottage-brown tracking-tight">Kích hoạt VIP</h3>
-        <p class="text-xs text-cottage-brownLight">Nhập mã kích hoạt bạn nhận được qua Zalo để mở khóa toàn bộ bài học nhé!</p>
+        <div class="w-14 h-14 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-2xl mb-2 shadow-sm">🌿</div>
+        <h3 id="auth-title" class="text-2xl font-display font-black text-cottage-brown tracking-tight">Đăng Nhập</h3>
+        <p id="auth-subtitle" class="text-xs text-cottage-brownLight">Đăng nhập để lưu tiến độ và xem các phim VIP nhé!</p>
       </div>
 
       <div class="space-y-4">
         <div>
-          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Gói đã thanh toán</label>
-          <select id="vip-package-select" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition appearance-none">
-            <option value="3">Gói trải nghiệm (3 Ngày)</option>
-            <option value="30">Gói chăm chỉ (1 Tháng)</option>
-            <option value="365">Gói trọn vẹn (1 Năm)</option>
-            <option value="99999">Gói vĩnh cửu (Trọn đời) 💎</option>
-          </select>
+          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Email của bạn</label>
+          <input type="email" id="auth-email" placeholder="ví dụ: cozy@gmail.com" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition">
         </div>
         <div>
-          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Mã kích hoạt</label>
-          <input type="text" id="vip-password-input" placeholder="Nhập mã vào đây..." class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition uppercase">
+          <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Mật khẩu</label>
+          <input type="password" id="auth-password" placeholder="Nhập mật khẩu (từ 6 ký tự)" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition">
         </div>
-        <button onclick="verifyVipLogin()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
-          Xác nhận mở khóa 🗝️
+        
+        <button id="btn-auth-submit" onclick="handleAuth()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
+          Vào học ngay 🚀
         </button>
+        
+        <div class="text-center mt-4">
+          <button onclick="toggleAuthMode()" id="btn-auth-toggle" class="text-xs font-bold text-cottage-brownLight hover:text-cottage-rose transition">
+            Chưa có tài khoản? Đăng ký ngay
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <div id="modal-cinema" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-4">
     <div class="bg-white border-4 border-cottage-cream rounded-[2rem] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
-      
       <button onclick="closeModal('modal-cinema')" class="absolute right-4 top-4 w-9 h-9 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm transition z-[70] shadow-sm border border-cottage-butter"><i class="fa-solid fa-xmark"></i></button>
       
       <div class="p-5 md:p-7 space-y-6">
@@ -220,7 +218,6 @@
           <div id="modal-quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-semibold leading-relaxed mt-2 border-2 relative z-10"></div>
           <button id="btn-next-quiz" onclick="nextCinemaQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-rose hover:bg-cottage-roseDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Câu tiếp theo →</button>
         </div>
-
       </div>
     </div>
   </div>
@@ -311,10 +308,30 @@
     </div>
   </div>
 
-  <script>
-    // ================= VOCABULARY IN CONTEXT DATABASE =================
+  <script type="module">
+    // ================= 1. IMPORT FIREBASE =================
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // ================= 2. CẤU HÌNH FIREBASE =================
+    const firebaseConfig = {
+      apiKey: "AIzaSyBFRmVKt6DxNojHXoOp_qy2VfdEL9LYeFQ",
+      authDomain: "cozy-garden-fa6b6.firebaseapp.com",
+      projectId: "cozy-garden-fa6b6",
+      storageBucket: "cozy-garden-fa6b6.firebasestorage.app",
+      messagingSenderId: "792412788399",
+      appId: "1:792412788399:web:550260375b8b08b8dc665a",
+      measurementId: "G-VB84MNSQNC"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // ================= 3. CƠ SỞ DỮ LIỆU BÀI HỌC =================
     const cinemaData = [
-{
+      {
         id: 1, 
         genre: "Drama", 
         title: "The Devil Wears Prada (2006)",
@@ -325,630 +342,147 @@
         quote: "You go to your closet and you select... I don't know... that lumpy blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
         translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh sần sùi kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
         vocabAnalysis: [
-          {
-            word: "Lumpy (adj)", 
-            ipa: "/ˈlʌm.pi/", 
-            meaning: "Có nhiều cục, vón cục, sần sùi, thô kệch.", 
-            context: "Miranda dùng từ này để miệt thị một cách đanh đá về chiếc áo len thiếu thẩm mỹ của Andy."
-          },
-          {
-            word: "Take oneself too seriously", 
-            ipa: "(Idiom)", 
-            meaning: "Quá tự cao, nghĩ mình luôn quan trọng.", 
-            context: "Ám chỉ việc Andy nghĩ bản thân mình quá thông minh, quá bận rộn với lý tưởng cao cả để phải quan tâm đến thời trang."
-          }
+          { word: "Lumpy (adj)", ipa: "/ˈlʌm.pi/", meaning: "Có nhiều cục, vón cục, sần sùi, thô kệch.", context: "Miranda dùng từ này để miệt thị một cách đanh đá về chiếc áo len thiếu thẩm mỹ của Andy." },
+          { word: "Take oneself too seriously", ipa: "(Idiom)", meaning: "Quá tự cao, nghĩ mình luôn quan trọng.", context: "Ám chỉ việc Andy nghĩ bản thân mình quá thông minh, quá bận rộn với lý tưởng cao cả để phải quan tâm đến thời trang." }
         ],
         quizzes: [
-          {
-            q: "Trong video, Miranda nói rằng Andy đang <b>'blithely unaware'</b> (không nhận thức được) về lịch sử của màu xanh Cerulean. Từ 'blithely' ở đây mang sắc thái gì?",
-            options: ["A. Tức giận, phẫn nộ", "B. Cẩn thận, tỉ mỉ", "C. Thản nhiên, vô tư lự", "D. Rất lo lắng"],
-            correct: 2,
-            explanation: "<b>'Blithely'</b> diễn tả thái độ vô tư, không bận tâm. Miranda dùng từ này để châm biếm sự ngây thơ và thiếu hiểu biết của Andy về thế giới thời trang."
-          },
-          {
-            q: "Miranda châm biếm Andy vì cô nghĩ rằng sự lựa chọn áo len đã <b>'exempts'</b> cô khỏi ngành công nghiệp thời trang (<i>'exempts you from the fashion industry'</i>). Từ 'exempt' có nghĩa là gì?",
-            options: ["A. Trói buộc cô vào", "B. Miễn trừ, tách biệt, cho phép cô đứng ngoài cuộc", "C. Làm cho cô nổi bật hơn", "D. Phá hủy sự nghiệp của cô"],
-            correct: 1,
-            explanation: "<b>'Exempt'</b> có nghĩa là được miễn trừ hoặc không chịu tác động. Andy nghĩ mình không quan tâm đến thời trang nên không thuộc về thế giới đó, nhưng thực tế chiếc áo cô mặc là kết quả của cả một ngành công nghiệp."
-          },
-          {
-            q: "Miranda nhắc đến việc màu xanh Cerulean sau đó đã được <b>'filtered down'</b> tới các trung tâm thương mại. Từ này diễn tả quá trình nào?",
-            options: ["A. Bị loại bỏ hoàn toàn", "B. Được lọc sạch vi khuẩn", "C. Lan truyền dần dần từ tầng lớp cao xuống đại chúng", "D. Bị đẩy giá lên cao"],
-            correct: 2,
-            explanation: "<b>'Filter down'</b> (lọc xuống) ám chỉ việc một xu hướng thời trang ban đầu chỉ dành cho giới thượng lưu, sau đó dần lan tới các cửa hàng bình dân."
-          },
-          {
-            q: "Miranda mỉa mai việc Andy lấy chiếc áo đó từ một <b>'clearance bin'</b>. Bạn thường thấy 'clearance bin' ở đâu trong siêu thị?",
-            options: ["A. Khu vực trưng bày đồ mới ra mắt", "B. Nơi chứa đồ giảm giá, đồ xả kho", "C. Thùng rác", "D. Khu vực bán đồ bị may lỗi"],
-            correct: 1,
-            explanation: "<b>'Clearance bin'</b> là những thùng đổ đống quần áo xả hàng tồn kho, bán với giá rất rẻ. Miranda dùng từ này để nhấn mạnh sự 'bình dân'."
-          },
-          {
-            q: "Cuối cùng, Miranda kết luận: 'It's sort of <b>comical</b> how you think that you've made a choice...'. Từ 'comical' mang sắc thái gì?",
-            options: ["A. Buồn bã, đáng thương", "B. Tức giận, phẫn nộ", "C. Buồn cười, nực cười", "D. Rất logic, hợp lý"],
-            correct: 2,
-            explanation: "<b>'Comical'</b> có nghĩa là buồn cười. Ở đây Miranda cười nhạo sự ngây thơ của Andy khi cô nghĩ rằng mình nằm ngoài vòng xoáy của ngành thời trang."
-          }
+          { q: "Trong video, Miranda nói rằng Andy đang <b>'blithely unaware'</b> (không nhận thức được) về lịch sử của màu xanh Cerulean. Từ 'blithely' ở đây mang sắc thái gì?", options: ["A. Tức giận, phẫn nộ", "B. Cẩn thận, tỉ mỉ", "C. Thản nhiên, vô tư lự", "D. Rất lo lắng"], correct: 2, explanation: "<b>'Blithely'</b> diễn tả thái độ vô tư, không bận tâm. Miranda dùng từ này để châm biếm sự ngây thơ và thiếu hiểu biết của Andy về thế giới thời trang." },
+          { q: "Miranda châm biếm Andy vì cô nghĩ rằng sự lựa chọn áo len đã <b>'exempts'</b> cô khỏi ngành công nghiệp thời trang (<i>'exempts you from the fashion industry'</i>). Từ 'exempt' có nghĩa là gì?", options: ["A. Trói buộc cô vào", "B. Miễn trừ, tách biệt, cho phép cô đứng ngoài cuộc", "C. Làm cho cô nổi bật hơn", "D. Phá hủy sự nghiệp của cô"], correct: 1, explanation: "<b>'Exempt'</b> có nghĩa là được miễn trừ hoặc không chịu tác động. Andy nghĩ mình không quan tâm đến thời trang nên không thuộc về thế giới đó, nhưng thực tế chiếc áo cô mặc là kết quả của cả một ngành công nghiệp." },
+          { q: "Miranda nhắc đến việc màu xanh Cerulean sau đó đã được <b>'filtered down'</b> tới các trung tâm thương mại. Từ này diễn tả quá trình nào?", options: ["A. Bị loại bỏ hoàn toàn", "B. Được lọc sạch vi khuẩn", "C. Lan truyền dần dần từ tầng lớp cao xuống đại chúng", "D. Bị đẩy giá lên cao"], correct: 2, explanation: "<b>'Filter down'</b> (lọc xuống) ám chỉ việc một xu hướng thời trang ban đầu chỉ dành cho giới thượng lưu, sau đó dần lan tới các cửa hàng bình dân." },
+          { q: "Miranda mỉa mai việc Andy lấy chiếc áo đó từ một <b>'clearance bin'</b>. Bạn thường thấy 'clearance bin' ở đâu trong siêu thị?", options: ["A. Khu vực trưng bày đồ mới ra mắt", "B. Nơi chứa đồ giảm giá, đồ xả kho", "C. Thùng rác", "D. Khu vực bán đồ bị may lỗi"], correct: 1, explanation: "<b>'Clearance bin'</b> là những thùng đổ đống quần áo xả hàng tồn kho, bán với giá rất rẻ. Miranda dùng từ này để nhấn mạnh sự 'bình dân'." },
+          { q: "Cuối cùng, Miranda kết luận: 'It's sort of <b>comical</b> how you think that you've made a choice...'. Từ 'comical' mang sắc thái gì?", options: ["A. Buồn bã, đáng thương", "B. Tức giận, phẫn nộ", "C. Buồn cười, nực cười", "D. Rất logic, hợp lý"], correct: 2, explanation: "<b>'Comical'</b> có nghĩa là buồn cười. Ở đây Miranda cười nhạo sự ngây thơ của Andy khi cô nghĩ rằng mình nằm ngoài vòng xoáy của ngành thời trang." }
         ]
       },
       {
-        id: 2, 
-        genre: "Drama", 
-        title: "The Intern (2015)",
-        thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", 
-        locked: false,
-        quote: "You're never wrong to do the right thing.",
-        translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
+        id: 2, genre: "Drama", title: "The Intern (2015)", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
+        quote: "You're never wrong to do the right thing.", translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
-          {
-            word: "Diversion (n)", 
-            ipa: "/dɪˈvɜːr.ʒən/", 
-            meaning: "Sự giải trí, thú vui tiêu khiển.", 
-            context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' (một việc gì đó để làm cho đỡ buồn chán) như giúp sếp lập Facebook."
-          },
-          {
-            word: "Brownnose (v)", 
-            ipa: "/ˈbraʊn.noʊz/", 
-            meaning: "Nịnh bợ, xu nịnh (mang nghĩa tiêu cực).", 
-            context: "Ben khẳng định anh không cố ý 'nịnh nọt' Jules khi khen ngợi cô ấy."
-          }
+          { word: "Diversion (n)", ipa: "/dɪˈvɜːr.ʒən/", meaning: "Sự giải trí, thú vui tiêu khiển.", context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' (một việc gì đó để làm cho đỡ buồn chán) như giúp sếp lập Facebook." },
+          { word: "Brownnose (v)", ipa: "/ˈbraʊn.noʊz/", meaning: "Nịnh bợ, xu nịnh (mang nghĩa tiêu cực).", context: "Ben khẳng định anh không cố ý 'nịnh nọt' Jules khi khen ngợi cô ấy." }
         ],
         quizzes: [
-          {
-            q: "Khi sếp Jules tỏ vẻ bận rộn, Ben nói rằng ông không có việc gì làm nên cần một <b>'diversion'</b>. Bạn đoán 'diversion' nghĩa là gì?",
-            options: ["A. Sự thăng chức", "B. Một cuộc họp quan trọng", "C. Sự giải trí", "D. Một ly cà phê"],
-            correct: 2,
-            explanation: "<b>'Diversion'</b> là thú vui tiêu khiển, ở đây mang nghĩa ông Ben muốn tìm một việc gì đó (như giúp sếp lập Facebook) để giải trí, lấp đầy thời gian trống."
-          },
-          {
-            q: "Khi Ben lập tài khoản mạng xã hội, ông bảo Jules: <i>'You're never wrong to do the right thing'</i>. Bạn hãy chọn cụm từ có cấu trúc <b>'never wrong to...'</b> hợp lý nhất:",
-            options: ["A. You're never wrong to lying.", "B. You're never wrong to apologize.", "C. You're never wrong to ignored them.", "D. You're never wrong to rude."],
-            correct: 1,
-            explanation: "Cấu trúc <b>'never wrong to + Verb (nguyên mẫu)'</b>. 'Apologize' (xin lỗi) là hành động đúng đắn và phù hợp ngữ pháp nhất."
-          },
-          {
-            q: "Khi khen ngợi Jules, Ben rào trước: <i>'I'm not trying to <b>brownnose</b> you...'</i>. Dựa vào bối cảnh nhân viên nói chuyện với sếp, từ này có nghĩa gì?",
-            options: ["A. Đe dọa, uy hiếp", "B. Nịnh bợ, xu nịnh để lấy lòng", "C. Che giấu sự thật", "D. Làm bạn xấu hổ"],
-            correct: 1,
-            explanation: "<b>'Brownnose'</b> (hoặc kiss up) là một từ lóng chỉ hành động nịnh nọt sếp quá mức để được ưu ái. Ben muốn khẳng định lời khen của mình là thật lòng."
-          },
-          {
-            q: "Jules nói: <i>'A woman with a glass of wine and a laptop had real shopping <b>potential</b>'</i>. Từ 'potential' ở đây chỉ điều gì?",
-            options: ["A. Khả năng, tiềm năng (mua sắm)", "B. Sự nguy hiểm", "C. Thói quen xấu", "D. Vấn đề tài chính"],
-            correct: 0,
-            explanation: "<b>'Potential'</b> (tiềm năng). Jules nhận ra cơ hội kinh doanh khi thấy phụ nữ rảnh rỗi lướt mạng, họ có 'tiềm năng' chốt đơn mua hàng rất cao."
-          },
-          {
-            q: "Khi Ben mới tham gia mạng xã hội, Jules nói đùa: <i>'Better <b>late</b> than never'</i>. Thành ngữ này khuyên chúng ta điều gì?",
-            options: ["A. Đã trễ thì không nên làm nữa", "B. Thà trễ hẹn còn hơn không đến", "C. Muộn màng bắt đầu một việc gì đó vẫn tốt hơn là không bao giờ làm", "D. Phải luôn luôn đúng giờ"],
-            correct: 2,
-            explanation: "<b>'Better late than never'</b> là một câu cửa miệng rất phổ biến, ý nói việc bắt đầu muộn vẫn tốt hơn là bỏ cuộc hoàn toàn."
-          }
+          { q: "Khi sếp Jules tỏ vẻ bận rộn, Ben nói rằng ông không có việc gì làm nên cần một <b>'diversion'</b>. Bạn đoán 'diversion' nghĩa là gì?", options: ["A. Sự thăng chức", "B. Một cuộc họp quan trọng", "C. Sự giải trí", "D. Một ly cà phê"], correct: 2, explanation: "<b>'Diversion'</b> là thú vui tiêu khiển, ở đây mang nghĩa ông Ben muốn tìm một việc gì đó (như giúp sếp lập Facebook) để giải trí, lấp đầy thời gian trống." },
+          { q: "Khi Ben lập tài khoản mạng xã hội, ông bảo Jules: <i>'You're never wrong to do the right thing'</i>. Bạn hãy chọn cụm từ có cấu trúc <b>'never wrong to...'</b> hợp lý nhất:", options: ["A. You're never wrong to lying.", "B. You're never wrong to apologize.", "C. You're never wrong to ignored them.", "D. You're never wrong to rude."], correct: 1, explanation: "Cấu trúc <b>'never wrong to + Verb (nguyên mẫu)'</b>. 'Apologize' (xin lỗi) là hành động đúng đắn và phù hợp ngữ pháp nhất." },
+          { q: "Khi khen ngợi Jules, Ben rào trước: <i>'I'm not trying to <b>brownnose</b> you...'</i>. Dựa vào bối cảnh nhân viên nói chuyện với sếp, từ này có nghĩa gì?", options: ["A. Đe dọa, uy hiếp", "B. Nịnh bợ, xu nịnh để lấy lòng", "C. Che giấu sự thật", "D. Làm bạn xấu hổ"], correct: 1, explanation: "<b>'Brownnose'</b> (hoặc kiss up) là một từ lóng chỉ hành động nịnh nọt sếp quá mức để được ưu ái. Ben muốn khẳng định lời khen của mình là thật lòng." },
+          { q: "Jules nói: <i>'A woman with a glass of wine and a laptop had real shopping <b>potential</b>'</i>. Từ 'potential' ở đây chỉ điều gì?", options: ["A. Khả năng, tiềm năng (mua sắm)", "B. Sự nguy hiểm", "C. Thói quen xấu", "D. Vấn đề tài chính"], correct: 0, explanation: "<b>'Potential'</b> (tiềm năng). Jules nhận ra cơ hội kinh doanh khi thấy phụ nữ rảnh rỗi lướt mạng, họ có 'tiềm năng' chốt đơn mua hàng rất cao." },
+          { q: "Khi Ben mới tham gia mạng xã hội, Jules nói đùa: <i>'Better <b>late</b> than never'</i>. Thành ngữ này khuyên chúng ta điều gì?", options: ["A. Đã trễ thì không nên làm nữa", "B. Thà trễ hẹn còn hơn không đến", "C. Muộn màng bắt đầu một việc gì đó vẫn tốt hơn là không bao giờ làm", "D. Phải luôn luôn đúng giờ"], correct: 2, explanation: "<b>'Better late than never'</b> là một câu cửa miệng rất phổ biến, ý nói việc bắt đầu muộn vẫn tốt hơn là bỏ cuộc hoàn toàn." }
         ]
       },
       {
-        id: 3, 
-        genre: "Musical", 
-        title: "La La Land (2016)",
-        thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", 
-        locked: true, 
-        quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.",
-        translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
+        id: 3, genre: "Musical", title: "La La Land (2016)", thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", locked: true, 
+        quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.", translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
         vocabAnalysis: [
-          {
-            word: "Pipe dream (Idiom)", 
-            ipa: "/ˈpaɪp ˌdriːm/", 
-            meaning: "Giấc mơ viển vông, hão huyền.", 
-            context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực."
-          },
-          {
-            word: "Interrupt (v)", 
-            ipa: "/ˌɪn.təˈrʌpt/", 
-            meaning: "Làm gián đoạn, ngắt lời.", 
-            context: "Mia kể về việc những buổi thử vai của mình luôn bị ngắt quãng ('I get interrupted') bởi những lý do ngớ ngẩn."
-          }
+          { word: "Pipe dream (Idiom)", ipa: "/ˈpaɪp ˌdriːm/", meaning: "Giấc mơ viển vông, hão huyền.", context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực." },
+          { word: "Interrupt (v)", ipa: "/ˌɪn.təˈrʌpt/", meaning: "Làm gián đoạn, ngắt lời.", context: "Mia kể về việc những buổi thử vai của mình luôn bị ngắt quãng ('I get interrupted') bởi những lý do ngớ ngẩn." }
         ],
         quizzes: [
-          {
-            q: "Trong video, khi Mia quá chán nản vì liên tục thất bại ở các buổi thử vai, cô nói: <i>'Maybe I'm not <b>good enough</b>'</i>. Cụm từ này thường dùng để diễn tả cảm xúc gì?",
-            options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân (không đủ giỏi)", "C. Sự tức diễn với người khác", "D. Sự mệt mỏi về thể chất"],
-            correct: 1,
-            explanation: "<b>'Not good enough'</b> (không đủ tốt/giỏi) là cụm từ kinh điển diễn tả sự tự ti (insecurity) khi ai đó đối mặt với sự từ chối quá nhiều lần."
-          },
-          {
-            q: "Mia kể lại trải nghiệm tồi tệ: <i>'I get <b>interrupted</b> because someone wants to get a sandwich'</i>. Theo bạn, hành động 'interrupt' ở đây gây ra cảm giác gì cho cô ấy?",
-            options: ["A. Vui vẻ vì được nghỉ ngơi", "B. Thiếu tôn trọng, bị ngắt lời giữa chừng khi đang diễn xuất", "C. Hào hứng vì được mời ăn", "D. Không có cảm xúc gì"],
-            correct: 1,
-            explanation: "<b>'Interrupt'</b> nghĩa là ngắt lời/cắt ngang. Khi Mia đang diễn cảnh khóc đầy cảm xúc mà đạo diễn lại 'cắt ngang' đi mua bánh mì, điều đó cho thấy sự thiếu tôn trọng nghiêm trọng."
-          },
-          {
-            q: "Mia tự nhận định giấc mơ diễn xuất của mình có thể chỉ là một <b>'pipe dream'</b>. Dựa vào hoàn cảnh tuyệt vọng của cô ấy, từ này có nghĩa là gì?",
-            options: ["A. Một giấc mơ đẹp và lãng mạn", "B. Một kế hoạch chắc chắn sẽ thành công", "C. Một giấc mơ viển vông, hão huyền, khó thành hiện thực", "D. Giấc mơ liên quan đến việc sửa ống nước"],
-            correct: 2,
-            explanation: "<b>'Pipe dream'</b> là một thành ngữ chỉ những hi vọng, ảo tưởng không có cơ sở thực tế. Mia đang nghĩ mình đã quá hão huyền khi theo đuổi nghề này."
-          },
-          {
-            q: "Sebastian cố gắng thuyết phục Mia đi thử vai: <i>'If you want me, then you have to <b>make sense</b>'</i>. Anh ấy yêu cầu Mia điều gì?",
-            options: ["A. Phải nói chuyện có lý, có logic thay vì để cảm xúc lấn át", "B. Phải kiếm ra nhiều tiền", "C. Phải từ bỏ ngay lập tức", "D. Phải diễn kịch cho anh ấy xem"],
-            correct: 0,
-            explanation: "<b>'Make sense'</b> nghĩa là có ý nghĩa, có lý. Sebastian đang muốn Mia bình tĩnh lại và đưa ra một lý do từ chối hợp lý (điều mà Mia không có)."
-          },
-          {
-            q: "Cuối cùng, Sebastian chốt hạ một câu đầy quyết đoán: <i>'I'll be out front at 8:00 a.m. You'll be out front <b>or not</b>'</i>. Câu này thể hiện thái độ gì của anh?",
-            options: ["A. Năn nỉ, cầu xin cô ấy đi", "B. Không quan tâm cô ấy làm gì", "C. Ép buộc, ép cô ấy lên xe", "D. Đặt cô ấy vào thế phải tự quyết định (anh sẽ đợi, quyền đi hay không là ở cô)"],
-            correct: 3,
-            explanation: "<b>'...or not'</b> (hoặc không). Sebastian không ép buộc, anh chỉ trao cơ hội. Anh sẽ ở đó đợi, còn Mia phải tự chịu trách nhiệm với giấc mơ của chính mình."
-          }
+          { q: "Trong video, khi Mia quá chán nản vì liên tục thất bại ở các buổi thử vai, cô nói: <i>'Maybe I'm not <b>good enough</b>'</i>. Cụm từ này thường dùng để diễn tả cảm xúc gì?", options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân (không đủ giỏi)", "C. Sự tức diễn với người khác", "D. Sự mệt mỏi về thể chất"], correct: 1, explanation: "<b>'Not good enough'</b> (không đủ tốt/giỏi) là cụm từ kinh điển diễn tả sự tự ti (insecurity) khi ai đó đối mặt với sự từ chối quá nhiều lần." },
+          { q: "Mia kể lại trải nghiệm tồi tệ: <i>'I get <b>interrupted</b> because someone wants to get a sandwich'</i>. Theo bạn, hành động 'interrupt' ở đây gây ra cảm giác gì cho cô ấy?", options: ["A. Vui vẻ vì được nghỉ ngơi", "B. Thiếu tôn trọng, bị ngắt lời giữa chừng khi đang diễn xuất", "C. Hào hứng vì được mời ăn", "D. Không có cảm xúc gì"], correct: 1, explanation: "<b>'Interrupt'</b> nghĩa là ngắt lời/cắt ngang. Khi Mia đang diễn cảnh khóc đầy cảm xúc mà đạo diễn lại 'cắt ngang' đi mua bánh mì, điều đó cho thấy sự thiếu tôn trọng nghiêm trọng." },
+          { q: "Mia tự nhận định giấc mơ diễn xuất của mình có thể chỉ là một <b>'pipe dream'</b>. Dựa vào hoàn cảnh tuyệt vọng của cô ấy, từ này có nghĩa là gì?", options: ["A. Một giấc mơ đẹp và lãng mạn", "B. Một kế hoạch chắc chắn sẽ thành công", "C. Một giấc mơ viển vông, hão huyền, khó thành hiện thực", "D. Giấc mơ liên quan đến việc sửa ống nước"], correct: 2, explanation: "<b>'Pipe dream'</b> là một thành ngữ chỉ những hi vọng, ảo tưởng không có cơ sở thực tế. Mia đang nghĩ mình đã quá hão huyền khi theo đuổi nghề này." },
+          { q: "Sebastian cố gắng thuyết phục Mia đi thử vai: <i>'If you want me, then you have to <b>make sense</b>'</i>. Anh ấy yêu cầu Mia điều gì?", options: ["A. Phải nói chuyện có lý, có logic thay vì để cảm xúc lấn át", "B. Phải kiếm ra nhiều tiền", "C. Phải từ bỏ ngay lập tức", "D. Phải diễn kịch cho anh ấy xem"], correct: 0, explanation: "<b>'Make sense'</b> nghĩa là có ý nghĩa, có lý. Sebastian đang muốn Mia bình tĩnh lại và đưa ra một lý do từ chối hợp lý (điều mà Mia không có)." },
+          { q: "Cuối cùng, Sebastian chốt hạ một câu đầy quyết đoán: <i>'I'll be out front at 8:00 a.m. You'll be out front <b>or not</b>'</i>. Câu này thể hiện thái độ gì của anh?", options: ["A. Năn nỉ, cầu xin cô ấy đi", "B. Không quan tâm cô ấy làm gì", "C. Ép buộc, ép cô ấy lên xe", "D. Đặt cô ấy vào thế phải tự quyết định (anh sẽ đợi, quyền đi hay không là ở cô)"], correct: 3, explanation: "<b>'...or not'</b> (hoặc không). Sebastian không ép buộc, anh chỉ trao cơ hội. Anh sẽ ở đó đợi, còn Mia phải tự chịu trách nhiệm với giấc mơ của chính mình." }
         ]
       },
       {
-        id: 4, 
-        genre: "Musical", 
-        title: "The Greatest Showman (2017)",
-        thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", 
-        locked: true,
-        quote: "No one ever made a difference by being like everyone else.",
-        translation: "Chưa từng có ai tạo ra sự khác biệt bằng cách sống giống như những người khác.",
+        id: 4, genre: "Musical", title: "The Greatest Showman (2017)", thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", locked: true,
+        quote: "No one ever made a difference by being like everyone else.", translation: "Chưa từng có ai tạo ra sự khác biệt bằng cách sống giống như những người khác.",
         vocabAnalysis: [
-          {
-            word: "Noble (adj)", 
-            ipa: "/ˈnoʊ.bəl/", 
-            meaning: "Cao quý, đáng kính.", 
-            context: "Bộ phim trích dẫn câu nói của P.T. Barnum: 'Nghệ thuật cao quý nhất là làm cho người khác hạnh phúc'."
-          },
-          {
-            word: "Run away (Phrasal Verb)", 
-            ipa: "/rʌn əˈweɪ/", 
-            meaning: "Bỏ chạy, trốn đi.", 
-            context: "Giai điệu lặp lại 'Runaways are running the night' ám chỉ những kẻ từng bị xã hội ruồng bỏ nay đã tỏa sáng."
-          }
+          { word: "Noble (adj)", ipa: "/ˈnoʊ.bəl/", meaning: "Cao quý, đáng kính.", context: "Bộ phim trích dẫn câu nói của P.T. Barnum: 'Nghệ thuật cao quý nhất là làm cho người khác hạnh phúc'." },
+          { word: "Run away (Phrasal Verb)", ipa: "/rʌn əˈweɪ/", meaning: "Bỏ chạy, trốn đi.", context: "Giai điệu lặp lại 'Runaways are running the night' ám chỉ những kẻ từng bị xã hội ruồng bỏ nay đã tỏa sáng." }
         ],
         quizzes: [
-          {
-            q: "Trong bài hát The Greatest Show, Barnum nhắc đến từ <b>'spectacle'</b> để mô tả rạp xiếc của mình. Theo bạn, 'spectacle' mang đến cảm giác gì cho người xem?",
-            options: ["A. Nhà chán, tẻ nhạt", "B. Buồn ngủ", "C. Mãn nhãn, hoành tráng, khó quên", "D. Đáng sợ"],
-            correct: 2,
-            explanation: "<b>'Spectacle'</b> chỉ một màn trình diễn hoành tráng, mãn nhãn, được thiết kế để gây ấn tượng mạnh mẽ cho người xem."
-          },
-          {
-            q: "Các diễn viên trong rạp xiếc thường hát rằng họ từng là những kẻ <b>'outcasts'</b> trước khi Barnum tìm thấy họ. 'Outcast' là những người như thế nào?",
-            options: ["A. Được xã hội tôn vinh", "B. Bị xã hội ruồng rẫy, xa lánh", "C. Vô cùng giàu có", "D. Nổi tiếng từ nhỏ"],
-            correct: 1,
-            explanation: "<b>'Outcast'</b> (kẻ bị ruồng bỏ). Những diễn viên này có ngoại hình khác thường nên từng bị xã hội xa lánh trước khi tìm được mái nhà chung tại rạp xiếc."
-          },
-          {
-            q: "Barnum được xem là một <b>'visionary'</b> thực thụ khi dám tạo ra một loại hình giải trí mới. 'Visionary' ám chỉ người có đặc điểm gì?",
-            options: ["A. Sống hoài niệm về quá khứ", "B. Không có ý chí tiến thủ", "C. Có tầm nhìn xa trông rộng, có ý tưởng đột phá", "D. Cực kỳ bảo thủ"],
-            correct: 2,
-            explanation: "<b>'Visionary'</b> (người nhìn xa trông rộng). Barnum nhìn thấy tiềm năng và vẻ đẹp ở những điều mà người bình thường chê cười, từ đó tiên phong tạo ra ngành kinh doanh rạp xiếc."
-          },
-          {
-            q: "Sự mới lạ của rạp xiếc đã phải chịu sự <b>'scrutiny'</b> gắt gao từ giới quý tộc. Từ này có nghĩa là gì?",
-            options: ["A. Sự ủng hộ tuyệt đối", "B. Sự tài trợ vô điều kiện", "C. Sự thờ ơ, phớt lờ", "D. Sự soi xét, đánh giá khắt khe"],
-            correct: 3,
-            explanation: "<b>'Scrutiny'</b> là sự soi mói, giám sát kỹ lưỡng. Giới phê bình nghệ thuật thượng lưu luôn 'soi xét' và coi thường các tiết mục của Barnum."
-          },
-          {
-            q: "Xuyên suốt bài hát, từ <b>'noble'</b> được sử dụng để miêu tả nghệ thuật. 'Noble' nghĩa là gì?",
-            options: ["A. Cao quý, đáng kính trọng", "B. Thấp hèn, rẻ mạt", "C. Rất nhàm chán", "D. Mang tính bạo lực"],
-            correct: 0,
-            explanation: "Bộ phim muốn truyền tải thông điệp: Nghệ thuật cao quý (<b>noble</b>) nhất chính là mang lại nụ cười và hạnh phúc cho mọi người."
-          }
+          { q: "Trong bài hát The Greatest Show, Barnum nhắc đến từ <b>'spectacle'</b> để mô tả rạp xiếc của mình. Theo bạn, 'spectacle' mang đến cảm giác gì cho người xem?", options: ["A. Nhà chán, tẻ nhạt", "B. Buồn ngủ", "C. Mãn nhãn, hoành tráng, khó quên", "D. Đáng sợ"], correct: 2, explanation: "<b>'Spectacle'</b> chỉ một màn trình diễn hoành tráng, mãn nhãn, được thiết kế để gây ấn tượng mạnh mẽ cho người xem." },
+          { q: "Các diễn viên trong rạp xiếc thường hát rằng họ từng là những kẻ <b>'outcasts'</b> trước khi Barnum tìm thấy họ. 'Outcast' là những người như thế nào?", options: ["A. Được xã hội tôn vinh", "B. Bị xã hội ruồng rẫy, xa lánh", "C. Vô cùng giàu có", "D. Nổi tiếng từ nhỏ"], correct: 1, explanation: "<b>'Outcast'</b> (kẻ bị ruồng bỏ). Những diễn viên này có ngoại hình khác thường nên từng bị xã hội xa lánh trước khi tìm được mái nhà chung tại rạp xiếc." },
+          { q: "Barnum được xem là một <b>'visionary'</b> thực thụ khi dám tạo ra một loại hình giải trí mới. 'Visionary' ám chỉ người có đặc điểm gì?", options: ["A. Sống hoài niệm về quá khứ", "B. Không có ý chí tiến thủ", "C. Có tầm nhìn xa trông rộng, có ý tưởng đột phá", "D. Cực kỳ bảo thủ"], correct: 2, explanation: "<b>'Visionary'</b> (người nhìn xa trông rộng). Barnum nhìn thấy tiềm năng và vẻ đẹp ở những điều mà người bình thường chê cười, từ đó tiên phong tạo ra ngành kinh doanh rạp xiếc." },
+          { q: "Sự mới lạ của rạp xiếc đã phải chịu sự <b>'scrutiny'</b> gắt gao từ giới quý tộc. Từ này có nghĩa là gì?", options: ["A. Sự ủng hộ tuyệt đối", "B. Sự tài trợ vô điều kiện", "C. Sự thờ ơ, phớt lờ", "D. Sự soi xét, đánh giá khắt khe"], correct: 3, explanation: "<b>'Scrutiny'</b> là sự soi mói, giám sát kỹ lưỡng. Giới phê bình nghệ thuật thượng lưu luôn 'soi xét' và coi thường các tiết mục của Barnum." },
+          { q: "Xuyên suốt bài hát, từ <b>'noble'</b> được sử dụng để miêu tả nghệ thuật. 'Noble' nghĩa là gì?", options: ["A. Cao quý, đáng kính trọng", "B. Thấp hèn, rẻ mạt", "C. Rất nhàm chán", "D. Mang tính bạo lực"], correct: 0, explanation: "Bộ phim muốn truyền tải thông điệp: Nghệ thuật cao quý (<b>noble</b>) nhất chính là mang lại nụ cười và hạnh phúc cho mọi người." }
         ]
       },
       {
-        id: 5, 
-        genre: "Fantasy", 
-        title: "Harry Potter and the Half-Blood Prince (2009)",
-        thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", 
-        locked: true,
-        quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.",
-        translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
+        id: 5, genre: "Fantasy", title: "Harry Potter and the Half-Blood Prince (2009)", thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", locked: true,
+        quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.", translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
         vocabAnalysis: [
-          {
-            word: "Coward (n)", 
-            ipa: "/ˈkaʊ.ərd/", 
-            meaning: "Kẻ hèn nhát.", 
-            context: "Harry đã dùng từ này để hét vào mặt Snape khi anh chạy trốn, thể hiện sự phẫn nộ tột cùng."
-          },
-          {
-            word: "Fight back (Phrasal Verb)", 
-            ipa: "/faɪt bæk/", 
-            meaning: "Đánh trả, phản công.", 
-            context: "Harry thách thức Snape ở lại chiến đấu thay vì bỏ chạy."
-          }
+          { word: "Coward (n)", ipa: "/ˈkaʊ.ərd/", meaning: "Kẻ hèn nhát.", context: "Harry đã dùng từ này để hét vào mặt Snape khi anh chạy trốn, thể hiện sự phẫn nộ tột cùng." },
+          { word: "Fight back (Phrasal Verb)", ipa: "/faɪt bæk/", meaning: "Đánh trả, phản công.", context: "Harry thách thức Snape ở lại chiến đấu thay vì bỏ chạy." }
         ],
         quizzes: [
-          {
-            q: "Khi Snape bỏ chạy, Harry đã tức giận hét lên: <i>'Fight back! You <b>coward</b>, fight back!'</i>. Từ 'coward' dùng để chửi rủa người như thế nào?",
-            options: ["A. Kẻ phản bội", "B. Kẻ nói dối", "C. Kẻ hèn nhát, không dám đối mặt", "D. Kẻ độc ác"],
-            correct: 2,
-            explanation: "<b>'Coward'</b> là kẻ hèn nhát. Với Harry lúc này, việc Snape giết thầy Dumbledore rồi bỏ chạy mà không dám đứng lại đấu tay đôi là một hành động cực kỳ hèn hạ."
-          },
-          {
-            q: "Cụm từ <b>'Fight back'</b> mà Harry nhắc lại nhiều lần có nghĩa là gì?",
-            options: ["A. Bỏ vũ khí xuống", "B. Đánh trả, phản công lại cuộc tấn công", "C. Bắt tay làm hòa", "D. Quay lưng bỏ đi"],
-            correct: 1,
-            explanation: "<b>'Fight back'</b> (chống trả). Harry đang liên tục tấn công bằng phép thuật và kích tướng Snape phải 'phản đòn' lại mình."
-          },
-          {
-            q: "Snape ngăn cản một Tử thần Thực tử tấn công Harry và nói: <i>'No! He <b>belongs to</b> the Dark Lord'</i>. Cụm 'belong to' mang hàm ý gì trong hoàn cảnh này?",
-            options: ["A. Harry là tài sản/thuộc quyền định đoạt mạng sống của Chúa tể Hắc ám", "B. Harry là họ hàng của Voldemort", "C. Harry đang làm việc cho Voldemort", "D. Harry cần được bảo vệ"],
-            correct: 0,
-            explanation: "<b>'Belong to'</b> thường nghĩa là thuộc về. Ở đây, Snape nhắc nhở đồng bọn rằng mạng sống của Harry 'thuộc quyền xử lý' của đích thân Voldemort, không ai được phép giết cậu ngoài hắn."
-          },
-          {
-            q: "Khi Harry dùng thần chú Sectumsempra, Snape đã đỡ được và nói: <i>'You dare use my own spells <b>against</b> me, Potter?'</i>. Từ 'against' mang ý nghĩa gì?",
-            options: ["A. Cùng với (Cùng phe)", "B. Chống lại, nghịch lại", "C. Bên cạnh", "D. Nhờ vào"],
-            correct: 1,
-            explanation: "<b>'Against'</b> nghĩa là chống lại. Đoạn này là một 'plot twist' đỉnh cao: Harry vô tình dùng chính câu thần chú do Snape tạo ra để 'tấn công lại' chính ông ta."
-          },
-          {
-            q: "Cuối cùng, Snape xác nhận danh tính: <i>'Yes... I'm the <b>Half-Blood</b> Prince'</i>. Từ 'Half-Blood' trong thế giới phép thuật mang ý nghĩa gì?",
-            options: ["A. Người có dòng máu hoàng gia", "B. Người bị bệnh về máu", "C. Pháp sư Lai (Có bố/mẹ là phù thủy, người kia là Muggle)", "D. Sinh vật nửa người nửa thú"],
-            correct: 2,
-            explanation: "<b>'Half-Blood'</b> (Máu lai) là từ chỉ phù thủy mang dòng máu pha trộn (Snape có mẹ là phù thủy họ Prince, bố là Muggle)."
-          }
+          { q: "Khi Snape bỏ chạy, Harry đã tức giận hét lên: <i>'Fight back! You <b>coward</b>, fight back!'</i>. Từ 'coward' dùng để chửi rủa người như thế nào?", options: ["A. Kẻ phản bội", "B. Kẻ nói dối", "C. Kẻ hèn nhát, không dám đối mặt", "D. Kẻ độc ác"], correct: 2, explanation: "<b>'Coward'</b> là kẻ hèn nhát. Với Harry lúc này, việc Snape giết thầy Dumbledore rồi bỏ chạy mà không dám đứng lại đấu tay đôi là một hành động cực kỳ hèn hạ." },
+          { q: "Cụm từ <b>'Fight back'</b> mà Harry nhắc lại nhiều lần có nghĩa là gì?", options: ["A. Bỏ vũ khí xuống", "B. Đánh trả, phản công lại cuộc tấn công", "C. Bắt tay làm hòa", "D. Quay lưng bỏ đi"], correct: 1, explanation: "<b>'Fight back'</b> (chống trả). Harry đang liên tục tấn công bằng phép thuật và kích tướng Snape phải 'phản đòn' lại mình." },
+          { q: "Snape ngăn cản một Tử thần Thực tử tấn công Harry và nói: <i>'No! He <b>belongs to</b> the Dark Lord'</i>. Cụm 'belong to' mang hàm ý gì trong hoàn cảnh này?", options: ["A. Harry là tài sản/thuộc quyền định đoạt mạng sống của Chúa tể Hắc ám", "B. Harry là họ hàng của Voldemort", "C. Harry đang làm việc cho Voldemort", "D. Harry cần được bảo vệ"], correct: 0, explanation: "<b>'Belong to'</b> thường nghĩa là thuộc về. Ở đây, Snape nhắc nhở đồng bọn rằng mạng sống của Harry 'thuộc quyền xử lý' của đích thân Voldemort, không ai được phép giết cậu ngoài hắn." },
+          { q: "Khi Harry dùng thần chú Sectumsempra, Snape đã đỡ được và nói: <i>'You dare use my own spells <b>against</b> me, Potter?'</i>. Từ 'against' mang ý nghĩa gì?", options: ["A. Cùng với (Cùng phe)", "B. Chống lại, nghịch lại", "C. Bên cạnh", "D. Nhờ vào"], correct: 1, explanation: "<b>'Against'</b> nghĩa là chống lại. Đoạn này là một 'plot twist' đỉnh cao: Harry vô tình dùng chính câu thần chú do Snape tạo ra để 'tấn công lại' chính ông ta." },
+          { q: "Cuối cùng, Snape xác nhận danh tính: <i>'Yes... I'm the <b>Half-Blood</b> Prince'</i>. Từ 'Half-Blood' trong thế giới phép thuật mang ý nghĩa gì?", options: ["A. Người có dòng máu hoàng gia", "B. Người bị bệnh về máu", "C. Pháp sư Lai (Có bố/mẹ là phù thủy, người kia là Muggle)", "D. Sinh vật nửa người nửa thú"], correct: 2, explanation: "<b>'Half-Blood'</b> (Máu lai) là từ chỉ phù thủy mang dòng máu pha trộn (Snape có mẹ là phù thủy họ Prince, bố là Muggle)." }
         ]
       },
       {
-        id: 6, 
-        genre: "Fantasy", 
-        title: "Alice in Wonderland (2010)",
-        thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", 
-        locked: false,
-        quote: "Anyone with a head that large is welcome in my court.",
-        translation: "Bất kỳ ai với một cái đầu to như vậy đều được hoan nghênh tại triều đình của ta.",
+        id: 6, genre: "Fantasy", title: "Alice in Wonderland (2010)", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", locked: false,
+        quote: "Anyone with a head that large is welcome in my court.", translation: "Bất kỳ ai với một cái đầu to như vậy đều được hoan nghênh tại triều đình của ta.",
         vocabAnalysis: [
-          {
-            word: "Outgrow (v)", 
-            ipa: "/ˌaʊtˈɡroʊ/", 
-            meaning: "Lớn vượt quá kích cỡ (của quần áo).", 
-            context: "Alice giải thích rằng do ăn bánh phép thuật nên cơ thể cô đã phình to, khiến cô 'mặc không vừa' những bộ quần áo cũ nữa."
-          },
-          {
-            word: "Enormous (adj)", 
-            ipa: "/ɪˈnɔːr.məs/", 
-            meaning: "To lớn khổng lồ.", 
-            context: "Nữ hoàng Đỏ ra lệnh cho lính hầu phải tìm vải may đồ cho cô gái 'khổng lồ' này."
-          }
+          { word: "Outgrow (v)", ipa: "/ˌaʊtˈɡroʊ/", meaning: "Lớn vượt quá kích cỡ (của quần áo).", context: "Alice giải thích rằng do ăn bánh phép thuật nên cơ thể cô đã phình to, khiến cô 'mặc không vừa' những bộ quần áo cũ nữa." },
+          { word: "Enormous (adj)", ipa: "/ɪˈnɔːr.məs/", meaning: "To lớn khổng lồ.", context: "Nữ hoàng Đỏ ra lệnh cho lính hầu phải tìm vải may đồ cho cô gái 'khổng lồ' này." }
         ],
         quizzes: [
-          {
-            q: "Khi Alice đến cung điện, cô giải thích lý do quần áo của mình bị rách: <i>'I <b>outgrew</b> them'</i>. Từ 'outgrow' mang nghĩa gì?",
-            options: ["A. Quần áo bị co rút lại do giặt", "B. Tôi lớn nhanh quá nên mặc không còn vừa quần áo cũ nữa", "C. Quần áo bị lỗi thời", "D. Tôi cố tình xé rách chúng"],
-            correct: 1,
-            explanation: "Do ăn phải bánh phép thuật, Alice phình to khổng lồ nên cơ thể cô đã 'phát triển vượt kích cỡ' (outgrew) quần áo đang mặc."
-          },
-          {
-            q: "Nữ hoàng Đỏ nhìn thấy thân hình khổng lồ của Alice và đã ra lệnh cho tùy tùng: <i>'clothe this <b>enormous</b> girl'</i>. Từ 'enormous' mang sắc thái nào?",
-            options: ["A. Rất nhỏ bé, tí hon", "B. Rất xấu xí", "C. Vô cùng to lớn, khổng lồ", "D. Rất xinh đẹp"],
-            correct: 2,
-            explanation: "<b>'Enormous'</b> (khổng lồ, to lớn) được Nữ hoàng dùng để miêu tả kích thước hiện tại của Alice sau khi bị phép thuật làm cho to ra."
-          },
-          {
-            q: "Wonderland là một nơi rất <b>'peculiar'</b>, hoàn toàn khác biệt với thế giới loài người. 'Peculiar' có nghĩa là gì?",
-            options: ["A. Bình thường, quen thuộc", "B. Lộng lẫy, xa hoa", "C. Kỳ lạ, khác thường, có phần hơi lập dị", "D. Nhàm chán"],
-            correct: 2,
-            explanation: "Mọi thứ ở Wonderland từ sinh vật đến con người đều không tuân theo logic thông thường, chúng rất 'kỳ lạ' ('peculiar')."
-          },
-          {
-            q: "Sự phán xét của Nữ hoàng Đỏ với những kẻ làm trái ý luôn rất <b>'tyrannical'</b>. Bạn hiểu từ này như thế nào?",
-            options: ["A. Rất công bằng và dân chủ", "B. Độc tài, tàn bạo, lạm dụng quyền lực", "C. Hiền từ, độ lượng", "D. Không có tiếng nói"],
-            correct: 1,
-            explanation: "Nữ hoàng Đỏ nổi tiếng với câu nói 'Off with his head!' (Chém đầu hắn!), cho thấy sự trị vì 'độc tài, bạo chúa' ('tyrannical') của bà."
-          },
-          {
-            q: "Alice là cô bé mang trong mình một sự tò mò <b>'insatiable'</b>. Cụm từ này diễn tả điều gì?",
-            options: ["A. Không thể thỏa mãn, khát khao vô tận", "B. Rất dễ chán nản", "C. Luôn cảm thấy mệt mỏi", "D. Không có mục tiêu"],
-            correct: 0,
-            explanation: "Chính sự tò mò 'không đáy' ('insatiable') đã thôi thúc Alice bám theo thỏ trắng và rơi xuống hang thỏ, mở ra chuyến phiêu lưu."
-          }
+          { q: "Khi Alice đến cung điện, cô giải thích lý do quần áo của mình bị rách: <i>'I <b>outgrew</b> them'</i>. Từ 'outgrow' mang nghĩa gì?", options: ["A. Quần áo bị co rút lại do giặt", "B. Tôi lớn nhanh quá nên mặc không còn vừa quần áo cũ nữa", "C. Quần áo bị lỗi thời", "D. Tôi cố tình xé rách chúng"], correct: 1, explanation: "Do ăn phải bánh phép thuật, Alice phình to khổng lồ nên cơ thể cô đã 'phát triển vượt kích cỡ' (outgrew) quần áo đang mặc." },
+          { q: "Nữ hoàng Đỏ nhìn thấy thân hình khổng lồ của Alice và đã ra lệnh cho tùy tùng: <i>'clothe this <b>enormous</b> girl'</i>. Từ 'enormous' mang sắc thái nào?", options: ["A. Rất nhỏ bé, tí hon", "B. Rất xấu xí", "C. Vô cùng to lớn, khổng lồ", "D. Rất xinh đẹp"], correct: 2, explanation: "<b>'Enormous'</b> (khổng lồ, to lớn) được Nữ hoàng dùng để miêu tả kích thước hiện tại của Alice sau khi bị phép thuật làm cho to ra." },
+          { q: "Wonderland là một nơi rất <b>'peculiar'</b>, hoàn toàn khác biệt với thế giới loài người. 'Peculiar' có nghĩa là gì?", options: ["A. Bình thường, quen thuộc", "B. Lộng lẫy, xa hoa", "C. Kỳ lạ, khác thường, có phần hơi lập dị", "D. Nhàm chán"], correct: 2, explanation: "Mọi thứ ở Wonderland từ sinh vật đến con người đều không tuân theo logic thông thường, chúng rất 'kỳ lạ' ('peculiar')." },
+          { q: "Sự phán xét của Nữ hoàng Đỏ với những kẻ làm trái ý luôn rất <b>'tyrannical'</b>. Bạn hiểu từ này như thế nào?", options: ["A. Rất công bằng và dân chủ", "B. Độc tài, tàn bạo, lạm dụng quyền lực", "C. Hiền từ, độ lượng", "D. Không có tiếng nói"], correct: 1, explanation: "Nữ hoàng Đỏ nổi tiếng với câu nói 'Off with his head!' (Chém đầu hắn!), cho thấy sự trị vì 'độc tài, bạo chúa' ('tyrannical') của bà." },
+          { q: "Alice là cô bé mang trong mình một sự tò mò <b>'insatiable'</b>. Cụm từ này diễn tả điều gì?", options: ["A. Không thể thỏa mãn, khát khao vô tận", "B. Rất dễ chán nản", "C. Luôn cảm thấy mệt mỏi", "D. Không có mục tiêu"], correct: 0, explanation: "Chính sự tò mò 'không đáy' ('insatiable') đã thôi thúc Alice bám theo thỏ trắng và rơi xuống hang thỏ, mở ra chuyến phiêu lưu." }
         ]
       },
       {
-        id: 7, 
-        genre: "Action", 
-        title: "John Wick (2014)",
-        thumbnail: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/C0BMx-qxsP4?rel=0", 
-        locked: true,
-        quote: "People keep asking if I'm back, and I haven't really had an answer. But now, yeah, I'm thinking I'm back.",
-        translation: "Mọi người cứ hỏi tôi đã trở lại chưa, và tôi chưa bao giờ thực sự có câu trả lời. Nhưng bây giờ, ừ, tôi nghĩ tôi đã trở lại.",
+        id: 7, genre: "Action", title: "John Wick (2014)", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/C0BMx-qxsP4?rel=0", locked: true,
+        quote: "People keep asking if I'm back, and I haven't really had an answer. But now, yeah, I'm thinking I'm back.", translation: "Mọi người cứ hỏi tôi đã trở lại chưa, và tôi chưa bao giờ thực sự có câu trả lời. Nhưng bây giờ, ừ, tôi nghĩ tôi đã trở lại.",
         vocabAnalysis: [
-          {
-            word: "Retirement (n)", 
-            ipa: "/rɪˈtaɪər.mənt/", 
-            meaning: "Sự nghỉ hưu, rút lui khỏi giới giang hồ.", 
-            context: "John Wick từng là một sát thủ huyền thoại đã 'rửa tay gác kiếm' (retirement) trước khi bị ép phải quay lại."
-          },
-          {
-            word: "Vengeance (n)", 
-            ipa: "/ˈven.dʒəns/", 
-            meaning: "Sự báo thù, trả thù.", 
-            context: "Cái chết của chú chó đã đánh thức cơn thịnh nộ và khao khát 'báo thù' (vengeance) trong John."
-          }
+          { word: "Retirement (n)", ipa: "/rɪˈtaɪər.mənt/", meaning: "Sự nghỉ hưu, rút lui khỏi giới giang hồ.", context: "John Wick từng là một sát thủ huyền thoại đã 'rửa tay gác kiếm' (retirement) trước khi bị ép phải quay lại." },
+          { word: "Vengeance (n)", ipa: "/ˈven.dʒəns/", meaning: "Sự báo thù, trả thù.", context: "Cái chết của chú chó đã đánh thức cơn thịnh nộ và khao khát 'báo thù' (vengeance) trong John." }
         ],
         quizzes: [
-          {
-            q: "Kẻ thù miêu tả John Wick là một người có sự tập trung <b>'sheer'</b> (<i>'sheer will'</i>). 'Sheer' ở đây mang ý nghĩa gì?",
-            options: ["A. Mỏng manh, dễ vỡ", "B. Hoàn toàn, tuyệt đối (dùng để nhấn mạnh mức độ)", "C. Rất tàn nhẫn", "D. Thiếu quyết đoán"],
-            correct: 1,
-            explanation: "<b>'Sheer will'</b> nghĩa là một ý chí 'tuyệt đối', không gì có thể lay chuyển được."
-          },
-          {
-            q: "Danh tiếng của John Wick trong giới sát thủ được xem là <b>'unparalleled'</b>. Từ này có nghĩa là gì?",
-            options: ["A. Không ai biết đến", "B. Vô song, không có đối thủ", "C. Rất bình thường", "D. Dễ dàng bị đánh bại"],
-            correct: 1,
-            explanation: "Khả năng giết chóc của John Wick là 'không thể sánh kịp' (<b>unparalleled</b>), khiến ai cũng phải khiếp sợ."
-          },
-          {
-            q: "Kẻ thù đã làm một hành động <b>'foolhardy'</b> khi chọc giận John. 'Foolhardy' ám chỉ hành động như thế nào?",
-            options: ["A. Rất dũng cảm", "B. Thông minh và có tính toán", "C. Liều lĩnh một cách ngu ngốc, thiếu suy nghĩ", "D. Hèn nhát"],
-            correct: 2,
-            explanation: "Việc đánh cắp xe và giết chó của John Wick là một quyết định 'liều lĩnh điên rồ' (<b>foolhardy</b>)."
-          },
-          {
-            q: "Màn trả thù của John Wick cực kỳ <b>'lethal'</b>. Từ 'lethal' mang nghĩa gì?",
-            options: ["A. Gây chết người, có tính sát thương cao", "B. Khá ồn ào", "C. Chậm chạp", "D. Buồn cười"],
-            correct: 0,
-            explanation: "Mọi đòn tấn công của John Wick đều chí mạng (<b>lethal</b>)."
-          },
-          {
-            q: "Anh ta hạ gục kẻ thù bằng sự <b>'precision'</b> đáng kinh ngạc. 'Precision' là gì?",
-            options: ["A. Sự hoảng loạn", "B. Sự may mắn", "C. Sự tàn nhẫn", "D. Độ chính xác, sự chuẩn xác"],
-            correct: 3,
-            explanation: "John Wick nổi tiếng với kỹ năng bắn súng 'bách phát bách trúng' (<b>precision</b>)."
-          }
+          { q: "Kẻ thù miêu tả John Wick là một người có sự tập trung <b>'sheer'</b> (<i>'sheer will'</i>). 'Sheer' ở đây mang ý nghĩa gì?", options: ["A. Mỏng manh, dễ vỡ", "B. Hoàn toàn, tuyệt đối (dùng để nhấn mạnh mức độ)", "C. Rất tàn nhẫn", "D. Thiếu quyết đoán"], correct: 1, explanation: "<b>'Sheer will'</b> nghĩa là một ý chí 'tuyệt đối', không gì có thể lay chuyển được." },
+          { q: "Danh tiếng của John Wick trong giới sát thủ được xem là <b>'unparalleled'</b>. Từ này có nghĩa là gì?", options: ["A. Không ai biết đến", "B. Vô song, không có đối thủ", "C. Rất bình thường", "D. Dễ dàng bị đánh bại"], correct: 1, explanation: "Khả năng giết chóc của John Wick là 'không thể sánh kịp' (<b>unparalleled</b>), khiến ai cũng phải khiếp sợ." },
+          { q: "Kẻ thù đã làm một hành động <b>'foolhardy'</b> khi chọc giận John. 'Foolhardy' ám chỉ hành động như thế nào?", options: ["A. Rất dũng cảm", "B. Thông minh và có tính toán", "C. Liều lĩnh một cách ngu ngốc, thiếu suy nghĩ", "D. Hèn nhát"], correct: 2, explanation: "Việc đánh cắp xe và giết chó của John Wick là một quyết định 'liều lĩnh điên rồ' (<b>foolhardy</b>)." },
+          { q: "Màn trả thù của John Wick cực kỳ <b>'lethal'</b>. Từ 'lethal' mang nghĩa gì?", options: ["A. Gây chết người, có tính sát thương cao", "B. Khá ồn ào", "C. Chậm chạp", "D. Buồn cười"], correct: 0, explanation: "Mọi đòn tấn công của John Wick đều chí mạng (<b>lethal</b>)." },
+          { q: "Anh ta hạ gục kẻ thù bằng sự <b>'precision'</b> đáng kinh ngạc. 'Precision' là gì?", options: ["A. Sự hoảng loạn", "B. Sự may mắn", "C. Sự tàn nhẫn", "D. Độ chính xác, sự chuẩn xác"], correct: 3, explanation: "John Wick nổi tiếng với kỹ năng bắn súng 'bách phát bách trúng' (<b>precision</b>)." }
         ]
       },
       {
-        id: 8, 
-        genre: "Sci-Fi", 
-        title: "Interstellar (2014)",
-        thumbnail: "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/8a7dd34b09c9c25336a3d850d4c431455e1aaaf0.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/zSWdZVtXT7E?rel=0", 
-        locked: true,
-        quote: "Mankind was born on Earth. It was never meant to die here.",
-        translation: "Nhân loại được sinh ra trên Trái Đất. Nhưng không có nghĩa là chúng ta phải chết ở đây.",
+        id: 8, genre: "Sci-Fi", title: "Interstellar (2014)", thumbnail: "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/8a7dd34b09c9c25336a3d850d4c431455e1aaaf0.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/zSWdZVtXT7E?rel=0", locked: true,
+        quote: "Mankind was born on Earth. It was never meant to die here.", translation: "Nhân loại được sinh ra trên Trái Đất. Nhưng không có nghĩa là chúng ta phải chết ở đây.",
         vocabAnalysis: [
-          {
-            word: "Gravity (n)", 
-            ipa: "/ˈɡræv.ə.t̬i/", 
-            meaning: "Trọng lực, lực hấp dẫn.", 
-            context: "Một trong những rào cản lớn nhất để khám phá vũ trụ là vượt qua 'trọng lực' của Trái đất."
-          },
-          {
-            word: "Endurance (n)", 
-            ipa: "/ɪnˈdʊr.əns/", 
-            meaning: "Sự chịu đựng, sức chịu đựng.", 
-            context: "Tàu vũ trụ mang tên 'Endurance' mang theo hy vọng sống còn của cả nhân loại trong không gian khắc nghiệt."
-          }
+          { word: "Gravity (n)", ipa: "/ˈɡræv.ə.t̬i/", meaning: "Trọng lực, lực hấp dẫn.", context: "Một trong những rào cản lớn nhất để khám phá vũ trụ là vượt qua 'trọng lực' của Trái đất." },
+          { word: "Endurance (n)", ipa: "/ɪnˈdʊr.əns/", meaning: "Sự chịu đựng, sức chịu đựng.", context: "Tàu vũ trụ mang tên 'Endurance' mang theo hy vọng sống còn của cả nhân loại trong không gian khắc nghiệt." }
         ],
         quizzes: [
-          {
-            q: "Tình trạng thiếu lương thực trên Trái đất đã đạt đến mức <b>'catastrophic'</b>. 'Catastrophic' nghĩa là gì?",
-            options: ["A. Rất khả quan", "B. Có thể giải quyết được", "C. Thảm khốc, gây thiệt hại nặng nề", "D. Diễn ra từ từ"],
-            correct: 2,
-            explanation: "Bệnh khô héo thực vật gây ra một nạn đói mang tính 'thảm họa toàn cầu' (<b>catastrophic</b>)."
-          },
-          {
-            q: "Mục tiêu của phi hành đoàn là tìm kiếm một hành tinh <b>'habitable'</b>. 'Habitable' có nghĩa là?",
-            options: ["A. Có thể ở được, đủ điều kiện cho sự sống", "B. Vô cùng lạnh giá", "C. Rất gần Trái đất", "D. Hoàn toàn bằng nước"],
-            correct: 0,
-            explanation: "Nhân loại cần một hành tinh mới 'có thể sinh sống được' (<b>habitable</b>) để di cư."
-          },
-          {
-            q: "Không gian vũ trụ là một môi trường vô cùng <b>'hostile'</b>. Từ 'hostile' mang ý nghĩa gì?",
-            options: ["A. Thân thiện, chào đón", "B. Khắc nghiệt, thù địch", "C. Trống rỗng", "D. Ấm áp"],
-            correct: 1,
-            explanation: "Vũ trụ đầy rẫy hiểm nguy và 'khắc nghiệt' (<b>hostile</b>) đối với con người."
-          },
-          {
-            q: "Trong thuyết tương đối, thời gian có thể bị <b>'dilated'</b> (time dilation). Nghĩa của từ này là gì?",
-            options: ["A. Bị dừng lại hoàn toàn", "B. Chạy ngược lại", "C. Bị giãn nở, kéo dài ra", "D. Trôi qua nhanh hơn"],
-            correct: 2,
-            explanation: "Khi ở gần hố đen, thời gian sẽ bị 'giãn nở' (<b>dilated</b>) - một giờ ở đó có thể bằng bảy năm trên Trái đất."
-          },
-          {
-            q: "Hố đen trong không gian có một sức hút <b>'inescapable'</b>. 'Insapable' là gì?",
-            options: ["A. Dễ dàng thoát ra", "B. Không thể trốn thoát", "C. Rất yếu ớt", "D. Có thể nhìn thấy được"],
-            correct: 1,
-            explanation: "Trọng lực của hố đen lớn đến mức ánh sáng cũng 'không thể thoát ra' (<b>inescapable</b>)."
-          }
+          { q: "Tình trạng thiếu lương thực trên Trái đất đã đạt đến mức <b>'catastrophic'</b>. 'Catastrophic' nghĩa là gì?", options: ["A. Rất khả quan", "B. Có thể giải quyết được", "C. Thảm khốc, gây thiệt hại nặng nề", "D. Diễn ra từ từ"], correct: 2, explanation: "Bệnh khô héo thực vật gây ra một nạn đói mang tính 'thảm họa toàn cầu' (<b>catastrophic</b>)." },
+          { q: "Mục tiêu của phi hành đoàn là tìm kiếm một hành tinh <b>'habitable'</b>. 'Habitable' có nghĩa là?", options: ["A. Có thể ở được, đủ điều kiện cho sự sống", "B. Vô cùng lạnh giá", "C. Rất gần Trái đất", "D. Hoàn toàn bằng nước"], correct: 0, explanation: "Nhân loại cần một hành tinh mới 'có thể sinh sống được' (<b>habitable</b>) để di cư." },
+          { q: "Không gian vũ trụ là một môi trường vô cùng <b>'hostile'</b>. Từ 'hostile' mang ý nghĩa gì?", options: ["A. Thân thiện, chào đón", "B. Khắc nghiệt, thù địch", "C. Trống rỗng", "D. Ấm áp"], correct: 1, explanation: "Vũ trụ đầy rẫy hiểm nguy và 'khắc nghiệt' (<b>hostile</b>) đối với con người." },
+          { q: "Trong thuyết tương đối, thời gian có thể bị <b>'dilated'</b> (time dilation). Nghĩa của từ này là gì?", options: ["A. Bị dừng lại hoàn toàn", "B. Chạy ngược lại", "C. Bị giãn nở, kéo dài ra", "D. Trôi qua nhanh hơn"], correct: 2, explanation: "Khi ở gần hố đen, thời gian sẽ bị 'giãn nở' (<b>dilated</b>) - một giờ ở đó có thể bằng bảy năm trên Trái đất." },
+          { q: "Hố đen trong không gian có một sức hút <b>'inescapable'</b>. 'Insapable' là gì?", options: ["A. Dễ dàng thoát ra", "B. Không thể trốn thoát", "C. Rất yếu ớt", "D. Có thể nhìn thấy được"], correct: 1, explanation: "Trọng lực của hố đen lớn đến mức ánh sáng cũng 'không thể thoát ra' (<b>inescapable</b>)." }
         ]
       }
     ];
 
-    // ================= LOGIC CHO TRẠM LUYỆN TẬP (FILL IN THE BLANK) =================
     const allPracticeSentences = [
-      {
-        id: "prada_1",
-        cinemaId: 1,
-        fullText: "You go to your closet and you select that lumpy blue sweater because you take yourself too seriously.",
-        parts: [
-          { text: "You go to your closet and you select that ", isBlank: false },
-          { text: "có nhiều cục, vón cục, sần sùi", expectedWord: "lumpy", isBlank: true },
-          { text: " blue sweater because you take yourself too ", isBlank: false },
-          { text: "quá tự cao, tự cho mình là quan trọng", expectedWord: "seriously", isBlank: true },
-          { text: ".", isBlank: false }
-        ],
-        wordsToPick: ["lumpy", "seriously", "ephemeral", "coward", "potential"] 
-      },
-      {
-        id: "intern_1",
-        cinemaId: 2,
-        fullText: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping potential.",
-        parts: [
-          { text: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping ", isBlank: false },
-          { text: "khả năng, tiềm năng", expectedWord: "potential", isBlank: true },
-          { text: ".", isBlank: false }
-        ],
-        wordsToPick: ["potential", "catastrophe", "diversion", "lumpy"]
-      },
-      {
-        id: "lalaland_1",
-        cinemaId: 3,
-        fullText: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.",
-        parts: [
-          { text: "Maybe I'm one of those people that has always wanted to do it, but it's like a ", isBlank: false },
-          { text: "giấc mơ viển vông, hão huyền", expectedWord: "pipe dream", isBlank: true },
-          { text: " for me.", isBlank: false }
-        ],
-        wordsToPick: ["reverie", "pipe dream", "vanguard", "diversion"]
-      },
-      {
-        id: "showman_1",
-        cinemaId: 4,
-        fullText: "No one ever made a difference by being like everyone else.",
-        parts: [
-          { text: "No one ever made a ", isBlank: false },
-          { text: "sự khác biệt", expectedWord: "difference", isBlank: true },
-          { text: " by being like everyone else.", isBlank: false }
-        ],
-        wordsToPick: ["difference", "noble", "spectacle", "habitable"]
-      },
-      {
-        id: "harry_1",
-        cinemaId: 5,
-        fullText: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.",
-        parts: [
-          { text: "You dare use my own spells ", isBlank: false },
-          { text: "chống lại, nghịch lại", expectedWord: "against", isBlank: true },
-          { text: " me, Potter? Yes... I'm the ", isBlank: false },
-          { text: "máu lai", expectedWord: "Half-Blood", isBlank: true },
-          { text: " Prince.", isBlank: false }
-        ],
-        wordsToPick: ["against", "Half-Blood", "coward", "belong", "pipe dream"]
-      },
-      {
-        id: "alice_1",
-        cinemaId: 6,
-        fullText: "I outgrew them. I've been growing an enormous lot lately.",
-        parts: [
-          { text: "I ", isBlank: false },
-          { text: "lớn vượt quá kích cỡ", expectedWord: "outgrew", isBlank: true },
-          { text: " them. I've been growing an ", isBlank: false },
-          { text: "to lớn khổng lồ", expectedWord: "enormous", isBlank: true },
-          { text: " lot lately.", isBlank: false }
-        ],
-        wordsToPick: ["enormous", "outgrew", "peculiar", "against"]
-      },
-      {
-        id: "johnwick_1",
-        cinemaId: 7,
-        fullText: "He is a man of focus, commitment, and sheer will.",
-        parts: [
-          { text: "He is a man of focus, commitment, and ", isBlank: false },
-          { text: "hoàn toàn, tuyệt đối", expectedWord: "sheer", isBlank: true },
-          { text: " will.", isBlank: false }
-        ],
-        wordsToPick: ["sheer", "lethal", "vengeance", "enormous"]
-      },
-      {
-        id: "interstellar_1",
-        cinemaId: 8,
-        fullText: "We must find a habitable planet before it's too late.",
-        parts: [
-          { text: "We must find a ", isBlank: false },
-          { text: "có thể sinh sống được", expectedWord: "habitable", isBlank: true },
-          { text: " planet before it's too late.", isBlank: false }
-        ],
-        wordsToPick: ["habitable", "hostile", "dilated", "sheer"]
-      },
-      {
-        id: "prada_2",
-        cinemaId: 1,
-        fullText: "That is a catastrophe.",
-        parts: [
-          { text: "That is a ", isBlank: false },
-          { text: "thảm họa, thảm kịch", expectedWord: "catastrophe", isBlank: true },
-          { text: ".", isBlank: false }
-        ],
-        wordsToPick: ["catastrophe", "vanguard", "formidable", "wanna"]
-      },
-      {
-        id: "intern_2",
-        cinemaId: 2,
-        fullText: "I'm a seasoned executive.",
-        parts: [
-          { text: "I'm a ", isBlank: false },
-          { text: "dày dặn kinh nghiệm", expectedWord: "seasoned", isBlank: true },
-          { text: " executive.", isBlank: false }
-        ],
-        wordsToPick: ["seasoned", "proactive", "meticulous", "catastrophe"]
-      },
-      {
-        id: "lalaland_2",
-        cinemaId: 3,
-        fullText: "You are a purist.",
-        parts: [
-          { text: "You are a ", isBlank: false },
-          { text: "người theo chủ nghĩa thuần túy", expectedWord: "purist", isBlank: true },
-          { text: ".", isBlank: false }
-        ],
-        wordsToPick: ["purist", "ephemeral", "melancholy", "seasoned"]
-      },
-      {
-        id: "harry_2",
-        cinemaId: 5,
-        fullText: "He is a coward.",
-        parts: [
-          { text: "He is a ", isBlank: false },
-          { text: "kẻ hèn nhát", expectedWord: "coward", isBlank: true },
-          { text: ".", isBlank: false }
-        ],
-        wordsToPick: ["coward", "malevolent", "ominous", "purist"]
-      },
-      {
-        id: "alice_2",
-        cinemaId: 6,
-        fullText: "This is very peculiar.",
-        parts: [
-          { text: "This is very ", isBlank: false },
-          { text: "kỳ lạ, khác thường", expectedWord: "peculiar", isBlank: true },
-          { text: ".", isBlank: false }
-        ],
-        wordsToPick: ["peculiar", "nonsensical", "tyrannical", "coward"]
-      },
-      {
-        id: "johnwick_2",
-        cinemaId: 7,
-        fullText: "He has unparalleled skills.",
-        parts: [
-          { text: "He has ", isBlank: false },
-          { text: "vô song, không có đối thủ", expectedWord: "unparalleled", isBlank: true },
-          { text: " skills.", isBlank: false }
-        ],
-        wordsToPick: ["unparalleled", "foolhardy", "precision", "peculiar"]
-      },
-      {
-        id: "interstellar_2",
-        cinemaId: 8,
-        fullText: "It is an inescapable force.",
-        parts: [
-          { text: "It is an ", isBlank: false },
-          { text: "không thể trốn thoát", expectedWord: "inescapable", isBlank: true },
-          { text: " force.", isBlank: false }
-        ],
-        wordsToPick: ["inescapable", "catastrophic", "hostile", "unparalleled"]
-      }
+      { id: "prada_1", cinemaId: 1, fullText: "You go to your closet and you select that lumpy blue sweater because you take yourself too seriously.", parts: [ { text: "You go to your closet and you select that ", isBlank: false }, { text: "có nhiều cục, vón cục, sần sùi", expectedWord: "lumpy", isBlank: true }, { text: " blue sweater because you take yourself too ", isBlank: false }, { text: "quá tự cao, tự cho mình là quan trọng", expectedWord: "seriously", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["lumpy", "seriously", "ephemeral", "coward", "potential"] },
+      { id: "intern_1", cinemaId: 2, fullText: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping potential.", parts: [ { text: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping ", isBlank: false }, { text: "khả năng, tiềm năng", expectedWord: "potential", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["potential", "catastrophe", "diversion", "lumpy"] },
+      { id: "lalaland_1", cinemaId: 3, fullText: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.", parts: [ { text: "Maybe I'm one of those people that has always wanted to do it, but it's like a ", isBlank: false }, { text: "giấc mơ viển vông, hão huyền", expectedWord: "pipe dream", isBlank: true }, { text: " for me.", isBlank: false } ], wordsToPick: ["reverie", "pipe dream", "vanguard", "diversion"] },
+      { id: "showman_1", cinemaId: 4, fullText: "No one ever made a difference by being like everyone else.", parts: [ { text: "No one ever made a ", isBlank: false }, { text: "sự khác biệt", expectedWord: "difference", isBlank: true }, { text: " by being like everyone else.", isBlank: false } ], wordsToPick: ["difference", "noble", "spectacle", "habitable"] },
+      { id: "harry_1", cinemaId: 5, fullText: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.", parts: [ { text: "You dare use my own spells ", isBlank: false }, { text: "chống lại, nghịch lại", expectedWord: "against", isBlank: true }, { text: " me, Potter? Yes... I'm the ", isBlank: false }, { text: "máu lai", expectedWord: "Half-Blood", isBlank: true }, { text: " Prince.", isBlank: false } ], wordsToPick: ["against", "Half-Blood", "coward", "belong", "pipe dream"] },
+      { id: "alice_1", cinemaId: 6, fullText: "I outgrew them. I've been growing an enormous lot lately.", parts: [ { text: "I ", isBlank: false }, { text: "lớn vượt quá kích cỡ", expectedWord: "outgrew", isBlank: true }, { text: " them. I've been growing an ", isBlank: false }, { text: "to lớn khổng lồ", expectedWord: "enormous", isBlank: true }, { text: " lot lately.", isBlank: false } ], wordsToPick: ["enormous", "outgrew", "peculiar", "against"] },
+      { id: "johnwick_1", cinemaId: 7, fullText: "He is a man of focus, commitment, and sheer will.", parts: [ { text: "He is a man of focus, commitment, and ", isBlank: false }, { text: "hoàn toàn, tuyệt đối", expectedWord: "sheer", isBlank: true }, { text: " will.", isBlank: false } ], wordsToPick: ["sheer", "lethal", "vengeance", "enormous"] },
+      { id: "interstellar_1", cinemaId: 8, fullText: "We must find a habitable planet before it's too late.", parts: [ { text: "We must find a ", isBlank: false }, { text: "có thể sinh sống được", expectedWord: "habitable", isBlank: true }, { text: " planet before it's too late.", isBlank: false } ], wordsToPick: ["habitable", "hostile", "dilated", "sheer"] },
+      { id: "prada_2", cinemaId: 1, fullText: "That is a catastrophe.", parts: [ { text: "That is a ", isBlank: false }, { text: "thảm họa, thảm kịch", expectedWord: "catastrophe", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["catastrophe", "vanguard", "formidable", "wanna"] },
+      { id: "intern_2", cinemaId: 2, fullText: "I'm a seasoned executive.", parts: [ { text: "I'm a ", isBlank: false }, { text: "dày dặn kinh nghiệm", expectedWord: "seasoned", isBlank: true }, { text: " executive.", isBlank: false } ], wordsToPick: ["seasoned", "proactive", "meticulous", "catastrophe"] },
+      { id: "lalaland_2", cinemaId: 3, fullText: "You are a purist.", parts: [ { text: "You are a ", isBlank: false }, { text: "người theo chủ nghĩa thuần túy", expectedWord: "purist", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["purist", "ephemeral", "melancholy", "seasoned"] },
+      { id: "harry_2", cinemaId: 5, fullText: "He is a coward.", parts: [ { text: "He is a ", isBlank: false }, { text: "kẻ hèn nhát", expectedWord: "coward", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["coward", "malevolent", "ominous", "purist"] },
+      { id: "alice_2", cinemaId: 6, fullText: "This is very peculiar.", parts: [ { text: "This is very ", isBlank: false }, { text: "kỳ lạ, khác thường", expectedWord: "peculiar", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["peculiar", "nonsensical", "tyrannical", "coward"] },
+      { id: "johnwick_2", cinemaId: 7, fullText: "He has unparalleled skills.", parts: [ { text: "He has ", isBlank: false }, { text: "vô song, không có đối thủ", expectedWord: "unparalleled", isBlank: true }, { text: " skills.", isBlank: false } ], wordsToPick: ["unparalleled", "foolhardy", "precision", "peculiar"] },
+      { id: "interstellar_2", cinemaId: 8, fullText: "It is an inescapable force.", parts: [ { text: "It is an ", isBlank: false }, { text: "không thể trốn thoát", expectedWord: "inescapable", isBlank: true }, { text: " force.", isBlank: false } ], wordsToPick: ["inescapable", "catastrophic", "hostile", "unparalleled"] }
     ];
 
-    // ================= MAIN STATE LOGIC =================
+    // ================= 4. BIẾN TOÀN CỤC TRẠNG THÁI =================
     let isVip = false;
+    let currentUser = null;
+    let isLoginMode = true; // Chuyển đổi giữa Đăng nhập / Đăng ký
+    
     let currentFilter = 'ALL';
     let activeCinemaId = null;
     let activeQuizIndex = 0;
@@ -958,7 +492,305 @@
     let currentPractice = null;
     let selectedAnswers = {}; 
 
-    function updateAvailableSentences() {
+    // ================= 5. LOGIC FIREBASE AUTH & FIRESTORE =================
+    
+    // Lắng nghe thay đổi đăng nhập/đăng xuất
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        currentUser = user;
+        window.closeModal('modal-login');
+        await checkVipStatus(user.uid);
+      } else {
+        currentUser = null;
+        isVip = false;
+        applyGuestUI();
+      }
+    });
+
+    // Kiểm tra quyền VIP trong CSDL Firestore
+    async function checkVipStatus(uid) {
+      const userRef = doc(db, "users", uid);
+      const userSnap = await getDoc(userRef);
+      
+      if (userSnap.exists()) {
+        const data = userSnap.data();
+        const expiryTime = new Date(data.vipExpiryDate).getTime();
+        
+        if (expiryTime > Date.now()) {
+          isVip = true;
+          applyVipUI(data.vipExpiryDate);
+        } else {
+          isVip = false;
+          applyExpiredUI();
+        }
+      } else {
+        isVip = false;
+        applyExpiredUI();
+      }
+      window.renderCinemaCards();
+      window.updateAvailableSentences();
+      window.initScrambleGame();
+    }
+
+    window.toggleAuthMode = function() {
+      isLoginMode = !isLoginMode;
+      document.getElementById('auth-title').innerText = isLoginMode ? "Đăng Nhập" : "Tạo Tài Khoản";
+      document.getElementById('auth-subtitle').innerText = isLoginMode ? "Đăng nhập để lưu tiến độ và xem phim VIP nhé!" : "Chào mừng thành viên mới của Cozy Garden!";
+      document.getElementById('btn-auth-submit').innerText = isLoginMode ? "Vào học ngay 🚀" : "Đăng ký tài khoản 🌱";
+      document.getElementById('btn-auth-toggle').innerText = isLoginMode ? "Chưa có tài khoản? Đăng ký ngay" : "Đã có tài khoản? Đăng nhập";
+    };
+
+    window.handleAuth = async function() {
+      const email = document.getElementById('auth-email').value.trim();
+      const password = document.getElementById('auth-password').value.trim();
+
+      if (!email || password.length < 6) {
+        alert("Email không hợp lệ hoặc mật khẩu dưới 6 ký tự!"); return;
+      }
+
+      try {
+        if (isLoginMode) {
+          await signInWithEmailAndPassword(auth, email, password);
+          alert("Đăng nhập thành công! 🌷");
+        } else {
+          const userCred = await createUserWithEmailAndPassword(auth, email, password);
+          // Mặc định tạo tài khoản mới sẽ chưa có VIP (hết hạn trong quá khứ)
+          await setDoc(doc(db, "users", userCred.user.uid), {
+            email: email,
+            vipExpiryDate: "2000-01-01",
+            createdAt: new Date().toISOString()
+          });
+          alert("Tạo tài khoản thành công! Vui lòng nạp VIP để xem phim khóa nhé.");
+        }
+      } catch (error) {
+        alert("Có lỗi xảy ra: " + error.message);
+      }
+    };
+
+    window.handleLogout = function() {
+      signOut(auth);
+      alert("Đã đăng xuất tài khoản!");
+    };
+
+    // ================= 6. CẬP NHẬT TRẠNG THÁI GIAO DIỆN =================
+    function applyVipUI(expiryDateString) {
+      const floatingBtn = document.getElementById('floating-vip-btn');
+      if (floatingBtn) floatingBtn.style.display = 'none';
+
+      const vipHeaderBtn = document.getElementById('vip-header-btn');
+      // Nếu hạn hơn 50 năm thì báo Vĩnh viễn
+      const isLifetime = new Date(expiryDateString).getTime() - Date.now() > 50 * 365 * 24 * 60 * 60 * 1000;
+      const textDate = isLifetime ? "Vĩnh viễn" : new Date(expiryDateString).toLocaleDateString('vi-VN');
+
+      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội viên VIP 🌟 (Đăng xuất)</span>';
+      vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+      vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
+      
+      vipHeaderBtn.onclick = () => {
+        const confirmLogout = confirm(`Tài khoản VIP của bạn dùng được đến ngày: ${textDate} 🌷\nBạn có muốn ĐĂNG XUẤT không?`);
+        if (confirmLogout) window.handleLogout();
+      };
+      
+      window.closeModal('modal-login');
+      window.closeModal('modal-vip');
+    }
+
+    function applyExpiredUI() {
+      const floatingBtn = document.getElementById('floating-vip-btn');
+      if (floatingBtn) floatingBtn.style.display = 'block';
+      
+      const vipHeaderBtn = document.getElementById('vip-header-btn');
+      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Gia hạn VIP</span>';
+      vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+      vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white', 'border-transparent');
+
+      vipHeaderBtn.onclick = window.openVipModal;
+    }
+
+    function applyGuestUI() {
+      const floatingBtn = document.getElementById('floating-vip-btn');
+      if (floatingBtn) floatingBtn.style.display = 'block';
+      
+      const vipHeaderBtn = document.getElementById('vip-header-btn');
+      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
+      vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+      vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white', 'border-transparent');
+      vipHeaderBtn.onclick = window.openLoginModal;
+      
+      window.renderCinemaCards();
+      window.updateAvailableSentences();
+      window.initScrambleGame();
+    }
+
+    // ================= 7. GÁN CÁC HÀM XỬ LÝ SỰ KIỆN LÊN WINDOW =================
+    // (Bắt buộc phải gán lên window để HTML gọi được do dùng type="module")
+
+    window.openLoginModal = function() { document.getElementById('modal-login').classList.remove('hidden'); };
+    window.closeModal = function(id) { document.getElementById(id).classList.add('hidden'); };
+
+    window.openVipModal = function() { 
+      if(!currentUser) { 
+        alert("Bạn cần đăng nhập hoặc đăng ký tài khoản trước khi nạp VIP nhé! 🌷"); 
+        window.openLoginModal(); 
+        return; 
+      }
+      document.getElementById('modal-vip').classList.remove('hidden'); 
+    };
+
+    window.updateQR = function(amount, addInfo) {
+      // Lấy tên email đính kèm vào nội dung CK để admin dễ quản lý
+      const userEmail = currentUser ? currentUser.email.split('@')[0].toUpperCase() : "KHACH";
+      // Chữ không dấu, độ dài max của VietQR thường hạn chế
+      const finalInfo = `${addInfo} ${userEmail}`.substring(0, 25); 
+      const qrUrl = `https://img.vietqr.io/image/NCB-101459124207-compact2.png?amount=${amount}&addInfo=${finalInfo}&accountName=VU%20THAI%20AN`;
+      document.getElementById('vietqr-image').src = qrUrl;
+      document.getElementById('qr-content').innerText = finalInfo;
+    };
+
+    window.simulateSuccessPayment = function() {
+      const userEmail = currentUser ? currentUser.email : "Chưa đăng nhập";
+      alert(`Yêu cầu nạp VIP đã được ghi nhận!\n\nVui lòng nhắn tin Zalo cho Admin Thái An (0362102905) báo đã chuyển khoản kèm tài khoản email của bạn là:\n[ ${userEmail} ]\nđể được mở khóa ngay lập tức nha 🌷`);
+      window.closeModal('modal-vip');
+    };
+
+    window.switchNav = function(viewId) {
+      ['cinema', 'arcade'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        document.getElementById(`nav-${v}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0";
+      });
+      document.getElementById(`view-${viewId}`).classList.remove('hidden');
+      document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
+    };
+
+    window.renderCinemaCards = function() {
+      const container = document.getElementById('cinema-grid');
+      const filtered = currentFilter === 'ALL' ? cinemaData : cinemaData.filter(c => c.genre === currentFilter);
+      document.getElementById('cinema-count').innerText = filtered.length;
+
+      container.innerHTML = filtered.map(c => `
+        <div onclick="openCinemaModal(${c.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-4 rounded-[2rem] cursor-pointer transition shadow-sm hover:shadow-md flex flex-col group relative overflow-hidden transform hover:-translate-y-1">
+          <div class="relative h-40 w-full rounded-2xl overflow-hidden mb-4 border border-cottage-butter/50">
+            <img src="${c.thumbnail}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            ${(c.locked && !isVip) ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/95 text-cottage-roseDark px-3 py-1.5 rounded-full text-[11px] font-black shadow-lg uppercase tracking-wider"><i class="fa-solid fa-lock mr-1"></i> Yêu cầu VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
+          </div>
+          <div class="flex-1 flex flex-col justify-between">
+            <div class="space-y-2">
+              <span class="text-[10px] font-black px-3 py-1 rounded-md bg-cottage-butter text-cottage-brown uppercase">${c.genre}</span>
+              <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-rose transition line-clamp-1">${c.title}</h3>
+            </div>
+            <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown group-hover:bg-cottage-roseLight group-hover:border-cottage-rose group-hover:text-cottage-roseDark transition">
+              ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học từ vựng 🎬'}
+            </button>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    window.filterCinema = function(genre) {
+      currentFilter = genre;
+      document.querySelectorAll('#level-filters .filter-btn').forEach(btn => {
+        btn.className = "filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition";
+      });
+      event.target.className = "filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
+      window.renderCinemaCards();
+    };
+
+    window.openCinemaModal = function(id) {
+      const item = cinemaData.find(c => c.id === id);
+      if (item.locked && !isVip) { window.openVipModal(); return; }
+      
+      activeCinemaId = id; 
+      activeQuizIndex = 0;
+      
+      document.getElementById('cinema-genre').innerText = item.genre;
+      document.getElementById('cinema-title').innerText = item.title;
+
+      const mediaContainer = document.getElementById('cinema-media-container');
+      if (item.mediaType === 'youtube') {
+        mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
+      }
+
+      document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
+      document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
+      
+      const vocabContainer = document.getElementById('cinema-vocab');
+      vocabContainer.innerHTML = item.vocabAnalysis.map(v => `
+        <div class="bg-white p-3.5 rounded-2xl border-2 border-cottage-butter shadow-sm">
+          <div class="flex items-baseline gap-2 mb-1">
+            <h4 class="font-bold text-cottage-roseDark text-sm">${v.word}</h4>
+            <span class="text-[11px] text-cottage-brownLight font-mono">${v.ipa}</span>
+          </div>
+          <p class="text-xs font-bold text-cottage-brown mb-1">👉 ${v.meaning}</p>
+          <p class="text-[11px] text-cottage-brownLight italic leading-relaxed bg-cottage-cream p-2 rounded-lg border border-cottage-butter/50">Ngữ cảnh: ${v.context}</p>
+        </div>
+      `).join('');
+      
+      window.renderCinemaQuiz();
+      document.getElementById('modal-cinema').classList.remove('hidden');
+    };
+
+    window.renderCinemaQuiz = function() {
+      const item = cinemaData.find(c => c.id === activeCinemaId);
+      const quiz = item.quizzes[activeQuizIndex];
+
+      document.getElementById('quiz-counter').innerText = `(${activeQuizIndex + 1}/${item.quizzes.length})`;
+      document.getElementById('modal-quiz-question').innerHTML = quiz.q;
+
+      const optsContainer = document.getElementById('modal-quiz-options');
+      const feedback = document.getElementById('modal-quiz-feedback');
+      const nextBtn = document.getElementById('btn-next-quiz');
+
+      feedback.classList.add('hidden'); nextBtn.classList.add('hidden');
+
+      optsContainer.innerHTML = quiz.options.map((opt, idx) => `
+        <button onclick="checkCinemaQuiz(${idx}, this)" class="w-full text-left p-4 rounded-2xl bg-white border-2 border-cottage-butter hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 text-sm font-bold text-cottage-brown transition flex items-center justify-between group">
+          <span>${opt}</span>
+          <div class="w-4 h-4 rounded-full border-2 border-cottage-butter group-hover:border-cottage-rose flex-shrink-0 ml-2"></div>
+        </button>
+      `).join('');
+    };
+
+    window.checkCinemaQuiz = function(chosenIdx, btn) {
+      const item = cinemaData.find(c => c.id === activeCinemaId);
+      const quiz = item.quizzes[activeQuizIndex];
+      const feedback = document.getElementById('modal-quiz-feedback');
+      const nextBtn = document.getElementById('btn-next-quiz');
+      
+      feedback.classList.remove('hidden'); nextBtn.classList.remove('hidden');
+
+      const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
+      allBtns.forEach(b => b.disabled = true);
+
+      if (chosenIdx === quiz.correct) {
+        btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
+        feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
+        feedback.innerHTML = `🎉 <b>Chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
+      } else {
+        btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-roseLight border-2 border-cottage-rose/40 text-cottage-roseDark";
+        allBtns[quiz.correct].className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
+        feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border-2 border-cottage-rose/30 block mt-3 relative z-10";
+        feedback.innerHTML = `📝 <b>Khoan đã, hãy xem lại video để đoán nghĩa nhé!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
+      }
+
+      if (activeQuizIndex === item.quizzes.length - 1) {
+        nextBtn.innerHTML = "Tuyệt vời! Đóng bài học";
+        nextBtn.onclick = () => {
+          document.getElementById('cinema-media-container').innerHTML = ''; 
+          window.closeModal('modal-cinema');
+        };
+      } else {
+        nextBtn.innerHTML = "Câu hỏi tiếp theo →";
+        nextBtn.onclick = () => { activeQuizIndex++; window.renderCinemaQuiz(); };
+      }
+    };
+
+    window.nextCinemaQuiz = function() {
+        // Fallback function in case it's called directly from HTML
+        activeQuizIndex++; 
+        window.renderCinemaQuiz();
+    };
+
+    window.updateAvailableSentences = function() {
       if (isVip) {
         availableSentences = [...allPracticeSentences];
       } else {
@@ -966,17 +798,15 @@
         availableSentences = allPracticeSentences.filter(s => unlockedCinemaIds.includes(s.cinemaId));
       }
       remainingSentences = [...availableSentences];
-    }
+    };
 
-    function restartPractice() {
-      updateAvailableSentences();
-      initScrambleGame();
-    }
+    window.restartPractice = function() {
+      window.updateAvailableSentences();
+      window.initScrambleGame();
+    };
 
-    function initScrambleGame() {
-      if (availableSentences.length === 0) {
-        updateAvailableSentences();
-      }
+    window.initScrambleGame = function() {
+      if (availableSentences.length === 0) window.updateAvailableSentences();
 
       const movieTag = document.getElementById('scramble-movie-tag');
 
@@ -1024,7 +854,7 @@
           const blankSpan = document.createElement('span');
           blankSpan.id = `blank-${index}`;
           blankSpan.className = "inline-block min-w-[80px] px-2 h-8 border-b-2 border-dashed border-cottage-roseDark/50 text-center text-cottage-rose font-bold cursor-pointer transition-colors flex items-center justify-center";
-          blankSpan.onclick = () => returnWordToPool(index);
+          blankSpan.onclick = () => window.returnWordToPool(index);
 
           blankContainer.appendChild(hintSpan);
           blankContainer.appendChild(blankSpan);
@@ -1050,9 +880,9 @@
       
       document.getElementById('btn-reset-scramble').style.display = "inline-block";
       document.getElementById('btn-check-scramble').style.display = "inline-block";
-    }
+    };
 
-    function pickWordForBlank(word) {
+    window.pickWordForBlank = function(word) {
       let firstEmptyBlankIdx = -1;
       for (let i = 0; i < currentPractice.parts.length; i++) {
         if (currentPractice.parts[i].isBlank && !selectedAnswers[i]) {
@@ -1068,9 +898,9 @@
         blankEl.classList.add('border-solid', 'bg-cottage-roseLight/30', 'rounded-t-md');
         document.getElementById(`pool-word-${word.replace(/\s+/g, '-')}`).style.display = 'none';
       }
-    }
+    };
 
-    function returnWordToPool(blankIndex) {
+    window.returnWordToPool = function(blankIndex) {
       if (selectedAnswers[blankIndex]) {
         const word = selectedAnswers[blankIndex];
         delete selectedAnswers[blankIndex];
@@ -1081,9 +911,9 @@
         
         document.getElementById(`pool-word-${word.replace(/\s+/g, '-')}`).style.display = 'inline-block';
       }
-    }
+    };
 
-    function resetScramble() { 
+    window.resetScramble = function() { 
       for (const [blankIndex, word] of Object.entries(selectedAnswers)) {
         const blankEl = document.getElementById(`blank-${blankIndex}`);
         blankEl.innerText = '';
@@ -1092,9 +922,9 @@
       }
       selectedAnswers = {};
       document.getElementById('scramble-feedback').classList.add('hidden');
-    }
+    };
     
-    function checkScramble() {
+    window.checkScramble = function() {
       let isCorrect = true;
       let isFull = true;
 
@@ -1121,285 +951,20 @@
         remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
         
         setTimeout(() => {
-          initScrambleGame();
+          window.initScrambleGame();
         }, 2000);
 
       } else {
         fb.className = "text-sm font-bold text-cottage-roseDark block mt-4 text-center"; 
         fb.innerText = "🤔 Vẫn còn từ chưa chính xác, hãy nhấp vào từ bị sai để chọn lại nhé!";
       }
-    }
+    };
 
+    // Khởi chạy khi DOM load xong
     window.addEventListener('DOMContentLoaded', () => {
-      checkVipStatus(); 
-      renderCinemaCards();
-      initScrambleGame();
+      applyGuestUI(); // Ban đầu load trạng thái khách (Guest)
     });
 
-    function checkVipStatus() {
-      const expiry = localStorage.getItem('cozyVipExpiry');
-      if (expiry) {
-        if (Date.now() < parseInt(expiry)) {
-          isVip = true;
-          applyVipUI();
-        } else {
-          localStorage.removeItem('cozyVipExpiry'); 
-          alert("Gói VIP của bạn đã hết hạn. Vui lòng gia hạn để tiếp tục nhé 🌷");
-        }
-      }
-    }
-
-    function applyVipUI() {
-      const floatingBtn = document.getElementById('floating-vip-btn');
-      if (floatingBtn) floatingBtn.style.display = 'none';
-
-      const vipHeaderBtn = document.getElementById('vip-header-btn');
-      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Hội viên đã kích hoạt 🌟</span>';
-      vipHeaderBtn.classList.remove('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
-      vipHeaderBtn.classList.add('bg-cottage-rose', 'text-white', 'border-transparent');
-      
-      vipHeaderBtn.onclick = () => {
-        const expiry = localStorage.getItem('cozyVipExpiry');
-        const now = Date.now();
-        // Nếu hạn còn hơn 50 năm thì báo là vĩnh viễn
-        if (expiry - now > 50 * 365 * 24 * 60 * 60 * 1000) {
-          alert(`Chào mừng bạn! Gói VIP của bạn là gói TRỌN ĐỜI (Vĩnh viễn) 💎\nChúc bạn học tập thật vui vẻ!`);
-        } else {
-          const dateStr = new Date(parseInt(expiry)).toLocaleDateString('vi-VN');
-          alert(`Chào mừng bạn! Gói VIP của bạn có thời hạn đến ngày: ${dateStr} 🌷\nChúc bạn học tập thật vui vẻ!`);
-        }
-      };
-
-      closeModal('modal-login');
-      closeModal('modal-vip');
-    }
-
-    function openLoginModal() {
-      document.getElementById('modal-login').classList.remove('hidden');
-    }
-
-    // ================= THUẬT TOÁN KIỂM TRA MÃ VIP MỚI =================
-    function verifyVipLogin() {
-      const daysInput = document.getElementById('vip-package-select').value;
-      // Dùng .trim().toUpperCase() để người dùng nhập chữ hoa hay thường đều được
-      const passInput = document.getElementById('vip-password-input').value.trim().toUpperCase();
-
-      // 1. KHO TÀNG MÃ KÍCH HOẠT (Bạn có thể thêm bớt tùy ý vào đây)
-      // Khi phát mã nào, bạn lưu ý gạch bỏ mã đó trong sổ tay của bạn
-      const VIP_CODES = {
-        "3": [
-          "COZY-3D-A1B2", "COZY-3D-C3D4", "COZY-3D-E5F6", "COZY-3D-G7H8", "COZY-3D-I9J0"
-        ],
-        "30": [
-          "COZY-1M-QWER", "COZY-1M-ASDF", "COZY-1M-ZXCV", "COZY-1M-1234", "COZY-1M-5678"
-        ],
-        "365": [
-          "COZY-1Y-LOVE", "COZY-1Y-STAR", "COZY-1Y-MOON", "COZY-1Y-SUNS", "COZY-1Y-WIND"
-        ],
-        "99999": [
-          "COZY-LIFE-KING", "COZY-LIFE-QUEEN", "COZY-LIFE-BOSS", "COZY-LIFE-VIP1"
-        ]
-      };
-
-      // 2. KIỂM TRA MÃ ĐÃ QUA SỬ DỤNG TRÊN MÁY NÀY CHƯA
-      let usedPasswords = JSON.parse(localStorage.getItem('cozyUsedPasswords')) || [];
-      if (usedPasswords.includes(passInput)) {
-        alert("Mã này đã được sử dụng rồi! Nếu bạn vừa gia hạn, vui lòng nhập mã mới nhận được từ Admin nhé 🌷");
-        return;
-      }
-
-      // 3. KIỂM TRA MÃ CÓ HỢP LỆ VỚI GÓI ĐÃ CHỌN KHÔNG
-      if (VIP_CODES[daysInput] && VIP_CODES[daysInput].includes(passInput)) {
-        
-        // 4. LOGIC CỘNG DỒN THỜI GIAN (GIA HẠN)
-        const durationInMs = parseInt(daysInput) * 24 * 60 * 60 * 1000;
-        const now = Date.now();
-        let currentExpiry = parseInt(localStorage.getItem('cozyVipExpiry')) || 0;
-        
-        let newExpiry;
-        if (daysInput === "99999") {
-            // Gói trọn đời: set hạn sử dụng 100 năm
-            newExpiry = now + (100 * 365 * 24 * 60 * 60 * 1000);
-        } else if (currentExpiry > now) {
-            // Nếu gói cũ vẫn còn hạn -> Cộng dồn thêm thời gian
-            newExpiry = currentExpiry + durationInMs;
-        } else {
-            // Nếu gói cũ đã hết hạn hoặc mua lần đầu
-            newExpiry = now + durationInMs;
-        }
-
-        // Lưu lại thời gian hết hạn mới
-        localStorage.setItem('cozyVipExpiry', newExpiry);
-
-        // Lưu mã này vào danh sách "ĐÃ SỬ DỤNG" để chặn nhập lại
-        usedPasswords.push(passInput);
-        localStorage.setItem('cozyUsedPasswords', JSON.stringify(usedPasswords));
-
-        isVip = true;
-        
-        if (daysInput === "99999") {
-          alert("💎 Kích hoạt thành công GÓI TRỌN ĐỜI! Cảm ơn bạn đã đồng hành cùng Cozy Garden!");
-        } else {
-          alert("🎉 Kích hoạt/Gia hạn VIP thành công! Thời gian của bạn đã được cộng thêm.");
-        }
-        
-        // Cập nhật lại giao diện
-        applyVipUI();
-        renderCinemaCards(); 
-        updateAvailableSentences();
-        initScrambleGame();
-
-      } else {
-        alert("Mã kích hoạt không hợp lệ cho gói này! Vui lòng kiểm tra lại 🛑");
-      }
-    }
-
-    function switchNav(viewId) {
-      ['cinema', 'arcade'].forEach(v => {
-        document.getElementById(`view-${v}`).classList.add('hidden');
-        document.getElementById(`nav-${v}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0";
-      });
-      document.getElementById(`view-${viewId}`).classList.remove('hidden');
-      document.getElementById(`nav-${viewId}`).className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0";
-    }
-
-    function renderCinemaCards() {
-      const container = document.getElementById('cinema-grid');
-      const filtered = currentFilter === 'ALL' ? cinemaData : cinemaData.filter(c => c.genre === currentFilter);
-      document.getElementById('cinema-count').innerText = filtered.length;
-
-      container.innerHTML = filtered.map(c => `
-        <div onclick="openCinemaModal(${c.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-4 rounded-[2rem] cursor-pointer transition shadow-sm hover:shadow-md flex flex-col group relative overflow-hidden transform hover:-translate-y-1">
-          <div class="relative h-40 w-full rounded-2xl overflow-hidden mb-4 border border-cottage-butter/50">
-            <img src="${c.thumbnail}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            ${(c.locked && !isVip) ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/95 text-cottage-roseDark px-3 py-1.5 rounded-full text-[11px] font-black shadow-lg uppercase tracking-wider"><i class="fa-solid fa-lock mr-1"></i> Yêu cầu VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
-          </div>
-          <div class="flex-1 flex flex-col justify-between">
-            <div class="space-y-2">
-              <span class="text-[10px] font-black px-3 py-1 rounded-md bg-cottage-butter text-cottage-brown uppercase">${c.genre}</span>
-              <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-rose transition line-clamp-1">${c.title}</h3>
-            </div>
-            <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown group-hover:bg-cottage-roseLight group-hover:border-cottage-rose group-hover:text-cottage-roseDark transition">
-              ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học từ vựng 🎬'}
-            </button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function filterCinema(genre) {
-      currentFilter = genre;
-      document.querySelectorAll('#level-filters .filter-btn').forEach(btn => {
-        btn.className = "filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition";
-      });
-      event.target.className = "filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
-      renderCinemaCards();
-    }
-
-    function openCinemaModal(id) {
-      const item = cinemaData.find(c => c.id === id);
-      
-      if (item.locked && !isVip) { openVipModal(); return; }
-      
-      activeCinemaId = id; 
-      activeQuizIndex = 0;
-      
-      document.getElementById('cinema-genre').innerText = item.genre;
-      document.getElementById('cinema-title').innerText = item.title;
-
-      const mediaContainer = document.getElementById('cinema-media-container');
-      if (item.mediaType === 'youtube') {
-        mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
-      }
-
-      document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
-      document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
-      
-      const vocabContainer = document.getElementById('cinema-vocab');
-      vocabContainer.innerHTML = item.vocabAnalysis.map(v => `
-        <div class="bg-white p-3.5 rounded-2xl border-2 border-cottage-butter shadow-sm">
-          <div class="flex items-baseline gap-2 mb-1">
-            <h4 class="font-bold text-cottage-roseDark text-sm">${v.word}</h4>
-            <span class="text-[11px] text-cottage-brownLight font-mono">${v.ipa}</span>
-          </div>
-          <p class="text-xs font-bold text-cottage-brown mb-1">👉 ${v.meaning}</p>
-          <p class="text-[11px] text-cottage-brownLight italic leading-relaxed bg-cottage-cream p-2 rounded-lg border border-cottage-butter/50">Ngữ cảnh: ${v.context}</p>
-        </div>
-      `).join('');
-      
-      renderCinemaQuiz();
-      document.getElementById('modal-cinema').classList.remove('hidden');
-    }
-
-    function renderCinemaQuiz() {
-      const item = cinemaData.find(c => c.id === activeCinemaId);
-      const quiz = item.quizzes[activeQuizIndex];
-
-      document.getElementById('quiz-counter').innerText = `(${activeQuizIndex + 1}/${item.quizzes.length})`;
-      document.getElementById('modal-quiz-question').innerHTML = quiz.q;
-
-      const optsContainer = document.getElementById('modal-quiz-options');
-      const feedback = document.getElementById('modal-quiz-feedback');
-      const nextBtn = document.getElementById('btn-next-quiz');
-
-      feedback.classList.add('hidden'); nextBtn.classList.add('hidden');
-
-      optsContainer.innerHTML = quiz.options.map((opt, idx) => `
-        <button onclick="checkCinemaQuiz(${idx}, this)" class="w-full text-left p-4 rounded-2xl bg-white border-2 border-cottage-butter hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 text-sm font-bold text-cottage-brown transition flex items-center justify-between group">
-          <span>${opt}</span>
-          <div class="w-4 h-4 rounded-full border-2 border-cottage-butter group-hover:border-cottage-rose flex-shrink-0 ml-2"></div>
-        </button>
-      `).join('');
-    }
-
-    function checkCinemaQuiz(chosenIdx, btn) {
-      const item = cinemaData.find(c => c.id === activeCinemaId);
-      const quiz = item.quizzes[activeQuizIndex];
-      const feedback = document.getElementById('modal-quiz-feedback');
-      const nextBtn = document.getElementById('btn-next-quiz');
-      
-      feedback.classList.remove('hidden'); nextBtn.classList.remove('hidden');
-
-      const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
-      allBtns.forEach(b => b.disabled = true);
-
-      if (chosenIdx === quiz.correct) {
-        btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
-        feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
-        feedback.innerHTML = `🎉 <b>Chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
-      } else {
-        btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-roseLight border-2 border-cottage-rose/40 text-cottage-roseDark";
-        allBtns[quiz.correct].className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
-        feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border-2 border-cottage-rose/30 block mt-3 relative z-10";
-        feedback.innerHTML = `📝 <b>Khoan đã, hãy xem lại video để đoán nghĩa nhé!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
-      }
-
-      if (activeQuizIndex === item.quizzes.length - 1) {
-        nextBtn.innerHTML = "Tuyệt vời! Đóng bài học";
-        nextBtn.onclick = () => {
-          document.getElementById('cinema-media-container').innerHTML = ''; 
-          closeModal('modal-cinema');
-        };
-      } else {
-        nextBtn.innerHTML = "Câu hỏi tiếp theo →";
-        nextBtn.onclick = () => { activeQuizIndex++; renderCinemaQuiz(); };
-      }
-    }
-
-    // --- VietQR & VIP Logic ---
-    function updateQR(amount, addInfo) {
-      const qrUrl = `https://img.vietqr.io/image/NCB-101459124207-compact2.png?amount=${amount}&addInfo=${addInfo}&accountName=VU%20THAI%20AN`;
-      document.getElementById('vietqr-image').src = qrUrl;
-      document.getElementById('qr-content').innerText = addInfo;
-    }
-
-    function openVipModal() { document.getElementById('modal-vip').classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-    
-    function simulateSuccessPayment() {
-      alert("Hệ thống đã tiếp nhận yêu cầu! Vui lòng nhắn tin Zalo qua SĐT 0362102905 (Thái An) kèm ảnh chụp màn hình chuyển khoản để nhận mã kích hoạt VIP nha 🌷");
-      closeModal('modal-vip');
-    }
   </script>
 </body>
 </html>
