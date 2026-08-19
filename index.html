@@ -548,11 +548,13 @@
             startVipTimer();
           } else {
             isVip = false;
+            if (vipTimer) clearInterval(vipTimer);
             applyExpiredUI();
             kickIfInVipCinema();
           }
         } else {
           isVip = false;
+          if (vipTimer) clearInterval(vipTimer);
           applyExpiredUI();
           kickIfInVipCinema();
         }
@@ -633,24 +635,24 @@
       } catch (error) {
         let friendlyMessage = "Có lỗi xảy ra, vui lòng thử lại!";
        switch (error.code) {
-          case 'auth/invalid-credential':
-            friendlyMessage = "🤔 Thông tin đăng nhập không chính xác! Email này chưa được đăng ký hoặc bạn gõ nhầm mật khẩu. Nếu chưa có tài khoản, hãy chuyển sang phần Đăng ký nhé!";
-            break;
-          case 'auth/email-already-in-use':
-            friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi. Hãy chuyển sang phần Đăng nhập nha!";
-            break;
-          case 'auth/invalid-email':
-            friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com).";
-            break;
-          case 'auth/weak-password':
-            friendlyMessage = "🛑 Mật khẩu hơi yếu, bạn hãy chọn mật khẩu dài từ 6 ký tự trở lên nhé.";
-            break;
-          case 'auth/network-request-failed':
-            friendlyMessage = "🌐 Lỗi kết nối mạng. Bạn kiểm tra lại Wifi/4G nhé!";
-            break;
-          default:
-            friendlyMessage = "Lỗi hệ thống: " + error.message;
-        }
+         case 'auth/invalid-credential':
+           friendlyMessage = "🤔 Thông tin đăng nhập không chính xác! Email này chưa được đăng ký hoặc bạn gõ nhầm mật khẩu. Nếu chưa có tài khoản, hãy chuyển sang phần Đăng ký nhé!";
+           break;
+         case 'auth/email-already-in-use':
+           friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi. Hãy chuyển sang phần Đăng nhập nha!";
+           break;
+         case 'auth/invalid-email':
+           friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com).";
+           break;
+         case 'auth/weak-password':
+           friendlyMessage = "🛑 Mật khẩu hơi yếu, bạn hãy chọn mật khẩu dài từ 6 ký tự trở lên nhé.";
+           break;
+         case 'auth/network-request-failed':
+           friendlyMessage = "🌐 Lỗi kết nối mạng. Bạn kiểm tra lại Wifi/4G nhé!";
+           break;
+         default:
+           friendlyMessage = "Lỗi hệ thống: " + error.message;
+       }
         alert(friendlyMessage);
       } finally {
         btn.innerHTML = originalText;
@@ -665,11 +667,8 @@
       alert("Đã đăng xuất tài khoản!");
     };
 
-    // ================= 6. CẬP NHẬT TRẠNG THÁI GIAO DIỆN =================
+    // ================= 6. CẬP TRẠNG THÁI GIAO DIỆN =================
     function applyVipUI(expiryTimestamp) {
-      const floatingBtn = document.getElementById('floating-vip-btn');
-      if (floatingBtn) floatingBtn.style.display = 'none';
-
       const vipHeaderBtn = document.getElementById('vip-header-btn');
       // Nếu hạn hơn 50 năm thì báo Vĩnh viễn
       const isLifetime = expiryTimestamp - Date.now() > 50 * 365 * 24 * 60 * 60 * 1000;
@@ -689,9 +688,6 @@
     }
 
     function applyExpiredUI() {
-      const floatingBtn = document.getElementById('floating-vip-btn');
-      if (floatingBtn) floatingBtn.style.display = 'block';
-      
       const vipHeaderBtn = document.getElementById('vip-header-btn');
       vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Đăng ký VIP</span>';
       vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
@@ -701,9 +697,6 @@
     }
 
     function applyGuestUI() {
-      const floatingBtn = document.getElementById('floating-vip-btn');
-      if (floatingBtn) floatingBtn.style.display = 'block';
-      
       const vipHeaderBtn = document.getElementById('vip-header-btn');
       vipHeaderBtn.innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
       vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
@@ -758,6 +751,10 @@
     });
 
     function handleViewSwitch(viewId) {
+      window.closeModal('modal-cinema');
+      window.closeModal('modal-login');
+      window.closeModal('modal-vip');
+
       ['cinema', 'arcade'].forEach(v => {
         const viewEl = document.getElementById(`view-${v}`);
         const navEl = document.getElementById(`nav-${v}`);
