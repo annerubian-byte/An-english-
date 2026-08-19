@@ -78,6 +78,9 @@
       <button onclick="switchNav('arcade')" id="nav-arcade" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
         <i class="fa-solid fa-puzzle-piece"></i> Trạm luyện tập
       </button>
+      <button onclick="switchNav('about')" id="nav-about" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
+        <i class="fa-solid fa-leaf"></i> Giới thiệu 
+      </button>
     </div>
   </div>
 
@@ -142,6 +145,63 @@
           <button onclick="restartPractice()" class="hidden px-6 py-2.5 text-xs font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow-[0_4px_15px_rgba(142,168,133,0.3)] transition transform active:scale-95" id="btn-restart-practice">Làm lại từ đầu 🔄</button>
         </div>
         <p id="scramble-feedback" class="text-xs font-bold hidden"></p>
+      </div>
+    </section>
+    <!-- ================= SECTION: GIỚI THIỆU ================= -->
+    <section id="view-about" class="hidden space-y-6 max-w-4xl mx-auto">
+      <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden shadow-sm flex flex-col md:flex-row gap-8 items-center">
+        
+        <!-- Các yếu tố Decor bay lơ lửng -->
+        <div class="absolute top-6 right-8 text-4xl animate-float opacity-80">🦋</div>
+        <div class="absolute bottom-6 left-8 text-3xl animate-float-delayed opacity-50">✨</div>
+        <div class="absolute -bottom-16 -right-16 w-52 h-52 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
+
+        <!-- Khối Avatar & Info ngắn -->
+        <div class="flex-shrink-0 flex flex-col items-center space-y-4 z-10 w-full md:w-1/3">
+          <div class="w-40 h-40 rounded-[2rem] border-4 border-white shadow-lg overflow-hidden bg-cottage-roseLight flex items-center justify-center relative rotate-3 hover:rotate-0 transition duration-500">
+            <!-- Thay link ảnh cá nhân của bạn vào đây nếu muốn, hiện tại để avatar hoạt hình -->
+            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=An&backgroundColor=FCEBEC" alt="Thái An" class="w-full h-full object-cover">
+            <div class="absolute bottom-2 right-2 bg-white text-xl p-1.5 rounded-xl shadow-sm rotate-12">👩‍🏫</div>
+          </div>
+          <div class="text-center space-y-1.5">
+            <h2 class="text-2xl font-display font-black text-cottage-brown">Vũ Thái An</h2>
+            <p class="text-[11px] font-black text-cottage-roseDark uppercase tracking-widest bg-cottage-roseLight/50 px-3 py-1 rounded-lg inline-block">Giáo viên & Người thiết kế học liệu</p>
+          </div>
+          <div class="flex flex-wrap gap-2 justify-center mt-2">
+            <span class="text-[10px] font-bold text-cottage-brownLight bg-white border border-cottage-butter px-2.5 py-1 rounded-full"><i class="fa-solid fa-graduation-cap mr-1"></i> Sư phạm Tiếng Anh (SGU)</span>
+            <span class="text-[10px] font-bold text-cottage-brownLight bg-white border border-cottage-butter px-2.5 py-1 rounded-full"><i class="fa-solid fa-school mr-1"></i> Cựu học sinh Chuyên Anh (PTNK)</span>
+          </div>
+        </div>
+
+        <!-- Khối Nội dung Giới thiệu -->
+        <div class="flex-1 space-y-5 z-10 text-cottage-brown">
+          <div class="space-y-2">
+            <h3 class="text-xl md:text-2xl font-display font-black text-cottage-brown">Chào cậu, mừng cậu ghé thăm Cozy Garden! 🌷</h3>
+            <div class="w-12 h-1 bg-cottage-rose/50 rounded-full"></div>
+          </div>
+          
+          <div class="space-y-4 text-sm leading-relaxed text-justify">
+            <p>
+              Dự án <b>Cozy Garden</b> được sinh ra từ mong muốn kết hợp những nền tảng sư phạm bài bản với nguồn cảm hứng bất tận từ phim ảnh. Mình tin rằng việc tiếp thu ngôn ngữ không nên chỉ khô khan qua từng trang sách, mà cần được gắn liền với ngữ cảnh thực tế, âm thanh và cảm xúc của nhân vật.
+            </p>
+            <p>
+              Nằm trong hệ sinh thái tự học <i>The Navigator</i> mà mình đang tâm huyết xây dựng, khu vườn nhỏ này là nơi chúng ta có thể vừa "chill" với những trích đoạn phim kinh điển, vừa bóc tách từng cấu trúc ngữ pháp và từ vựng một cách sâu sắc nhất.
+            </p>
+            <div class="bg-white p-4 rounded-2xl border-2 border-cottage-butter shadow-sm relative">
+              <span class="absolute -top-3 -left-2 text-2xl">💡</span>
+              <p class="text-xs text-cottage-brown italic">
+                Với tư duy đề cao sự bền bỉ và tính mục tiêu (được truyền cảm hứng rất lớn từ thần tượng Taylor Swift 🌟), mình luôn nỗ lực thiết kế những học liệu chỉn chu nhất. Chúc cậu có những giờ phút học tập thật hiệu quả và đầy mộng mơ tại đây nhé!
+              </p>
+            </div>
+          </div>
+          
+          <div class="pt-2 flex gap-3">
+            <a href="#" class="w-10 h-10 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition shadow-sm"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition shadow-sm"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition shadow-sm"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -755,7 +815,7 @@
       window.closeModal('modal-login');
       window.closeModal('modal-vip');
 
-      ['cinema', 'arcade'].forEach(v => {
+      ['cinema', 'arcade', 'about'].forEach(v => {
         const viewEl = document.getElementById(`view-${v}`);
         const navEl = document.getElementById(`nav-${v}`);
         if(viewEl) viewEl.classList.add('hidden');
