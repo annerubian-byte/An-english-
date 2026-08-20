@@ -269,7 +269,6 @@
           
           <div class="flex justify-center gap-3 pt-5">
             <button onclick="skipArcadeExercise()" class="px-4 py-2 text-xs font-bold text-cottage-brown bg-cottage-cream border-2 border-cottage-butter hover:bg-cottage-butter rounded-xl transition" id="btn-skip-fill">Câu tiếp theo ⏭️</button>
-            <button onclick="resetFillGame()" class="px-4 py-2 text-xs font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition" id="btn-reset-fill">Bỏ chọn ↻</button>
           </div>
         </div>
 
@@ -954,7 +953,7 @@
     window.toggleAuthMode = function() {
       isLoginMode = !isLoginMode;
       document.getElementById('auth-title').innerText = isLoginMode ? "Đăng Nhập" : "Tạo Tài Khoản";
-      document.getElementById('auth-subtitle').innerText = isLoginMode ? "Đăng nhập để lưu tiến độ và học bản VIP nhé!" : "Chào mừng thành viên mới của Cozy Garden!";
+      document.getElementById('auth-subtitle').innerText = isLoginMode ? "Đăng nhập để lưu tiến độ và học các bài VIP nhé!" : "Chào mừng thành viên mới của Cozy Garden!";
       document.getElementById('btn-auth-submit').innerHTML = isLoginMode ? "Vào học ngay 🚀" : "Đăng ký tài khoản 🌱";
       document.getElementById('btn-auth-toggle').innerText = isLoginMode ? "Chưa có tài khoản? Đăng ký ngay" : "Đã có tài khoản? Đăng nhập";
     };
@@ -1385,10 +1384,10 @@
 
       if(mode === 'fill') {
          titleEl.innerText = "Điền từ vào ngữ cảnh";
-         descEl.innerText = "Dựa vào các bài học, chọn từ phù hợp điền vào chỗ trống.";
+         descEl.innerText = "Dựa vào các bài đã học, hãy chọn từ phù hợp để điền vào chỗ trống.";
       } else if (mode === 'mistake') {
          titleEl.innerText = "Tìm lỗi sai";
-         descEl.innerText = "Lắng nghe trực giác ngôn ngữ, phát hiện và sửa từ bị sai.";
+         descEl.innerText = "Tìm các lỗi sai về cấu trúc hoặc ngữ pháp sau đó sửa lại.";
       } else if (mode === 'match') {
          titleEl.innerText = "Ghép đôi cụm từ";
          descEl.innerText = "Nối các mảnh ghép lại để tạo thành Collocation/Idiom có nghĩa.";
@@ -1425,7 +1424,7 @@
         // CẬP NHẬT LOGIC THÔNG BÁO CHO VIP VÀ GUEST Ở ĐÂY
         const msgDesc = document.getElementById('arcade-completed-desc');
         if (isVip) {
-            msgDesc.innerText = "Bạn đã hoàn thành xuất sắc toàn bộ thử thách! Hãy thử sức với dạng bài khác nhé.";
+            msgDesc.innerText = "Bạn đã hoàn thành xuất sắc toàn bộ thử thách! Hãy thử sức với dạng bài khác hoặc làm lại nhé.";
         } else {
             msgDesc.innerText = "Hãy thử thách bản thân với dạng bài khác hoặc nâng cấp VIP để mở khóa thêm nhiều câu hỏi nhé!";
         }
