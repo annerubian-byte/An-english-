@@ -801,14 +801,13 @@
         if (initialSnap.empty) {
           document.getElementById('sync-overlay').classList.remove('hidden');
           console.log("Kho dữ liệu trống. Đang tự động đẩy bài học lên Firebase...");
-        }
-
-        // Luôn tự động đồng bộ dữ liệu chuẩn lên Firebase để đảm bảo không thiếu trường type
-        for (const item of SEED_CINEMA_DATA) {
-          await setDoc(doc(db, "lessons", `lesson_${item.id}`), item);
-        }
-        for (const practice of SEED_PRACTICE_DATA) {
-          await setDoc(doc(db, "practice_sentences", practice.id), practice);
+          
+          for (const item of SEED_CINEMA_DATA) {
+            await setDoc(doc(db, "lessons", `lesson_${item.id}`), item);
+          }
+          for (const practice of SEED_PRACTICE_DATA) {
+            await setDoc(doc(db, "practice_sentences", practice.id), practice);
+          }
         }
 
         onSnapshot(lessonsRef, (snapshot) => {
@@ -1163,7 +1162,7 @@
       }
     };
 
-    // ================= RENDER LOGIC KHO PHIM, NHẠC, YOUTUBE (ĐÃ FIX LỖI CHUYỂN TAB) =================
+    // ================= RENDER LOGIC KHO PHIM, NHẠC, YOUTUBE =================
     window.renderAllSections = function() {
       if(cinemaData.length === 0) return;
       
@@ -1358,7 +1357,7 @@
         window.renderCinemaQuiz();
     };
 
-    // ================= XỬ LÝ TRẠM LUYỆN TẬP TỔNG HỢP (HỖ TRỢ FALLBACK DỮ LIỆU CŨ) =================
+    // ================= XỬ LÝ TRẠM LUYỆN TẬP TỔNG HỢP =================
     window.openArcadeMode = function(mode) {
       document.getElementById('arcade-menu').classList.add('hidden');
       document.getElementById('arcade-scramble').classList.add('hidden');
@@ -1385,7 +1384,6 @@
     window.updateAvailableSentences = function() {
       if(cinemaData.length === 0 || !currentArcadeMode) return;
       
-      // Hỗ trợ fallback: nếu bản ghi cũ không có trường type, mặc định coi là 'scramble'
       let filteredByType = allPracticeSentences.filter(s => {
         const itemType = s.type || 'scramble';
         return itemType === currentArcadeMode;
