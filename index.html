@@ -813,11 +813,11 @@
           cinemaData.sort((a, b) => a.id - b.id);
           if (document.getElementById('cinema-grid')) {
             window.renderAllSections();
-            if(!document.getElementById('view-arcade').classList.contains('hidden')) {
+            window.updateAvailableSentences();
                window.updateAvailableSentences();
             }
           }
-        });
+        );
 
         onSnapshot(practiceRef, (snapshot) => {
           allPracticeSentences = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
