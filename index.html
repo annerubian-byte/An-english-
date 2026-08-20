@@ -657,19 +657,15 @@
       { id: "swift_yt_1", cinemaId: 10, fullText: "Be discerning.", parts: [ { text: "Be ", isBlank: false }, { text: "sáng suốt, có óc phán đoán", expectedWord: "discerning", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["discerning", "ephemeral", "coward", "hostile"] }
     ];
 
-    // ================= 4. HÀM TẢI (HOẶC TỰ ĐỘNG ĐẨY) DỮ LIỆU ĐÁM MÂY =================
+   // ================= 4. HÀM TẢI VÀ LẮNG NGHE DỮ LIỆU REAL-TIME =================
     async function loadAppData() {
       try {
         const lessonsRef = collection(db, "lessons");
         const practiceRef = collection(db, "practice_sentences");
 
-        const [lessonsSnap, practiceSnap] = await Promise.all([
-          getDocs(lessonsRef),
-          getDocs(practiceRef)
-        ]);
-
-        // NẾU KHO TRỐNG (Lần chạy đầu tiên), TỰ ĐỘNG SEED DỮ LIỆU
-        if (lessonsSnap.empty) {
+        // BƯỚC 1: Kiểm tra xem kho có trống không để chạy Tự động đẩy (chỉ chạy 1 lần lúc đầu)
+        const initialSnap = await getDocs(lessonsRef);
+        if (initialSnap.empty) {
           document.getElementById('sync-overlay').classList.remove('hidden');
           console.log("Kho dữ liệu trống. Đang tự động đẩy bài học lên Firebase...");
           
@@ -685,21 +681,34 @@
           return;
         }
 
-        // Lấy dữ liệu về nếu đã có
-        cinemaData = lessonsSnap.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
-        cinemaData.sort((a, b) => a.id - b.id); // Sắp xếp lại theo ID cho chuẩn
-        
-        allPracticeSentences = practiceSnap.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+        // BƯỚC 2: Lắp "camera" giám sát kho Bài Học (Tự động cập nhật khi có bài mới)
+        onSnapshot(lessonsRef, (snapshot) => {
+          cinemaData = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+          cinemaData.sort((a, b) => a.id - b.id); // Sắp xếp lại theo ID cho chuẩn
+          
+          // Vẽ lại giao diện ngay lập tức mà không cần F5
+          if (document.getElementById('cinema-grid')) {
+            window.renderAllSections();
+          }
+        });
 
+        // BƯỚC 3: Lắp "camera" giám sát kho Bài Tập
+        onSnapshot(practiceRef, (snapshot) => {
+          allPracticeSentences = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+          if (document.getElementById('cinema-grid')) {
+            window.updateAvailableSentences();
+          }
+        });
+
+        // Trả lại nút Đăng nhập ban đầu
         document.getElementById('vip-header-btn').innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
         applyGuestUI(); 
+
       } catch (error) {
         console.error("Lỗi khi tải học liệu:", error);
-        alert("Oops! Không thể tải dữ liệu bài học. Bạn kiểm tra lại kết nối mạng nhé! 🌷");
+        alert("Oops! Không thể kết nối với hệ thống. Bạn kiểm tra lại mạng nhé! 🌷");
       }
     }
-
-
     // ================= 5. BIẾN TOÀN CỤC TRẠNG THÁI =================
     let isVip = false;
     let currentUser = null;
