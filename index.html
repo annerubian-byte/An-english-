@@ -1368,91 +1368,93 @@
       }
     };
 
-    window.startArcadeMode = function(mode) {
-      if (availableSentences.length === 0) window.updateAvailableSentences();
-      currentArcadeMode = mode;
-      
-      document.getElementById('arcade-menu').classList.add('hidden');
-      document.getElementById('arcade-play-area').classList.remove('hidden');
+   // ================= ARCADE HỆ THỐNG ĐA DẠNG BÀI TẬP (HOÀN CHỈNH) =================
+window.startArcadeMode = function(mode) {
+  if (availableSentences.length === 0) window.updateAvailableSentences();
+  currentArcadeMode = mode;
+  
+  document.getElementById('arcade-menu').classList.add('hidden');
+  document.getElementById('arcade-play-area').classList.remove('hidden');
 
-      ['fill', 'mistake', 'match'].forEach(m => document.getElementById('game-' + m).classList.add('hidden'));
-      document.getElementById('game-' + mode).classList.remove('hidden');
-      document.getElementById('arcade-completed-msg').classList.add('hidden');
+  ['fill', 'mistake', 'match'].forEach(m => document.getElementById('game-' + m).classList.add('hidden'));
+  document.getElementById('game-' + mode).classList.remove('hidden');
+  document.getElementById('arcade-completed-msg').classList.add('hidden');
 
-      const titleEl = document.getElementById('arcade-play-title');
-      const descEl = document.getElementById('arcade-play-desc');
+  const titleEl = document.getElementById('arcade-play-title');
+  const descEl = document.getElementById('arcade-play-desc');
 
-      if(mode === 'fill') {
-         titleEl.innerText = "Điền từ vào ngữ cảnh";
-         descEl.innerText = "Dựa vào các bài đã học, hãy chọn từ phù hợp để điền vào chỗ trống.";
-      } else if (mode === 'mistake') {
-         titleEl.innerText = "Tìm lỗi sai";
-         descEl.innerText = "Tìm các lỗi sai về cấu trúc hoặc ngữ pháp sau đó sửa lại.";
-      } else if (mode === 'match') {
-         titleEl.innerText = "Ghép đôi cụm từ";
-         descEl.innerText = "Nối các mảnh ghép ở hai cột lại để tạo thành Collocation/Idiom có nghĩa. Chọn từ/cụm từ ở cột trái sau đó click vào từ/cụm từ phù hợp ở cột phải";
-      }
+  if(mode === 'fill') {
+     titleEl.innerText = "Điền từ vào ngữ cảnh";
+     descEl.innerText = "Dựa vào các bài đã học, hãy chọn từ phù hợp để điền vào chỗ trống.";
+  } else if (mode === 'mistake') {
+     titleEl.innerText = "Tìm lỗi sai";
+     descEl.innerText = "Tìm các lỗi sai về cấu trúc hoặc ngữ pháp sau đó sửa lại.";
+  } else if (mode === 'match') {
+     titleEl.innerText = "Ghép đôi cụm từ";
+     descEl.innerText = "Nối các mảnh ghép ở hai cột lại để tạo thành Collocation/Idiom có nghĩa.";
+  }
 
-      remainingSentences = availableSentences.filter(s => s.type === mode);
-      window.loadNextExercise();
-    };
+  // Lọc danh sách câu hỏi một lần duy nhất khi mở chế độ chơi (Bao gồm chặn bài VIP nếu chưa mua)
+  let pool = allPracticeSentences.filter(s => s.type === mode);
+  if (!isVip) {
+      pool = pool.filter(s => {
+          const lesson = cinemaData.find(c => c.id === s.cinemaId);
+          return lesson && !lesson.locked;
+      });
+  }
+  remainingSentences = [...pool];
 
-    window.backToArcadeMenu = function() {
-       document.getElementById('arcade-menu').classList.remove('hidden');
-       document.getElementById('arcade-play-area').classList.add('hidden');
-    };
+  window.loadNextExercise();
+};
 
-    window.restartArcadeMode = function() {
-       remainingSentences = availableSentences.filter(s => s.type === currentArcadeMode);
-       document.getElementById('arcade-completed-msg').classList.add('hidden');
-       document.getElementById('game-' + currentArcadeMode).classList.remove('hidden');
-       window.loadNextExercise();
-    };
+window.backToArcadeMenu = function() {
+   document.getElementById('arcade-menu').classList.remove('hidden');
+   document.getElementById('arcade-play-area').classList.add('hidden');
+};
 
-    window.skipArcadeExercise = function() {
-      if (currentPractice) {
-        remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
-        window.loadNextExercise();
-      }
-    };
+window.restartArcadeMode = function() {
+   let pool = allPracticeSentences.filter(s => s.type === currentArcadeMode);
+   if (!isVip) {
+       pool = pool.filter(s => {
+           const lesson = cinemaData.find(c => c.id === s.cinemaId);
+           return lesson && !lesson.locked;
+       });
+   }
+   remainingSentences = [...pool];
+   document.getElementById('arcade-completed-msg').classList.add('hidden');
+   document.getElementById('game-' + currentArcadeMode).classList.remove('hidden');
+   window.loadNextExercise();
+};
 
-    window.loadNextExercise = function() {
-    let pool = availableSentences;
+window.skipArcadeExercise = function() {
+  if (currentPractice) {
+    remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
+    window.loadNextExercise();
+  }
+};
+
+window.loadNextExercise = function() {
+  if (remainingSentences.length === 0) {
+    document.getElementById('game-' + currentArcadeMode).classList.add('hidden');
+    document.getElementById('arcade-completed-msg').classList.remove('hidden');
     
-    if (!isVip) {
-        // Chỉ lấy những câu thuộc về bài học KHÔNG BỊ KHÓA
-        pool = pool.filter(s => {
-            const lesson = cinemaData.find(c => c.id === s.cinemaId);
-            // Nếu không tìm thấy bài học hoặc bài học đó đang bị khóa -> Loại bỏ
-            return lesson && !lesson.locked;
-        });
+    const msgDesc = document.getElementById('arcade-completed-desc');
+    if (isVip) {
+        msgDesc.innerText = "Bạn đã hoàn thành xuất sắc toàn bộ thử thách! Hãy thử sức với dạng bài khác hoặc làm lại nhé.";
+    } else {
+        msgDesc.innerText = "Hãy thử thách bản thân với dạng bài khác hoặc nâng cấp VIP để mở khóa thêm nhiều câu hỏi nhé!";
     }
+    return;
+  }
+  
+  const randomIndex = Math.floor(Math.random() * remainingSentences.length);
+  currentPractice = remainingSentences[randomIndex];
 
-    // Lọc tiếp theo dạng bài (fill, mistake, match)
-    remainingSentences = pool.filter(s => s.type === currentArcadeMode);
-      
-      if (remainingSentences.length === 0) {
-        document.getElementById('game-' + currentArcadeMode).classList.add('hidden');
-        document.getElementById('arcade-completed-msg').classList.remove('hidden');
-        
-        // CẬP NHẬT LOGIC THÔNG BÁO CHO VIP VÀ GUEST Ở ĐÂY
-        const msgDesc = document.getElementById('arcade-completed-desc');
-        if (isVip) {
-            msgDesc.innerText = "Bạn đã hoàn thành xuất sắc toàn bộ thử thách! Hãy thử sức với dạng bài khác hoặc làm lại nhé.";
-        } else {
-            msgDesc.innerText = "Hãy thử thách bản thân với dạng bài khác hoặc nâng cấp VIP để mở khóa thêm nhiều câu hỏi nhé!";
-        }
-        return;
-      }
-      
-      const randomIndex = Math.floor(Math.random() * remainingSentences.length);
-      currentPractice = remainingSentences[randomIndex];
-
-      if(currentArcadeMode === 'fill') window.initFillGameUI();
-      else if(currentArcadeMode === 'mistake') window.initMistakeGameUI();
-      else if(currentArcadeMode === 'match') window.initMatchGameUI();
-    };
-
+  if(currentArcadeMode === 'fill') window.initFillGameUI();
+  else if(currentArcadeMode === 'mistake') window.initMistakeGameUI();
+  else if(currentArcadeMode === 'match') window.initMatchGameUI();
+};
+    
     // --- GAME 1: FILL (ĐIỀN TỪ TỰ ĐỘNG CHECK) ---
     window.initFillGameUI = function() {
       fillSelectedAnswers = {};
