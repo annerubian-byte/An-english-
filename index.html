@@ -1417,6 +1417,20 @@
     };
 
     window.loadNextExercise = function() {
+    let pool = availableSentences;
+    
+    if (!isVip) {
+        // Chỉ lấy những câu thuộc về bài học KHÔNG BỊ KHÓA
+        pool = pool.filter(s => {
+            const lesson = cinemaData.find(c => c.id === s.cinemaId);
+            // Nếu không tìm thấy bài học hoặc bài học đó đang bị khóa -> Loại bỏ
+            return lesson && !lesson.locked;
+        });
+    }
+
+    // Lọc tiếp theo dạng bài (fill, mistake, match)
+    remainingSentences = pool.filter(s => s.type === currentArcadeMode);
+      
       if (remainingSentences.length === 0) {
         document.getElementById('game-' + currentArcadeMode).classList.add('hidden');
         document.getElementById('arcade-completed-msg').classList.remove('hidden');
