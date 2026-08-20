@@ -119,7 +119,7 @@
         <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-cottage-rose rounded-full blur-3xl opacity-20 z-0"></div>
 
         <div class="space-y-2 z-10 relative">
-          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học qua phim ảnh</h2>
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học từ vựng qua phim ảnh</h2>
           <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Hãy để hình ảnh và cảm xúc từ những bộ phim điện ảnh kinh điển giúp bạn ghim chặt từ vựng vào trí nhớ!</p>
         </div>
         
@@ -130,16 +130,19 @@
 
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="cinema-filters">
-          <button onclick="filterSection('cinema', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại</button>
-          <button onclick="filterSection('cinema', 'Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình cảm 💌</button>
-          <button onclick="filterSection('cinema', 'Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính kịch 🎭</button>
-          <button onclick="filterSection('cinema', 'Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài 😂</button>
-          <button onclick="filterSection('cinema', 'Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc kịch 🎵</button>
-          <button onclick="filterSection('cinema', 'Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo 🧚‍♀️</button>
-          <button onclick="filterSection('cinema', 'Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành động 💥</button>
-          <button onclick="filterSection('cinema', 'Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn tưởng 🛸</button>
-          <button onclick="filterSection('cinema', 'Thriller & Mystery')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh thám 🔍</button>
-          <button onclick="filterSection('cinema', 'Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài liệu 🌍</button>
+          <button onclick="filterSection('cinema', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại (All)</button>
+          <button onclick="filterSection('cinema', 'Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình cảm (Romance) 💌</button>
+          <button onclick="filterSection('cinema', 'Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính kịch (Drama) 🎭</button>
+          <button onclick="filterSection('cinema', 'Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài (Comedy) 😂</button>
+          <button onclick="filterSection('cinema', 'Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc kịch (Musical) 🎵</button>
+          <button onclick="filterSection('cinema', 'Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo (Fantasy) 🧚‍♀️</button>
+          <button onclick="filterSection('cinema', 'Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành động (Action) 💥</button>
+          <button onclick="filterSection('cinema', 'Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn tưởng (Sci-Fi) 🛸</button>
+          <button onclick="filterSection('cinema', 'Mystery')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh thám (Mystery) 🔍</button>
+          <button onclick="filterSection('cinema', 'Thriller')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Giật gân (Thriller) 🔪</button>
+          <button onclick="filterSection('cinema', 'Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài liệu (Documentary) 🌍</button>
+          <button onclick="filterSection('cinema', 'Horror')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kinh dị (Horror) 👻</button>
+          <button onclick="filterSection('cinema', 'Animation')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hoạt hình (Animation) 🐻</button>
         </div>
         <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="cinema-count">0</span> bài học 📚</span>
       </div>
@@ -147,7 +150,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cinema-grid"></div>
     </section>
 
-    <!-- ================= SECTION: TRẠM PHÁT NHẠC ================= -->
+    <!-- ================= SECTION: KHO NHẠC ================= -->
     <section id="view-music" class="hidden space-y-6">
       <div class="bg-gradient-to-br from-cottage-card to-cottage-amber/20 border-2 border-dashed border-cottage-amber/40 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <i class="fa-solid fa-music absolute top-6 left-10 text-4xl text-cottage-amber/10 -rotate-12 z-0"></i>
@@ -166,10 +169,16 @@
 
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="music-filters">
-          <button onclick="filterSection('music', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại</button>
-          <button onclick="filterSection('music', 'Pop')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Pop 🎤</button>
-          <button onclick="filterSection('music', 'Folk/Indie')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Folk/Indie 🎸</button>
-          <button onclick="filterSection('music', 'R&B')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">R&B 🎷</button>
+          <button onclick="filterSection('music', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề (All)</button>
+          <button onclick="filterSection('music', 'Pop')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc Pop (Pop) 🎤</button>
+          <button onclick="filterSection('music', 'Folk')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Đồng quê (Folk) 🌾</button>
+          <button onclick="filterSection('music', 'Indie')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Độc lập (Indie) 🎸</button>
+          <button onclick="filterSection('music', 'R&B')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc R&B (R&B) 🎷</button>
+          <button onclick="filterSection('music', 'Hip-Hop / Rap')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hip-Hop / Rap 🎧</button>
+          <button onclick="filterSection('music', 'EDM')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Điện tử (EDM) 🎛️</button>
+          <button onclick="filterSection('music', 'Rock')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc Rock (Rock) 🤘</button>
+          <button onclick="filterSection('music', 'Classical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Cổ điển (Classical) 🎻</button>
+          <button onclick="filterSection('music', 'Soundtrack')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc phim (Soundtrack) 🎬</button>
         </div>
         <span class="text-[11px] text-cottage-amber font-bold bg-cottage-amber/10 px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="music-count">0</span> bài hát 🎧</span>
       </div>
@@ -195,10 +204,17 @@
 
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
         <div class="flex flex-wrap gap-1.5" id="youtube-filters">
-          <button onclick="filterSection('youtube', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề</button>
-          <button onclick="filterSection('youtube', 'Interview / Talkshow')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Talkshow / Phỏng vấn 🎙️</button>
-          <button onclick="filterSection('youtube', 'Speech / Vlog')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Diễn văn / Vlog 📹</button>
-          <button onclick="filterSection('youtube', 'Reality Show')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Show thực tế 🏆</button>
+          <button onclick="filterSection('youtube', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề (All topics)</button>
+          <button onclick="filterSection('youtube', 'Interview')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Phỏng vấn (Interview) 🎙️</button>
+          <button onclick="filterSection('youtube', 'Talkshow')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trò chuyện (Talkshow) 🛋️</button>
+          <button onclick="filterSection('youtube', 'Speech')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Diễn văn (Speech) 🎓</button>
+          <button onclick="filterSection('youtube', 'Vlog')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhật ký video (Vlog) 📹</button>
+          <button onclick="filterSection('youtube', 'Reality Show')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Truyền hình thực tế (Reality) 🏆</button>
+          <button onclick="filterSection('youtube', 'Education')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Giáo dục (Education) 📚</button>
+          <button onclick="filterSection('youtube', 'Lifestyle')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Phong cách sống (Lifestyle) 🌿</button>
+          <button onclick="filterSection('youtube', 'Self-help')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Phát triển bản thân (Self-help) 💡</button>
+          <button onclick="filterSection('youtube', 'Reaction')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Bình luận (Reaction) 😲</button>
+          <button onclick="filterSection('youtube', 'Beauty / Fashion')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Thời trang / Làm đẹp (Beauty / Fashion) 💄</button>
         </div>
         <span class="text-[11px] text-cottage-greenDark font-bold bg-cottage-greenLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="youtube-count">0</span> video 📺</span>
       </div>
@@ -491,7 +507,7 @@
         ]
       },
       {
-        id: 2, genre: "Drama", format: "movie", title: "The Intern (2015)", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
+        id: 2, genre: "Comedy", format: "movie", title: "The Intern (2015)", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
         quote: "You're never wrong to do the right thing.", translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
           { word: "Diversion (n)", ipa: "/dɪˈvɜːr.ʒən/", meaning: "Sự giải trí, thú vui tiêu khiển.", context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' (một việc gì đó để làm cho đỡ buồn chán) như giúp sếp lập Facebook." },
@@ -608,9 +624,11 @@
           { q: "Từ <b>'Crisis'</b> trong câu 'I end up in crisis' diễn tả trạng thái nào?", options: ["A. Hạnh phúc tột độ", "B. Tức giận", "C. Khủng hoảng, tình thế khó khăn", "D. Buồn ngủ"], correct: 2, explanation: "<b>'Crisis'</b> là trạng thái khủng hoảng, mất kiểm soát." }
         ]
       },
-      // === DỮ LIỆU MẪU CHO KHO YOUTUBE ===
+      // === DỮ LIỆU MẪU CHO KHO YOUTUBE (ĐÃ SỬA LỖI VIDEO) ===
       {
-        id: 10, genre: "Speech / Vlog", format: "youtube", title: "Taylor Swift - NYU Commencement Speech 2022", thumbnail: "https://i.ytimg.com/vi/OBkX2Hk2-Yk/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGD4gWShlMA8=&rs=AOn4CLCM3LhQWvI198t8BwGzP43mO8gPew", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/OBkX2Hk2-Yk?rel=0", locked: true,
+        id: 10, genre: "Speech", format: "youtube", title: "Taylor Swift - NYU Commencement Speech 2022", thumbnail: "https://i.ytimg.com/vi/OBkX2Hk2-Yk/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGD4gWShlMA8=&rs=AOn4CLCM3LhQWvI198t8BwGzP43mO8gPew", mediaType: "youtube", 
+        // Video gốc của NYU chặn nhúng (embed), đã thay bằng đoạn video báo chí đưa tin được phép nhúng 
+        mediaUrl: "https://www.youtube.com/embed/SnGgR0e_F0c?rel=0", locked: true,
         quote: "You get to pick what your life has time and room for. Be discerning.", translation: "Bạn có quyền lựa chọn điều gì xứng đáng để bạn dành thời gian và không gian trong cuộc đời mình. Hãy biết nhìn nhận một cách sáng suốt.",
         vocabAnalysis: [
           { word: "Discerning (adj)", ipa: "/dɪˈsɜːr.nɪŋ/", meaning: "Sáng suốt, biết nhận thức rõ ràng, có óc phán đoán.", context: "Một lời khuyên đắt giá: Hãy thật 'sáng suốt' để biết buông bỏ những thứ không đáng và giữ lại những điều quan trọng." }
