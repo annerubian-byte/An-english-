@@ -801,17 +801,14 @@
         if (initialSnap.empty) {
           document.getElementById('sync-overlay').classList.remove('hidden');
           console.log("Kho dữ liệu trống. Đang tự động đẩy bài học lên Firebase...");
-          
-          for (const item of SEED_CINEMA_DATA) {
-            await setDoc(doc(db, "lessons", `lesson_${item.id}`), item);
-          }
-          for (const practice of SEED_PRACTICE_DATA) {
-            await setDoc(doc(db, "practice_sentences", practice.id), practice);
-          }
-          
-          console.log("Hoàn tất đẩy dữ liệu! Tải lại trang...");
-          window.location.reload(); 
-          return;
+        }
+
+        // Luôn tự động đồng bộ dữ liệu chuẩn lên Firebase để đảm bảo không thiếu trường type
+        for (const item of SEED_CINEMA_DATA) {
+          await setDoc(doc(db, "lessons", `lesson_${item.id}`), item);
+        }
+        for (const practice of SEED_PRACTICE_DATA) {
+          await setDoc(doc(db, "practice_sentences", practice.id), practice);
         }
 
         onSnapshot(lessonsRef, (snapshot) => {
@@ -1170,17 +1167,14 @@
     window.renderAllSections = function() {
       if(cinemaData.length === 0) return;
       
-      // Kho phim: Chỉ nhận format là 'movie' hoặc không có format
       const cinemaFiltered = cinemaData.filter(c => (!c.format || c.format === 'movie') && (currentCinemaFilter === 'ALL' || c.genre === currentCinemaFilter));
       document.getElementById('cinema-count').innerText = cinemaFiltered.length;
       document.getElementById('cinema-grid').innerHTML = generateCardsHTML(cinemaFiltered);
 
-      // Kho nhạc: Chỉ nhận format là 'music'
       const musicFiltered = cinemaData.filter(c => c.format === 'music' && (currentMusicFilter === 'ALL' || c.genre === currentMusicFilter));
       document.getElementById('music-count').innerText = musicFiltered.length;
       document.getElementById('music-grid').innerHTML = generateCardsHTML(musicFiltered);
 
-      // Kho YouTube: Chỉ nhận format là 'youtube'
       const youtubeFiltered = cinemaData.filter(c => c.format === 'youtube' && (currentYoutubeFilter === 'ALL' || c.genre === currentYoutubeFilter));
       document.getElementById('youtube-count').innerText = youtubeFiltered.length;
       document.getElementById('youtube-grid').innerHTML = generateCardsHTML(youtubeFiltered);
@@ -1364,7 +1358,7 @@
         window.renderCinemaQuiz();
     };
 
-    // ================= XỬ LÝ TRẠM LUYỆN TẬP TỔNG HỢP =================
+    // ================= XỬ LÝ TRẠM LUYỆN TẬP TỔNG HỢP (HỖ TRỢ FALLBACK DỮ LIỆU CŨ) =================
     window.openArcadeMode = function(mode) {
       document.getElementById('arcade-menu').classList.add('hidden');
       document.getElementById('arcade-scramble').classList.add('hidden');
@@ -1391,7 +1385,11 @@
     window.updateAvailableSentences = function() {
       if(cinemaData.length === 0 || !currentArcadeMode) return;
       
-      let filteredByType = allPracticeSentences.filter(s => s.type === currentArcadeMode);
+      // Hỗ trợ fallback: nếu bản ghi cũ không có trường type, mặc định coi là 'scramble'
+      let filteredByType = allPracticeSentences.filter(s => {
+        const itemType = s.type || 'scramble';
+        return itemType === currentArcadeMode;
+      });
 
       if (isVip) {
         availableSentences = [...filteredByType];
@@ -1448,31 +1446,34 @@
       const promptContainer = document.getElementById('scramble-prompt');
       promptContainer.innerHTML = '';
       
-      currentPractice.parts.forEach((part, index) => {
-        if (part.isBlank) {
-          const blankContainer = document.createElement('span');
-          blankContainer.className = "inline-flex flex-col items-center mx-1 align-bottom";
-          const hintSpan = document.createElement('span');
-          hintSpan.className = "text-[11px] md:text-xs text-cottage-brownLight font-normal mb-1 bg-white px-2.5 py-0.5 rounded-md shadow-sm border border-cottage-butter whitespace-nowrap";
-          hintSpan.innerText = part.text; 
-          const blankSpan = document.createElement('span');
-          blankSpan.id = `blank-${index}`;
-          blankSpan.className = "inline-block min-w-[80px] px-2 h-10 border-b-2 border-dashed border-cottage-roseDark/50 text-center text-cottage-rose text-sm md:text-base font-bold cursor-pointer transition-colors flex items-center justify-center";
-          blankSpan.onclick = () => window.returnWordToPool(index);
+      if (currentPractice.parts) {
+        currentPractice.parts.forEach((part, index) => {
+          if (part.isBlank) {
+            const blankContainer = document.createElement('span');
+            blankContainer.className = "inline-flex flex-col items-center mx-1 align-bottom";
+            const hintSpan = document.createElement('span');
+            hintSpan.className = "text-[11px] md:text-xs text-cottage-brownLight font-normal mb-1 bg-white px-2.5 py-0.5 rounded-md shadow-sm border border-cottage-butter whitespace-nowrap";
+            hintSpan.innerText = part.text; 
+            const blankSpan = document.createElement('span');
+            blankSpan.id = `blank-${index}`;
+            blankSpan.className = "inline-block min-w-[80px] px-2 h-10 border-b-2 border-dashed border-cottage-roseDark/50 text-center text-cottage-rose text-sm md:text-base font-bold cursor-pointer transition-colors flex items-center justify-center";
+            blankSpan.onclick = () => window.returnWordToPool(index);
 
-          blankContainer.appendChild(hintSpan);
-          blankContainer.appendChild(blankSpan);
-          promptContainer.appendChild(blankContainer);
-        } else {
-          const textNode = document.createElement('span');
-          textNode.className = "inline-block align-bottom pb-1.5 text-sm md:text-base font-medium";
-          textNode.innerText = part.text;
-          promptContainer.appendChild(textNode);
-        }
-      });
+            blankContainer.appendChild(hintSpan);
+            blankContainer.appendChild(blankSpan);
+            promptContainer.appendChild(blankContainer);
+          } else {
+            const textNode = document.createElement('span');
+            textNode.className = "inline-block align-bottom pb-1.5 text-sm md:text-base font-medium";
+            textNode.innerText = part.text;
+            promptContainer.appendChild(textNode);
+          }
+        });
+      }
 
       const pool = document.getElementById('scramble-pool');
-      const shuffledWords = [...currentPractice.wordsToPick].sort(() => 0.5 - Math.random());
+      const wordsToPick = currentPractice.wordsToPick || [];
+      const shuffledWords = [...wordsToPick].sort(() => 0.5 - Math.random());
       
       pool.innerHTML = shuffledWords.map(w => `<button id="pool-word-${w.replace(/\s+/g, '-')}" onclick="pickWordForBlank('${w}')" class="px-5 py-2.5 bg-white border-2 border-cottage-butter rounded-xl text-sm md:text-base font-bold text-cottage-brown hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 transition transform active:scale-95 shadow-sm m-1">${w}</button>`).join('');
       
@@ -1581,9 +1582,11 @@
       }
 
       const container = document.getElementById('error-sentence-container');
-      container.innerHTML = currentPractice.words.map((w, idx) => `
-        <span id="err-word-${idx}" onclick="selectErrorWord(${idx})" class="cursor-pointer text-base md:text-lg font-bold text-cottage-brown hover:text-cottage-amber hover:bg-cottage-amber/10 px-1 py-0.5 rounded transition">${w.text}</span>
-      `).join('');
+      if (currentPractice.words) {
+        container.innerHTML = currentPractice.words.map((w, idx) => `
+          <span id="err-word-${idx}" onclick="selectErrorWord(${idx})" class="cursor-pointer text-base md:text-lg font-bold text-cottage-brown hover:text-cottage-amber hover:bg-cottage-amber/10 px-1 py-0.5 rounded transition">${w.text}</span>
+        `).join('');
+      }
     };
 
     window.selectErrorWord = function(wordIdx) {
@@ -1671,10 +1674,10 @@
       
       matchingLeftSelected = null;
       matchingRightSelected = null;
-      matchingPairsLeft = currentPractice.pairs.length;
+      matchingPairsLeft = currentPractice.pairs ? currentPractice.pairs.length : 0;
 
-      let lefts = currentPractice.pairs.map((p, i) => ({ text: p.left, id: i }));
-      let rights = currentPractice.pairs.map((p, i) => ({ text: p.right, id: i }));
+      let lefts = (currentPractice.pairs || []).map((p, i) => ({ text: p.left, id: i }));
+      let rights = (currentPractice.pairs || []).map((p, i) => ({ text: p.right, id: i }));
       
       lefts = lefts.sort(() => 0.5 - Math.random());
       rights = rights.sort(() => 0.5 - Math.random());
