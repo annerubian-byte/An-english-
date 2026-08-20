@@ -1100,27 +1100,51 @@
       }
     };
 
-    // ================= RENDER LOGIC VÀ ĐỔI MÀU GIAO DIỆN THEO CHỦ ĐỀ =================
+    // ================= RENDER LOGIC VÀ ĐỔI MÀU HOVER GIAO DIỆN THEO CHỦ ĐỀ =================
     window.renderAllSections = function() {
       if(cinemaData.length === 0) return;
       
-      // Khởi tạo render
       const cinemaFiltered = cinemaData.filter(c => (!c.format || c.format === 'movie') && (currentCinemaFilter === 'ALL' || c.genre === currentCinemaFilter));
       document.getElementById('cinema-count').innerText = cinemaFiltered.length;
-      document.getElementById('cinema-grid').innerHTML = generateCardsHTML(cinemaFiltered);
+      document.getElementById('cinema-grid').innerHTML = generateCardsHTML(cinemaFiltered, 'movie');
 
       const musicFiltered = cinemaData.filter(c => c.format === 'music' && (currentMusicFilter === 'ALL' || c.genre === currentMusicFilter));
       document.getElementById('music-count').innerText = musicFiltered.length;
-      document.getElementById('music-grid').innerHTML = generateCardsHTML(musicFiltered);
+      document.getElementById('music-grid').innerHTML = generateCardsHTML(musicFiltered, 'music');
 
       const youtubeFiltered = cinemaData.filter(c => c.format === 'youtube' && (currentYoutubeFilter === 'ALL' || c.genre === currentYoutubeFilter));
       document.getElementById('youtube-count').innerText = youtubeFiltered.length;
-      document.getElementById('youtube-grid').innerHTML = generateCardsHTML(youtubeFiltered);
+      document.getElementById('youtube-grid').innerHTML = generateCardsHTML(youtubeFiltered, 'youtube');
     };
 
-    function generateCardsHTML(dataArray) {
+    function generateCardsHTML(dataArray, format) {
+      let tHoverCardBg, tHoverBorder, tHoverText, tBtnHoverBg, tBtnHoverBorder, tBtnHoverText;
+      
+      if (format === 'music') {
+         tHoverCardBg = 'hover:bg-cottage-amber/10';
+         tHoverBorder = 'hover:border-cottage-amber/50';
+         tHoverText = 'group-hover:text-cottage-amberDark';
+         tBtnHoverBg = 'group-hover:bg-cottage-amberLight';
+         tBtnHoverBorder = 'group-hover:border-cottage-amber/50';
+         tBtnHoverText = 'group-hover:text-cottage-amberDark';
+      } else if (format === 'youtube') {
+         tHoverCardBg = 'hover:bg-cottage-greenLight/30';
+         tHoverBorder = 'hover:border-cottage-green/50';
+         tHoverText = 'group-hover:text-cottage-greenDark';
+         tBtnHoverBg = 'group-hover:bg-cottage-greenLight';
+         tBtnHoverBorder = 'group-hover:border-cottage-green/50';
+         tBtnHoverText = 'group-hover:text-cottage-greenDark';
+      } else { // movie
+         tHoverCardBg = 'hover:bg-cottage-roseLight/20';
+         tHoverBorder = 'hover:border-cottage-roseLight';
+         tHoverText = 'group-hover:text-cottage-rose';
+         tBtnHoverBg = 'group-hover:bg-cottage-roseLight';
+         tBtnHoverBorder = 'group-hover:border-cottage-rose';
+         tBtnHoverText = 'group-hover:text-cottage-roseDark';
+      }
+
       return dataArray.map(c => `
-        <div onclick="openCinemaModal(${c.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-4 rounded-[2rem] cursor-pointer transition shadow-sm hover:shadow-md flex flex-col group relative overflow-hidden transform hover:-translate-y-1">
+        <div onclick="openCinemaModal(${c.id})" class="bg-white ${tHoverCardBg} border-2 border-cottage-butter ${tHoverBorder} p-4 rounded-[2rem] cursor-pointer transition shadow-sm hover:shadow-md flex flex-col group relative overflow-hidden transform hover:-translate-y-1">
           <div class="relative h-40 w-full rounded-2xl overflow-hidden mb-4 border border-cottage-butter/50">
             <img src="${c.thumbnail}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             ${(c.locked && !isVip) ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/95 text-cottage-roseDark px-3 py-1.5 rounded-full text-[11px] font-black shadow-lg uppercase tracking-wider"><i class="fa-solid fa-lock mr-1"></i> VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
@@ -1131,9 +1155,9 @@
                  <span class="text-[10px] font-black px-2.5 py-1 rounded-md bg-cottage-butter text-cottage-brown uppercase">${c.genre}</span>
                  <span class="text-[10px] font-black px-2.5 py-1 rounded-md bg-white border border-cottage-butter text-cottage-brown uppercase"><i class="fa-solid fa-layer-group mr-1"></i>${c.level}</span>
               </div>
-              <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-rose transition line-clamp-1">${c.title}</h3>
+              <h3 class="font-display font-bold text-base text-cottage-brown ${tHoverText} transition line-clamp-1">${c.title}</h3>
             </div>
-            <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown group-hover:bg-cottage-roseLight group-hover:border-cottage-rose group-hover:text-cottage-roseDark transition">
+            <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown ${tBtnHoverBg} ${tBtnHoverBorder} ${tBtnHoverText} transition">
               ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học ngay 🎬'}
             </button>
           </div>
