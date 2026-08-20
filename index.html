@@ -129,7 +129,6 @@
       </div>
 
       <div class="flex flex-col md:flex-row gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm overflow-hidden">
-        <!-- ĐÃ CẬP NHẬT: Scroll ngang cho mobile -->
         <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="cinema-filters">
           <button onclick="filterSection('cinema', 'ALL')" class="filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại (All)</button>
           <button onclick="filterSection('cinema', 'Romance')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình cảm (Romance) 💌</button>
@@ -166,7 +165,6 @@
       </div>
 
       <div class="flex flex-col md:flex-row gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm overflow-hidden">
-        <!-- ĐÃ CẬP NHẬT: Scroll ngang cho mobile -->
         <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="music-filters">
           <button onclick="filterSection('music', 'ALL')" class="filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề (All)</button>
           <button onclick="filterSection('music', 'Pop')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc Pop (Pop) 🎤</button>
@@ -202,7 +200,6 @@
       </div>
 
       <div class="flex flex-col md:flex-row gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm overflow-hidden">
-        <!-- ĐÃ CẬP NHẬT: Scroll ngang cho mobile -->
         <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="youtube-filters">
           <button onclick="filterSection('youtube', 'ALL')" class="filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề (All)</button>
           <button onclick="filterSection('youtube', 'News')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tin tức (News) 📰</button>
@@ -247,6 +244,7 @@
         <div id="scramble-pool" class="flex flex-wrap gap-2.5 justify-center pt-2 mt-5"></div>
         
         <div class="flex justify-center gap-4 pt-5">
+          <button onclick="skipScramble()" class="px-6 py-3 text-sm font-bold text-cottage-brown bg-cottage-cream border-2 border-cottage-butter hover:bg-cottage-butter rounded-xl transition" id="btn-skip-scramble">Bỏ qua ⏭️</button>
           <button onclick="resetScramble()" class="px-6 py-3 text-sm font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition" id="btn-reset-scramble">Bỏ chọn ↻</button>
           <button onclick="checkScramble()" class="px-8 py-3 text-sm font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95" id="btn-check-scramble">Kiểm tra kết quả ✔️</button>
           <button onclick="restartPractice()" class="hidden px-8 py-3 text-sm font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow-[0_4px_15px_rgba(142,168,133,0.3)] transition transform active:scale-95" id="btn-restart-practice">Làm lại từ đầu 🔄</button>
@@ -378,9 +376,7 @@
           <div id="modal-quiz-options" class="space-y-2 relative z-10"></div>
           <div id="modal-quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-semibold leading-relaxed mt-2 border-2 relative z-10"></div>
           
-          <!-- ĐÃ CẬP NHẬT: Thêm nút Bỏ qua đứng chung hàng với nút Câu tiếp theo -->
           <div class="flex gap-3 relative z-10 mt-3">
-            <button id="btn-skip-quiz" onclick="skipCinemaQuiz()" class="flex-1 py-3.5 bg-cottage-cream border-2 border-cottage-butter hover:bg-cottage-butter text-cottage-brown font-bold text-sm rounded-2xl transition transform active:scale-95">Bỏ qua ⏭️</button>
             <button id="btn-next-quiz" onclick="nextCinemaQuiz()" class="hidden flex-1 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95">Câu tiếp theo →</button>
           </div>
         </div>
@@ -1096,7 +1092,6 @@
       const container = document.getElementById(containerId);
       if(!container) return;
       container.querySelectorAll('.filter-btn').forEach(btn => {
-        // ĐÃ CẬP NHẬT: Thêm shrink-0 whitespace-nowrap để nút không bị rớt dòng trên điện thoại
         btn.className = "filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition";
         if(btn.getAttribute('onclick').includes(`'${activeGenre}'`)) {
             btn.className = "filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
@@ -1165,18 +1160,9 @@
       const optsContainer = document.getElementById('modal-quiz-options');
       const feedback = document.getElementById('modal-quiz-feedback');
       const nextBtn = document.getElementById('btn-next-quiz');
-      const skipBtn = document.getElementById('btn-skip-quiz');
 
       feedback.classList.add('hidden'); 
       nextBtn.classList.add('hidden');
-      skipBtn.classList.remove('hidden'); // ĐÃ CẬP NHẬT: Luôn hiện nút Bỏ qua ở câu mới
-
-      // Nếu là câu cuối cùng, đổi text nút Bỏ qua thành Đóng bài học cho logic
-      if (activeQuizIndex === item.quizzes.length - 1) {
-          skipBtn.innerHTML = "Đóng bài học ❌";
-      } else {
-          skipBtn.innerHTML = "Bỏ qua ⏭️";
-      }
 
       optsContainer.innerHTML = quiz.options.map((opt, idx) => `
         <button onclick="checkCinemaQuiz(${idx}, this)" class="w-full text-left p-4 rounded-2xl bg-white border-2 border-cottage-butter hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 text-sm font-bold text-cottage-brown transition flex items-center justify-between group">
@@ -1191,29 +1177,28 @@
       const quiz = item.quizzes[activeQuizIndex];
       const feedback = document.getElementById('modal-quiz-feedback');
       const nextBtn = document.getElementById('btn-next-quiz');
-      const skipBtn = document.getElementById('btn-skip-quiz');
       
       feedback.classList.remove('hidden'); 
 
-      const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
-      allBtns.forEach(b => b.disabled = true);
-
       if (chosenIdx === quiz.correct) {
+        // Chỉ khi trả lời đúng mới khóa tất cả các nút
+        const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
+        allBtns.forEach(b => b.disabled = true);
+          
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
         feedback.innerHTML = `🎉 <b>Chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
-        
-        // ĐÃ CẬP NHẬT: Ẩn nút Bỏ qua, Hiện nút Đi tiếp nếu đúng
-        skipBtn.classList.add('hidden');
-        nextBtn.classList.remove('hidden');
       } else {
+        const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
+          
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-roseLight border-2 border-cottage-rose/40 text-cottage-roseDark";
         allBtns[quiz.correct].className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border-2 border-cottage-rose/30 block mt-3 relative z-10";
         feedback.innerHTML = `📝 <b>Khoan đã, hãy xem lại video để đoán nghĩa nhé!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
-        
-        // CẬP NHẬT: Trả lời sai vẫn giữ nguyên nút Bỏ qua để học sinh không bị kẹt
       }
+      
+      // Luôn luôn hiển thị nút Đi tiếp (hoặc Kết thúc) khi người dùng đã lựa chọn
+      nextBtn.classList.remove('hidden');
 
       if (activeQuizIndex === item.quizzes.length - 1) {
         nextBtn.innerHTML = "Tuyệt vời! Đóng bài học";
@@ -1227,23 +1212,12 @@
       }
     };
 
-    // ĐÃ CẬP NHẬT: Hàm xử lý khi bấm nút "Bỏ qua"
-    window.skipCinemaQuiz = function() {
-        const item = cinemaData.find(c => c.id === activeCinemaId);
-        if (activeQuizIndex === item.quizzes.length - 1) {
-            document.getElementById('cinema-media-container').innerHTML = ''; 
-            window.closeModal('modal-cinema');
-        } else {
-            activeQuizIndex++; 
-            window.renderCinemaQuiz();
-        }
-    };
-
     window.nextCinemaQuiz = function() {
         activeQuizIndex++; 
         window.renderCinemaQuiz();
     };
 
+    // ================= XỬ LÝ TRẠM LUYỆN TẬP CÓ NÚT BỎ QUA =================
     window.updateAvailableSentences = function() {
       if(cinemaData.length === 0) return;
       if (isVip) {
@@ -1258,6 +1232,14 @@
     window.restartPractice = function() {
       window.updateAvailableSentences();
       window.initScrambleGame();
+    };
+
+    window.skipScramble = function() {
+      if (currentPractice) {
+        // Xóa câu hiện tại ra khỏi danh sách còn lại
+        remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
+        window.initScrambleGame();
+      }
     };
 
     window.initScrambleGame = function() {
@@ -1275,6 +1257,7 @@
         document.getElementById('scramble-pool').innerHTML = "";
         document.getElementById('btn-reset-scramble').style.display = "none";
         document.getElementById('btn-check-scramble').style.display = "none";
+        document.getElementById('btn-skip-scramble').style.display = "none";
         
         document.getElementById('btn-restart-practice').classList.remove('hidden');
         document.getElementById('scramble-feedback').classList.add('hidden');
@@ -1336,6 +1319,7 @@
       
       document.getElementById('btn-reset-scramble').style.display = "inline-block";
       document.getElementById('btn-check-scramble').style.display = "inline-block";
+      document.getElementById('btn-skip-scramble').style.display = "inline-block";
     };
 
     window.pickWordForBlank = function(word) {
