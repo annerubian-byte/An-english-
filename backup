@@ -7,16 +7,12 @@
   
   <!-- ================= SEO & OPEN GRAPH META TAGS ================= -->
   <meta name="description" content="Cùng chill và học từ vựng qua ngữ cảnh tại Cozy Garden nhé! 🦢">
-  
-  <!-- Facebook, Zalo, LinkedIn -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://an-english.vercel.app">
   <meta property="og:title" content="Cozy Garden 🌷 - Học Tiếng Anh qua ngữ cảnh">
   <meta property="og:description" content="Khám phá từ vựng và cấu trúc Tiếng Anh qua những bộ phim nổi tiếng. Cùng chill và học với Cozy nhé! 🦢">
   <meta property="og:image" content="https://plain-apac-prod-public.komododecks.com/202608/19/jay3QWoIjsbsuI6PwiWr/image.png">
   
-  <!-- ============================================================ -->
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,6 +58,13 @@
 
 <body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans flex flex-col selection:bg-cottage-roseLight selection:text-cottage-roseDark relative pb-10 select-none" oncopy="return false;" oncut="return false;" oncontextmenu="return false;">
 
+  <!-- MÀN HÌNH CHỜ ĐỒNG BỘ DỮ LIỆU LẦN ĐẦU -->
+  <div id="sync-overlay" class="fixed inset-0 bg-cottage-cream z-[100] flex flex-col items-center justify-center hidden">
+    <div class="text-6xl animate-bounce mb-4">🌷</div>
+    <h2 class="text-2xl font-display font-black text-cottage-brown">Đang đồng bộ dữ liệu...</h2>
+    <p class="text-sm text-cottage-brownLight mt-2 text-center max-w-xs">Cozy Garden đang sắp xếp tài liệu lên Đám mây cho lần mở đầu tiên. Vui lòng đợi vài giây nhé! ✨</p>
+  </div>
+
   <header class="bg-cottage-card/90 backdrop-blur-md border-b-2 border-dashed border-cottage-butter sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
@@ -78,7 +81,7 @@
 
       <div class="flex items-center space-x-2">
         <button id="vip-header-btn" onclick="openLoginModal()" class="bg-white border-2 border-cottage-rose text-cottage-roseDark hover:bg-cottage-rose hover:text-white text-xs font-black px-4 py-2 rounded-full shadow-[0_4px_15px_rgba(230,164,180,0.2)] transition transform active:scale-95 flex items-center gap-1.5 animate-float">
-          <i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>
+          <i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span>Đang tải...</span>
         </button>
       </div>
     </div>
@@ -87,7 +90,13 @@
   <div class="bg-transparent pt-4 pb-2 z-30">
     <div class="max-w-6xl mx-auto px-4 flex gap-3 overflow-x-auto hide-scrollbar">
       <button onclick="switchNav('cinema')" id="nav-cinema" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-cottage-rose text-white shadow-sm transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-film"></i> Rạp chiếu bóng nhỏ 
+        <i class="fa-solid fa-film"></i> Kho phim
+      </button>
+      <button onclick="switchNav('music')" id="nav-music" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
+        <i class="fa-solid fa-headphones"></i> Kho nhạc
+      </button>
+      <button onclick="switchNav('youtube')" id="nav-youtube" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
+        <i class="fa-brands fa-youtube"></i> Kho YouTube
       </button>
       <button onclick="switchNav('arcade')" id="nav-arcade" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
         <i class="fa-solid fa-puzzle-piece"></i> Trạm luyện tập
@@ -100,39 +109,37 @@
 
   <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-8">
 
+    <!-- ================= SECTION: RẠP CHIẾU BÓNG ================= -->
     <section id="view-cinema" class="space-y-6">
       <div class="bg-gradient-to-br from-cottage-card to-cottage-roseLight/30 border-2 border-dashed border-cottage-rose/40 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-        
         <i class="fa-solid fa-leaf absolute top-6 left-10 text-4xl text-cottage-green/5 -rotate-12 z-0"></i>
         <i class="fa-solid fa-seedling absolute bottom-4 left-1/3 text-5xl text-cottage-green/10 rotate-12 z-0"></i>
         <i class="fa-solid fa-spa absolute top-1/2 right-1/4 text-6xl text-cottage-rose/10 -rotate-12 z-0"></i>
-        
         <div class="absolute -top-10 -left-10 w-32 h-32 bg-cottage-butter rounded-full blur-3xl opacity-60 z-0"></div>
         <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-cottage-rose rounded-full blur-3xl opacity-20 z-0"></div>
 
         <div class="space-y-2 z-10 relative">
-          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học từ vựng qua phim ảnh</h2>
-          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Hãy để âm thanh, hình ảnh và cảm xúc từ những bộ phim kinh điển giúp bạn ghim chặt từ vựng vào trí nhớ!</p>
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học qua phim ảnh</h2>
+          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Hãy để hình ảnh và cảm xúc từ những bộ phim điện ảnh kinh điển giúp bạn ghim chặt từ vựng vào trí nhớ!</p>
         </div>
         
-        <!-- Đã thu nhỏ khối icon phim lại bằng w-16 h-16 và text-2xl -->
         <div class="w-16 h-16 md:w-20 md:h-20 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-2xl md:text-3xl animate-float-delayed select-none z-10 relative shadow-[0_8px_30px_rgb(230,164,180,0.3)] text-cottage-roseDark">
           <i class="fa-solid fa-film"></i>
         </div>
       </div>
 
       <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
-        <div class="flex flex-wrap gap-1.5" id="level-filters">
-          <button onclick="filterCinema('ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại (All genres)</button>
-          <button onclick="filterCinema('Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình cảm (Romance) 💌</button>
-          <button onclick="filterCinema('Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính kịch (Drama) 🎭</button>
-          <button onclick="filterCinema('Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài (Comedy) 😂</button>
-          <button onclick="filterCinema('Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc kịch (Musical) 🎵</button>
-          <button onclick="filterCinema('Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo (Fantasy) 🧚‍♀️</button>
-          <button onclick="filterCinema('Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành động (Action) 💥</button>
-          <button onclick="filterCinema('Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn tưởng (Sci-Fi) 🛸</button>
-          <button onclick="filterCinema('Thriller & Mystery')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh thám & Giật gân (Mystery & Thriller) 🔍</button>
-          <button onclick="filterCinema('Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài liệu (Documentary) 🌍</button>
+        <div class="flex flex-wrap gap-1.5" id="cinema-filters">
+          <button onclick="filterSection('cinema', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại</button>
+          <button onclick="filterSection('cinema', 'Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình cảm 💌</button>
+          <button onclick="filterSection('cinema', 'Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính kịch 🎭</button>
+          <button onclick="filterSection('cinema', 'Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài 😂</button>
+          <button onclick="filterSection('cinema', 'Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc kịch 🎵</button>
+          <button onclick="filterSection('cinema', 'Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo 🧚‍♀️</button>
+          <button onclick="filterSection('cinema', 'Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành động 💥</button>
+          <button onclick="filterSection('cinema', 'Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn tưởng 🛸</button>
+          <button onclick="filterSection('cinema', 'Thriller & Mystery')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh thám 🔍</button>
+          <button onclick="filterSection('cinema', 'Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài liệu 🌍</button>
         </div>
         <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="cinema-count">0</span> bài học 📚</span>
       </div>
@@ -140,13 +147,72 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cinema-grid"></div>
     </section>
 
+    <!-- ================= SECTION: TRẠM PHÁT NHẠC ================= -->
+    <section id="view-music" class="hidden space-y-6">
+      <div class="bg-gradient-to-br from-cottage-card to-cottage-amber/20 border-2 border-dashed border-cottage-amber/40 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <i class="fa-solid fa-music absolute top-6 left-10 text-4xl text-cottage-amber/10 -rotate-12 z-0"></i>
+        <i class="fa-solid fa-record-vinyl absolute bottom-4 left-1/3 text-5xl text-cottage-brown/5 rotate-12 z-0"></i>
+        <div class="absolute -top-10 -left-10 w-32 h-32 bg-cottage-amber rounded-full blur-3xl opacity-20 z-0"></div>
+
+        <div class="space-y-2 z-10 relative">
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học qua lời bài hát</h2>
+          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Phân tích những thành ngữ, ẩn dụ và cấu trúc câu thú vị ẩn giấu trong những bài hát nổi tiếng.</p>
+        </div>
+        
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-2xl md:text-3xl animate-float select-none z-10 relative shadow-[0_8px_30px_rgb(230,184,125,0.3)] text-cottage-amber">
+          <i class="fa-solid fa-headphones-simple"></i>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
+        <div class="flex flex-wrap gap-1.5" id="music-filters">
+          <button onclick="filterSection('music', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại</button>
+          <button onclick="filterSection('music', 'Pop')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Pop 🎤</button>
+          <button onclick="filterSection('music', 'Folk/Indie')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Folk/Indie 🎸</button>
+          <button onclick="filterSection('music', 'R&B')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">R&B 🎷</button>
+        </div>
+        <span class="text-[11px] text-cottage-amber font-bold bg-cottage-amber/10 px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="music-count">0</span> bài hát 🎧</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="music-grid"></div>
+    </section>
+
+    <!-- ================= SECTION: KHO YOUTUBE ================= -->
+    <section id="view-youtube" class="hidden space-y-6">
+      <div class="bg-gradient-to-br from-cottage-card to-cottage-greenLight border-2 border-dashed border-cottage-green/30 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <i class="fa-brands fa-youtube absolute top-6 right-10 text-5xl text-cottage-rose/5 rotate-12 z-0"></i>
+        <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-cottage-green rounded-full blur-3xl opacity-20 z-0"></div>
+
+        <div class="space-y-2 z-10 relative">
+          <h2 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Học qua video thực tế</h2>
+          <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Nắm bắt ngữ điệu tự nhiên, từ lóng và cách diễn đạt trong các bài phỏng vấn, vlog, show truyền hình thực tế.</p>
+        </div>
+        
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-2xl md:text-3xl animate-float-delayed select-none z-10 relative shadow-[0_8px_30px_rgb(142,168,133,0.3)] text-cottage-green">
+          <i class="fa-solid fa-play"></i>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
+        <div class="flex flex-wrap gap-1.5" id="youtube-filters">
+          <button onclick="filterSection('youtube', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề</button>
+          <button onclick="filterSection('youtube', 'Interview / Talkshow')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Talkshow / Phỏng vấn 🎙️</button>
+          <button onclick="filterSection('youtube', 'Speech / Vlog')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Diễn văn / Vlog 📹</button>
+          <button onclick="filterSection('youtube', 'Reality Show')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Show thực tế 🏆</button>
+        </div>
+        <span class="text-[11px] text-cottage-greenDark font-bold bg-cottage-greenLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="youtube-count">0</span> video 📺</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="youtube-grid"></div>
+    </section>
+
+    <!-- ================= SECTION: TRẠM LUYỆN TẬP ================= -->
     <section id="view-arcade" class="hidden space-y-6 max-w-2xl mx-auto">
       <div class="bg-white border-2 border-cottage-butter rounded-3xl p-8 shadow-sm space-y-6 text-center relative">
         <div class="absolute top-4 left-4 text-2xl rotate-12">📝</div>
         <div class="absolute top-4 right-4 text-2xl -rotate-12">💡</div>
         
         <div class="space-y-1">
-          <!-- Phóng to chữ ở Trạm luyện tập -->
           <span class="text-xs font-black text-cottage-rose uppercase tracking-widest">Trạm luyện tập</span>
           <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown mt-1">Điền từ vào ngữ cảnh</h3>
           <p class="text-sm text-cottage-brownLight mt-2">Dựa vào các bài học bạn đã xem, hãy chọn từ phù hợp để điền vào chỗ trống nhé!</p>
@@ -154,11 +220,10 @@
 
         <div id="scramble-movie-tag" class="flex justify-center pt-2">
           <span id="scramble-movie-name" class="inline-flex items-center gap-1.5 bg-cottage-roseLight text-cottage-roseDark border border-cottage-rose/30 px-4 py-1.5 rounded-full text-sm font-bold shadow-sm">
-            <i class="fa-solid fa-clapperboard text-xs"></i> Phim: <span class="font-black"></span>
+            <i class="fa-solid fa-clapperboard text-xs"></i> Trích từ: <span class="font-black"></span>
           </span>
         </div>
         
-        <!-- ĐÃ CHỈNH SIZE CHỮ NHỎ HƠN 1 SIZE CHO ĐOẠN TEXT CẦN ĐIỀN -->
         <div class="bg-cottage-roseLight/40 p-6 md:p-8 rounded-2xl border border-cottage-rose/20 mt-4 text-left">
           <p class="text-sm md:text-base font-bold text-cottage-roseDark leading-[2.5] md:leading-[3]" id="scramble-prompt"></p>
         </div>
@@ -168,7 +233,6 @@
         <div class="flex justify-center gap-4 pt-5">
           <button onclick="resetScramble()" class="px-6 py-3 text-sm font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition" id="btn-reset-scramble">Bỏ chọn ↻</button>
           <button onclick="checkScramble()" class="px-8 py-3 text-sm font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95" id="btn-check-scramble">Kiểm tra kết quả ✔️</button>
-          
           <button onclick="restartPractice()" class="hidden px-8 py-3 text-sm font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow-[0_4px_15px_rgba(142,168,133,0.3)] transition transform active:scale-95" id="btn-restart-practice">Làm lại từ đầu 🔄</button>
         </div>
         <p id="scramble-feedback" class="text-sm md:text-base font-bold hidden mt-3"></p>
@@ -178,16 +242,12 @@
     <!-- ================= SECTION: GIỚI THIỆU ================= -->
     <section id="view-about" class="hidden space-y-6 max-w-4xl mx-auto">
       <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden shadow-sm flex flex-col md:flex-row gap-8 items-center">
-        
-        <!-- Các yếu tố Decor bay lơ lửng -->
         <div class="absolute top-6 right-8 text-4xl animate-float opacity-80">🦋</div>
         <div class="absolute bottom-6 left-8 text-3xl animate-float-delayed opacity-50">✨</div>
         <div class="absolute -bottom-16 -right-16 w-52 h-52 bg-cottage-roseLight rounded-full blur-3xl opacity-50"></div>
 
-        <!-- Khối Avatar & Info -->
         <div class="flex-shrink-0 flex flex-col items-center space-y-4 z-10 w-full md:w-1/3">
           <div class="w-44 h-44 rounded-full border-4 border-white shadow-xl overflow-hidden bg-cottage-roseLight flex items-center justify-center relative hover:scale-105 transition duration-500 ring-4 ring-cottage-roseLight/50">
-            <!-- ĐÃ ADD LINK FACEBOOK CỦA BẠN VÀO ĐÂY -->
             <img src="https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/779975910_1608020410728647_1218110404838512697_n.jpg?stp=dst-jpg_tt6&cstp=mx1152x1339&ctp=s1152x1339&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=d3EkrsaAs2MQ7kNvwEhhGwS&_nc_oc=AdoLcZz3us4qOiX1jQ-NhhE6YJl8n9xDqrAAGWPP_D3CE8JZU2ylGHA-qDlGIybh6nPL_u0kIbZUKoMJRVZg71BO&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=M4ixgIY_Y2HZctoujj4Ssg&_nc_ss=7b2a8&oh=00_AQFVaKge_0Y7Brl4Pvsu-Liq6iLfMb4UK9krrA2xhizcEw&oe=6A8BA9C1" alt="Vũ Thái An" class="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700">
           </div>
           <div class="text-center space-y-1.5 mt-2">
@@ -200,7 +260,6 @@
           </div>
         </div>
 
-        <!-- Khối Nội dung Giới thiệu -->
         <div class="flex-1 space-y-5 z-10 text-cottage-brown">
           <div class="space-y-2">
             <h3 class="text-xl md:text-2xl font-display font-black text-cottage-brown">Chào bạn, mừng bạn ghé thăm Cozy garden! 🌷</h3>
@@ -212,7 +271,7 @@
               Mình xây dựng <b>Cozy garden</b> vì tin rằng việc tiếp thu ngôn ngữ không nên chỉ khô khan qua sách vở hay thi cử, mà cần được gắn liền với ngữ cảnh thực tế, âm thanh và cảm xúc khi xem một bộ phim hay hoặc nghe một bài nhạc yêu thích. Đó cũng chính là cách mình đã học và trở nên đam mê với Tiếng Anh.
             </p>
             <p>
-                Với mục tiêu giúp học sinh tự học Tiếng Anh để có thể sử dụng thành thạo và tự nhiên như người bản xứ, Cozy garden cung cấp những trích đoạn phim kinh điển được bóc tách từng cấu trúc ngữ pháp và từ vựng một cách sâu sắc nhất đi kèm với bộ câu hỏi ôn tập hay ho. Chúc bạn có những giờ phút học tập thật hiệu quả và đầy thú vị tại Cozy garden nhé!
+                Với mục tiêu giúp học sinh tự học Tiếng Anh để có thể sử dụng thành thạo và tự nhiên như người bản xứ, Cozy garden cung cấp những trích đoạn kinh điển được bóc tách từng cấu trúc ngữ pháp và từ vựng một cách sâu sắc nhất. Chúc bạn có những giờ phút học tập hiệu quả tại Cozy garden nhé!
             </p>
           </div>
           
@@ -221,12 +280,11 @@
             <a href="mailto:annerubian@gmail.com" class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-butter flex items-center justify-center text-cottage-brown hover:bg-cottage-rose hover:text-white hover:border-cottage-rose transition-all transform hover:-translate-y-1 shadow-sm"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
-
       </div>
     </section>
   </main>
 
-  <!-- ================= MODAL: ĐĂNG NHẬP / ĐĂNG KÝ ================= -->
+  <!-- MODALS -->
   <div id="modal-login" class="fixed inset-0 bg-cottage-brown/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white border-[6px] border-cottage-cream rounded-[2.5rem] max-w-sm w-full p-6 md:p-8 shadow-2xl relative">
       <button onclick="closeModal('modal-login')" class="absolute right-4 top-4 w-8 h-8 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center transition z-10"><i class="fa-solid fa-xmark"></i></button>
@@ -234,7 +292,7 @@
       <div class="text-center space-y-2 mb-6">
         <div class="w-14 h-14 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-2xl mb-2 shadow-sm">🌿</div>
         <h3 id="auth-title" class="text-2xl font-display font-black text-cottage-brown tracking-tight">Đăng nhập</h3>
-        <p id="auth-subtitle" class="text-xs text-cottage-brownLight">Đăng nhập để lưu tiến độ và xem các phim VIP nhé!</p>
+        <p id="auth-subtitle" class="text-xs text-cottage-brownLight">Đăng nhập để lưu tiến độ và học bản VIP nhé!</p>
       </div>
 
       <div class="space-y-4">
@@ -265,32 +323,34 @@
       <button onclick="closeModal('modal-cinema')" class="absolute right-4 top-4 w-9 h-9 rounded-full bg-cottage-cream hover:bg-cottage-butter text-cottage-brown flex items-center justify-center text-sm transition z-[70] shadow-sm border border-cottage-butter"><i class="fa-solid fa-xmark"></i></button>
       
       <div class="p-5 md:p-7 space-y-6">
-        <div class="border-b-2 border-dashed border-cottage-butter pb-3 pr-8">
+        <div class="border-b-2 border-dashed border-cottage-butter pb-3 pr-8 flex items-center gap-2">
           <span id="cinema-genre" class="text-[9px] font-black text-cottage-roseDark uppercase tracking-widest bg-cottage-roseLight px-2.5 py-1 rounded-md">Genre</span>
-          <h2 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown mt-2 leading-tight">Movie Title</h2>
+          <h2 id="cinema-title" class="text-xl md:text-2xl font-serif font-bold text-cottage-brown leading-tight">Title</h2>
         </div>
         
         <div>
           <div id="cinema-media-container" class="w-full rounded-2xl overflow-hidden border-2 border-cottage-butter shadow-sm bg-cottage-cream relative"></div>
-          <p class="text-xs text-cottage-brownLight text-center mt-2 italic"><i class="fa-solid fa-headphones text-[10px] mr-1"></i> Vừa xem video vừa làm bài tập bên dưới để đoán nghĩa của từ nhé!</p>
+          <p class="text-xs text-cottage-brownLight text-center mt-2 italic"><i class="fa-solid fa-headphones text-[10px] mr-1"></i> Nghe kỹ và làm bài tập bên dưới để đoán nghĩa của từ nhé!</p>
         </div>
 
         <div class="p-4 md:p-5 bg-cottage-cream rounded-3xl border-2 border-cottage-butter relative mt-4">
           <div class="absolute -top-3 -left-2 text-2xl">📝</div>
-          <p id="cinema-quote" class="italic text-[15px] md:text-base text-cottage-brown font-serif leading-relaxed mt-1"></p>
+          <div id="cinema-quote-container" class="mt-1">
+             <p id="cinema-quote" class="italic text-[15px] md:text-base text-cottage-brown font-serif leading-relaxed"></p>
+          </div>
           <div class="w-10 h-0.5 bg-cottage-rose/30 my-3 mx-auto rounded-full"></div>
           <p id="cinema-translation" class="text-xs text-cottage-brownLight text-center"></p>
         </div>
 
         <div class="space-y-3 mt-6">
-          <p class="font-black text-cottage-greenDark uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-seedling text-cottage-green"></i> Bóc tách từ vựng:</p>
+          <p class="font-black text-cottage-greenDark uppercase text-[11px] tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-seedling text-cottage-green"></i> Bóc tách từ vựng / cấu trúc:</p>
           <div id="cinema-vocab" class="space-y-2.5"></div>
         </div>
 
         <div class="bg-cottage-card p-5 rounded-3xl border-2 border-cottage-rose/30 space-y-4 relative overflow-hidden mt-6">
           <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">💡</div>
           <div class="flex justify-between items-center text-[11px] font-black text-cottage-roseDark uppercase tracking-wider relative z-10">
-            <span>Khám phá từ vựng qua ngữ cảnh <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
+            <span>Kiểm tra sự thấu hiểu <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
           </div>
           
           <p id="modal-quiz-question" class="text-sm font-bold text-cottage-brown relative z-10 leading-relaxed"></p>
@@ -309,7 +369,7 @@
       <div class="text-center space-y-2 mb-8 relative">
         <div class="w-16 h-16 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-3xl mb-4 border-4 border-white shadow-sm animate-float">🌷</div>
         <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown tracking-tight">Hội viên thơ mộng 🎀</h3>
-        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập toàn bộ kho tàng từ vựng trong các bộ phim nổi tiếng.</p>
+        <p class="text-xs text-cottage-brownLight max-w-md mx-auto">Mở khóa đặc quyền truy cập toàn bộ kho tàng từ vựng VIP.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -392,9 +452,8 @@
     // ================= 1. IMPORT FIREBASE =================
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    // ================= 2. CẤU HÌNH FIREBASE =================
     const firebaseConfig = {
       apiKey: "AIzaSyBFRmVKt6DxNojHXoOp_qy2VfdEL9LYeFQ",
       authDomain: "cozy-garden-fa6b6.firebaseapp.com",
@@ -409,16 +468,14 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // ================= 3. CƠ SỞ DỮ LIỆU BÀI HỌC =================
-    const cinemaData = [
+    // ================= 2. KHAI BÁO BIẾN DỮ LIỆU ĐỘNG =================
+    let cinemaData = [];
+    let allPracticeSentences = [];
+
+    // ================= 3. DỮ LIỆU KHỞI TẠO BẢN FULL (TỰ ĐỘNG BẮN LÊN FIREBASE) =================
+    const SEED_CINEMA_DATA = [
       {
-        id: 1, 
-        genre: "Drama", 
-        title: "The Devil Wears Prada (2006)",
-        thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", 
-        mediaType: "youtube", 
-        mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", 
-        locked: false,
+        id: 1, genre: "Drama", format: "movie", title: "The Devil Wears Prada (2006)", thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", locked: false,
         quote: "You go to your closet and you select... I don't know... that lumpy blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
         translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh sần sùi kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
         vocabAnalysis: [
@@ -427,14 +484,14 @@
         ],
         quizzes: [
           { q: "Trong video, Miranda nói rằng Andy đang <b>'blithely unaware'</b> (không nhận thức được) về lịch sử của màu xanh Cerulean. Từ 'blithely' ở đây mang sắc thái gì?", options: ["A. Tức giận, phẫn nộ", "B. Cẩn thận, tỉ mỉ", "C. Thản nhiên, vô tư lự", "D. Rất lo lắng"], correct: 2, explanation: "<b>'Blithely'</b> diễn tả thái độ vô tư, không bận tâm. Miranda dùng từ này để châm biếm sự ngây thơ và thiếu hiểu biết của Andy về thế giới thời trang." },
-          { q: "Miranda châm biếm Andy vì cô nghĩ rằng sự lựa chọn áo len đã <b>'exempts'</b> cô khỏi ngành công nghiệp thời trang (<i>'exempts you from the fashion industry'</i>). Từ 'exempt' có nghĩa là gì?", options: ["A. Trói buộc cô vào", "B. Miễn trừ, tách biệt, cho phép cô đứng ngoài cuộc", "C. Làm cho cô nổi bật hơn", "D. Phá hủy sự nghiệp của cô"], correct: 1, explanation: "<b>'Exempt'</b> có nghĩa là được miễn trừ hoặc không chịu tác động. Andy nghĩ mình không quan tâm đến thời trang nên không thuộc về thế giới đó, reduction thực tế chiếc áo cô mặc là kết quả của cả một ngành công nghiệp." },
+          { q: "Miranda châm biếm Andy vì cô nghĩ rằng sự lựa chọn áo len đã <b>'exempts'</b> cô khỏi ngành công nghiệp thời trang (<i>'exempts you from the fashion industry'</i>). Từ 'exempt' có nghĩa là gì?", options: ["A. Trói buộc cô vào", "B. Miễn trừ, tách biệt, cho phép cô đứng ngoài cuộc", "C. Làm cho cô nổi bật hơn", "D. Phá hủy sự nghiệp của cô"], correct: 1, explanation: "<b>'Exempt'</b> có nghĩa là được miễn trừ hoặc không chịu tác động. Andy nghĩ mình không quan tâm đến thời trang nên không thuộc về thế giới đó, thực tế chiếc áo cô mặc là kết quả của cả một ngành công nghiệp." },
           { q: "Miranda nhắc đến việc màu xanh Cerulean sau đó đã được <b>'filtered down'</b> tới các trung tâm thương mại. Từ này diễn tả quá trình nào?", options: ["A. Bị loại bỏ hoàn toàn", "B. Được lọc sạch vi khuẩn", "C. Lan truyền dần từ tầng lớp cao xuống đại chúng", "D. Bị đẩy giá lên cao"], correct: 2, explanation: "<b>'Filter down'</b> (lọc xuống) ám chỉ việc một xu hướng thời trang ban đầu chỉ dành cho giới thượng lưu, sau đó dần lan tới các cửa hàng bình dân." },
           { q: "Miranda mỉa mai việc Andy lấy chiếc áo đó từ một <b>'clearance bin'</b>. Bạn thường thấy 'clearance bin' ở đâu trong siêu thị?", options: ["A. Khu vực trưng bày đồ mới ra mắt", "B. Nơi chứa đồ giảm giá, đồ xả kho", "C. Thùng rác", "D. Khu vực bán đồ bị may lỗi"], correct: 1, explanation: "<b>'Clearance bin'</b> là những thùng đổ đống quần áo xả hàng tồn kho, bán với giá rất rẻ. Miranda dùng từ này để nhấn mạnh sự 'bình dân'." },
           { q: "Cuối cùng, Miranda kết luận: 'It's sort of <b>comical</b> how you think that you've made a choice...'. Từ 'comical' mang sắc thái gì?", options: ["A. Buồn bã, đáng thương", "B. Tức giận, phẫn nộ", "C. Buồn cười, nực cười", "D. Rất logic, hợp lý"], correct: 2, explanation: "<b>'Comical'</b> có nghĩa là buồn cười. Ở đây Miranda cười nhạo sự ngây thơ của Andy khi cô nghĩ rằng mình nằm ngoài vòng xoáy của ngành thời trang." }
         ]
       },
       {
-        id: 2, genre: "Drama", title: "The Intern (2015)", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
+        id: 2, genre: "Drama", format: "movie", title: "The Intern (2015)", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
         quote: "You're never wrong to do the right thing.", translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
           { word: "Diversion (n)", ipa: "/dɪˈvɜːr.ʒən/", meaning: "Sự giải trí, thú vui tiêu khiển.", context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' (một việc gì đó để làm cho đỡ buồn chán) như giúp sếp lập Facebook." },
@@ -449,7 +506,7 @@
         ]
       },
       {
-        id: 3, genre: "Musical", title: "La La Land (2016)", thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", locked: true, 
+        id: 3, genre: "Musical", format: "movie", title: "La La Land (2016)", thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", locked: true, 
         quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.", translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
         vocabAnalysis: [
           { word: "Pipe dream (Idiom)", ipa: "/ˈpaɪp ˌdriːm/", meaning: "Giấc mơ viển vông, hão huyền.", context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực." },
@@ -464,7 +521,7 @@
         ]
       },
       {
-        id: 4, genre: "Musical", title: "The Greatest Showman (2017)", thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", locked: true,
+        id: 4, genre: "Musical", format: "movie", title: "The Greatest Showman (2017)", thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", locked: true,
         quote: "No one ever made a difference by being like everyone else.", translation: "Chưa từng có ai tạo ra sự khác biệt bằng cách sống giống như những người khác.",
         vocabAnalysis: [
           { word: "Noble (adj)", ipa: "/ˈnoʊ.bəl/", meaning: "Cao quý, đáng kính.", context: "Bộ phim trích dẫn câu nói của P.T. Barnum: 'Nghệ thuật cao quý nhất là làm cho người khác hạnh phúc'." },
@@ -479,7 +536,7 @@
         ]
       },
       {
-        id: 5, genre: "Fantasy", title: "Harry Potter and the Half-Blood Prince (2009)", thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", locked: true,
+        id: 5, genre: "Fantasy", format: "movie", title: "Harry Potter and the Half-Blood Prince (2009)", thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", locked: true,
         quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.", translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
         vocabAnalysis: [
           { word: "Coward (n)", ipa: "/ˈkaʊ.ərd/", meaning: "Kẻ hèn nhát.", context: "Harry đã dùng từ này để hét vào mặt Snape khi anh chạy trốn, thể hiện sự phẫn nộ tột cùng." },
@@ -494,7 +551,7 @@
         ]
       },
       {
-        id: 6, genre: "Fantasy", title: "Alice in Wonderland (2010)", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", locked: false,
+        id: 6, genre: "Fantasy", format: "movie", title: "Alice in Wonderland (2010)", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", locked: false,
         quote: "Anyone with a head that large is welcome in my court.", translation: "Bất kỳ ai với một cái đầu to như vậy đều được hoan nghênh tại triều đình của ta.",
         vocabAnalysis: [
           { word: "Outgrow (v)", ipa: "/ˌaʊtˈɡroʊ/", meaning: "Lớn vượt quá kích cỡ (của quần áo).", context: "Alice giải thích rằng do ăn bánh phép thuật nên cơ thể cô đã phình to, khiến cô 'mặc không vừa' những bộ quần áo cũ nữa." },
@@ -509,7 +566,7 @@
         ]
       },
       {
-        id: 7, genre: "Action", title: "John Wick (2014)", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/C0BMx-qxsP4?rel=0", locked: true,
+        id: 7, genre: "Action", format: "movie", title: "John Wick (2014)", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/C0BMx-qxsP4?rel=0", locked: true,
         quote: "People keep asking if I'm back, and I haven't really had an answer. But now, yeah, Im thinking I'm back.", translation: "Mọi người cứ hỏi tôi đã trở lại chưa, và tôi chưa bao giờ thực sự có câu trả lời. Nhưng bây giờ, ừ, tôi nghĩ tôi đã trở lại.",
         vocabAnalysis: [
           { word: "Retirement (n)", ipa: "/rɪˈtaɪər.mənt/", meaning: "Sự nghỉ hưu, rút lui khỏi giới giang hồ.", context: "John Wick từng là một sát thủ huyền thoại đã 'rửa tay gác kiếm' (retirement) trước khi bị ép phải quay lại." },
@@ -524,7 +581,7 @@
         ]
       },
       {
-        id: 8, genre: "Sci-Fi", title: "Interstellar (2014)", thumbnail: "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/8a7dd34b09c9c25336a3d850d4c431455e1aaaf0.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/zSWdZVtXT7E?rel=0", locked: true,
+        id: 8, genre: "Sci-Fi", format: "movie", title: "Interstellar (2014)", thumbnail: "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/8a7dd34b09c9c25336a3d850d4c431455e1aaaf0.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/zSWdZVtXT7E?rel=0", locked: true,
         quote: "Mankind was born on Earth. It was never meant to die here.", translation: "Nhân loại được sinh ra trên Trái Đất. Nhưng không có nghĩa là chúng ta phải chết ở đây.",
         vocabAnalysis: [
           { word: "Gravity (n)", ipa: "/ˈɡræv.ə.t̬i/", meaning: "Trọng lực, lực hấp dẫn.", context: "Một trong những rào cản lớn nhất để khám phá vũ trụ là vượt qua 'trọng lực' của Trái đất." },
@@ -537,10 +594,35 @@
           { q: "Trong thuyết tương đối, thời gian có thể bị <b>'dilated'</b> (time dilation). Nghĩa của từ này là gì?", options: ["A. Bị dừng lại hoàn toàn", "B. Chạy ngược lại", "C. Bị giãn nở, kéo dài ra", "D. Trôi qua nhanh hơn"], correct: 2, explanation: "Khi ở gần hố đen, thời gian sẽ bị 'giãn nở' (<b>dilated</b>) - một giờ ở đó có thể bằng bảy năm trên Trái đất." },
           { q: "Hố đen trong không gian có một sức hút <b>'inescapable'</b>. 'Insapable' là gì?", options: ["A. Dễ dàng thoát ra", "B. Không thể trốn thoát", "C. Rất yếu ớt", "D. Có thể nhìn thấy được"], correct: 1, explanation: "Trọng lực của hố đen lớn đến mức ánh sáng cũng 'không thể thoát ra' (<b>inescapable</b>)." }
         ]
+      },
+      // === DỮ LIỆU MẪU CHO TRẠM PHÁT NHẠC ===
+      {
+        id: 9, genre: "Pop", format: "music", title: "Anti-Hero - Taylor Swift", thumbnail: "https://i.scdn.co/image/ab67616d0000b273bb54dde68cd23e2a268ae0f5", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b1kbLwvqugk?rel=0", locked: false,
+        quote: "I should not be left to my own devices\nThey come with prices and vices\nI end up in crisis\n(Tale as old as time)", translation: "Lẽ ra tôi không nên được để mặc cho tự hành động theo ý mình\nChúng mang theo những cái giá phải trả và những thói hư tật xấu\nĐể rồi tôi rơi vào khủng hoảng\n(Một câu chuyện đã quá đỗi quen thuộc)",
+        vocabAnalysis: [
+          { word: "Left to one's own devices", ipa: "(Idiom)", meaning: "Để mặc ai đó tự làm theo ý mình, không có sự giám sát.", context: "Cô ấy thừa nhận rằng mỗi khi được tự do làm theo ý mình, cô ấy thường gây ra những hậu quả không tốt." },
+          { word: "Vice (n)", ipa: "/vaɪs/", meaning: "Thói hư tật xấu, điểm yếu trong tính cách.", context: "Những hành động bộc phát luôn đi kèm với những tính xấu tiềm ẩn trong con người cô." }
+        ],
+        quizzes: [
+          { q: "Thành ngữ <b>'Tale as old as time'</b> mà nữ ca sĩ sử dụng ở cuối đoạn mang ý nghĩa gì?", options: ["A. Một câu chuyện rất nhàm chán", "B. Một câu chuyện cổ tích", "C. Một điều gì đó lặp đi lặp lại, quen thuộc từ rất lâu rồi", "D. Một câu chuyện không có thật"], correct: 2, explanation: "<b>'Tale as old as time'</b> ngụ ý rằng việc cô ấy mắc sai lầm là một câu chuyện đã quá quen thuộc, lặp đi lặp lại như một quy luật." },
+          { q: "Từ <b>'Crisis'</b> trong câu 'I end up in crisis' diễn tả trạng thái nào?", options: ["A. Hạnh phúc tột độ", "B. Tức giận", "C. Khủng hoảng, tình thế khó khăn", "D. Buồn ngủ"], correct: 2, explanation: "<b>'Crisis'</b> là trạng thái khủng hoảng, mất kiểm soát." }
+        ]
+      },
+      // === DỮ LIỆU MẪU CHO KHO YOUTUBE ===
+      {
+        id: 10, genre: "Speech / Vlog", format: "youtube", title: "Taylor Swift - NYU Commencement Speech 2022", thumbnail: "https://i.ytimg.com/vi/OBkX2Hk2-Yk/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGD4gWShlMA8=&rs=AOn4CLCM3LhQWvI198t8BwGzP43mO8gPew", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/OBkX2Hk2-Yk?rel=0", locked: true,
+        quote: "You get to pick what your life has time and room for. Be discerning.", translation: "Bạn có quyền lựa chọn điều gì xứng đáng để bạn dành thời gian và không gian trong cuộc đời mình. Hãy biết nhìn nhận một cách sáng suốt.",
+        vocabAnalysis: [
+          { word: "Discerning (adj)", ipa: "/dɪˈsɜːr.nɪŋ/", meaning: "Sáng suốt, biết nhận thức rõ ràng, có óc phán đoán.", context: "Một lời khuyên đắt giá: Hãy thật 'sáng suốt' để biết buông bỏ những thứ không đáng và giữ lại những điều quan trọng." }
+        ],
+        quizzes: [
+          { q: "Khi nói <b>'You get to pick...'</b>, cấu trúc 'get to do something' mang sắc thái ý nghĩa gì?", options: ["A. Bị ép buộc phải làm gì đó", "B. Có cơ hội, có đặc quyền được làm gì đó", "C. Rất khó khăn để làm gì đó", "D. Sẽ không bao giờ làm gì đó"], correct: 1, explanation: "<b>'Get to + V'</b> thường được dùng để nhấn mạnh sự may mắn, đặc quyền, hoặc cơ hội được làm việc gì đó (thay vì 'have to' - bắt buộc)." },
+          { q: "Cụm <b>'Room for'</b> trong ngữ cảnh này mang ý nghĩa ẩn dụ là gì?", options: ["A. Căn phòng trống trong nhà", "B. Sức chứa của một chiếc hộp", "C. Không gian trong tâm trí/cuộc sống", "D. Một căn phòng khách sạn"], correct: 2, explanation: "<b>'Room for'</b> (không gian dành cho) ẩn dụ về việc chúng ta chỉ có một dung lượng tinh thần nhất định, nên phải chọn lọc những gì xứng đáng để giữ lại." }
+        ]
       }
     ];
 
-    const allPracticeSentences = [
+    const SEED_PRACTICE_DATA = [
       { id: "prada_1", cinemaId: 1, fullText: "You go to your closet and you select that lumpy blue sweater because you take yourself too seriously.", parts: [ { text: "You go to your closet and you select that ", isBlank: false }, { text: "có nhiều cục, vón cục, sần sùi", expectedWord: "lumpy", isBlank: true }, { text: " blue sweater because you take yourself too ", isBlank: false }, { text: "quá tự cao, tự cho mình là quan trọng", expectedWord: "seriously", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["lumpy", "seriously", "ephemeral", "coward", "potential"] },
       { id: "intern_1", cinemaId: 2, fullText: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping potential.", parts: [ { text: "I just knew at the end of the day that a woman with a glass of wine and a laptop had real shopping ", isBlank: false }, { text: "khả năng, tiềm năng", expectedWord: "potential", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["potential", "catastrophe", "diversion", "lumpy"] },
       { id: "lalaland_1", cinemaId: 3, fullText: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.", parts: [ { text: "Maybe I'm one of those people that has always wanted to do it, but it's like a ", isBlank: false }, { text: "giấc mơ viển vông, hão huyền", expectedWord: "pipe dream", isBlank: true }, { text: " for me.", isBlank: false } ], wordsToPick: ["reverie", "pipe dream", "vanguard", "diversion"] },
@@ -555,15 +637,65 @@
       { id: "harry_2", cinemaId: 5, fullText: "He is a coward.", parts: [ { text: "He is a ", isBlank: false }, { text: "kẻ hèn nhát", expectedWord: "coward", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["coward", "malevolent", "ominous", "purist"] },
       { id: "alice_2", cinemaId: 6, fullText: "This is very peculiar.", parts: [ { text: "This is very ", isBlank: false }, { text: "kỳ lạ, khác thường", expectedWord: "peculiar", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["peculiar", "nonsensical", "tyrannical", "coward"] },
       { id: "johnwick_2", cinemaId: 7, fullText: "He has unparalleled skills.", parts: [ { text: "He has ", isBlank: false }, { text: "vô song, không có đối thủ", expectedWord: "unparalleled", isBlank: true }, { text: " skills.", isBlank: false } ], wordsToPick: ["unparalleled", "foolhardy", "precision", "peculiar"] },
-      { id: "interstellar_2", cinemaId: 8, fullText: "It is an inescapable force.", parts: [ { text: "It is an ", isBlank: false }, { text: "không thể trốn thoát", expectedWord: "inescapable", isBlank: true }, { text: " force.", isBlank: false } ], wordsToPick: ["inescapable", "catastrophic", "hostile", "unparalleled"] }
+      { id: "interstellar_2", cinemaId: 8, fullText: "It is an inescapable force.", parts: [ { text: "It is an ", isBlank: false }, { text: "không thể trốn thoát", expectedWord: "inescapable", isBlank: true }, { text: " force.", isBlank: false } ], wordsToPick: ["inescapable", "catastrophic", "hostile", "unparalleled"] },
+      // Câu phụ cho mẫu Nhạc & Youtube
+      { id: "swift_music_1", cinemaId: 9, fullText: "I should not be left to my own devices.", parts: [ { text: "I should not be left to my own ", isBlank: false }, { text: "tự làm theo ý mình, không ai quản lý", expectedWord: "devices", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["devices", "purist", "catastrophe", "vices"] },
+      { id: "swift_yt_1", cinemaId: 10, fullText: "Be discerning.", parts: [ { text: "Be ", isBlank: false }, { text: "sáng suốt, có óc phán đoán", expectedWord: "discerning", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["discerning", "ephemeral", "coward", "hostile"] }
     ];
 
-    // ================= 4. BIẾN TOÀN CỤC TRẠNG THÁI =================
+    // ================= 4. HÀM TẢI (HOẶC TỰ ĐỘNG ĐẨY) DỮ LIỆU ĐÁM MÂY =================
+    async function loadAppData() {
+      try {
+        const lessonsRef = collection(db, "lessons");
+        const practiceRef = collection(db, "practice_sentences");
+
+        const [lessonsSnap, practiceSnap] = await Promise.all([
+          getDocs(lessonsRef),
+          getDocs(practiceRef)
+        ]);
+
+        // NẾU KHO TRỐNG (Lần chạy đầu tiên), TỰ ĐỘNG SEED DỮ LIỆU
+        if (lessonsSnap.empty) {
+          document.getElementById('sync-overlay').classList.remove('hidden');
+          console.log("Kho dữ liệu trống. Đang tự động đẩy bài học lên Firebase...");
+          
+          for (const item of SEED_CINEMA_DATA) {
+            await setDoc(doc(db, "lessons", `lesson_${item.id}`), item);
+          }
+          for (const practice of SEED_PRACTICE_DATA) {
+            await setDoc(doc(db, "practice_sentences", practice.id), practice);
+          }
+          
+          console.log("Hoàn tất đẩy dữ liệu! Tải lại trang...");
+          window.location.reload(); 
+          return;
+        }
+
+        // Lấy dữ liệu về nếu đã có
+        cinemaData = lessonsSnap.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+        cinemaData.sort((a, b) => a.id - b.id); // Sắp xếp lại theo ID cho chuẩn
+        
+        allPracticeSentences = practiceSnap.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+
+        document.getElementById('vip-header-btn').innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
+        applyGuestUI(); 
+      } catch (error) {
+        console.error("Lỗi khi tải học liệu:", error);
+        alert("Oops! Không thể tải dữ liệu bài học. Bạn kiểm tra lại kết nối mạng nhé! 🌷");
+      }
+    }
+
+
+    // ================= 5. BIẾN TOÀN CỤC TRẠNG THÁI =================
     let isVip = false;
     let currentUser = null;
     let isLoginMode = true; 
     
-    let currentFilter = 'ALL';
+    // Tách riêng biến filter cho 3 trang
+    let currentCinemaFilter = 'ALL';
+    let currentMusicFilter = 'ALL';
+    let currentYoutubeFilter = 'ALL';
+    
     let activeCinemaId = null;
     let activeQuizIndex = 0;
 
@@ -574,12 +706,9 @@
     
     let currentVipExpiry = 0; 
     let vipTimer = null; 
-
-// ================= 5. LOGIC FIREBASE AUTH & FIRESTORE (REAL-TIME) =================
-    
     let userDocListener = null; 
 
-    // Lắng nghe thay đổi đăng nhập/đăng xuất
+    // ================= 6. LOGIC FIREBASE AUTH & FIRESTORE =================
     onAuthStateChanged(auth, (user) => {
       if (user) {
         currentUser = user;
@@ -594,10 +723,8 @@
       }
     });
 
-    // Lắng nghe dữ liệu theo thời gian thực (Real-time)
     function startRealtimeVipCheck(uid) {
       const userRef = doc(db, "users", uid);
-      
       userDocListener = onSnapshot(userRef, (userSnap) => {
         if (userSnap.exists()) {
           const data = userSnap.data();
@@ -636,9 +763,11 @@
           kickIfInVipCinema();
         }
 
-        window.renderCinemaCards();
-        window.updateAvailableSentences();
-        window.initScrambleGame();
+        if(cinemaData.length > 0) {
+           window.renderAllSections();
+           window.updateAvailableSentences();
+           window.initScrambleGame();
+        }
       });
     }
 
@@ -656,15 +785,16 @@
 
     function startVipTimer() {
         if (vipTimer) clearInterval(vipTimer);
-        
         vipTimer = setInterval(() => {
             if (isVip && Date.now() > currentVipExpiry) {
                 isVip = false;
                 clearInterval(vipTimer); 
                 applyExpiredUI(); 
-                window.renderCinemaCards(); 
-                window.updateAvailableSentences();
-                window.initScrambleGame(); 
+                if(cinemaData.length > 0) {
+                    window.renderAllSections(); 
+                    window.updateAvailableSentences();
+                    window.initScrambleGame(); 
+                }
                 kickIfInVipCinema();
             }
         }, 5000); 
@@ -708,23 +838,12 @@
       } catch (error) {
         let friendlyMessage = "Có lỗi xảy ra, vui lòng thử lại!";
        switch (error.code) {
-         case 'auth/invalid-credential':
-           friendlyMessage = "🤔 Thông tin đăng nhập không chính xác! Email này chưa được đăng ký hoặc bạn gõ nhầm mật khẩu. Nếu chưa có tài khoản, hãy chuyển sang phần Đăng ký nhé!";
-           break;
-         case 'auth/email-already-in-use':
-           friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi. Hãy chuyển sang phần Đăng nhập nha!";
-           break;
-         case 'auth/invalid-email':
-           friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com).";
-           break;
-         case 'auth/weak-password':
-           friendlyMessage = "🛑 Mật khẩu hơi yếu, bạn hãy chọn mật khẩu dài từ 6 ký tự trở lên nhé.";
-           break;
-         case 'auth/network-request-failed':
-           friendlyMessage = "🌐 Lỗi kết nối mạng. Bạn kiểm tra lại Wifi/4G nhé!";
-           break;
-         default:
-           friendlyMessage = "Lỗi hệ thống: " + error.message;
+         case 'auth/invalid-credential': friendlyMessage = "🤔 Thông tin đăng nhập không chính xác!"; break;
+         case 'auth/email-already-in-use': friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi."; break;
+         case 'auth/invalid-email': friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com)."; break;
+         case 'auth/weak-password': friendlyMessage = "🛑 Mật khẩu hơi yếu, hãy chọn mật khẩu dài từ 6 ký tự trở lên."; break;
+         case 'auth/network-request-failed': friendlyMessage = "🌐 Lỗi kết nối mạng. Bạn kiểm tra lại Wifi/4G nhé!"; break;
+         default: friendlyMessage = "Lỗi hệ thống: " + error.message;
        }
         alert(friendlyMessage);
       } finally {
@@ -740,7 +859,7 @@
       alert("Đã đăng xuất tài khoản!");
     };
 
-    // ================= 6. CẬP TRẠNG THÁI GIAO DIỆN =================
+    // ================= 7. CẬP TRẠNG THÁI GIAO DIỆN =================
     function applyVipUI(expiryTimestamp) {
       const vipHeaderBtn = document.getElementById('vip-header-btn');
       const isLifetime = expiryTimestamp - Date.now() > 50 * 365 * 24 * 60 * 60 * 1000;
@@ -764,24 +883,25 @@
       vipHeaderBtn.innerHTML = '<i class="fa-solid fa-crown text-[11px]"></i> <span>Đăng ký VIP</span>';
       vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
       vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white', 'border-transparent');
-
       vipHeaderBtn.onclick = window.openVipModal;
     }
 
     function applyGuestUI() {
+      if(cinemaData.length === 0) return;
       const vipHeaderBtn = document.getElementById('vip-header-btn');
-      vipHeaderBtn.innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
-      vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
-      vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white', 'border-transparent');
-      vipHeaderBtn.onclick = window.openLoginModal;
-      
-      window.renderCinemaCards();
+      if(!currentUser) {
+          vipHeaderBtn.innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
+          vipHeaderBtn.classList.add('bg-white', 'text-cottage-roseDark', 'border-cottage-rose');
+          vipHeaderBtn.classList.remove('bg-cottage-rose', 'text-white', 'border-transparent');
+          vipHeaderBtn.onclick = window.openLoginModal;
+      }
+      window.renderAllSections();
       window.updateAvailableSentences();
       window.initScrambleGame();
     }
 
-    // ================= 7. GÁN CÁC HÀM XỬ LÝ SỰ KIỆN LÊN WINDOW =================
 
+    // ================= 8. GÁN CÁC HÀM XỬ LÝ SỰ KIỆN LÊN WINDOW =================
     window.openLoginModal = function() { document.getElementById('modal-login').classList.remove('hidden'); };
 
     window.closeModal = function(id) { 
@@ -824,12 +944,13 @@
       window.closeModal('modal-login');
       window.closeModal('modal-vip');
 
-      ['cinema', 'arcade', 'about'].forEach(v => {
+      ['cinema', 'music', 'youtube', 'arcade', 'about'].forEach(v => {
         const viewEl = document.getElementById(`view-${v}`);
         const navEl = document.getElementById(`nav-${v}`);
         if(viewEl) viewEl.classList.add('hidden');
         if(navEl) navEl.className = "px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0";
       });
+      
       const activeView = document.getElementById(`view-${viewId}`);
       const activeNav = document.getElementById(`nav-${viewId}`);
       if(activeView) activeView.classList.remove('hidden');
@@ -844,17 +965,32 @@
       }
     };
 
+    // ================= RENDER LOGIC =================
+    window.renderAllSections = function() {
+      if(cinemaData.length === 0) return;
+      
+      // Render cho phần Điện ảnh (format: "movie" hoặc không có)
+      const cinemaFiltered = cinemaData.filter(c => (!c.format || c.format === 'movie') && (currentCinemaFilter === 'ALL' || c.genre === currentCinemaFilter));
+      document.getElementById('cinema-count').innerText = cinemaFiltered.length;
+      document.getElementById('cinema-grid').innerHTML = generateCardsHTML(cinemaFiltered, 'Phim');
 
-    window.renderCinemaCards = function() {
-      const container = document.getElementById('cinema-grid');
-      const filtered = currentFilter === 'ALL' ? cinemaData : cinemaData.filter(c => c.genre === currentFilter);
-      document.getElementById('cinema-count').innerText = filtered.length;
+      // Render cho phần Nhạc (format: "music")
+      const musicFiltered = cinemaData.filter(c => c.format === 'music' && (currentMusicFilter === 'ALL' || c.genre === currentMusicFilter));
+      document.getElementById('music-count').innerText = musicFiltered.length;
+      document.getElementById('music-grid').innerHTML = generateCardsHTML(musicFiltered, 'Nhạc');
 
-      container.innerHTML = filtered.map(c => `
+      // Render cho phần YouTube (format: "youtube")
+      const youtubeFiltered = cinemaData.filter(c => c.format === 'youtube' && (currentYoutubeFilter === 'ALL' || c.genre === currentYoutubeFilter));
+      document.getElementById('youtube-count').innerText = youtubeFiltered.length;
+      document.getElementById('youtube-grid').innerHTML = generateCardsHTML(youtubeFiltered, 'Video');
+    };
+
+    function generateCardsHTML(dataArray, labelType) {
+      return dataArray.map(c => `
         <div onclick="openCinemaModal(${c.id})" class="bg-white hover:bg-cottage-cardHover border-2 border-cottage-butter hover:border-cottage-roseLight p-4 rounded-[2rem] cursor-pointer transition shadow-sm hover:shadow-md flex flex-col group relative overflow-hidden transform hover:-translate-y-1">
           <div class="relative h-40 w-full rounded-2xl overflow-hidden mb-4 border border-cottage-butter/50">
             <img src="${c.thumbnail}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            ${(c.locked && !isVip) ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/95 text-cottage-roseDark px-3 py-1.5 rounded-full text-[11px] font-black shadow-lg uppercase tracking-wider"><i class="fa-solid fa-lock mr-1"></i> Yêu cầu VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
+            ${(c.locked && !isVip) ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm"><span class="bg-white/95 text-cottage-roseDark px-3 py-1.5 rounded-full text-[11px] font-black shadow-lg uppercase tracking-wider"><i class="fa-solid fa-lock mr-1"></i> VIP</span></div>' : '<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>'}
           </div>
           <div class="flex-1 flex flex-col justify-between">
             <div class="space-y-2">
@@ -862,24 +998,43 @@
               <h3 class="font-display font-bold text-base text-cottage-brown group-hover:text-cottage-rose transition line-clamp-1">${c.title}</h3>
             </div>
             <button class="mt-4 w-full py-2 bg-cottage-cream border-2 border-cottage-butter rounded-xl text-xs font-bold text-cottage-brown group-hover:bg-cottage-roseLight group-hover:border-cottage-rose group-hover:text-cottage-roseDark transition">
-              ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học từ vựng 🎬'}
+              ${(c.locked && !isVip) ? 'Mở khóa ngay 🗝️' : 'Vào học ngay 🎬'}
             </button>
           </div>
         </div>
       `).join('');
+    }
+
+    window.filterSection = function(section, genre) {
+      if(section === 'cinema') {
+          currentCinemaFilter = genre;
+          updateFilterButtons('cinema-filters', genre);
+      } else if (section === 'music') {
+          currentMusicFilter = genre;
+          updateFilterButtons('music-filters', genre);
+      } else if (section === 'youtube') {
+          currentYoutubeFilter = genre;
+          updateFilterButtons('youtube-filters', genre);
+      }
+      window.renderAllSections();
     };
 
-    window.filterCinema = function(genre) {
-      currentFilter = genre;
-      document.querySelectorAll('#level-filters .filter-btn').forEach(btn => {
+    function updateFilterButtons(containerId, activeGenre) {
+      const container = document.getElementById(containerId);
+      if(!container) return;
+      container.querySelectorAll('.filter-btn').forEach(btn => {
+        // Reset về class mặc định
         btn.className = "filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition";
+        // Bắt text hoặc hàm onclick để đánh dấu active
+        if(btn.getAttribute('onclick').includes(`'${activeGenre}'`)) {
+            btn.className = "filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
+        }
       });
-      event.target.className = "filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
-      window.renderCinemaCards();
-    };
+    }
 
     window.openCinemaModal = function(id) {
       const item = cinemaData.find(c => c.id === id);
+      if (!item) return;
       if (item.locked && !isVip) { window.openVipModal(); return; }
       
       activeCinemaId = id; 
@@ -893,15 +1048,25 @@
         mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
       }
 
-      document.getElementById('cinema-quote').innerText = `"${item.quote}"`;
-      document.getElementById('cinema-translation').innerText = `"${item.translation}"`;
+      // XỬ LÝ LINH HOẠT CHO TÍNH NĂNG ÂM NHẠC MỞ RỘNG (LYRICS)
+      const quoteEl = document.getElementById('cinema-quote');
+      if (item.format === 'music') {
+          // Tự động ngắt dòng nếu dữ liệu là lời bài hát
+          quoteEl.innerHTML = item.quote.replace(/\n/g, '<br>');
+          quoteEl.classList.add('text-center'); 
+      } else {
+          quoteEl.innerText = `"${item.quote}"`;
+          quoteEl.classList.remove('text-center');
+      }
+      
+      document.getElementById('cinema-translation').innerText = item.translation ? `"${item.translation}"` : "";
       
       const vocabContainer = document.getElementById('cinema-vocab');
-      vocabContainer.innerHTML = item.vocabAnalysis.map(v => `
+      vocabContainer.innerHTML = (item.vocabAnalysis || []).map(v => `
         <div class="bg-white p-3.5 rounded-2xl border-2 border-cottage-butter shadow-sm">
           <div class="flex items-baseline gap-2 mb-1">
             <h4 class="font-bold text-cottage-roseDark text-sm">${v.word}</h4>
-            <span class="text-[11px] text-cottage-brownLight font-mono">${v.ipa}</span>
+            <span class="text-[11px] text-cottage-brownLight font-mono">${v.ipa || ''}</span>
           </div>
           <p class="text-xs font-bold text-cottage-brown mb-1">👉 ${v.meaning}</p>
           <p class="text-[11px] text-cottage-brownLight italic leading-relaxed bg-cottage-cream p-2 rounded-lg border border-cottage-butter/50">Ngữ cảnh: ${v.context}</p>
@@ -914,6 +1079,8 @@
 
     window.renderCinemaQuiz = function() {
       const item = cinemaData.find(c => c.id === activeCinemaId);
+      if(!item || !item.quizzes || item.quizzes.length === 0) return;
+      
       const quiz = item.quizzes[activeQuizIndex];
 
       document.getElementById('quiz-counter').innerText = `(${activeQuizIndex + 1}/${item.quizzes.length})`;
@@ -973,6 +1140,7 @@
     };
 
     window.updateAvailableSentences = function() {
+      if(cinemaData.length === 0) return;
       if (isVip) {
         availableSentences = [...allPracticeSentences];
       } else {
@@ -988,6 +1156,7 @@
     };
 
     window.initScrambleGame = function() {
+      if (cinemaData.length === 0) return;
       if (availableSentences.length === 0) window.updateAvailableSentences();
 
       const movieTag = document.getElementById('scramble-movie-tag');
@@ -995,7 +1164,7 @@
       if (remainingSentences.length === 0) {
         const completionMsg = isVip 
           ? "🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi hiện có."
-          : "🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi hiện có. Bạn có thể mở khóa gói VIP để học thêm nhé!";
+          : "🎉 Tuyệt vời! Bạn đã hoàn thành tất cả câu hỏi. Bạn có thể mở khóa gói VIP để học thêm nhé!";
           
         document.getElementById('scramble-prompt').innerHTML = `<span class='text-cottage-greenDark font-bold'>${completionMsg}</span>`;
         document.getElementById('scramble-pool').innerHTML = "";
@@ -1030,13 +1199,11 @@
           blankContainer.className = "inline-flex flex-col items-center mx-1 align-bottom";
           
           const hintSpan = document.createElement('span');
-          // ĐÃ CHỈNH SIZE CHỮ NHỎ HƠN CHO TOOLTIP GỢI Ý
           hintSpan.className = "text-[11px] md:text-xs text-cottage-brownLight font-normal mb-1 bg-white px-2.5 py-0.5 rounded-md shadow-sm border border-cottage-butter whitespace-nowrap";
           hintSpan.innerText = part.text; 
 
           const blankSpan = document.createElement('span');
           blankSpan.id = `blank-${index}`;
-          // ĐÃ CHỈNH SIZE CHỮ NHỎ HƠN CHO Ô ĐIỀN TỪ (text-sm md:text-base)
           blankSpan.className = "inline-block min-w-[80px] px-2 h-10 border-b-2 border-dashed border-cottage-roseDark/50 text-center text-cottage-rose text-sm md:text-base font-bold cursor-pointer transition-colors flex items-center justify-center";
           blankSpan.onclick = () => window.returnWordToPool(index);
 
@@ -1045,7 +1212,6 @@
           promptContainer.appendChild(blankContainer);
         } else {
           const textNode = document.createElement('span');
-          // ĐÃ CHỈNH SIZE CHỮ NHỎ HƠN CHO ĐOẠN TEXT BÌNH THƯỜNG TRONG CÂU
           textNode.className = "inline-block align-bottom pb-1.5 text-sm md:text-base font-medium";
           textNode.innerText = part.text;
           promptContainer.appendChild(textNode);
@@ -1056,7 +1222,6 @@
       const shuffledWords = [...currentPractice.wordsToPick].sort(() => 0.5 - Math.random());
       
       pool.innerHTML = shuffledWords.map(w => 
-        // CHỈNH NHẸ SIZE CHỮ CỦA NÚT DƯỚI BẢNG ĐỂ KHỚP VỚI Ô ĐIỀN (text-sm md:text-base)
         `<button id="pool-word-${w.replace(/\s+/g, '-')}" onclick="pickWordForBlank('${w}')" class="px-5 py-2.5 bg-white border-2 border-cottage-butter rounded-xl text-sm md:text-base font-bold text-cottage-brown hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 transition transform active:scale-95 shadow-sm m-1">${w}</button>`
       ).join('');
       
@@ -1146,8 +1311,10 @@
       }
     };
 
+    // ================= 9. KHỞI CHẠY =================
     window.addEventListener('DOMContentLoaded', () => {
-      applyGuestUI(); 
+      // Bắt đầu gọi dữ liệu (hoặc tạo dữ liệu mẫu nếu chưa có)
+      loadAppData(); 
       
       const initialHash = window.location.hash.replace('#', '') || 'cinema';
       handleViewSwitch(initialHash);
