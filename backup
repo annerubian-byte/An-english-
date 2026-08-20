@@ -99,7 +99,7 @@
         <i class="fa-brands fa-youtube"></i> Kho YouTube
       </button>
       <button onclick="switchNav('arcade')" id="nav-arcade" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
-        <i class="fa-solid fa-puzzle-piece"></i> Trạm luyện tập
+        <i class="fa-solid fa-puzzle-piece"></i> Trạm luyện tập tổng hợp
       </button>
       <button onclick="switchNav('about')" id="nav-about" class="px-5 py-2 rounded-2xl font-display font-bold text-xs bg-white border-2 border-cottage-butter text-cottage-brownLight hover:border-cottage-roseLight hover:text-cottage-rose transition flex items-center gap-2 shrink-0">
         <i class="fa-solid fa-leaf"></i> Giới thiệu 
@@ -109,7 +109,7 @@
 
   <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 space-y-8">
 
-    <!-- ================= SECTION: RẠP CHIẾU BÓNG ================= -->
+    <!-- ================= SECTION: KHO PHIM ================= -->
     <section id="view-cinema" class="space-y-6">
       <div class="bg-gradient-to-br from-cottage-card to-cottage-roseLight/30 border-2 border-dashed border-cottage-rose/40 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <i class="fa-solid fa-leaf absolute top-6 left-10 text-4xl text-cottage-green/5 -rotate-12 z-0"></i>
@@ -128,26 +128,26 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
-        <div class="flex flex-wrap gap-1.5" id="cinema-filters">
-          <button onclick="filterSection('cinema', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại</button>
-          <button onclick="filterSection('cinema', 'Romance')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình cảm 💌</button>
-          <button onclick="filterSection('cinema', 'Drama')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính kịch 🎭</button>
-          <button onclick="filterSection('cinema', 'Comedy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài 😂</button>
-          <button onclick="filterSection('cinema', 'Musical')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc kịch 🎵</button>
-          <button onclick="filterSection('cinema', 'Fantasy')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo 🧚‍♀️</button>
-          <button onclick="filterSection('cinema', 'Action')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành động 💥</button>
-          <button onclick="filterSection('cinema', 'Sci-Fi')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Viễn tưởng 🛸</button>
-          <button onclick="filterSection('cinema', 'Thriller & Mystery')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh thám 🔍</button>
-          <button onclick="filterSection('cinema', 'Documentary')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài liệu 🌍</button>
+      <div class="flex flex-col md:flex-row gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm overflow-hidden">
+        <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="cinema-filters">
+          <button onclick="filterSection('cinema', 'ALL')" class="filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại (All)</button>
+          <button onclick="filterSection('cinema', 'Romance')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tình cảm (Romance) 💌</button>
+          <button onclick="filterSection('cinema', 'Drama')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Chính kịch (Drama) 🎭</button>
+          <button onclick="filterSection('cinema', 'Comedy')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hài (Comedy) 😂</button>
+          <button onclick="filterSection('cinema', 'Musical')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc kịch (Musical) 🎵</button>
+          <button onclick="filterSection('cinema', 'Fantasy')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Kỳ ảo (Fantasy) 🧚‍♀️</button>
+          <button onclick="filterSection('cinema', 'Action')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Hành động (Action) 💥</button>
+          <button onclick="filterSection('cinema', 'Sci-Fi')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Khoa học viễn tưởng (Sci-Fi) 🛸</button>
+          <button onclick="filterSection('cinema', 'Mystery & Thriller')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trinh thám & giật gân (Mystery & Thriller) 🔍</button>
+          <button onclick="filterSection('cinema', 'Documentary')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tài liệu (Documentary) 🌍</button>
         </div>
-        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="cinema-count">0</span> bài học 📚</span>
+        <span class="text-[11px] text-cottage-roseDark font-bold bg-cottage-roseLight px-3 py-1 rounded-full whitespace-nowrap mt-2 md:mt-0 shrink-0"><span id="cinema-count">0</span> bài học 📚</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cinema-grid"></div>
     </section>
 
-    <!-- ================= SECTION: TRẠM PHÁT NHẠC ================= -->
+    <!-- ================= SECTION: KHO NHẠC ================= -->
     <section id="view-music" class="hidden space-y-6">
       <div class="bg-gradient-to-br from-cottage-card to-cottage-amber/20 border-2 border-dashed border-cottage-amber/40 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <i class="fa-solid fa-music absolute top-6 left-10 text-4xl text-cottage-amber/10 -rotate-12 z-0"></i>
@@ -164,14 +164,17 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
-        <div class="flex flex-wrap gap-1.5" id="music-filters">
-          <button onclick="filterSection('music', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả thể loại</button>
-          <button onclick="filterSection('music', 'Pop')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Pop 🎤</button>
-          <button onclick="filterSection('music', 'Folk/Indie')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Folk/Indie 🎸</button>
-          <button onclick="filterSection('music', 'R&B')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">R&B 🎷</button>
+      <div class="flex flex-col md:flex-row gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm overflow-hidden">
+        <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="music-filters">
+          <button onclick="filterSection('music', 'ALL')" class="filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề (All)</button>
+          <button onclick="filterSection('music', 'Pop')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc Pop (Pop) 🎤</button>
+          <button onclick="filterSection('music', 'Folk & Country')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Đồng quê (Folk & Country) 🌾</button>
+          <button onclick="filterSection('music', 'Indie')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Độc lập (Indie) 🎸</button>
+          <button onclick="filterSection('music', 'R&B')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc R&B (R&B) 🎷</button>
+          <button onclick="filterSection('music', 'EDM')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Điện tử (EDM) 🎛️</button>
+          <button onclick="filterSection('music', 'Soundtrack')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Nhạc phim (Soundtrack) 🎬</button>
         </div>
-        <span class="text-[11px] text-cottage-amber font-bold bg-cottage-amber/10 px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="music-count">0</span> bài hát 🎧</span>
+        <span class="text-[11px] text-cottage-amber font-bold bg-cottage-amber/10 px-3 py-1 rounded-full whitespace-nowrap mt-2 md:mt-0 shrink-0"><span id="music-count">0</span> bài hát 🎧</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="music-grid"></div>
@@ -180,7 +183,10 @@
     <!-- ================= SECTION: KHO YOUTUBE ================= -->
     <section id="view-youtube" class="hidden space-y-6">
       <div class="bg-gradient-to-br from-cottage-card to-cottage-greenLight border-2 border-dashed border-cottage-green/30 rounded-[2rem] p-6 md:p-8 relative overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-        <i class="fa-brands fa-youtube absolute top-6 right-10 text-5xl text-cottage-rose/5 rotate-12 z-0"></i>
+        <i class="fa-brands fa-youtube absolute top-6 left-10 text-5xl text-cottage-green/10 -rotate-12 z-0"></i>
+        <i class="fa-solid fa-clapperboard absolute bottom-4 left-1/3 text-5xl text-cottage-green/10 rotate-12 z-0"></i>
+        <i class="fa-solid fa-video absolute top-1/2 right-1/4 text-6xl text-cottage-green/5 -rotate-12 z-0"></i>
+        <div class="absolute -top-10 -left-10 w-32 h-32 bg-cottage-greenLight rounded-full blur-3xl opacity-60 z-0"></div>
         <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-cottage-green rounded-full blur-3xl opacity-20 z-0"></div>
 
         <div class="space-y-2 z-10 relative">
@@ -188,19 +194,26 @@
           <p class="text-xs md:text-sm text-cottage-brownLight max-w-xl leading-relaxed">Nắm bắt ngữ điệu tự nhiên, từ lóng và cách diễn đạt trong các bài phỏng vấn, vlog, show truyền hình thực tế.</p>
         </div>
         
-        <div class="w-16 h-16 md:w-20 md:h-20 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-2xl md:text-3xl animate-float-delayed select-none z-10 relative shadow-[0_8px_30px_rgb(142,168,133,0.3)] text-cottage-green">
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-2xl md:text-3xl animate-float-delayed select-none z-10 relative shadow-[0_8px_30px_rgb(142,168,133,0.3)] text-cottage-greenDark">
           <i class="fa-solid fa-play"></i>
         </div>
       </div>
 
-      <div class="flex flex-wrap gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm">
-        <div class="flex flex-wrap gap-1.5" id="youtube-filters">
-          <button onclick="filterSection('youtube', 'ALL')" class="filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề</button>
-          <button onclick="filterSection('youtube', 'Interview / Talkshow')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Talkshow / Phỏng vấn 🎙️</button>
-          <button onclick="filterSection('youtube', 'Speech / Vlog')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Diễn văn / Vlog 📹</button>
-          <button onclick="filterSection('youtube', 'Reality Show')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Show thực tế 🏆</button>
+      <div class="flex flex-col md:flex-row gap-2 items-center justify-between bg-white p-3 rounded-2xl border-2 border-cottage-butter shadow-sm overflow-hidden">
+        <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="youtube-filters">
+          <button onclick="filterSection('youtube', 'ALL')" class="filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition">Tất cả chủ đề (All)</button>
+          <button onclick="filterSection('youtube', 'News')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Tin tức (News) 📰</button>
+          <button onclick="filterSection('youtube', 'Interview')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Phỏng vấn (Interview) 🎙️</button>
+          <button onclick="filterSection('youtube', 'Talkshow')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Trò chuyện (Talkshow) 🛋️</button>
+          <button onclick="filterSection('youtube', 'Speech')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Diễn văn (Speech) 🎓</button>
+          <button onclick="filterSection('youtube', 'Vlog')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Vlog 📹</button>
+          <button onclick="filterSection('youtube', 'Reality Show')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Truyền hình thực tế (Reality show) 🏆</button>
+          <button onclick="filterSection('youtube', 'Education')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Giáo dục (Education) 📚</button>
+          <button onclick="filterSection('youtube', 'Lifestyle')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Phong cách sống (Lifestyle) 🌿</button>
+          <button onclick="filterSection('youtube', 'Self-help')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Phát triển bản thân (Self-help) 💡</button>
+          <button onclick="filterSection('youtube', 'Beauty / Fashion')" class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition">Thời trang / Làm đẹp (Beauty / Fashion) 💄</button>
         </div>
-        <span class="text-[11px] text-cottage-greenDark font-bold bg-cottage-greenLight px-3 py-1 rounded-full whitespace-nowrap mt-2 lg:mt-0"><span id="youtube-count">0</span> video 📺</span>
+        <span class="text-[11px] text-cottage-greenDark font-bold bg-cottage-greenLight px-3 py-1 rounded-full whitespace-nowrap mt-2 md:mt-0 shrink-0"><span id="youtube-count">0</span> video 📺</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="youtube-grid"></div>
@@ -213,7 +226,6 @@
         <div class="absolute top-4 right-4 text-2xl -rotate-12">💡</div>
         
         <div class="space-y-1">
-          <span class="text-xs font-black text-cottage-rose uppercase tracking-widest">Trạm luyện tập</span>
           <h3 class="text-2xl md:text-3xl font-display font-black text-cottage-brown mt-1">Điền từ vào ngữ cảnh</h3>
           <p class="text-sm text-cottage-brownLight mt-2">Dựa vào các bài học bạn đã xem, hãy chọn từ phù hợp để điền vào chỗ trống nhé!</p>
         </div>
@@ -230,13 +242,12 @@
         
         <div id="scramble-pool" class="flex flex-wrap gap-2.5 justify-center pt-2 mt-5"></div>
         
-        <div class="flex justify-center gap-4 pt-5">
-          <button onclick="resetScramble()" class="px-6 py-3 text-sm font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition" id="btn-reset-scramble">Bỏ chọn ↻</button>
-          <button onclick="checkScramble()" class="px-8 py-3 text-sm font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95" id="btn-check-scramble">Kiểm tra kết quả ✔️</button>
-          <button onclick="restartPractice()" class="hidden px-8 py-3 text-sm font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow-[0_4px_15px_rgba(142,168,133,0.3)] transition transform active:scale-95" id="btn-restart-practice">Làm lại từ đầu 🔄</button>
+        <div class="flex justify-center gap-3 pt-5">
+          <button onclick="skipScramble()" class="px-4 py-2 text-xs font-bold text-cottage-brown bg-cottage-cream border-2 border-cottage-butter hover:bg-cottage-butter rounded-xl transition" id="btn-skip-scramble">Bỏ qua ⏭️</button>
+          <button onclick="resetScramble()" class="px-4 py-2 text-xs font-bold text-cottage-brown bg-cottage-butter hover:bg-cottage-amber/30 rounded-xl transition" id="btn-reset-scramble">Bỏ chọn ↻</button>
+          <button onclick="checkScramble()" class="px-5 py-2 text-xs font-bold text-white bg-cottage-rose hover:bg-cottage-roseDark rounded-xl shadow-[0_4px_15px_rgba(230,164,180,0.3)] transition transform active:scale-95" id="btn-check-scramble">Kiểm tra kết quả ✔️</button>
+          <button onclick="restartPractice()" class="hidden px-5 py-2 text-xs font-bold text-white bg-cottage-green hover:bg-cottage-greenDark rounded-xl shadow-[0_4px_15px_rgba(142,168,133,0.3)] transition transform active:scale-95" id="btn-restart-practice">Làm lại từ đầu 🔄</button>
         </div>
-        <p id="scramble-feedback" class="text-sm md:text-base font-bold hidden mt-3"></p>
-      </div>
     </section>
 
     <!-- ================= SECTION: GIỚI THIỆU ================= -->
@@ -292,7 +303,7 @@
       <div class="text-center space-y-2 mb-6">
         <div class="w-14 h-14 bg-cottage-roseLight text-cottage-roseDark rounded-full flex items-center justify-center mx-auto text-2xl mb-2 shadow-sm">🌿</div>
         <h3 id="auth-title" class="text-2xl font-display font-black text-cottage-brown tracking-tight">Đăng nhập</h3>
-        <p id="auth-subtitle" class="text-xs text-cottage-brownLight">Đăng nhập để lưu tiến độ và học bản VIP nhé!</p>
+        <p id="auth-subtitle" class="text-xs text-cottage-brownLight">Đăng nhập để lưu tiến độ và học các bài VIP nhé!</p>
       </div>
 
       <div class="space-y-4">
@@ -302,7 +313,12 @@
         </div>
         <div>
           <label class="block text-[11px] font-black text-cottage-roseDark uppercase tracking-widest mb-1.5 pl-1">Mật khẩu</label>
-          <input type="password" id="auth-password" placeholder="Nhập mật khẩu (từ 6 ký tự)" class="w-full p-3.5 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition select-text">
+          <div class="relative">
+            <input type="password" id="auth-password" placeholder="Nhập mật khẩu (từ 6 ký tự)" class="w-full p-3.5 pr-10 rounded-2xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold text-cottage-brown focus:border-cottage-rose focus:outline-none transition select-text">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-cottage-brownLight hover:text-cottage-rose transition focus:outline-none">
+              <i class="fa-solid fa-eye" id="eye-icon"></i>
+            </button>
+          </div>
         </div>
         
         <button id="btn-auth-submit" onclick="handleAuth()" class="w-full mt-2 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
@@ -350,13 +366,16 @@
         <div class="bg-cottage-card p-5 rounded-3xl border-2 border-cottage-rose/30 space-y-4 relative overflow-hidden mt-6">
           <div class="absolute -right-4 -bottom-4 text-6xl opacity-5">💡</div>
           <div class="flex justify-between items-center text-[11px] font-black text-cottage-roseDark uppercase tracking-wider relative z-10">
-            <span>Kiểm tra sự thấu hiểu <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
+            <span>Kiểm tra mức độ thông hiểu <span id="quiz-counter" class="text-cottage-brownLight normal-case ml-1 font-bold">(1/1)</span></span>
           </div>
           
           <p id="modal-quiz-question" class="text-sm font-bold text-cottage-brown relative z-10 leading-relaxed"></p>
           <div id="modal-quiz-options" class="space-y-2 relative z-10"></div>
           <div id="modal-quiz-feedback" class="hidden p-4 rounded-2xl text-xs font-semibold leading-relaxed mt-2 border-2 relative z-10"></div>
-          <button id="btn-next-quiz" onclick="nextCinemaQuiz()" class="hidden w-full py-3.5 mt-2 bg-cottage-rose hover:bg-cottage-roseDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 relative z-10">Câu tiếp theo →</button>
+          
+          <div class="flex gap-3 relative z-10 mt-3">
+            <button id="btn-next-quiz" onclick="nextCinemaQuiz()" class="hidden flex-1 py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95">Câu tiếp theo →</button>
+          </div>
         </div>
       </div>
     </div>
@@ -491,7 +510,7 @@
         ]
       },
       {
-        id: 2, genre: "Drama", format: "movie", title: "The Intern (2015)", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
+        id: 2, genre: "Comedy", format: "movie", title: "The Intern (2015)", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
         quote: "You're never wrong to do the right thing.", translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
           { word: "Diversion (n)", ipa: "/dɪˈvɜːr.ʒən/", meaning: "Sự giải trí, thú vui tiêu khiển.", context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' (một việc gì đó để làm cho đỡ buồn chán) như giúp sếp lập Facebook." },
@@ -608,16 +627,19 @@
           { q: "Từ <b>'Crisis'</b> trong câu 'I end up in crisis' diễn tả trạng thái nào?", options: ["A. Hạnh phúc tột độ", "B. Tức giận", "C. Khủng hoảng, tình thế khó khăn", "D. Buồn ngủ"], correct: 2, explanation: "<b>'Crisis'</b> là trạng thái khủng hoảng, mất kiểm soát." }
         ]
       },
-      // === DỮ LIỆU MẪU CHO KHO YOUTUBE ===
+      // === DỮ LIỆU MẪU CHO KHO YOUTUBE (ĐÃ SỬA LỖI VIDEO VÀ NỘI DUNG MỚI) ===
       {
-        id: 10, genre: "Speech / Vlog", format: "youtube", title: "Taylor Swift - NYU Commencement Speech 2022", thumbnail: "https://i.ytimg.com/vi/OBkX2Hk2-Yk/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGD4gWShlMA8=&rs=AOn4CLCM3LhQWvI198t8BwGzP43mO8gPew", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/OBkX2Hk2-Yk?rel=0", locked: true,
-        quote: "You get to pick what your life has time and room for. Be discerning.", translation: "Bạn có quyền lựa chọn điều gì xứng đáng để bạn dành thời gian và không gian trong cuộc đời mình. Hãy biết nhìn nhận một cách sáng suốt.",
+        id: 10, genre: "Interview", format: "youtube", title: "Taylor Swift - 73 Questions with Vogue", thumbnail: "https://i.ytimg.com/vi/XnbCSboujF4/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGDsgXihlMA8=&rs=AOn4CLBB2xZf9YnXZsXW2vFzP4Y8Y_X7Jw", mediaType: "youtube", 
+        // Video gốc của Vogue, luôn được phép nhúng 
+        mediaUrl: "https://www.youtube.com/embed/XnbCSboujF4?rel=0", locked: false,
+        quote: "I think it's important to be self-aware about what people are saying about you, but even more important to shrug it off.", translation: "Tôi nghĩ việc tự nhận thức được người ta đang bàn tán gì về mình là điều quan trọng, nhưng quan trọng hơn nữa là biết cách mặc kệ nó.",
         vocabAnalysis: [
-          { word: "Discerning (adj)", ipa: "/dɪˈsɜːr.nɪŋ/", meaning: "Sáng suốt, biết nhận thức rõ ràng, có óc phán đoán.", context: "Một lời khuyên đắt giá: Hãy thật 'sáng suốt' để biết buông bỏ những thứ không đáng và giữ lại những điều quan trọng." }
+          { word: "Self-aware (adj)", ipa: "/ˌself.əˈwer/", meaning: "Tự nhận thức, hiểu rõ bản thân.", context: "Lời khuyên về việc luôn ý thức được hình ảnh của mình trong mắt công chúng." },
+          { word: "Shrug off (Phrasal Verb)", ipa: "/ʃrʌɡ ɑːf/", meaning: "Rũ bỏ, mặc kệ, không thèm bận tâm.", context: "Thay vì bị tổn thương bởi những lời đàm tiếu, cô chọn cách 'nhún vai rũ bỏ' chúng đi." }
         ],
         quizzes: [
-          { q: "Khi nói <b>'You get to pick...'</b>, cấu trúc 'get to do something' mang sắc thái ý nghĩa gì?", options: ["A. Bị ép buộc phải làm gì đó", "B. Có cơ hội, có đặc quyền được làm gì đó", "C. Rất khó khăn để làm gì đó", "D. Sẽ không bao giờ làm gì đó"], correct: 1, explanation: "<b>'Get to + V'</b> thường được dùng để nhấn mạnh sự may mắn, đặc quyền, hoặc cơ hội được làm việc gì đó (thay vì 'have to' - bắt buộc)." },
-          { q: "Cụm <b>'Room for'</b> trong ngữ cảnh này mang ý nghĩa ẩn dụ là gì?", options: ["A. Căn phòng trống trong nhà", "B. Sức chứa của một chiếc hộp", "C. Không gian trong tâm trí/cuộc sống", "D. Một căn phòng khách sạn"], correct: 2, explanation: "<b>'Room for'</b> (không gian dành cho) ẩn dụ về việc chúng ta chỉ có một dung lượng tinh thần nhất định, nên phải chọn lọc những gì xứng đáng để giữ lại." }
+          { q: "Từ <b>'Self-aware'</b> có nghĩa là gì?", options: ["A. Tự ti, mặc cảm", "B. Ích kỷ, chỉ nghĩ cho mình", "C. Tự nhận thức, hiểu rõ bản thân", "D. Rất tự tin"], correct: 2, explanation: "<b>'Self-aware'</b> là sự hiểu rõ về tính cách, hình ảnh và vị trí của bản thân." },
+          { q: "Khi gặp một lời chỉ trích vô cớ, bạn nên <b>'shrug it off'</b>. Hành động này có nghĩa là:", options: ["A. Khóc lóc", "B. Mặc kệ, rũ bỏ, coi như không quan trọng", "C. Cãi lại ngay lập tức", "D. Giấu đi"], correct: 1, explanation: "<b>'Shrug off'</b> (nhún vai) là hành động thể hiện sự phớt lờ, coi một việc gì đó là không quan trọng và không đáng bận tâm." }
         ]
       }
     ];
@@ -640,22 +662,18 @@
       { id: "interstellar_2", cinemaId: 8, fullText: "It is an inescapable force.", parts: [ { text: "It is an ", isBlank: false }, { text: "không thể trốn thoát", expectedWord: "inescapable", isBlank: true }, { text: " force.", isBlank: false } ], wordsToPick: ["inescapable", "catastrophic", "hostile", "unparalleled"] },
       // Câu phụ cho mẫu Nhạc & Youtube
       { id: "swift_music_1", cinemaId: 9, fullText: "I should not be left to my own devices.", parts: [ { text: "I should not be left to my own ", isBlank: false }, { text: "tự làm theo ý mình, không ai quản lý", expectedWord: "devices", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["devices", "purist", "catastrophe", "vices"] },
-      { id: "swift_yt_1", cinemaId: 10, fullText: "Be discerning.", parts: [ { text: "Be ", isBlank: false }, { text: "sáng suốt, có óc phán đoán", expectedWord: "discerning", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["discerning", "ephemeral", "coward", "hostile"] }
+      { id: "swift_yt_1", cinemaId: 10, fullText: "You just have to shrug it off.", parts: [ { text: "You just have to ", isBlank: false }, { text: "rũ bỏ, phớt lờ, không bận tâm", expectedWord: "shrug off", isBlank: true }, { text: " it off.", isBlank: false } ], wordsToPick: ["shrug off", "ephemeral", "coward", "hostile"] }
     ];
 
-    // ================= 4. HÀM TẢI (HOẶC TỰ ĐỘNG ĐẨY) DỮ LIỆU ĐÁM MÂY =================
+    // ================= 4. HÀM TẢI VÀ LẮNG NGHE DỮ LIỆU REAL-TIME =================
     async function loadAppData() {
       try {
         const lessonsRef = collection(db, "lessons");
         const practiceRef = collection(db, "practice_sentences");
 
-        const [lessonsSnap, practiceSnap] = await Promise.all([
-          getDocs(lessonsRef),
-          getDocs(practiceRef)
-        ]);
-
-        // NẾU KHO TRỐNG (Lần chạy đầu tiên), TỰ ĐỘNG SEED DỮ LIỆU
-        if (lessonsSnap.empty) {
+        // BƯỚC 1: Kiểm tra xem kho có trống không để chạy Tự động đẩy (chỉ chạy 1 lần lúc đầu)
+        const initialSnap = await getDocs(lessonsRef);
+        if (initialSnap.empty) {
           document.getElementById('sync-overlay').classList.remove('hidden');
           console.log("Kho dữ liệu trống. Đang tự động đẩy bài học lên Firebase...");
           
@@ -671,20 +689,43 @@
           return;
         }
 
-        // Lấy dữ liệu về nếu đã có
-        cinemaData = lessonsSnap.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
-        cinemaData.sort((a, b) => a.id - b.id); // Sắp xếp lại theo ID cho chuẩn
-        
-        allPracticeSentences = practiceSnap.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+        // BƯỚC 2: Lắp "camera" giám sát kho Bài Học (Tự động cập nhật khi có bài mới)
+        onSnapshot(lessonsRef, (snapshot) => {
+          cinemaData = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+          cinemaData.sort((a, b) => a.id - b.id); // Sắp xếp lại theo ID cho chuẩn
+          
+          // Vẽ lại giao diện ngay lập tức mà không cần F5
+          if (document.getElementById('cinema-grid')) {
+            window.renderAllSections();
+            // Đảm bảo arcade cũng được render nếu đang mở
+            if(!document.getElementById('view-arcade').classList.contains('hidden')) {
+               window.updateAvailableSentences();
+               window.initScrambleGame();
+            }
+          }
+        });
 
+        // BƯỚC 3: Lắp "camera" giám sát kho Bài Tập
+        onSnapshot(practiceRef, (snapshot) => {
+          allPracticeSentences = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+          if (document.getElementById('cinema-grid')) {
+            window.updateAvailableSentences();
+            // Đảm bảo arcade được render nếu đang mở
+            if(!document.getElementById('view-arcade').classList.contains('hidden')) {
+               window.initScrambleGame();
+            }
+          }
+        });
+
+        // Trả lại nút Đăng nhập ban đầu
         document.getElementById('vip-header-btn').innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
         applyGuestUI(); 
+
       } catch (error) {
         console.error("Lỗi khi tải học liệu:", error);
-        alert("Oops! Không thể tải dữ liệu bài học. Bạn kiểm tra lại kết nối mạng nhé! 🌷");
+        alert("Oops! Không thể kết nối với hệ thống. Bạn kiểm tra lại mạng nhé! 🌷");
       }
     }
-
 
     // ================= 5. BIẾN TOÀN CỤC TRẠNG THÁI =================
     let isVip = false;
@@ -803,9 +844,23 @@
     window.toggleAuthMode = function() {
       isLoginMode = !isLoginMode;
       document.getElementById('auth-title').innerText = isLoginMode ? "Đăng Nhập" : "Tạo Tài Khoản";
-      document.getElementById('auth-subtitle').innerText = isLoginMode ? "Đăng nhập để xem phim VIP nhé!" : "Chào mừng thành viên mới của Cozy Garden!";
+      document.getElementById('auth-subtitle').innerText = isLoginMode ? "Đăng nhập để lưu tiến độ và học bản VIP nhé!" : "Chào mừng thành viên mới của Cozy Garden!";
       document.getElementById('btn-auth-submit').innerHTML = isLoginMode ? "Vào học ngay 🚀" : "Đăng ký tài khoản 🌱";
       document.getElementById('btn-auth-toggle').innerText = isLoginMode ? "Chưa có tài khoản? Đăng ký ngay" : "Đã có tài khoản? Đăng nhập";
+    };
+
+    window.togglePasswordVisibility = function() {
+      const pwInput = document.getElementById('auth-password');
+      const eyeIcon = document.getElementById('eye-icon');
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+      } else {
+        pwInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+      }
     };
 
     window.handleAuth = async function() {
@@ -838,7 +893,11 @@
       } catch (error) {
         let friendlyMessage = "Có lỗi xảy ra, vui lòng thử lại!";
        switch (error.code) {
-         case 'auth/invalid-credential': friendlyMessage = "🤔 Thông tin đăng nhập không chính xác!"; break;
+         case 'auth/invalid-credential': 
+         case 'auth/user-not-found':
+         case 'auth/wrong-password':
+             friendlyMessage = "🤔 Email hoặc mật khẩu không chính xác!\n👉 Nếu bạn CHƯA tạo tài khoản, hãy nhấn vào dòng 'Chưa có tài khoản? Đăng ký ngay' ở bên dưới nhé!"; 
+             break;
          case 'auth/email-already-in-use': friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi."; break;
          case 'auth/invalid-email': friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com)."; break;
          case 'auth/weak-password': friendlyMessage = "🛑 Mật khẩu hơi yếu, hãy chọn mật khẩu dài từ 6 ký tự trở lên."; break;
@@ -963,6 +1022,12 @@
       } else {
         handleViewSwitch(viewId);
       }
+      
+      // Khởi tạo lại game mỗi khi chuyển vào tab arcade để đảm bảo UI khách/VIP luôn chuẩn
+      if(viewId === 'arcade') {
+         window.updateAvailableSentences();
+         window.initScrambleGame();
+      }
     };
 
     // ================= RENDER LOGIC =================
@@ -1023,11 +1088,9 @@
       const container = document.getElementById(containerId);
       if(!container) return;
       container.querySelectorAll('.filter-btn').forEach(btn => {
-        // Reset về class mặc định
-        btn.className = "filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition";
-        // Bắt text hoặc hàm onclick để đánh dấu active
+        btn.className = "filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-cottage-cream text-cottage-brown hover:bg-cottage-butter transition";
         if(btn.getAttribute('onclick').includes(`'${activeGenre}'`)) {
-            btn.className = "filter-btn active px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
+            btn.className = "filter-btn active shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-black bg-cottage-brown text-white transition shadow-sm";
         }
       });
     }
@@ -1040,7 +1103,11 @@
       activeCinemaId = id; 
       activeQuizIndex = 0;
       
-      document.getElementById('cinema-genre').innerText = item.genre;
+      let formatLabel = item.genre;
+      if(item.format === 'music') formatLabel = "🎧 Âm nhạc";
+      if(item.format === 'youtube') formatLabel = "📺 YouTube";
+      
+      document.getElementById('cinema-genre').innerText = formatLabel;
       document.getElementById('cinema-title').innerText = item.title;
 
       const mediaContainer = document.getElementById('cinema-media-container');
@@ -1090,7 +1157,8 @@
       const feedback = document.getElementById('modal-quiz-feedback');
       const nextBtn = document.getElementById('btn-next-quiz');
 
-      feedback.classList.add('hidden'); nextBtn.classList.add('hidden');
+      feedback.classList.add('hidden'); 
+      nextBtn.classList.add('hidden');
 
       optsContainer.innerHTML = quiz.options.map((opt, idx) => `
         <button onclick="checkCinemaQuiz(${idx}, this)" class="w-full text-left p-4 rounded-2xl bg-white border-2 border-cottage-butter hover:border-cottage-roseLight hover:bg-cottage-roseLight/20 text-sm font-bold text-cottage-brown transition flex items-center justify-between group">
@@ -1106,21 +1174,27 @@
       const feedback = document.getElementById('modal-quiz-feedback');
       const nextBtn = document.getElementById('btn-next-quiz');
       
-      feedback.classList.remove('hidden'); nextBtn.classList.remove('hidden');
-
-      const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
-      allBtns.forEach(b => b.disabled = true);
+      feedback.classList.remove('hidden'); 
 
       if (chosenIdx === quiz.correct) {
+        // Chỉ khi trả lời đúng mới khóa tất cả các nút
+        const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
+        allBtns.forEach(b => b.disabled = true);
+          
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
         feedback.innerHTML = `🎉 <b>Chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       } else {
+        const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
+          
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-roseLight border-2 border-cottage-rose/40 text-cottage-roseDark";
         allBtns[quiz.correct].className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border-2 border-cottage-rose/30 block mt-3 relative z-10";
         feedback.innerHTML = `📝 <b>Khoan đã, hãy xem lại video để đoán nghĩa nhé!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       }
+      
+      // Luôn luôn hiển thị nút Đi tiếp (hoặc Kết thúc) khi người dùng đã lựa chọn
+      nextBtn.classList.remove('hidden');
 
       if (activeQuizIndex === item.quizzes.length - 1) {
         nextBtn.innerHTML = "Tuyệt vời! Đóng bài học";
@@ -1139,6 +1213,7 @@
         window.renderCinemaQuiz();
     };
 
+    // ================= XỬ LÝ TRẠM LUYỆN TẬP CÓ NÚT BỎ QUA =================
     window.updateAvailableSentences = function() {
       if(cinemaData.length === 0) return;
       if (isVip) {
@@ -1153,6 +1228,14 @@
     window.restartPractice = function() {
       window.updateAvailableSentences();
       window.initScrambleGame();
+    };
+
+    window.skipScramble = function() {
+      if (currentPractice) {
+        // Xóa câu hiện tại ra khỏi danh sách còn lại
+        remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
+        window.initScrambleGame();
+      }
     };
 
     window.initScrambleGame = function() {
@@ -1170,6 +1253,7 @@
         document.getElementById('scramble-pool').innerHTML = "";
         document.getElementById('btn-reset-scramble').style.display = "none";
         document.getElementById('btn-check-scramble').style.display = "none";
+        document.getElementById('btn-skip-scramble').style.display = "none";
         
         document.getElementById('btn-restart-practice').classList.remove('hidden');
         document.getElementById('scramble-feedback').classList.add('hidden');
@@ -1231,6 +1315,7 @@
       
       document.getElementById('btn-reset-scramble').style.display = "inline-block";
       document.getElementById('btn-check-scramble').style.display = "inline-block";
+      document.getElementById('btn-skip-scramble').style.display = "inline-block";
     };
 
     window.pickWordForBlank = function(word) {
@@ -1319,7 +1404,6 @@
       const initialHash = window.location.hash.replace('#', '') || 'cinema';
       handleViewSwitch(initialHash);
     });
-
   </script>
 </body>
 </html>
