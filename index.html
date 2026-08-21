@@ -335,7 +335,7 @@
            </div>
         </div>
 
-        <!-- KHUNG GAME 5: SHADOWING & CHẤM ĐIỂM PHÁT ÂM (MỚI) -->
+        <!-- KHUNG GAME 5: SHADOWING & CHẤM ĐIỂM PHÁT ÂM (GIỌNG NỮ TRONG TRẺO) -->
         <div id="game-speaking" class="hidden w-full space-y-4">
            <div class="p-6 bg-cottage-amber/10 rounded-2xl border-2 border-dashed border-cottage-amber/30 text-center">
              <p class="text-xs font-bold text-cottage-amberDark uppercase tracking-widest mb-2">Shadowing & Tự chấm phát âm 🎙️</p>
@@ -1409,6 +1409,7 @@
     };
 
     window.restartArcadeMode = function() {
+       if(cinemaData.length === 0) { alert("Đang tải dữ liệu, chờ chút nhé..."); return; }
        let pool = allPracticeSentences.filter(s => s.type === currentArcadeMode);
        if (!isVip) {
            pool = pool.filter(s => {
@@ -1416,6 +1417,7 @@
                return lesson && !lesson.locked;
            });
        }
+       if (pool.length === 0) { alert("Không tìm thấy bài tập cho phần này."); return; }
        remainingSentences = [...pool];
        document.getElementById('arcade-completed-msg').classList.add('hidden');
        document.getElementById('game-' + currentArcadeMode).classList.remove('hidden');
@@ -1429,7 +1431,7 @@
       }
     };
 
-    // ĐÃ SỬA LỖI LẶP CÂU HOÀN CHỈNH
+    // Chống lặp câu hỏi
     window.loadNextExercise = function() {
       if (currentPractice) {
         remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
@@ -1469,30 +1471,36 @@
         document.getElementById('writing-feedback').classList.remove('hidden');
     };
 
-    // --- GAME 5: SPEAKING & SHADOWING (MỚI TÍCH HỢP SPEECH API) ---
+    // --- GAME 5: SPEAKING & SHADOWING (GIỌNG NỮ TRONG TRẺO, KHÔNG TRẦM) ---
     window.initSpeakingGameUI = function() {
         document.getElementById('speaking-quote').innerText = '"' + currentPractice.quote + '"';
-        document.getElementById('speaking-status').innerText = "Nhấn nút trên và đọc to câu thoại bằng tiếng Anh...";
+        document.getElementById('speaking-status').innerText = "Nhấn nút dưới và đọc to câu thoại bằng tiếng Anh...";
         document.getElementById('speaking-status').className = "text-xs font-bold text-cottage-brownLight text-center";
         document.getElementById('speaking-feedback').classList.add('hidden');
         document.getElementById('btn-mic').disabled = false;
         document.getElementById('btn-mic').classList.remove('opacity-50');
     };
 
-    // 1. Máy đọc mẫu câu thoại (Text-to-Speech)
+    // Hàm chọn giọng đọc mượt mà, trong trẻo (Ưu tiên Google US English hoặc giọng nữ sáng)
+    function getBestVoice() {
+        const voices = window.speechSynthesis.getVoices();
+        return voices.find(v => v.name.includes('Google US English') || v.name.includes('Samantha') || (v.lang === 'en-US' && v.name.toLowerCase().includes('female'))) || voices.find(v => v.lang === 'en-US') || voices[0];
+    }
+
     window.speakQuote = function() {
+        if (!currentPractice) return;
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(currentPractice.quote);
+            utterance.voice = getBestVoice();
             utterance.lang = 'en-US';
-            utterance.rate = 0.9;
+            utterance.rate = 0.9; // Tốc độ chuẩn chậm vừa phải để học sinh nhại lại
             window.speechSynthesis.speak(utterance);
         } else {
             alert("Trình duyệt của bạn không hỗ trợ tính năng đọc mẫu.");
         }
     };
 
-    // 2. Nhận diện giọng đọc học sinh và tự chấm điểm (Speech Recognition)
     window.startPronunciationCheck = function() {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         
