@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy Garden Admin - Đăng tải học liệu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400..800;1,400..800&family=Quicksand:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cottage: {
+              cream: '#FDFBF7', card: '#FFFDF9', cardHover: '#FFF5F6',
+              green: '#8EA885', greenDark: '#5E7A55', greenLight: '#F1F7EE',
+              rose: '#E6A4B4', roseDark: '#C87A8B', roseLight: '#FCEBEC',
+              butter: '#F9F1E6', brown: '#6A5B53', brownLight: '#A39387', 
+              amber: '#E6B87D', amberDark: '#D49A4C', amberLight: '#FDF6ED'
+            }
+          },
+          fontFamily: { sans: ['Nunito', 'sans-serif'], display: ['Quicksand', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-image: radial-gradient(#EFE5D2 1px, transparent 1px); background-size: 20px 20px; }
+  </style>
+</head>
+<body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans p-4 md:p-8">
+
+  <div class="max-w-3xl mx-auto space-y-8">
+    <!-- Header -->
+    <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-[2rem] p-6 md:p-8 text-center shadow-sm relative overflow-hidden">
+      <div class="absolute top-4 left-6 text-2xl">🌷</div>
+      <div class="absolute top-4 right-6 text-2xl">✨</div>
+      <h1 class="text-2xl md:text-3xl font-display font-black text-cottage-brown">Cozy Garden - Trạm Quản Trị Học Liệu</h1>
+      <p class="text-xs md:text-sm text-cottage-brownLight mt-2">Thêm bài học phim/nhạc/YouTube mới và đồng bộ trực tiếp lên Firebase Cloud dễ dàng! 🌿</p>
+    </div>
+
+    <!-- FORM THÊM BÀI HỌC (LESSON) -->
+    <div class="bg-white border-2 border-cottage-butter rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
+      <h2 class="text-xl font-display font-black text-cottage-roseDark flex items-center gap-2">
+        <i class="fa-solid fa-film"></i> Thêm Bài Học Mới (Kho Phim / Nhạc / YouTube)
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">ID bài học (Số thứ tự, ví dụ: 11):</label>
+          <input type="number" id="lesson-id" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="11">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Định dạng (Format):</label>
+          <select id="lesson-format" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none">
+            <option value="movie">Phim (Movie)</option>
+            <option value="music">Nhạc (Music)</option>
+            <option value="youtube">YouTube (Video thực tế)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Tiêu đề bài học:</label>
+          <input type="text" id="lesson-title" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Interstellar (2014)">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Thể loại (Genre):</label>
+          <input type="text" id="lesson-genre" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Drama, Pop, Interview">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Cấp độ (Level):</label>
+          <select id="lesson-level" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none">
+            <option value="B1">B1</option>
+            <option value="B2" selected>B2</option>
+            <option value="C1">C1</option>
+            <option value="C2">C2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Link Ảnh Thumbnail (URL):</label>
+          <input type="url" id="lesson-thumbnail" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="https://...">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Link nhúng YouTube (Embed URL):</label>
+          <input type="url" id="lesson-mediaurl" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="https://www.youtube.com/embed/...">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-cottage-brown mb-1">Câu thoại trích dẫn (Quote):</label>
+        <textarea id="lesson-quote" rows="2" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="Nhập câu thoại tiếng Anh..."></textarea>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-cottage-brown mb-1">Bản dịch tiếng Việt:</label>
+        <input type="text" id="lesson-translation" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="Nhập bản dịch...">
+      </div>
+
+      <div class="flex items-center gap-2">
+        <input type="checkbox" id="lesson-locked" class="w-4 h-4 text-cottage-rose rounded accent-cottage-rose">
+        <label for="lesson-locked" class="text-xs font-bold text-cottage-brown">Khóa bài học này thành bài VIP 🗝️</label>
+      </div>
+
+      <button onclick="pushLessonToFirebase()" class="w-full py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
+        🚀 Đẩy bài học lên Firebase Cloud
+      </button>
+    </div>
+
+  </div>
+
+  <!-- FIREBASE LOGIC SCRIPT -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBFRmVKt6DxNojHXoOp_qy2VfdEL9LYeFQ",
+      authDomain: "cozy-garden-fa6b6.firebaseapp.com",
+      projectId: "cozy-garden-fa6b6",
+      storageBucket: "cozy-garden-fa6b6.firebasestorage.app",
+      messagingSenderId: "792412788399",
+      appId: "1:792412788399:web:550260375b8b08b8dc665a",
+      measurementId: "G-VB84MNSQNC"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.pushLessonToFirebase = async function() {
+      const id = parseInt(document.getElementById('lesson-id').value);
+      const title = document.getElementById('lesson-title').value.trim();
+      const genre = document.getElementById('lesson-genre').value.trim();
+      const format = document.getElementById('lesson-format').value;
+      const level = document.getElementById('lesson-level').value;
+      const thumbnail = document.getElementById('lesson-thumbnail').value.trim();
+      const mediaUrl = document.getElementById('lesson-mediaurl').value.trim();
+      const quote = document.getElementById('lesson-quote').value.trim();
+      const translation = document.getElementById('lesson-translation').value.trim();
+      const locked = document.getElementById('lesson-locked').checked;
+
+      if (!id || !title || !quote) {
+        alert("Vui lòng điền tối thiểu ID, Tiêu đề và Câu thoại (Quote)!");
+        return;
+      }
+
+      const lessonData = {
+        id: id,
+        title: title,
+        genre: genre || "General",
+        format: format,
+        level: level,
+        thumbnail: thumbnail || "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600",
+        mediaType: "youtube",
+        mediaUrl: mediaUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0",
+        locked: locked,
+        quote: quote,
+        translation: translation,
+        vocabAnalysis: [
+          { word: "Sample Word", ipa: "/ˈsæm.pəl/", meaning: "Từ vựng mẫu ví dụ.", context: "Ngữ cảnh mẫu." }
+        ],
+        quizzes: [
+          { q: "Câu hỏi mẫu kiểm tra mức độ hiểu?", options: ["A. Đáp án đúng", "B. Đáp án sai", "C. Sai", "D. Sai"], correct: 0, explanation: "Giải thích đáp án đúng." }
+        ]
+      };
+
+      try {
+        await setDoc(doc(db, "lessons", `lesson_${id}`), lessonData);
+        alert(`✨ Đã thêm bài học "${title}" lên Firebase thành công! Bạn có thể quay lại trang chính để xem kết quả 🌷`);
+        
+        // Reset form
+        document.getElementById('lesson-id').value = '';
+        document.getElementById('lesson-title').value = '';
+        document.getElementById('lesson-genre').value = '';
+        document.getElementById('lesson-thumbnail').value = '';
+        document.getElementById('lesson-mediaurl').value = '';
+        document.getElementById('lesson-quote').value = '';
+        document.getElementById('lesson-translation').value = '';
+        document.getElementById('lesson-locked').checked = false;
+      } catch (error) {
+        console.error("Lỗi khi đẩy lên Firebase:", error);
+        alert("❌ Có lỗi xảy ra khi đẩy dữ liệu: " + error.message);
+      }
+    };
+  </script>
+</body>
+</html>
