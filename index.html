@@ -71,13 +71,13 @@
       <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
         <div class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-rose/30 flex items-center justify-center text-xl overflow-hidden shadow-sm group-hover:scale-105 transition transform">
         🌷
-        </div>
+      </div>
         <div>
           <div class="flex items-center gap-1.5">
             <span class="font-serif italic font-bold text-[24px] text-cottage-roseDark">Cozy garden</span>
           </div>
           <span class="text-[11px] text-cottage-brownLight font-semibold">Cùng chill và học từ vựng qua ngữ cảnh với Cozy nha! 🦢</span>
-        </div>
+      </div>
       </div>
 
       <div class="flex items-center space-x-2">
@@ -127,7 +127,7 @@
         <div class="w-16 h-16 md:w-20 md:h-20 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-2xl md:text-3xl animate-float-delayed select-none z-10 relative shadow-[0_8px_30px_rgb(230,164,180,0.3)] text-cottage-roseDark">
           <i class="fa-solid fa-film"></i>
         </div>
-      </div>
+    </div>
 
       <div id="cinema-filters-container" class="flex flex-col md:flex-row gap-2 items-center justify-between bg-cottage-roseLight/10 p-3 rounded-2xl border-2 border-cottage-rose/30 shadow-sm overflow-hidden">
         <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="cinema-filters">
@@ -222,24 +222,31 @@
     <section id="view-arcade" class="hidden space-y-6 max-w-4xl mx-auto">
       
       <!-- MENU CÁC DẠNG BÀI TẬP -->
-      <div id="arcade-menu" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div id="arcade-menu" class="grid grid-cols-1 md:grid-cols-5 gap-6">
         <!-- Dạng 1: Điền từ -->
-        <div onclick="startArcadeMode('fill')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-rose rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl md:text-5xl mb-4 animate-float">📝</div>
-          <h3 class="font-display font-black text-xl md:text-2xl text-cottage-brown">Điền từ vào ngữ cảnh</h3>
-          <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Chọn và điền từ vựng phù hợp vào chỗ trống để hoàn thiện câu thoại.</p>
+        <div onclick="startArcadeMode('fill')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-rose rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+          <div class="text-4xl mb-4 animate-float">📝</div>
+          <h3 class="font-display font-black text-lg text-cottage-brown">Điền từ</h3>
         </div>
         <!-- Dạng 2: Tìm lỗi sai -->
-        <div onclick="startArcadeMode('mistake')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-amber rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl md:text-5xl mb-4 animate-float-delayed">🔍</div>
-          <h3 class="font-display font-black text-xl md:text-2xl text-cottage-brown">Tìm lỗi sai</h3>
-          <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Phát hiện và chọn phương án sửa chính xác cho một lỗi ngữ pháp ẩn giấu.</p>
+        <div onclick="startArcadeMode('mistake')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-amber rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+          <div class="text-4xl mb-4 animate-float-delayed">🔍</div>
+          <h3 class="font-display font-black text-lg text-cottage-brown">Lỗi sai</h3>
         </div>
         <!-- Dạng 3: Ghép đôi -->
-        <div onclick="startArcadeMode('match')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-green rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl md:text-5xl mb-4 animate-float">🧩</div>
-          <h3 class="font-display font-black text-xl md:text-2xl text-cottage-brown">Ghép đôi cụm từ</h3>
-          <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Nối các Idiom và Collocation để xây dựng tư duy học theo cụm từ (Lexical Approach).</p>
+        <div onclick="startArcadeMode('match')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-green rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+          <div class="text-4xl mb-4 animate-float">🧩</div>
+          <h3 class="font-display font-black text-lg text-cottage-brown">Ghép đôi</h3>
+        </div>
+        <!-- Dạng 4: Viết câu -->
+        <div onclick="startArcadeMode('writing')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-roseDark rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+          <div class="text-4xl mb-4 animate-float-delayed">✍️</div>
+          <h3 class="font-display font-black text-lg text-cottage-brown">Viết câu</h3>
+        </div>
+        <!-- Dạng 5: Shadowing -->
+        <div onclick="startArcadeMode('speaking')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-greenDark rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+          <div class="text-4xl mb-4 animate-float">🎙️</div>
+          <h3 class="font-display font-black text-lg text-cottage-brown">Shadowing</h3>
         </div>
       </div>
 
@@ -250,7 +257,7 @@
         <div class="space-y-1 pt-6">
           <h3 id="arcade-play-title" class="text-2xl md:text-3xl font-display font-black text-cottage-brown">Tiêu đề trò chơi</h3>
           <p id="arcade-play-desc" class="text-sm text-cottage-brownLight mt-2">Mô tả trò chơi</p>
-        </div>
+      </div>
 
         <!-- Trạng thái hoàn thành toàn bộ -->
         <div id="arcade-completed-msg" class="hidden py-8">
@@ -303,6 +310,37 @@
             <button onclick="skipArcadeExercise()" class="px-4 py-2 text-xs font-bold text-cottage-brown bg-cottage-cream border-2 border-cottage-butter hover:bg-cottage-butter rounded-xl transition" id="btn-skip-match">Câu tiếp theo ⏭️</button>
             <button onclick="loadNextExercise()" class="hidden px-5 py-2 text-xs font-bold text-white bg-cottage-greenDark hover:bg-cottage-green rounded-xl shadow-sm transition transform active:scale-95" id="btn-next-match">Câu tiếp theo ⏭️</button>
           </div>
+        </div>
+
+        <!-- KHUNG GAME 4: VIẾT CÂU (WRITING) -->
+        <div id="game-writing" class="hidden w-full space-y-4">
+           <div class="p-6 bg-cottage-roseLight/20 rounded-2xl border-2 border-dashed border-cottage-rose/40 text-left">
+             <p id="writing-prompt" class="text-sm font-bold text-cottage-brown"></p>
+           </div>
+           <textarea id="writing-textarea" class="w-full p-4 rounded-xl border-2 border-cottage-butter focus:border-cottage-rose focus:outline-none h-32 text-sm text-cottage-brown" placeholder="Nhập câu trả lời của bạn tại đây..."></textarea>
+           <button onclick="checkWriting()" class="px-6 py-2 bg-cottage-rose text-white text-xs font-bold rounded-xl hover:bg-cottage-roseDark transition">Gửi đáp án 💌</button>
+           <div id="writing-feedback" class="hidden p-4 rounded-xl text-left text-sm border-2 border-cottage-green/30 bg-cottage-greenLight/30 text-cottage-greenDark">
+             <p class="font-bold mb-1">💡 Đáp án tham khảo:</p>
+             <p id="writing-ref" class="text-cottage-brown"></p>
+             <button onclick="loadNextExercise()" class="mt-4 px-4 py-2 bg-cottage-green text-white text-xs font-bold rounded-xl">Câu tiếp theo ⏭️</button>
+           </div>
+        </div>
+
+        <!-- KHUNG GAME 5: SHADOWING (SPEAKING) -->
+        <div id="game-speaking" class="hidden w-full space-y-4">
+           <div class="p-6 bg-cottage-amber/10 rounded-2xl border-2 border-dashed border-cottage-amber/30 text-center">
+             <p class="text-xs font-bold text-cottage-amberDark uppercase tracking-widest mb-2">Shadowing (Nhại lại)</p>
+             <p id="speaking-quote" class="text-lg font-serif italic text-cottage-brown"></p>
+           </div>
+           <div class="text-left space-y-2 text-xs text-cottage-brown">
+             <p><b>Hướng dẫn:</b></p>
+             <ul class="list-disc list-inside space-y-1">
+               <li>Nghe đoạn phim/nhạc trong bài học.</li>
+               <li>Bấm nút ghi âm (tự ghi bên ngoài hoặc giả lập) và đọc theo đúng ngữ điệu.</li>
+               <li>So sánh lại với ngữ điệu gốc.</li>
+             </ul>
+           </div>
+           <button onclick="loadNextExercise()" class="mt-4 px-6 py-2 bg-cottage-amber text-white text-xs font-bold rounded-xl hover:bg-cottage-amberDark transition">Đã luyện xong, câu tiếp theo ⏭️</button>
         </div>
 
       </div>
@@ -398,7 +436,6 @@
       
       <div class="p-6 md:p-8 space-y-6">
         <div id="cinema-modal-header" class="border-b-2 border-dashed border-cottage-rose/40 pb-4 pr-8 flex flex-col gap-2">
-          <!-- ĐÃ XÓA NHÃN GENRE Ở ĐÂY THEO YÊU CẦU -->
           <h2 id="cinema-title" class="text-2xl md:text-3xl font-serif font-bold text-cottage-brown leading-tight">Title</h2>
         </div>
         
@@ -410,7 +447,7 @@
         <div id="cinema-quote-box" class="p-5 md:p-6 bg-white/60 rounded-3xl border-2 border-cottage-rose/30 relative mt-4 shadow-sm">
           <div class="absolute -top-3 -left-2 text-2xl">📝</div>
           <div id="cinema-quote-container" class="mt-1">
-             <p id="cinema-quote" class="italic text-base md:text-lg text-cottage-brown font-serif leading-relaxed"></p>
+            <p id="cinema-quote" class="italic text-base md:text-lg text-cottage-brown font-serif leading-relaxed"></p>
           </div>
           <div class="w-12 h-0.5 bg-cottage-brown/20 my-4 mx-auto rounded-full"></div>
           <p id="cinema-translation" class="text-xs text-cottage-brown font-medium text-center"></p>
@@ -514,9 +551,9 @@
             <div class="flex justify-between"><span>Tên tài khoản:</span> <b>VU THAI AN</b></div>
             <div class="flex justify-between items-center mt-2 pt-2 border-t-2 border-dashed border-cottage-butter">
               <span>Nội dung CK:</span> <b id="qr-content" class="text-cottage-roseDark text-xs bg-cottage-roseLight px-2 py-0.5 rounded-lg">COZY3DAYS</b>
-            </div>
-          </div>
         </div>
+        </div>
+      </div>
       </div>
 
       <button onclick="simulateSuccessPayment()" class="w-full mt-8 py-4 bg-cottage-brown hover:bg-cottage-brownLight text-white font-black text-sm rounded-2xl shadow-lg transition transform active:scale-95 flex items-center justify-center gap-2">
@@ -597,7 +634,7 @@
         ]
       },
       {
-        id: 4, genre: "Musical", format: "movie", title: "The Greatest Showman (2017)", level: "A2", thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", locked: true,
+        id: 4, genre: "Musical", format: "movie", title: "The Greatest Showman (2017)", level: "B2", thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", locked: true,
         quote: "No one ever made a difference by being like everyone else.", translation: "Chưa từng có ai tạo ra sự khác biệt bằng cách sống giống như những người khác.",
         vocabAnalysis: [
           { word: "Noble (adj)", ipa: "/ˈnoʊ.bəl/", meaning: "Cao quý, đáng kính.", context: "Bộ phim trích dẫn câu nói của P.T. Barnum: 'Nghệ thuật cao quý nhất là làm cho người khác hạnh phúc'." }
@@ -692,7 +729,7 @@
       }
     ];
 
-    // CẤU TRÚC BÀI TẬP PHONG PHÚ: 10 Câu Fill, 10 Câu Mistake, 4 Vòng Match
+    // CẤU TRÚC BÀI TẬP PHONG PHÚ: 10 Câu Fill, 10 Câu Mistake, 4 Vòng Match, 2 Writing, 2 Speaking
     const SEED_PRACTICE_DATA = [
       // --- DẠNG 1: FILL (ĐIỀN TỪ) ---
       { id: "fill_1", type: "fill", cinemaId: 1, parts: [ { text: "Her attitude towards the dress was completely ", isBlank: false }, { text: "thô kệch/xấu xí", expectedWord: "lumpy", isBlank: true }, { text: " but she took herself too ", isBlank: false }, { text: "nghiêm trọng", expectedWord: "seriously", isBlank: true }, { text: " to notice.", isBlank: false } ], wordsToPick: ["lumpy", "seriously", "ephemeral", "coward"] },
@@ -707,82 +744,30 @@
       { id: "fill_10", type: "fill", cinemaId: 10, parts: [ { text: "Being ", isBlank: false }, { text: "tự nhận thức", expectedWord: "self-aware", isBlank: true }, { text: " helps you to easily ", isBlank: false }, { text: "rũ bỏ/phớt lờ", expectedWord: "shrug off", isBlank: true }, { text: " negative comments.", isBlank: false } ], wordsToPick: ["self-aware", "shrug off", "against", "lethal"] },
 
       // --- DẠNG 2: MISTAKE (TÌM LỖI SAI - Không Trùng Lặp Quy Tắc) ---
-      // Lỗi 1: Sự hòa hợp Chủ - Vị (Subject-Verb agreement)
-      { id: "mistake_1", type: "mistake", cinemaId: 1, 
-        parts: [
-          { text: "Miranda thinks that " }, { text: "wearing", isTarget: true, isError: false }, { text: " a lumpy sweater " }, { text: "exempt", isTarget: true, isError: true, fixOptions: ["exempts", "exempting", "exempted"], correctFix: "exempts" }, { text: " you " }, { text: "from", isTarget: true, isError: false }, { text: " the fashion industry." }
-        ],
-        explanation: "Chủ ngữ 'wearing a lumpy sweater' là danh động từ số ít, nên động từ phải chia thêm 's' thành 'exempts'."
-      },
-      // Lỗi 2: Tính từ vs Trạng từ
-      { id: "mistake_2", type: "mistake", cinemaId: 2, 
-        parts: [
-          { text: "You are never " }, { text: "wrongly", isTarget: true, isError: true, fixOptions: ["wrong", "wronging", "wrongs"], correctFix: "wrong" }, { text: " to " }, { text: "do", isTarget: true, isError: false }, { text: " the " }, { text: "right", isTarget: true, isError: false }, { text: " thing." }
-        ],
-        explanation: "Sau động từ to be ('are') cần một Tính từ ('wrong') chứ không phải Trạng từ ('wrongly')."
-      },
-      // Lỗi 3: Giới từ + V-ing
-      { id: "mistake_3", type: "mistake", cinemaId: 4, 
-        parts: [
-          { text: "No one ever " }, { text: "made", isTarget: true, isError: false }, { text: " a difference by " }, { text: "be", isTarget: true, isError: true, fixOptions: ["being", "been", "to be"], correctFix: "being" }, { text: " exactly like " }, { text: "everyone", isTarget: true, isError: false }, { text: " else." }
-        ],
-        explanation: "Theo quy tắc, sau giới từ ('by') động từ phải ở dạng V-ing ('being')."
-      },
-      // Lỗi 4: Mạo từ (Articles a/an)
-      { id: "mistake_4", type: "mistake", cinemaId: 6, 
-        parts: [
-          { text: "It is " }, { text: "an", isTarget: true, isError: true, fixOptions: ["a", "the", "no article"], correctFix: "a" }, { text: " peculiar feeling when you " }, { text: "outgrow", isTarget: true, isError: false }, { text: " your " }, { text: "clothes.", isTarget: true, isError: false }
-        ],
-        explanation: "Từ 'peculiar' bắt đầu bằng một phụ âm /p/ nên phải dùng mạo từ 'a' thay vì 'an'."
-      },
-      // Lỗi 5: Hiện tại hoàn thành (Present Perfect)
-      { id: "mistake_5", type: "mistake", cinemaId: 7, 
-        parts: [
-          { text: "People " }, { text: "keep", isTarget: true, isError: false }, { text: " asking if I am back, but I " }, { text: "hasn't", isTarget: true, isError: true, fixOptions: ["haven't", "hadn't", "isn't"], correctFix: "haven't" }, { text: " really " }, { text: "had", isTarget: true, isError: false }, { text: " an answer yet." }
-        ],
-        explanation: "Chủ ngữ là 'I' nên động từ to have (trợ động từ của HTHT) phải chia là 'haven't'."
-      },
-      // Lỗi 6: Thể bị động (Passive voice)
-      { id: "mistake_6", type: "mistake", cinemaId: 8, 
-        parts: [
-          { text: "When I am " }, { text: "leave", isTarget: true, isError: true, fixOptions: ["left", "leaving", "to leave"], correctFix: "left" }, { text: " to my own devices, I usually " }, { text: "end up", isTarget: true, isError: false }, { text: " causing a " }, { text: "crisis.", isTarget: true, isError: false }
-        ],
-        explanation: "Cấu trúc bị động 'to be + V3/ed'. Động từ 'leave' phải chuyển thành dạng phân từ hai là 'left'."
-      },
-      // Lỗi 7: Danh từ số nhiều / Đếm được vs Không đếm được
-      { id: "mistake_7", type: "mistake", cinemaId: 9, 
-        parts: [
-          { text: "They always " }, { text: "come", isTarget: true, isError: false }, { text: " with " }, { text: "a", isTarget: true, isError: true, fixOptions: ["an", "the", "(bỏ mạo từ)"], correctFix: "(bỏ mạo từ)" }, { text: " prices and " }, { text: "vices.", isTarget: true, isError: false }
-        ],
-        explanation: "'Prices' và 'vices' đang ở dạng số nhiều đếm được nên không thể dùng mạo từ 'a' phía trước."
-      },
-      // Lỗi 8: To V vs V-ing sau Tính từ
-      { id: "mistake_8", type: "mistake", cinemaId: 10, 
-        parts: [
-          { text: "It is important " }, { text: "being", isTarget: true, isError: true, fixOptions: ["to be", "be", "been"], correctFix: "to be" }, { text: " self-aware, but you must also know how to " }, { text: "shrug", isTarget: true, isError: false }, { text: " it " }, { text: "off.", isTarget: true, isError: false }
-        ],
-        explanation: "Cấu trúc 'It is + Adjective + TO verb'. Do đó phải dùng 'to be' thay vì 'being'."
-      },
-      // Lỗi 9: Động từ đi kèm To be
-      { id: "mistake_9", type: "mistake", cinemaId: 5, 
-        parts: [
-          { text: "He " }, { text: "is", isTarget: true, isError: true, fixOptions: ["does", "has", "belongs"], correctFix: "belongs" }, { text: " to the Dark Lord, so we must not " }, { text: "fight", isTarget: true, isError: false }, { text: " back " }, { text: "against", isTarget: true, isError: false }, { text: " him yet." }
-        ],
-        explanation: "Động từ 'belong' diễn tả sở hữu, dùng nguyên gốc 'belongs' thay vì to be 'is'."
-      },
-      // Lỗi 10: Giới từ chỉ mục đích
-      { id: "mistake_10", type: "mistake", cinemaId: 3, 
-        parts: [
-          { text: "She is waiting " }, { text: "in", isTarget: true, isError: true, fixOptions: ["for", "at", "to"], correctFix: "for" }, { text: " someone who can " }, { text: "make", isTarget: true, isError: false }, { text: " her pipe dream " }, { text: "come", isTarget: true, isError: false }, { text: " true." }
-        ],
-        explanation: "Cụm động từ cố định 'wait FOR someone' (chờ đợi ai đó)."
-      },
+      { id: "mistake_1", type: "mistake", cinemaId: 1, parts: [ { text: "Miranda thinks that " }, { text: "wearing", isTarget: true, isError: false }, { text: " a lumpy sweater " }, { text: "exempt", isTarget: true, isError: true, fixOptions: ["exempts", "exempting", "exempted"], correctFix: "exempts" }, { text: " you " }, { text: "from", isTarget: true, isError: false }, { text: " the fashion industry." } ], explanation: "Chủ ngữ 'wearing a lumpy sweater' là danh động từ số ít, nên động từ phải chia thêm 's' thành 'exempts'." },
+      { id: "mistake_2", type: "mistake", cinemaId: 2, parts: [ { text: "You are never " }, { text: "wrongly", isTarget: true, isError: true, fixOptions: ["wrong", "wronging", "wrongs"], correctFix: "wrong" }, { text: " to " }, { text: "do", isTarget: true, isError: false }, { text: " the " }, { text: "right", isTarget: true, isError: false }, { text: " thing." } ], explanation: "Sau động từ to be ('are') cần một Tính từ ('wrong') chứ không phải Trạng từ ('wrongly')." },
+      { id: "mistake_3", type: "mistake", cinemaId: 4, parts: [ { text: "No one ever " }, { text: "made", isTarget: true, isError: false }, { text: " a difference by " }, { text: "be", isTarget: true, isError: true, fixOptions: ["being", "been", "to be"], correctFix: "being" }, { text: " exactly like " }, { text: "everyone", isTarget: true, isError: false }, { text: " else." } ], explanation: "Theo quy tắc, sau giới từ ('by') động từ phải ở dạng V-ing ('being')." },
+      { id: "mistake_4", type: "mistake", cinemaId: 6, parts: [ { text: "It is " }, { text: "an", isTarget: true, isError: true, fixOptions: ["a", "the", "no article"], correctFix: "a" }, { text: " peculiar feeling when you " }, { text: "outgrow", isTarget: true, isError: false }, { text: " your " }, { text: "clothes.", isTarget: true, isError: false } ], explanation: "Từ 'peculiar' bắt đầu bằng một phụ âm /p/ nên phải dùng mạo từ 'a' thay vì 'an'." },
+      { id: "mistake_5", type: "mistake", cinemaId: 7, parts: [ { text: "People " }, { text: "keep", isTarget: true, isError: false }, { text: " asking if I am back, but I " }, { text: "hasn't", isTarget: true, isError: true, fixOptions: ["haven't", "hadn't", "isn't"], correctFix: "haven't" }, { text: " really " }, { text: "had", isTarget: true, isError: false }, { text: " an answer yet." } ], explanation: "Chủ ngữ là 'I' nên động từ to have (trợ động từ của HTHT) phải chia là 'haven't'." },
+      { id: "mistake_6", type: "mistake", cinemaId: 8, parts: [ { text: "When I am " }, { text: "leave", isTarget: true, isError: true, fixOptions: ["left", "leaving", "to leave"], correctFix: "left" }, { text: " to my own devices, I usually " }, { text: "end up", isTarget: true, isError: false }, { text: " causing a " }, { text: "crisis.", isTarget: true, isError: false } ], explanation: "Cấu trúc bị động 'to be + V3/ed'. Động từ 'leave' phải chuyển thành dạng phân từ hai là 'left'." },
+      { id: "mistake_7", type: "mistake", cinemaId: 9, parts: [ { text: "They always " }, { text: "come", isTarget: true, isError: false }, { text: " with " }, { text: "a", isTarget: true, isError: true, fixOptions: ["an", "the", "(bỏ mạo từ)"], correctFix: "(bỏ mạo từ)" }, { text: " prices and " }, { text: "vices.", isTarget: true, isError: false } ], explanation: "'Prices' và 'vices' đang ở dạng số nhiều đếm được nên không thể dùng mạo từ 'a' phía trước." },
+      { id: "mistake_8", type: "mistake", cinemaId: 10, parts: [ { text: "It is important " }, { text: "being", isTarget: true, isError: true, fixOptions: ["to be", "be", "been"], correctFix: "to be" }, { text: " self-aware, but you must also know how to " }, { text: "shrug", isTarget: true, isError: false }, { text: " it " }, { text: "off.", isTarget: true, isError: false } ], explanation: "Cấu trúc 'It is + Adjective + TO verb'. Do đó phải dùng 'to be' thay vì 'being'." },
+      { id: "mistake_9", type: "mistake", cinemaId: 5, parts: [ { text: "He " }, { text: "is", isTarget: true, isError: true, fixOptions: ["does", "has", "belongs"], correctFix: "belongs" }, { text: " to the Dark Lord, so we must not " }, { text: "fight", isTarget: true, isError: false }, { text: " back " }, { text: "against", isTarget: true, isError: false }, { text: " him yet." } ], explanation: "Động từ 'belong' diễn tả sở hữu, dùng nguyên gốc 'belongs' thay vì to be 'is'." },
+      { id: "mistake_10", type: "mistake", cinemaId: 3, parts: [ { text: "She is waiting " }, { text: "in", isTarget: true, isError: true, fixOptions: ["for", "at", "to"], correctFix: "for" }, { text: " someone who can " }, { text: "make", isTarget: true, isError: false }, { text: " her pipe dream " }, { text: "come", isTarget: true, isError: false }, { text: " true." } ], explanation: "Cụm động từ cố định 'wait FOR someone' (chờ đợi ai đó)." },
 
       // --- DẠNG 3: MATCH (GHÉP ĐÔI CỤM TỪ) ---
       { id: "match_1", type: "match", cinemaId: 1, pairs: [ { left: "Take yourself", right: "too seriously" }, { left: "Clearance", right: "bin" }, { left: "Brown", right: "nose" }, { left: "Shopping", right: "potential" } ] },
       { id: "match_2", type: "match", cinemaId: 3, pairs: [ { left: "Pipe", right: "dream" }, { left: "Make", right: "sense" }, { left: "Fight", right: "back" }, { left: "Run", right: "away" } ] },
       { id: "match_3", type: "match", cinemaId: 8, pairs: [ { left: "Sheer", right: "will" }, { left: "Inescapable", right: "force" }, { left: "Habitable", right: "planet" }, { left: "Unparalleled", right: "skills" } ] },
-      { id: "match_4", type: "match", cinemaId: 9, pairs: [ { left: "Left to", right: "my own devices" }, { left: "Shrug", right: "it off" }, { left: "End up in", right: "crisis" }, { left: "Self", right: "aware" } ] }
+      { id: "match_4", type: "match", cinemaId: 9, pairs: [ { left: "Left to", right: "my own devices" }, { left: "Shrug", right: "it off" }, { left: "End up in", right: "crisis" }, { left: "Self", right: "aware" } ] },
+
+      // --- DẠNG 4: WRITING ---
+      { id: "write_1", type: "writing", cinemaId: 1, prompt: "Hãy đặt một câu sử dụng cụm từ 'Take yourself too seriously' để nói về một người bạn của bạn.", refAnswer: "My friend often worries about small mistakes because he takes himself too seriously." },
+      { id: "write_2", type: "writing", cinemaId: 8, prompt: "Hãy viết một câu sử dụng từ 'habitable' để miêu tả về Trái Đất.", refAnswer: "We must protect our planet to keep it habitable for future generations." },
+
+      // --- DẠNG 5: SPEAKING ---
+      { id: "speak_1", type: "speaking", cinemaId: 1, quote: "You go to your closet and you select that lumpy blue sweater.", instructions: "Hãy nghe đoạn phim gốc và nhại lại đúng tông giọng châm biếm, dứt khoát của Miranda." },
+      { id: "speak_2", type: "speaking", cinemaId: 9, quote: "They come with prices and vices.", instructions: "Luyện tập nhấn trọng âm vào từ 'prices' và 'vices' để tạo nhịp điệu giống Taylor Swift." }
     ];
 
     // ================= 4. HÀM TẢI VÀ LẮNG NGHE DỮ LIỆU REAL-TIME =================
@@ -1326,7 +1311,7 @@
         allBtns.forEach(b => b.disabled = true);
           
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
-        feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
+      feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
         feedback.innerHTML = `🎉 <b>Chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       } else {
         const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
@@ -1376,7 +1361,7 @@ window.startArcadeMode = function(mode) {
   document.getElementById('arcade-menu').classList.add('hidden');
   document.getElementById('arcade-play-area').classList.remove('hidden');
 
-  ['fill', 'mistake', 'match'].forEach(m => document.getElementById('game-' + m).classList.add('hidden'));
+  ['fill', 'mistake', 'match', 'writing', 'speaking'].forEach(m => document.getElementById('game-' + m).classList.add('hidden'));
   document.getElementById('game-' + mode).classList.remove('hidden');
   document.getElementById('arcade-completed-msg').classList.add('hidden');
 
@@ -1392,9 +1377,14 @@ window.startArcadeMode = function(mode) {
   } else if (mode === 'match') {
      titleEl.innerText = "Ghép đôi cụm từ";
      descEl.innerText = "Nối các mảnh ghép ở hai cột lại để tạo thành Collocation/Idiom có nghĩa.";
+  } else if (mode === 'writing') {
+     titleEl.innerText = "Viết câu ứng dụng";
+     descEl.innerText = "Sử dụng từ vựng đã học để đặt câu riêng cho bạn.";
+  } else if (mode === 'speaking') {
+     titleEl.innerText = "Shadowing (Nhại lại)";
+     descEl.innerText = "Luyện phản xạ và ngữ điệu giống người bản xứ.";
   }
 
-  // Lọc danh sách câu hỏi một lần duy nhất khi mở chế độ chơi (Bao gồm chặn bài VIP nếu chưa mua)
   let pool = allPracticeSentences.filter(s => s.type === mode);
   if (!isVip) {
       pool = pool.filter(s => {
@@ -1453,7 +1443,25 @@ window.loadNextExercise = function() {
   if(currentArcadeMode === 'fill') window.initFillGameUI();
   else if(currentArcadeMode === 'mistake') window.initMistakeGameUI();
   else if(currentArcadeMode === 'match') window.initMatchGameUI();
+  else if(currentArcadeMode === 'writing') window.initWritingGameUI();
+  else if(currentArcadeMode === 'speaking') window.initSpeakingGameUI();
 };
+    
+    // --- WRITING GAME ---
+    window.initWritingGameUI = function() {
+        document.getElementById('writing-prompt').innerText = currentPractice.prompt;
+        document.getElementById('writing-textarea').value = '';
+        document.getElementById('writing-feedback').classList.add('hidden');
+    };
+    window.checkWriting = function() {
+        document.getElementById('writing-ref').innerText = currentPractice.refAnswer;
+        document.getElementById('writing-feedback').classList.remove('hidden');
+    };
+
+    // --- SPEAKING GAME ---
+    window.initSpeakingGameUI = function() {
+        document.getElementById('speaking-quote').innerText = '"' + currentPractice.quote + '"';
+    };
     
     // --- GAME 1: FILL (ĐIỀN TỪ TỰ ĐỘNG CHECK) ---
     window.initFillGameUI = function() {
@@ -1654,6 +1662,10 @@ window.loadNextExercise = function() {
        
        rightCol.innerHTML = rightItems.map(item => 
           `<button id="match-R-${item.id}" onclick="selectMatch('R', ${item.id})" class="w-full p-4 bg-white border-2 border-cottage-butter rounded-xl text-sm md:text-base font-bold text-cottage-brown hover:border-cottage-green shadow-sm transition text-left break-words">${item.text}</button>`
+       ).join('');
+       
+       leftCol.innerHTML = leftItems.sort(() => Math.random() - 0.5).map(item => 
+          `<button id="match-L-${item.id}" onclick="selectMatch('L', ${item.id})" class="w-full p-4 bg-white border-2 border-cottage-butter rounded-xl text-sm md:text-base font-bold text-cottage-brown hover:border-cottage-green shadow-sm transition text-right break-words">${item.text}</button>`
        ).join('');
     };
 
