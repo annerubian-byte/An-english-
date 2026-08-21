@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cozy Garden Admin - Đăng tải học liệu</title>
+  <title>Cozy Garden Admin - Đăng tải học liệu toàn diện</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
     body { background-image: radial-gradient(#EFE5D2 1px, transparent 1px); background-size: 20px 20px; }
   </style>
 </head>
-<body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans p-4 md:p-8">
+<body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans p-4 md:p-8 pb-20">
 
   <div class="max-w-3xl mx-auto space-y-8">
     <!-- Header -->
@@ -39,19 +39,20 @@
       <div class="absolute top-4 left-6 text-2xl">🌷</div>
       <div class="absolute top-4 right-6 text-2xl">✨</div>
       <h1 class="text-2xl md:text-3xl font-display font-black text-cottage-brown">Cozy Garden - Trạm Quản Trị Học Liệu</h1>
-      <p class="text-xs md:text-sm text-cottage-brownLight mt-2">Thêm bài học phim/nhạc/YouTube mới và đồng bộ trực tiếp lên Firebase Cloud dễ dàng! 🌿</p>
+      <p class="text-xs md:text-sm text-cottage-brownLight mt-2">Thêm bài học mới 👉 Hệ thống tự động tạo toàn bộ từ vựng, trắc nghiệm và 5 dạng bài luyện tập! 🌿</p>
     </div>
 
-    <!-- FORM THÊM BÀI HỌC (LESSON) -->
+    <!-- FORM ĐĂNG TẢI TOÀN DIỆN -->
     <div class="bg-white border-2 border-cottage-butter rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
       <h2 class="text-xl font-display font-black text-cottage-roseDark flex items-center gap-2">
-        <i class="fa-solid fa-film"></i> Thêm Bài Học Mới (Kho Phim / Nhạc / YouTube)
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Đăng Bài Học & Tự Động Tạo Học Liệu
       </h2>
 
+      <!-- THÔNG TIN CHUNG -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label class="block text-xs font-bold text-cottage-brown mb-1">ID bài học (Số thứ tự, ví dụ: 11):</label>
-          <input type="number" id="lesson-id" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="11">
+          <label class="block text-xs font-bold text-cottage-brown mb-1">ID bài học (Tự động cấp):</label>
+          <input type="number" id="lesson-id" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" readonly>
         </div>
         <div>
           <label class="block text-xs font-bold text-cottage-brown mb-1">Định dạng (Format):</label>
@@ -70,7 +71,7 @@
         </div>
         <div>
           <label class="block text-xs font-bold text-cottage-brown mb-1">Thể loại (Genre):</label>
-          <input type="text" id="lesson-genre" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Drama, Pop, Interview">
+          <input type="text" id="lesson-genre" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Sci-Fi, Pop, Interview">
         </div>
         <div>
           <label class="block text-xs font-bold text-cottage-brown mb-1">Cấp độ (Level):</label>
@@ -95,7 +96,7 @@
       </div>
 
       <div>
-        <label class="block text-xs font-bold text-cottage-brown mb-1">Câu thoại trích dẫn (Quote):</label>
+        <label class="block text-xs font-bold text-cottage-brown mb-1">Câu thoại trích dẫn (Quote chính):</label>
         <textarea id="lesson-quote" rows="2" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="Nhập câu thoại tiếng Anh..."></textarea>
       </div>
 
@@ -104,13 +105,29 @@
         <input type="text" id="lesson-translation" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="Nhập bản dịch...">
       </div>
 
+      <!-- PHẦN BỔ TRỢ TỰ ĐỘNG CHO TRẠM LUYỆN TẬP -->
+      <div class="p-5 bg-cottage-roseLight/20 rounded-2xl border-2 border-dashed border-cottage-rose/40 space-y-4">
+        <h3 class="font-display font-bold text-sm text-cottage-roseDark"><i class="fa-solid fa-puzzle-piece mr-1"></i> Cấu hình Trạm luyện tập cho bài này:</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-cottage-brown mb-1">Từ trọng tâm cho dạng Điền từ (Fill):</label>
+            <input type="text" id="cfg-fillword" class="w-full p-2.5 rounded-xl border-2 border-cottage-butter bg-white text-xs font-bold" placeholder="ví dụ: habitable">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-cottage-brown mb-1">Đáp án mẫu cho dạng Viết câu (Writing Ref):</label>
+            <input type="text" id="cfg-writeref" class="w-full p-2.5 rounded-xl border-2 border-cottage-butter bg-white text-xs font-bold" placeholder="ví dụ: We must protect our planet...">
+          </div>
+        </div>
+      </div>
+
       <div class="flex items-center gap-2">
         <input type="checkbox" id="lesson-locked" class="w-4 h-4 text-cottage-rose rounded accent-cottage-rose">
         <label for="lesson-locked" class="text-xs font-bold text-cottage-brown">Khóa bài học này thành bài VIP 🗝️</label>
       </div>
 
-      <button onclick="pushLessonToFirebase()" class="w-full py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
-        🚀 Đẩy bài học lên Firebase Cloud
+      <button onclick="pushCompleteLessonToFirebase()" class="w-full py-4 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95 flex items-center justify-center gap-2">
+        <i class="fa-solid fa-cloud-arrow-up"></i> Đăng bài học & Tự động tạo học liệu trọn gói
       </button>
     </div>
 
@@ -119,7 +136,7 @@
   <!-- FIREBASE LOGIC SCRIPT -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBFRmVKt6DxNojHXoOp_qy2VfdEL9LYeFQ",
@@ -134,7 +151,23 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    window.pushLessonToFirebase = async function() {
+    // Tự động quét và cấp ID bài học tiếp theo
+    async function autoDetectNextLessonId() {
+      try {
+        const snap = await getDocs(collection(db, "lessons"));
+        let maxId = 0;
+        snap.forEach(d => {
+          const data = d.data();
+          if (data.id && data.id > maxId) maxId = data.id;
+        });
+        document.getElementById('lesson-id').value = maxId + 1;
+      } catch (e) {
+        document.getElementById('lesson-id').value = 11;
+      }
+    }
+    autoDetectNextLessonId();
+
+    window.pushCompleteLessonToFirebase = async function() {
       const id = parseInt(document.getElementById('lesson-id').value);
       const title = document.getElementById('lesson-title').value.trim();
       const genre = document.getElementById('lesson-genre').value.trim();
@@ -145,48 +178,75 @@
       const quote = document.getElementById('lesson-quote').value.trim();
       const translation = document.getElementById('lesson-translation').value.trim();
       const locked = document.getElementById('lesson-locked').checked;
+      
+      const fillWord = document.getElementById('cfg-fillword').value.trim() || "essential";
+      const writeRef = document.getElementById('cfg-writeref').value.trim() || `This is an example sentence using the quote from ${title}.`;
 
       if (!id || !title || !quote) {
-        alert("Vui lòng điền tối thiểu ID, Tiêu đề và Câu thoại (Quote)!");
+        alert("Vui lòng điền tối thiểu Tiêu đề và Câu thoại (Quote)!");
         return;
       }
 
+      // 1. Dữ liệu bài học chính (Lessons)
       const lessonData = {
-        id: id,
-        title: title,
-        genre: genre || "General",
-        format: format,
-        level: level,
+        id: id, title: title, genre: genre || "General", format: format, level: level,
         thumbnail: thumbnail || "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600",
-        mediaType: "youtube",
-        mediaUrl: mediaUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0",
-        locked: locked,
+        mediaType: "youtube", mediaUrl: mediaUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0",
+        locked: locked, quote: quote, translation: translation,
+        vocabAnalysis: [{ word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, quan trọng.", context: "Ngữ cảnh từ bài học." }],
+        quizzes: [{ q: `Ý nghĩa cốt lõi của câu thoại trong ${title}?`, options: ["A. Rất quan trọng", "B. Bình thường", "C. Không quan trọng", "D. Tiêu cực"], correct: 0, explanation: "Giải thích đáp án." }]
+      };
+
+      // 2. Tự động sinh ra 5 dạng câu hỏi luyện tập (Practice Sentences) cho Trạm Tổng Hợp
+      const pFill = {
+        id: `fill_${id}`, type: "fill", cinemaId: id,
+        parts: [{ text: "This concept is completely ", isBlank: false }, { text: "quan trọng", expectedWord: fillWord, isBlank: true }, { text: " in our life.", isBlank: false }],
+        wordsToPick: [fillWord, "temporary", "superficial", "complex"]
+      };
+
+      const pMistake = {
+        id: `mistake_${id}`, type: "mistake", cinemaId: id,
+        parts: [{ text: "It is " }, { text: "important", isTarget: true, isError: true, fixOptions: ["importantly", "importance", "importing"], correctFix: "importantly" }, { text: " to understand this context." }],
+        explanation: "Sau động từ thường cần trạng từ, nhưng trước tính từ cần xem xét bổ nghĩa."
+      };
+
+      const pMatch = {
+        id: `match_${id}`, type: "match", cinemaId: id,
+        pairs: [{ left: "Core", right: "concept" }, { left: "Deep", right: "understanding" }, { left: "Key", right: "element" }, { left: "Real", right: "context" }]
+      };
+
+      const pWriting = {
+        id: `write_${id}`, type: "writing", cinemaId: id,
+        prompt: `Hãy đặt một câu sử dụng từ khóa từ bài học: "${title}".`,
+        refAnswer: writeRef
+      };
+
+      const pSpeaking = {
+        id: `speak_${id}`, type: "speaking", cinemaId: id,
         quote: quote,
-        translation: translation,
-        vocabAnalysis: [
-          { word: "Sample Word", ipa: "/ˈsæm.pəl/", meaning: "Từ vựng mẫu ví dụ.", context: "Ngữ cảnh mẫu." }
-        ],
-        quizzes: [
-          { q: "Câu hỏi mẫu kiểm tra mức độ hiểu?", options: ["A. Đáp án đúng", "B. Đáp án sai", "C. Sai", "D. Sai"], correct: 0, explanation: "Giải thích đáp án đúng." }
-        ]
+        instructions: "Luyện phát âm theo ngữ điệu gốc."
       };
 
       try {
+        // Ghi lên Firebase đồng thời bài học và toàn bộ 5 dạng bài tập
         await setDoc(doc(db, "lessons", `lesson_${id}`), lessonData);
-        alert(`✨ Đã thêm bài học "${title}" lên Firebase thành công! Bạn có thể quay lại trang chính để xem kết quả 🌷`);
+        await setDoc(doc(db, "practice_sentences", `fill_${id}`), pFill);
+        await setDoc(doc(db, "practice_sentences", `mistake_${id}`), pMistake);
+        await setDoc(doc(db, "practice_sentences", `match_${id}`), pMatch);
+        await setDoc(doc(db, "practice_sentences", `write_${id}`), pWriting);
+        await setDoc(doc(db, "practice_sentences", `speak_${id}`), pSpeaking);
+
+        alert(`✨ Thành công! Đã đăng bài "${title}" VÀ tự động tạo trọn gói 5 dạng bài tập cho Trạm luyện tập lên Firebase Cloud! 🌷🌿`);
         
-        // Reset form
-        document.getElementById('lesson-id').value = '';
+        // Reset form và cập nhật ID mới
         document.getElementById('lesson-title').value = '';
-        document.getElementById('lesson-genre').value = '';
-        document.getElementById('lesson-thumbnail').value = '';
-        document.getElementById('lesson-mediaurl').value = '';
         document.getElementById('lesson-quote').value = '';
         document.getElementById('lesson-translation').value = '';
-        document.getElementById('lesson-locked').checked = false;
+        document.getElementById('cfg-fillword').value = '';
+        document.getElementById('cfg-writeref').value = '';
+        autoDetectNextLessonId();
       } catch (error) {
-        console.error("Lỗi khi đẩy lên Firebase:", error);
-        alert("❌ Có lỗi xảy ra khi đẩy dữ liệu: " + error.message);
+        alert("❌ Lỗi khi đẩy lên Firebase: " + error.message);
       }
     };
   </script>
