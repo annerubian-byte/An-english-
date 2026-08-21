@@ -1399,6 +1399,7 @@
           });
       }
       remainingSentences = [...pool];
+      currentPractice = null; // Reset tránh kẹt trạng thái cũ
 
       window.loadNextExercise();
     };
@@ -1408,6 +1409,7 @@
        document.getElementById('arcade-play-area').classList.add('hidden');
     };
 
+    // ĐÃ SỬA LỖI NÚT LÀM LẠI TỪ ĐẦU (RESTART)
     window.restartArcadeMode = function() {
        if(cinemaData.length === 0) { alert("Đang tải dữ liệu, chờ chút nhé..."); return; }
        let pool = allPracticeSentences.filter(s => s.type === currentArcadeMode);
@@ -1418,7 +1420,10 @@
            });
        }
        if (pool.length === 0) { alert("Không tìm thấy bài tập cho phần này."); return; }
+       
        remainingSentences = [...pool];
+       currentPractice = null; // Reset triệt để để load lại từ đầu không bị hụt câu
+       
        document.getElementById('arcade-completed-msg').classList.add('hidden');
        document.getElementById('game-' + currentArcadeMode).classList.remove('hidden');
        window.loadNextExercise();
@@ -1462,6 +1467,7 @@
         
     // --- WRITING GAME ---
     window.initWritingGameUI = function() {
+        if (!currentPractice) return;
         document.getElementById('writing-prompt').innerText = currentPractice.prompt;
         document.getElementById('writing-textarea').value = '';
         document.getElementById('writing-feedback').classList.add('hidden');
@@ -1473,6 +1479,7 @@
 
     // --- GAME 5: SPEAKING & SHADOWING (GIỌNG NỮ TRONG TRẺO, KHÔNG TRẦM) ---
     window.initSpeakingGameUI = function() {
+        if (!currentPractice) return;
         document.getElementById('speaking-quote').innerText = '"' + currentPractice.quote + '"';
         document.getElementById('speaking-status').innerText = "Nhấn nút dưới và đọc to câu thoại bằng tiếng Anh...";
         document.getElementById('speaking-status').className = "text-xs font-bold text-cottage-brownLight text-center";
@@ -1575,6 +1582,7 @@
     
     // --- GAME 1: FILL (ĐIỀN TỪ) ---
     window.initFillGameUI = function() {
+      if (!currentPractice) return;
       fillSelectedAnswers = {};
       const promptContainer = document.getElementById('fill-prompt');
       promptContainer.innerHTML = '';
@@ -1683,6 +1691,7 @@
 
     // --- GAME 2: MISTAKE (TÌM LỖI SAI) ---
     window.initMistakeGameUI = function() {
+      if (!currentPractice) return;
       const promptBox = document.getElementById('mistake-prompt');
       document.getElementById('mistake-options-box').classList.add('hidden');
       document.getElementById('mistake-feedback').classList.add('hidden');
@@ -1740,6 +1749,7 @@
 
     // --- GAME 3: MATCH (GHÉP ĐÔI) ---
     window.initMatchGameUI = function() {
+       if (!currentPractice) return;
        matchState = { left: null, right: null, completed: [] };
        document.getElementById('match-feedback').classList.add('hidden');
        document.getElementById('btn-next-match').classList.add('hidden');
