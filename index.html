@@ -71,13 +71,13 @@
       <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
         <div class="w-11 h-11 rounded-full bg-cottage-cream border-2 border-cottage-rose/30 flex items-center justify-center text-xl overflow-hidden shadow-sm group-hover:scale-105 transition transform">
         🌷
-      </div>
+        </div>
         <div>
           <div class="flex items-center gap-1.5">
             <span class="font-serif italic font-bold text-[24px] text-cottage-roseDark">Cozy garden</span>
           </div>
           <span class="text-[11px] text-cottage-brownLight font-semibold">Cùng chill và học từ vựng qua ngữ cảnh với Cozy nha! 🦢</span>
-      </div>
+        </div>
       </div>
 
       <div class="flex items-center space-x-2">
@@ -127,7 +127,7 @@
         <div class="w-16 h-16 md:w-20 md:h-20 bg-white/60 backdrop-blur-md border-[3px] border-white rounded-full flex items-center justify-center text-2xl md:text-3xl animate-float-delayed select-none z-10 relative shadow-[0_8px_30px_rgb(230,164,180,0.3)] text-cottage-roseDark">
           <i class="fa-solid fa-film"></i>
         </div>
-    </div>
+      </div>
 
       <div id="cinema-filters-container" class="flex flex-col md:flex-row gap-2 items-center justify-between bg-cottage-roseLight/10 p-3 rounded-2xl border-2 border-cottage-rose/30 shadow-sm overflow-hidden">
         <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 w-full" id="cinema-filters">
@@ -222,31 +222,40 @@
     <section id="view-arcade" class="hidden space-y-6 max-w-4xl mx-auto">
       
       <!-- MENU CÁC DẠNG BÀI TẬP -->
-      <div id="arcade-menu" class="grid grid-cols-1 md:grid-cols-5 gap-6">
-        <!-- Dạng 1: Điền từ -->
-        <div onclick="startArcadeMode('fill')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-rose rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl mb-4 animate-float">📝</div>
-          <h3 class="font-display font-black text-lg text-cottage-brown">Điền từ</h3>
+      <div id="arcade-menu" class="space-y-6 max-w-3xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Dạng 1: Điền từ -->
+          <div onclick="startArcadeMode('fill')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-rose rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-4xl md:text-5xl mb-4 animate-float">📝</div>
+            <h3 class="font-display font-black text-xl text-cottage-brown">Điền từ vào ngữ cảnh</h3>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Chọn và điền từ vựng phù hợp vào chỗ trống để hoàn thiện câu thoại.</p>
+          </div>
+          <!-- Dạng 2: Tìm lỗi sai -->
+          <div onclick="startArcadeMode('mistake')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-amber rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-4xl md:text-5xl mb-4 animate-float-delayed">🔍</div>
+            <h3 class="font-display font-black text-xl text-cottage-brown">Tìm lỗi sai</h3>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Phát hiện và chọn phương án sửa chính xác cho một lỗi ngữ pháp ẩn giấu.</p>
+          </div>
+          <!-- Dạng 3: Ghép đôi -->
+          <div onclick="startArcadeMode('match')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-green rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-4xl md:text-5xl mb-4 animate-float">🧩</div>
+            <h3 class="font-display font-black text-xl text-cottage-brown">Ghép đôi cụm từ</h3>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Nối các Idiom và Collocation để xây dựng tư duy học theo cụm từ (Lexical Approach).</p>
+          </div>
         </div>
-        <!-- Dạng 2: Tìm lỗi sai -->
-        <div onclick="startArcadeMode('mistake')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-amber rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl mb-4 animate-float-delayed">🔍</div>
-          <h3 class="font-display font-black text-lg text-cottage-brown">Lỗi sai</h3>
-        </div>
-        <!-- Dạng 3: Ghép đôi -->
-        <div onclick="startArcadeMode('match')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-green rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl mb-4 animate-float">🧩</div>
-          <h3 class="font-display font-black text-lg text-cottage-brown">Ghép đôi</h3>
-        </div>
-        <!-- Dạng 4: Viết câu -->
-        <div onclick="startArcadeMode('writing')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-roseDark rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl mb-4 animate-float-delayed">✍️</div>
-          <h3 class="font-display font-black text-lg text-cottage-brown">Viết câu</h3>
-        </div>
-        <!-- Dạng 5: Shadowing -->
-        <div onclick="startArcadeMode('speaking')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-greenDark rounded-[2rem] p-6 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
-          <div class="text-4xl mb-4 animate-float">🎙️</div>
-          <h3 class="font-display font-black text-lg text-cottage-brown">Shadowing</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl mx-auto">
+          <!-- Dạng 4: Viết câu -->
+          <div onclick="startArcadeMode('writing')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-roseDark rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-4xl md:text-5xl mb-4 animate-float-delayed">✍️</div>
+            <h3 class="font-display font-black text-xl text-cottage-brown">Viết câu ứng dụng</h3>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Tự đặt câu với từ vựng đã học và xem đáp án tham khảo.</p>
+          </div>
+          <!-- Dạng 5: Shadowing -->
+          <div onclick="startArcadeMode('speaking')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-greenDark rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+            <div class="text-4xl md:text-5xl mb-4 animate-float">🎙️</div>
+            <h3 class="font-display font-black text-xl text-cottage-brown">Shadowing (Nói)</h3>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Luyện tập phát âm và nhại lại ngữ điệu theo câu thoại gốc.</p>
+          </div>
         </div>
       </div>
 
@@ -257,7 +266,7 @@
         <div class="space-y-1 pt-6">
           <h3 id="arcade-play-title" class="text-2xl md:text-3xl font-display font-black text-cottage-brown">Tiêu đề trò chơi</h3>
           <p id="arcade-play-desc" class="text-sm text-cottage-brownLight mt-2">Mô tả trò chơi</p>
-      </div>
+        </div>
 
         <!-- Trạng thái hoàn thành toàn bộ -->
         <div id="arcade-completed-msg" class="hidden py-8">
@@ -447,7 +456,7 @@
         <div id="cinema-quote-box" class="p-5 md:p-6 bg-white/60 rounded-3xl border-2 border-cottage-rose/30 relative mt-4 shadow-sm">
           <div class="absolute -top-3 -left-2 text-2xl">📝</div>
           <div id="cinema-quote-container" class="mt-1">
-            <p id="cinema-quote" class="italic text-base md:text-lg text-cottage-brown font-serif leading-relaxed"></p>
+             <p id="cinema-quote" class="italic text-base md:text-lg text-cottage-brown font-serif leading-relaxed"></p>
           </div>
           <div class="w-12 h-0.5 bg-cottage-brown/20 my-4 mx-auto rounded-full"></div>
           <p id="cinema-translation" class="text-xs text-cottage-brown font-medium text-center"></p>
@@ -551,9 +560,9 @@
             <div class="flex justify-between"><span>Tên tài khoản:</span> <b>VU THAI AN</b></div>
             <div class="flex justify-between items-center mt-2 pt-2 border-t-2 border-dashed border-cottage-butter">
               <span>Nội dung CK:</span> <b id="qr-content" class="text-cottage-roseDark text-xs bg-cottage-roseLight px-2 py-0.5 rounded-lg">COZY3DAYS</b>
+            </div>
+          </div>
         </div>
-        </div>
-      </div>
       </div>
 
       <button onclick="simulateSuccessPayment()" class="w-full mt-8 py-4 bg-cottage-brown hover:bg-cottage-brownLight text-white font-black text-sm rounded-2xl shadow-lg transition transform active:scale-95 flex items-center justify-center gap-2">
@@ -605,7 +614,7 @@
         ]
       },
       {
-        id: 2, genre: "Comedy", format: "movie", title: "The Intern (2015)", level: "B1", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
+        id: 2, genre: "Comedy", format: "movie", title: "The Intern (2015)", level: "B2", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
         quote: "You're never wrong to do the right thing.", translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
           { word: "Diversion (n)", ipa: "/dɪˈvɜːr.ʒən/", meaning: "Sự giải trí, thú vui tiêu khiển.", context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' để giải trí." },
@@ -620,7 +629,7 @@
         ]
       },
       {
-        id: 3, genre: "Musical", format: "movie", title: "La La Land (2016)", level: "B1", thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", locked: true, 
+        id: 3, genre: "Musical", format: "movie", title: "La La Land (2016)", level: "B2", thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", locked: true, 
         quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.", translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
         vocabAnalysis: [
           { word: "Pipe dream (Idiom)", ipa: "/ˈpaɪp ˌdriːm/", meaning: "Giấc mơ viển vông, hão huyền.", context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực." }
@@ -648,7 +657,7 @@
         ]
       },
       {
-        id: 5, genre: "Fantasy", format: "movie", title: "Harry Potter and the Half-Blood Prince (2009)", level: "B1", thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", locked: true,
+        id: 5, genre: "Fantasy", format: "movie", title: "Harry Potter and the Half-Blood Prince (2009)", level: "B2", thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", locked: true,
         quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.", translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
         vocabAnalysis: [
           { word: "Coward (n)", ipa: "/ˈkaʊ.ərd/", meaning: "Kẻ hèn nhát.", context: "Harry đã dùng từ này để hét vào mặt Snape." }
@@ -987,16 +996,16 @@
       } catch (error) {
         let friendlyMessage = "Có lỗi xảy ra, vui lòng thử lại!";
        switch (error.code) {
-         case 'auth/invalid-credential': 
-         case 'auth/user-not-found':
-         case 'auth/wrong-password':
-             friendlyMessage = "🤔 Email hoặc mật khẩu không chính xác!\n👉 Nếu bạn CHƯA tạo tài khoản, hãy nhấn vào dòng 'Chưa có tài khoản? Đăng ký ngay' ở bên dưới nhé!"; 
-             break;
-         case 'auth/email-already-in-use': friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi."; break;
-         case 'auth/invalid-email': friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com)."; break;
-         case 'auth/weak-password': friendlyMessage = "🛑 Mật khẩu hơi yếu, hãy chọn mật khẩu dài từ 6 ký tự trở lên."; break;
-         case 'auth/network-request-failed': friendlyMessage = "🌐 Lỗi kết nối mạng. Bạn kiểm tra lại Wifi/4G nhé!"; break;
-         default: friendlyMessage = "Lỗi hệ thống: " + error.message;
+          case 'auth/invalid-credential': 
+          case 'auth/user-not-found':
+          case 'auth/wrong-password':
+              friendlyMessage = "🤔 Email hoặc mật khẩu không chính xác!\n👉 Nếu bạn CHƯA tạo tài khoản, hãy nhấn vào dòng 'Chưa có tài khoản? Đăng ký ngay' ở bên dưới nhé!"; 
+              break;
+          case 'auth/email-already-in-use': friendlyMessage = "🛑 Email này đã được đăng ký rồi bạn ơi."; break;
+          case 'auth/invalid-email': friendlyMessage = "🛑 Định dạng email không đúng (ví dụ chuẩn: cozy@gmail.com)."; break;
+          case 'auth/weak-password': friendlyMessage = "🛑 Mật khẩu hơi yếu, hãy chọn mật khẩu dài từ 6 ký tự trở lên."; break;
+          case 'auth/network-request-failed': friendlyMessage = "🌐 Lỗi kết nối mạng. Bạn kiểm tra lại Wifi/4G nhé!"; break;
+          default: friendlyMessage = "Lỗi hệ thống: " + error.message;
        }
         alert(friendlyMessage);
       } finally {
@@ -1653,7 +1662,7 @@ window.loadNextExercise = function() {
        const rightCol = document.getElementById('match-right-col');
 
        // Tạo danh sách trộn
-       const leftItems = currentPractice.pairs.map((p, i) => ({text: p.left, id: i}));
+       const leftItems = currentPractice.pairs.map((p, i) => ({text: p.left, id: i})).sort(() => Math.random() - 0.5);
        const rightItems = currentPractice.pairs.map((p, i) => ({text: p.right, id: i})).sort(() => Math.random() - 0.5);
 
        leftCol.innerHTML = leftItems.map(item => 
@@ -1662,10 +1671,6 @@ window.loadNextExercise = function() {
        
        rightCol.innerHTML = rightItems.map(item => 
           `<button id="match-R-${item.id}" onclick="selectMatch('R', ${item.id})" class="w-full p-4 bg-white border-2 border-cottage-butter rounded-xl text-sm md:text-base font-bold text-cottage-brown hover:border-cottage-green shadow-sm transition text-left break-words">${item.text}</button>`
-       ).join('');
-       
-       leftCol.innerHTML = leftItems.sort(() => Math.random() - 0.5).map(item => 
-          `<button id="match-L-${item.id}" onclick="selectMatch('L', ${item.id})" class="w-full p-4 bg-white border-2 border-cottage-butter rounded-xl text-sm md:text-base font-bold text-cottage-brown hover:border-cottage-green shadow-sm transition text-right break-words">${item.text}</button>`
        ).join('');
     };
 
