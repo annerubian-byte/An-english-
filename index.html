@@ -457,8 +457,8 @@
 
         <!-- GIỚI THIỆU NHÂN VẬT & TÓM TẮT VIDEO -->
         <div id="cinema-context-box" class="p-4 md:p-5 bg-white/90 rounded-2xl border-2 border-cottage-rose/30 shadow-sm space-y-1.5 hidden">
-          <div id="cinema-context-title" class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-cottage-roseDark">
-            <i class="fa-solid fa-users-viewfinder"></i> Giới thiệu nhân vật & Tóm tắt video:
+          <div id="cinema-context-title" class="text-xs font-black uppercase tracking-wider text-cottage-roseDark">
+            Giới thiệu nhân vật & Tóm tắt video:
           </div>
           <p id="cinema-context-desc" class="text-xs md:text-sm text-cottage-brown leading-relaxed font-medium"></p>
         </div>
@@ -606,7 +606,7 @@
     let cinemaData = [];
     let allPracticeSentences = [];
 
-    // ================= 3. DỮ LIỆU KHỞI TẠO BẢN FULL QUY MÔ LỚN (ĐÃ BỔ SUNG TÓM TẮT VIDEO & GIỚI THIỆU NHÂN VẬT) =================
+    // ================= 3. DỮ LIỆU KHỞI TẠO BẢN FULL QUY MÔ LỚN =================
     const SEED_CINEMA_DATA = [
       {
         id: 1, genre: "Drama", format: "movie", title: "The Devil Wears Prada (2006)", level: "B2", thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", locked: false,
@@ -734,7 +734,7 @@
       },
       {
         id: 9, genre: "Pop", format: "music", title: "Anti-Hero - Taylor Swift", level: "B2", thumbnail: "https://i.scdn.co/image/ab67616d0000b273bb54dde68cd23e2a268ae0f5", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b1kbLwvqugk?rel=0", locked: false,
-        characterContext: "👥 Nhân vật chính: Taylor Swift và các góc khuất nội tâm của cô. \n🎬 Tóm tắt video: MV thể hiện sự đấu tranh nội tâm sâu sắc, nơi Taylor đối mặt với những nỗi sợ hãi, khuyết điểm và cảm giác bất an khi tự để bản thân một mình đối diện với thế giới.",
+        characterContext: "MV Anti-Hero thể hiện sự đấu tranh nội tâm sâu sắc, nơi Taylor Swift đối mặt với những nỗi sợ hãi, khuyết điểm và cảm giác bất an khi tự để bản thân một mình đối diện với thế giới.",
         quote: "I should not be left to my own devices\nThey come with prices and vices\nI end up in crisis\n(Tale as old as time)", translation: "Lẽ ra tôi không nên được để mặc cho tự hành động theo ý mình\nChúng mang theo những cái giá phải trả và những thói hư tật xấu\nĐể rồi tôi rơi vào khủng hoảng\n(Một câu chuyện đã quá đỗi quen thuộc)",
         vocabAnalysis: [
           { word: "Left to one's own devices", ipa: "(Idiom)", meaning: "Để mặc ai đó tự làm theo ý mình.", context: "Tự do làm theo ý mình, thiếu kiểm soát." }
@@ -747,7 +747,7 @@
       {
         id: 10, genre: "Interview", format: "youtube", title: "Taylor Swift - 73 Questions with Vogue", level: "C1", thumbnail: "https://i.ytimg.com/vi/XnbCSboujF4/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGDsgXihlMA8=&rs=AOn4CLBB2xZf9YnXZsXW2vFzP4Y8Y_X7Jw", mediaType: "youtube", 
         mediaUrl: "https://www.youtube.com/embed/XnbCSboujF4?rel=0", locked: false,
-        characterContext: "👥 Nhân vật chính: Nữ ca sĩ-nhạc sĩ Taylor Swift. \n🎬 Tóm tắt video: Trong buổi phỏng vấn nhanh 73 câu hỏi, Taylor chia sẻ cách cô thấu hiểu bản thân và bí quyết rũ bỏ những lời đàm tiếu, chỉ trích từ dư luận để sống tích cực.",
+        characterContext: "Trong buổi phỏng vấn nhanh 73 câu hỏi với Vogue, Taylor Swift chia sẻ cách cô thấu hiểu bản thân và bí quyết rũ bỏ những lời đàm tiếu, chỉ trích từ dư luận để sống tích cực.",
         quote: "I think it's important to be self-aware about what people are saying about you, but even more important to shrug it off.", translation: "Tôi nghĩ việc tự nhận thức được người ta đang bàn tán gì về mình là điều quan trọng, nhưng quan trọng hơn nữa là biết cách mặc kệ nó.",
         vocabAnalysis: [
           { word: "Shrug off (Phrasal Verb)", ipa: "/ʃrʌɡ ɑːf/", meaning: "Rũ bỏ, mặc kệ, không thèm bận tâm.", context: "Nhún vai rũ bỏ chỉ trích." }
@@ -1265,14 +1265,21 @@
       mediaContainer.className = `w-full rounded-2xl overflow-hidden border-2 ${tBorder} shadow-sm bg-white relative`;
       mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
 
-      // RENDER GIỚI THIỆU NHÂN VẬT & TÓM TẮT VIDEO
+      // GIỚI THIỆU NHÂN VẬT & TÓM TẮT VIDEO (ĐÃ BỎ ICON/EMOJI)
       const contextBox = document.getElementById('cinema-context-box');
       const contextDesc = document.getElementById('cinema-context-desc');
       const contextTitle = document.getElementById('cinema-context-title');
       if (item.characterContext) {
         contextBox.classList.remove('hidden');
         contextBox.className = `p-4 md:p-5 bg-white/90 rounded-2xl border-2 ${tBorder} shadow-sm space-y-1.5`;
-        contextTitle.className = `flex items-center gap-2 text-xs font-black uppercase tracking-wider ${tText}`;
+        contextTitle.className = `text-xs font-black uppercase tracking-wider ${tText}`;
+        
+        if (item.format === 'music' || item.format === 'youtube') {
+          contextTitle.innerText = "Tóm tắt nội dung video:";
+        } else {
+          contextTitle.innerText = "Giới thiệu nhân vật & Tóm tắt video:";
+        }
+
         contextDesc.style.whiteSpace = 'pre-line';
         contextDesc.innerText = item.characterContext;
       } else {
