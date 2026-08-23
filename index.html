@@ -59,13 +59,6 @@
 
 <body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans flex flex-col selection:bg-cottage-roseLight selection:text-cottage-roseDark relative pb-10 select-none" oncopy="return false;" oncut="return false;" oncontextmenu="return false;">
 
-  <!-- MÀN HÌNH CHỜ ĐỒNG BỘ DỮ LIỆU LẦN ĐẦU -->
-  <div id="sync-overlay" class="fixed inset-0 bg-cottage-cream z-[100] flex flex-col items-center justify-center hidden">
-    <div class="text-6xl animate-bounce mb-4">🌷</div>
-    <h2 class="text-2xl font-display font-black text-cottage-brown">Đang kết nối dữ liệu...</h2>
-    <p class="text-sm text-cottage-brownLight mt-2 text-center max-w-xs">Cozy Garden đang tải học liệu từ Đám mây. Vui lòng đợi vài giây nhé! ✨</p>
-  </div>
-
   <header class="bg-cottage-card/90 backdrop-blur-md border-b-2 border-dashed border-cottage-butter sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchNav('cinema')">
@@ -618,15 +611,11 @@
           cinemaData.sort((a, b) => a.id - b.id);
           if (document.getElementById('cinema-grid')) {
             window.renderAllSections();
-            window.updateAvailableSentences();
           }
         });
 
         onSnapshot(practiceRef, (snapshot) => {
           allPracticeSentences = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
-          if (document.getElementById('cinema-grid')) {
-            window.updateAvailableSentences();
-          }
         });
 
         document.getElementById('vip-header-btn').innerHTML = '<i class="fa-solid fa-user text-[11px]"></i> <span>Đăng nhập</span>';
@@ -652,7 +641,6 @@
 
     // Arcade States
     let currentArcadeMode = null; 
-    let availableSentences = [];
     let remainingSentences = [];
     let currentPractice = null;
 
@@ -720,7 +708,6 @@
 
         if(cinemaData.length > 0) {
            window.renderAllSections();
-           window.updateAvailableSentences();
         }
       });
     }
@@ -746,7 +733,6 @@
                 applyExpiredUI(); 
                 if(cinemaData.length > 0) {
                     window.renderAllSections(); 
-                    window.updateAvailableSentences();
                 }
                 kickIfInVipCinema();
             }
@@ -867,7 +853,6 @@
           vipHeaderBtn.onclick = window.openLoginModal;
       }
       window.renderAllSections();
-      window.updateAvailableSentences();
     }
 
 
@@ -1159,7 +1144,7 @@
       }
       
       nextBtn.className = `flex-1 w-full py-3.5 text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 mt-4 ${tMain} ${tHover}`;
-      nextBtn.classList.remove('hidden');
+      nextBtn.classList.add('hidden');
 
       if (activeQuizIndex === item.quizzes.length - 1) {
         nextBtn.innerHTML = "Tuyệt vời! Đóng bài học";
@@ -1179,18 +1164,7 @@
     };
 
     // ================= ARCADE HỆ THỐNG ĐA DẠNG BÀI TẬP =================
-    window.updateAvailableSentences = function() {
-      if(cinemaData.length === 0) return;
-      if (isVip) {
-        availableSentences = [...allPracticeSentences];
-      } else {
-        const unlockedCinemaIds = cinemaData.filter(c => !c.locked).map(c => c.id);
-        availableSentences = allPracticeSentences.filter(s => unlockedCinemaIds.includes(s.cinemaId));
-      }
-    };
-
     window.startArcadeMode = function(mode) {
-      if (availableSentences.length === 0) window.updateAvailableSentences();
       currentArcadeMode = mode;
       
       document.getElementById('arcade-menu').classList.add('hidden');
@@ -1214,7 +1188,7 @@
          descEl.innerText = "Nối các mảnh ghép ở hai cột lại để tạo thành Collocation/Idiom có nghĩa.";
       } else if (mode === 'writing') {
          titleEl.innerText = "Viết câu ứng dụng";
-         descEl.innerText = "Sử dụng từ vựng đã học để đặt câu riêng cho bạn.";
+         descEl.innerText = "Tự viết những câu văn của riêng mình với các từ vựng đã học.";
       } else if (mode === 'speaking') {
          titleEl.innerText = "Shadowing (Nói)";
          descEl.innerText = "Luyện phản xạ và ngữ điệu giống người bản xứ.";
