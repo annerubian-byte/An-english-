@@ -455,15 +455,15 @@
           <p class="text-xs text-cottage-brown text-center mt-2 italic font-medium"><i class="fa-solid fa-headphones text-[10px] mr-1"></i> Nghe kỹ và làm bài tập bên dưới để đoán nghĩa của từ nhé!</p>
         </div>
 
-        <!-- BỐI CẢNH & NHÂN VẬT (CONTEXT CONTAINER) -->
+        <!-- GIỚI THIỆU NHÂN VẬT & TÓM TẮT VIDEO -->
         <div id="cinema-context-box" class="p-4 md:p-5 bg-white/90 rounded-2xl border-2 border-cottage-rose/30 shadow-sm space-y-1.5 hidden">
           <div id="cinema-context-title" class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-cottage-roseDark">
-            <i class="fa-solid fa-book-open"></i> Bối cảnh & Nhân vật trong đoạn phim:
+            <i class="fa-solid fa-users-viewfinder"></i> Giới thiệu nhân vật & Tóm tắt video:
           </div>
           <p id="cinema-context-desc" class="text-xs md:text-sm text-cottage-brown leading-relaxed font-medium"></p>
         </div>
 
-        <!-- CÂU QUOTE VỚI FONT DỄ NHÌN VÀ RÕ RÀNG HƠN -->
+        <!-- CÂU QUOTE VỚI FONT RÕ RÀNG, DỄ NHÌN -->
         <div id="cinema-quote-box" class="p-5 md:p-6 bg-white/60 rounded-3xl border-2 border-cottage-rose/30 relative mt-4 shadow-sm">
           <div class="absolute -top-3 -left-2 text-2xl">📝</div>
           <div id="cinema-quote-container" class="mt-1">
@@ -606,11 +606,11 @@
     let cinemaData = [];
     let allPracticeSentences = [];
 
-    // ================= 3. DỮ LIỆU KHỞI TẠO BẢN FULL QUY MÔ LỚN (ĐÃ THÊM CONTEXT NHÂN VẬT & CÂU CHUYỆN) =================
+    // ================= 3. DỮ LIỆU KHỞI TẠO BẢN FULL QUY MÔ LỚN (ĐÃ BỔ SUNG TÓM TẮT VIDEO & GIỚI THIỆU NHÂN VẬT) =================
     const SEED_CINEMA_DATA = [
       {
         id: 1, genre: "Drama", format: "movie", title: "The Devil Wears Prada (2006)", level: "B2", thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", locked: false,
-        characterContext: "Miranda Priestly là tổng biên tập sắc sảo, quyền lực của tạp chí thời trang danh tiếng Runway. Andy Sachs là trợ lý mới có phần tự phụ, xem nhẹ thời trang. Trong phân cảnh này, Miranda lạnh lùng bóc trần sự ngây thơ của Andy khi cô tưởng mình đứng ngoài thế giới thời trang, trong khi chiếc áo len cô đang mặc thực chất là sản phẩm của một chuỗi dây chuyền thiết kế triệu đô.",
+        characterContext: "👥 Nhân vật chính: Miranda Priestly (tổng biên tập quyền lực, sắc sảo) và Andy Sachs (cô trợ lý mới ngây ngô). \n🎬 Tóm tắt video: Andy vô tình bật cười trước sự lúng túng của các đồng nghiệp khi lựa chọn hai chiếc thắt lưng trông giống hệt nhau. Miranda đã lập tức giáng cho Andy một bài học đanh đá, bóc trần sự ngây thơ của cô khi nghĩ rằng bản thân đứng ngoài thế giới thời trang.",
         quote: "You go to your closet and you select... I don't know... that lumpy blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
         translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh sần sùi kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
         vocabAnalysis: [
@@ -627,7 +627,7 @@
       },
       {
         id: 2, genre: "Comedy", format: "movie", title: "The Intern (2015)", level: "B2", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
-        characterContext: "Ben Whittaker là một ông lão 70 tuổi điềm đạm, ấm áp, tham gia chương trình thực tập sinh lớn tuổi tại một công ty thời trang trực tuyến do Jules Ostin sáng lập. Trong phân cảnh này, Ben đưa ra những lời khuyên sâu sắc, nhẹ nhàng xoa dịu áp lực và căng thẳng đè nặng lên vai nữ giám đốc trẻ.",
+        characterContext: "👥 Nhân vật chính: Ben Whittaker (ông lão 70 tuổi điềm đạm, tinh tế) và Jules Ostin (nữ giám đốc trẻ tuổi, bận rộn và căng thẳng). \n🎬 Tóm tắt video: Giữa lúc Jules đang ngập đầu trong áp lực điều hành công ty khởi nghiệp và các vấn đề cá nhân, Ben xuất hiện như một điểm tựa tinh thần ấm áp, đưa ra những lời khuyên sâu sắc giúp cô lấy lại sự bình tĩnh và cân bằng.",
         quote: "You're never wrong to do the right thing.", translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
           { word: "Diversion (n)", ipa: "/dɪˈvɜːr.ʒən/", meaning: "Sự giải trí, thú vui tiêu khiển.", context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' để giải trí." },
@@ -643,7 +643,7 @@
       },
       {
         id: 3, genre: "Musical", format: "movie", title: "La La Land (2016)", level: "B2", thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", locked: true, 
-        characterContext: "Mia Dolan là một nữ phục vụ bàn ôm ấp giấc mơ diễn xuất nhưng liên tục nhận những lời từ chối phũ phàng ở các buổi thử vai. Sebastian là nghệ sĩ piano jazz đam mê. Phân cảnh này ghi lại khoảnh khắc Mia hoàn toàn suy sụp, tự ti và gọi ước mơ của mình là một giấc mơ viển vông (pipe dream).",
+        characterContext: "👥 Nhân vật chính: Mia Dolan (nữ diễn viên tập sự chật vật tại Hollywood) và Sebastian (nghệ sĩ piano jazz tài năng). \n🎬 Tóm tắt video: Sau vô số lần trượt casting và bị ngắt lời phũ phàng, Mia rơi vào trạng thái khủng hoảng, tự ti tột độ và gọi ước mơ của mình chỉ là một giấc mộng hão huyền viển vông.",
         quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.", translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
         vocabAnalysis: [
           { word: "Pipe dream (Idiom)", ipa: "/ˈpaɪp ˌdriːm/", meaning: "Giấc mơ viển vông, hão huyền.", context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực." }
@@ -658,7 +658,7 @@
       },
       {
         id: 4, genre: "Musical", format: "movie", title: "The Greatest Showman (2017)", level: "B2", thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", locked: true,
-        characterContext: "P.T. Barnum là nhà tổ chức biểu diễn tiên phong, người quy tụ những con người có ngoại hình khác biệt bị xã hội xem thường (outcast) để tạo nên một gánh xiếc kỳ diệu. Phân cảnh này ca ngợi sức mạnh của sự khác biệt và nghệ thuật đích thực.",
+        characterContext: "👥 Nhân vật chính: P.T. Barnum (nhà tổ chức biểu diễn có tầm nhìn phá cách) và các thành viên trong gánh xiếc. \n🎬 Tóm tắt video: Phân cảnh hoành tráng ca ngợi những con người từng bị xem là 'kẻ ngoài lề xã hội' (outcasts) nay tự tin tỏa sáng trên sân khấu, khẳng định giá trị độc bản của bản thân.",
         quote: "No one ever made a difference by being like everyone else.", translation: "Chưa từng có ai tạo ra sự khác biệt bằng cách sống giống như những người khác.",
         vocabAnalysis: [
           { word: "Noble (adj)", ipa: "/ˈnoʊ.bəl/", meaning: "Cao quý, đáng kính.", context: "Bộ phim trích dẫn câu nói của P.T. Barnum: 'Nghệ thuật cao quý nhất là làm cho người khác hạnh phúc'." }
@@ -673,7 +673,7 @@
       },
       {
         id: 5, genre: "Fantasy", format: "movie", title: "Harry Potter and the Half-Blood Prince (2009)", level: "B2", thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", locked: true,
-        characterContext: "Harry Potter đối đầu với Giáo sư Severus Snape sau khi sử dụng một câu thần chú đen tối trong cuốn sách cũ. Sự thật hé lộ Snape chính là 'Hoàng tử Lai' (Half-Blood Prince), tạo nên bước ngoặt cảm xúc đầy bi tráng.",
+        characterContext: "👥 Nhân vật chính: Harry Potter (cậu phù thủy dũng cảm) và Giáo sư Severus Snape (giáo viên mưu lược). \n🎬 Tóm tắt video: Phân cảnh cao trào khi Harry dùng chính bùa chú hắc ám trong cuốn sách cũ để tấn công Snape, để rồi bàng hoàng nhận ra Snape chính là chủ nhân thực sự của cuốn sách - 'Hoàng tử Lai'.",
         quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.", translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
         vocabAnalysis: [
           { word: "Coward (n)", ipa: "/ˈkaʊ.ərd/", meaning: "Kẻ hèn nhát.", context: "Harry đã dùng từ này để hét vào mặt Snape." }
@@ -688,7 +688,7 @@
       },
       {
         id: 6, genre: "Fantasy", format: "movie", title: "Alice in Wonderland (2010)", level: "B2", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", locked: false,
-        characterContext: "Alice lạc vào xứ sở thần tiên kỳ lạ. Sau khi ăn chiếc bánh phép thuật khiến cơ thể phình to khổng lồ, cô phải đối mặt với Nữ hoàng Đỏ tàn bạo, độc tài trong một phiên tòa vô lý.",
+        characterContext: "👥 Nhân vật chính: Alice (cô bé tò mò lạc vào xứ sở kỳ lạ) và Nữ hoàng Đỏ (kẻ cai trị độc tài, nóng tính). \n🎬 Tóm tắt video: Alice xuất hiện trước triều đình với một cơ thể khổng lồ sau khi ăn bánh phép thuật khiến quần áo bị chật căng, đối mặt với sự phán xét kỳ quặc của Nữ hoàng.",
         quote: "Anyone with a head that large is welcome in my court.", translation: "Bất kỳ ai với một cái đầu to như vậy đều được hoan nghênh tại triều đình của ta.",
         vocabAnalysis: [
           { word: "Outgrow (v)", ipa: "/ˌaʊtˈɡroʊ/", meaning: "Lớn vượt quá kích cỡ (của quần áo).", context: "Alice giải thích rằng do ăn bánh phép thuật nên cơ thể cô đã phình to, khiến cô 'mặc không vừa' những bộ quần áo cũ nữa." },
@@ -704,7 +704,7 @@
       },
       {
         id: 7, genre: "Action", format: "movie", title: "John Wick (2014)", level: "C1", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/C0BMx-qxsP4?rel=0", locked: true,
-        characterContext: "John Wick là cựu sát thủ khét tiếng đã giải nghệ. Khi thế giới bình yên bị phá vỡ bởi những kẻ coi thường quá khứ của anh, John tái xuất với ý chí thép và sự chính xác chí mạng để báo thù.",
+        characterContext: "👥 Nhân vật chính: John Wick (cựu sát thủ huyền thoại đã giải nghệ). \n🎬 Tóm tắt video: Sau khi bị những kẻ ngốc kéo trở lại thế giới ngầm, John Wick khẳng định sự tái xuất đáng sợ của mình bằng một ý chí sắt đá và kỹ năng chiến đấu đỉnh cao.",
         quote: "People keep asking if I'm back, and I haven't really had an answer. But now, yeah, Im thinking I'm back.", translation: "Mọi người cứ hỏi tôi đã trở lại chưa, và tôi chưa bao giờ thực sự có câu trả lời. Nhưng bây giờ, ừ, tôi nghĩ tôi đã trở lại.",
         vocabAnalysis: [
           { word: "Vengeance (n)", ipa: "/ˈven.dʒəns/", meaning: "Sự báo thù, trả thù.", context: "Khao khát 'báo thù' (vengeance) trong John Wick." }
@@ -719,7 +719,7 @@
       },
       {
         id: 8, genre: "Sci-Fi", format: "movie", title: "Interstellar (2014)", level: "C1", thumbnail: "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/8a7dd34b09c9c25336a3d850d4c431455e1aaaf0.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/zSWdZVtXT7E?rel=0", locked: true,
-        characterContext: "Joseph Cooper là cựu phi công NASA sống trong thời kỳ Trái Đất cạn kiệt lương thực, đối mặt với thảm họa diệt vong. Anh buộc phải dấn thân vào hành trình vượt không gian hiểm nguy tìm hành tinh mới cho nhân loại.",
+        characterContext: "👥 Nhân vật chính: Joseph Cooper (cựu phi công NASA). \n🎬 Tóm tắt video: Trước thảm họa diệt vong trên Trái Đất khi nguồn lương thực cạn kiệt, Cooper đứng trước quyết định sinh tử: rời xa gia đình để dấn thân vào hố đen vũ trụ tìm một ngôi nhà mới cho nhân loại.",
         quote: "Mankind was born on Earth. It was never meant to die here.", translation: "Nhân loại được sinh ra trên Trái Đất. Nhưng không có nghĩa là chúng ta phải chết ở đây.",
         vocabAnalysis: [
           { word: "Endurance (n)", ipa: "/ɪnˈdʊr.əns/", meaning: "Sự chịu đựng, sức chịu đựng.", context: "Tàu vũ trụ mang tên 'Endurance'." }
@@ -734,7 +734,7 @@
       },
       {
         id: 9, genre: "Pop", format: "music", title: "Anti-Hero - Taylor Swift", level: "B2", thumbnail: "https://i.scdn.co/image/ab67616d0000b273bb54dde68cd23e2a268ae0f5", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b1kbLwvqugk?rel=0", locked: false,
-        characterContext: "Taylor Swift giãi bày những suy nghĩ nội tâm sâu kín, sự bất an và những khuyết điểm của bản thân qua giai điệu Pop bắt tai nhưng đầy tự sự trong ca khúc Anti-Hero.",
+        characterContext: "👥 Nhân vật chính: Taylor Swift và các góc khuất nội tâm của cô. \n🎬 Tóm tắt video: MV thể hiện sự đấu tranh nội tâm sâu sắc, nơi Taylor đối mặt với những nỗi sợ hãi, khuyết điểm và cảm giác bất an khi tự để bản thân một mình đối diện với thế giới.",
         quote: "I should not be left to my own devices\nThey come with prices and vices\nI end up in crisis\n(Tale as old as time)", translation: "Lẽ ra tôi không nên được để mặc cho tự hành động theo ý mình\nChúng mang theo những cái giá phải trả và những thói hư tật xấu\nĐể rồi tôi rơi vào khủng hoảng\n(Một câu chuyện đã quá đỗi quen thuộc)",
         vocabAnalysis: [
           { word: "Left to one's own devices", ipa: "(Idiom)", meaning: "Để mặc ai đó tự làm theo ý mình.", context: "Tự do làm theo ý mình, thiếu kiểm soát." }
@@ -747,7 +747,7 @@
       {
         id: 10, genre: "Interview", format: "youtube", title: "Taylor Swift - 73 Questions with Vogue", level: "C1", thumbnail: "https://i.ytimg.com/vi/XnbCSboujF4/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGDsgXihlMA8=&rs=AOn4CLBB2xZf9YnXZsXW2vFzP4Y8Y_X7Jw", mediaType: "youtube", 
         mediaUrl: "https://www.youtube.com/embed/XnbCSboujF4?rel=0", locked: false,
-        characterContext: "Taylor Swift chia sẻ góc nhìn sâu sắc về cuộc sống, sự nghiệp và cách cô đối diện với dư luận trong buổi phỏng vấn đặc biệt 73 Questions cùng tạp chí Vogue.",
+        characterContext: "👥 Nhân vật chính: Nữ ca sĩ-nhạc sĩ Taylor Swift. \n🎬 Tóm tắt video: Trong buổi phỏng vấn nhanh 73 câu hỏi, Taylor chia sẻ cách cô thấu hiểu bản thân và bí quyết rũ bỏ những lời đàm tiếu, chỉ trích từ dư luận để sống tích cực.",
         quote: "I think it's important to be self-aware about what people are saying about you, but even more important to shrug it off.", translation: "Tôi nghĩ việc tự nhận thức được người ta đang bàn tán gì về mình là điều quan trọng, nhưng quan trọng hơn nữa là biết cách mặc kệ nó.",
         vocabAnalysis: [
           { word: "Shrug off (Phrasal Verb)", ipa: "/ʃrʌɡ ɑːf/", meaning: "Rũ bỏ, mặc kệ, không thèm bận tâm.", context: "Nhún vai rũ bỏ chỉ trích." }
@@ -1265,7 +1265,7 @@
       mediaContainer.className = `w-full rounded-2xl overflow-hidden border-2 ${tBorder} shadow-sm bg-white relative`;
       mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
 
-      // RENDER CONTEXT NHÂN VẬT & CÂU CHUYỆN
+      // RENDER GIỚI THIỆU NHÂN VẬT & TÓM TẮT VIDEO
       const contextBox = document.getElementById('cinema-context-box');
       const contextDesc = document.getElementById('cinema-context-desc');
       const contextTitle = document.getElementById('cinema-context-title');
@@ -1273,6 +1273,7 @@
         contextBox.classList.remove('hidden');
         contextBox.className = `p-4 md:p-5 bg-white/90 rounded-2xl border-2 ${tBorder} shadow-sm space-y-1.5`;
         contextTitle.className = `flex items-center gap-2 text-xs font-black uppercase tracking-wider ${tText}`;
+        contextDesc.style.whiteSpace = 'pre-line';
         contextDesc.innerText = item.characterContext;
       } else {
         contextBox.classList.add('hidden');
