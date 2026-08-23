@@ -240,7 +240,7 @@
           <div onclick="startArcadeMode('match')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-green rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
             <div class="text-4xl md:text-5xl mb-4 animate-float">🧩</div>
             <h3 class="font-display font-black text-xl text-cottage-brown">Ghép đôi cụm từ</h3>
-            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Nối các Idiom và Collocation để xây dựng tư duy học theo cụm từ (Lexical Approach).</p>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Nối các từ/cụm từ lại với nhau để tạo thành Idiom hoặc Collocation có nghĩa.</p>
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl mx-auto">
@@ -248,13 +248,13 @@
           <div onclick="startArcadeMode('writing')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-roseDark rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
             <div class="text-4xl md:text-5xl mb-4 animate-float-delayed">✍️</div>
             <h3 class="font-display font-black text-xl text-cottage-brown">Viết câu ứng dụng</h3>
-            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Tự đặt câu với từ vựng đã học và xem đáp án tham khảo.</p>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Tự viết những câu văn của riêng mình với các từ vựng đã học.</p>
           </div>
           <!-- Dạng 5: Shadowing -->
           <div onclick="startArcadeMode('speaking')" class="cursor-pointer bg-white border-2 border-cottage-butter hover:border-cottage-greenDark rounded-[2rem] p-6 md:p-8 text-center shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
             <div class="text-4xl md:text-5xl mb-4 animate-float">🎙️</div>
             <h3 class="font-display font-black text-xl text-cottage-brown">Shadowing (Nói)</h3>
-            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Luyện tập phát âm và nhại lại ngữ điệu theo câu thoại gốc.</p>
+            <p class="text-xs text-cottage-brownLight mt-3 leading-relaxed">Luyện tập phát âm bằng cách nhắc lại ngữ điệu theo câu thoại gốc.</p>
           </div>
         </div>
       </div>
@@ -335,21 +335,23 @@
            </div>
         </div>
 
-        <!-- KHUNG GAME 5: SHADOWING (SPEAKING) -->
+        <!-- KHUNG GAME 5: SHADOWING & CHẤM ĐIỂM PHÁT ÂM (GIỌNG NỮ TRONG TRẺO) -->
         <div id="game-speaking" class="hidden w-full space-y-4">
            <div class="p-6 bg-cottage-amber/10 rounded-2xl border-2 border-dashed border-cottage-amber/30 text-center">
-             <p class="text-xs font-bold text-cottage-amberDark uppercase tracking-widest mb-2">Shadowing (Nhại lại)</p>
-             <p id="speaking-quote" class="text-lg font-serif italic text-cottage-brown"></p>
+             <p id="speaking-quote" class="text-lg font-serif italic text-cottage-brown mb-4"></p>
+             <button onclick="speakQuote()" class="px-4 py-2 bg-cottage-amber text-white text-xs font-bold rounded-xl hover:bg-cottage-amberDark transition">Nghe mẫu 🔈</button>
            </div>
-           <div class="text-left space-y-2 text-xs text-cottage-brown">
-             <p><b>Hướng dẫn:</b></p>
-             <ul class="list-disc list-inside space-y-1">
-               <li>Nghe đoạn phim/nhạc trong bài học.</li>
-               <li>Bấm nút ghi âm (tự ghi bên ngoài hoặc giả lập) và đọc theo đúng ngữ điệu.</li>
-               <li>So sánh lại với ngữ điệu gốc.</li>
-             </ul>
+           
+           <div class="flex flex-col items-center gap-3 bg-white p-6 rounded-2xl border-2 border-cottage-butter shadow-sm">
+             <button onclick="startPronunciationCheck()" id="btn-mic" class="px-6 py-3.5 bg-cottage-rose text-white text-sm font-bold rounded-2xl hover:bg-cottage-roseDark shadow-sm transition transform active:scale-95 flex items-center gap-2">
+               <i class="fa-solid fa-microphone"></i> Bấm để đọc và chấm điểm
+             </button>
+             <p id="speaking-status" class="text-xs font-bold text-cottage-brownLight text-center">Nhấn nút trên và đọc to câu thoại bằng tiếng Anh...</p>
            </div>
-           <button onclick="loadNextExercise()" class="mt-4 px-6 py-2 bg-cottage-amber text-white text-xs font-bold rounded-xl hover:bg-cottage-amberDark transition">Đã luyện xong, câu tiếp theo ⏭️</button>
+
+           <div id="speaking-feedback" class="hidden"></div>
+           
+           <button onclick="loadNextExercise()" class="mt-2 px-6 py-2.5 bg-cottage-brown text-white text-xs font-bold rounded-xl hover:bg-cottage-brownLight transition w-full">Câu tiếp theo ⏭️</button>
         </div>
 
       </div>
@@ -738,7 +740,6 @@
       }
     ];
 
-    // CẤU TRÚC BÀI TẬP PHONG PHÚ: 10 Câu Fill, 10 Câu Mistake, 4 Vòng Match, 2 Writing, 2 Speaking
     const SEED_PRACTICE_DATA = [
       // --- DẠNG 1: FILL (ĐIỀN TỪ) ---
       { id: "fill_1", type: "fill", cinemaId: 1, parts: [ { text: "Her attitude towards the dress was completely ", isBlank: false }, { text: "thô kệch/xấu xí", expectedWord: "lumpy", isBlank: true }, { text: " but she took herself too ", isBlank: false }, { text: "nghiêm trọng", expectedWord: "seriously", isBlank: true }, { text: " to notice.", isBlank: false } ], wordsToPick: ["lumpy", "seriously", "ephemeral", "coward"] },
@@ -752,7 +753,7 @@
       { id: "fill_9", type: "fill", cinemaId: 9, parts: [ { text: "When left to my own ", isBlank: false }, { text: "tự làm theo ý mình", expectedWord: "devices", isBlank: true }, { text: ", I often end up in a ", isBlank: false }, { text: "khủng hoảng", expectedWord: "crisis", isBlank: true }, { text: ".", isBlank: false } ], wordsToPick: ["devices", "crisis", "interrupt", "pipe dream"] },
       { id: "fill_10", type: "fill", cinemaId: 10, parts: [ { text: "Being ", isBlank: false }, { text: "tự nhận thức", expectedWord: "self-aware", isBlank: true }, { text: " helps you to easily ", isBlank: false }, { text: "rũ bỏ/phớt lờ", expectedWord: "shrug off", isBlank: true }, { text: " negative comments.", isBlank: false } ], wordsToPick: ["self-aware", "shrug off", "against", "lethal"] },
 
-      // --- DẠNG 2: MISTAKE (TÌM LỖI SAI - Không Trùng Lặp Quy Tắc) ---
+      // --- DẠNG 2: MISTAKE (TÌM LỖI SAI) ---
       { id: "mistake_1", type: "mistake", cinemaId: 1, parts: [ { text: "Miranda thinks that " }, { text: "wearing", isTarget: true, isError: false }, { text: " a lumpy sweater " }, { text: "exempt", isTarget: true, isError: true, fixOptions: ["exempts", "exempting", "exempted"], correctFix: "exempts" }, { text: " you " }, { text: "from", isTarget: true, isError: false }, { text: " the fashion industry." } ], explanation: "Chủ ngữ 'wearing a lumpy sweater' là danh động từ số ít, nên động từ phải chia thêm 's' thành 'exempts'." },
       { id: "mistake_2", type: "mistake", cinemaId: 2, parts: [ { text: "You are never " }, { text: "wrongly", isTarget: true, isError: true, fixOptions: ["wrong", "wronging", "wrongs"], correctFix: "wrong" }, { text: " to " }, { text: "do", isTarget: true, isError: false }, { text: " the " }, { text: "right", isTarget: true, isError: false }, { text: " thing." } ], explanation: "Sau động từ to be ('are') cần một Tính từ ('wrong') chứ không phải Trạng từ ('wrongly')." },
       { id: "mistake_3", type: "mistake", cinemaId: 4, parts: [ { text: "No one ever " }, { text: "made", isTarget: true, isError: false }, { text: " a difference by " }, { text: "be", isTarget: true, isError: true, fixOptions: ["being", "been", "to be"], correctFix: "being" }, { text: " exactly like " }, { text: "everyone", isTarget: true, isError: false }, { text: " else." } ], explanation: "Theo quy tắc, sau giới từ ('by') động từ phải ở dạng V-ing ('being')." },
@@ -764,7 +765,7 @@
       { id: "mistake_9", type: "mistake", cinemaId: 5, parts: [ { text: "He " }, { text: "is", isTarget: true, isError: true, fixOptions: ["does", "has", "belongs"], correctFix: "belongs" }, { text: " to the Dark Lord, so we must not " }, { text: "fight", isTarget: true, isError: false }, { text: " back " }, { text: "against", isTarget: true, isError: false }, { text: " him yet." } ], explanation: "Động từ 'belong' diễn tả sở hữu, dùng nguyên gốc 'belongs' thay vì to be 'is'." },
       { id: "mistake_10", type: "mistake", cinemaId: 3, parts: [ { text: "She is waiting " }, { text: "in", isTarget: true, isError: true, fixOptions: ["for", "at", "to"], correctFix: "for" }, { text: " someone who can " }, { text: "make", isTarget: true, isError: false }, { text: " her pipe dream " }, { text: "come", isTarget: true, isError: false }, { text: " true." } ], explanation: "Cụm động từ cố định 'wait FOR someone' (chờ đợi ai đó)." },
 
-      // --- DẠNG 3: MATCH (GHÉP ĐÔI CỤM TỪ) ---
+      // --- DẠNG 3: MATCH (GHÉP ĐÔI) ---
       { id: "match_1", type: "match", cinemaId: 1, pairs: [ { left: "Take yourself", right: "too seriously" }, { left: "Clearance", right: "bin" }, { left: "Brown", right: "nose" }, { left: "Shopping", right: "potential" } ] },
       { id: "match_2", type: "match", cinemaId: 3, pairs: [ { left: "Pipe", right: "dream" }, { left: "Make", right: "sense" }, { left: "Fight", right: "back" }, { left: "Run", right: "away" } ] },
       { id: "match_3", type: "match", cinemaId: 8, pairs: [ { left: "Sheer", right: "will" }, { left: "Inescapable", right: "force" }, { left: "Habitable", right: "planet" }, { left: "Unparalleled", right: "skills" } ] },
@@ -808,7 +809,6 @@
           if (document.getElementById('cinema-grid')) {
             window.renderAllSections();
             window.updateAvailableSentences();
-               window.updateAvailableSentences();
             }
           }
         );
@@ -1224,7 +1224,6 @@
       activeCinemaId = id; 
       activeQuizIndex = 0;
       
-      // XỬ LÝ MÀU SẮC ĐỘNG CHO MODAL THEO CHỦ ĐỀ
       let tMain, tBorder, tBg, tHover, tText, tMainText;
       if(item.format === 'music') {
          tMain = 'bg-cottage-amberDark'; tBorder = 'border-cottage-amber/50'; tBg = 'bg-cottage-amberLight'; 
@@ -1237,7 +1236,6 @@
          tHover = 'hover:bg-cottage-rose'; tText = 'text-cottage-roseDark'; tMainText = 'text-cottage-brown';
       }
 
-      // Cập nhật class các phần tử trong Modal
       const wrapper = document.getElementById('cinema-modal-wrapper');
       wrapper.className = `border-[6px] border-white rounded-[2.5rem] max-w-2xl w-full max-h-[95vh] overflow-y-auto shadow-2xl relative transition-colors duration-300 ${tBg}`;
       
@@ -1276,7 +1274,6 @@
 
       document.getElementById('cinema-quiz-box').className = `bg-white p-6 rounded-3xl border-2 ${tBorder} space-y-4 relative overflow-hidden mt-6 shadow-sm`;
       
-      // Lưu style nút Next Quiz để dùng khi Render Quiz
       window.modalThemeClasses = { tMain, tHover, tBorder, tBg, tText };
       
       window.renderCinemaQuiz();
@@ -1362,102 +1359,114 @@
       }
     };
 
-   // ================= ARCADE HỆ THỐNG ĐA DẠNG BÀI TẬP (HOÀN CHỈNH) =================
-window.startArcadeMode = function(mode) {
-  if (availableSentences.length === 0) window.updateAvailableSentences();
-  currentArcadeMode = mode;
-  
-  document.getElementById('arcade-menu').classList.add('hidden');
-  document.getElementById('arcade-play-area').classList.remove('hidden');
+    window.startArcadeMode = function(mode) {
+      if (availableSentences.length === 0) window.updateAvailableSentences();
+      currentArcadeMode = mode;
+      
+      document.getElementById('arcade-menu').classList.add('hidden');
+      document.getElementById('arcade-play-area').classList.remove('hidden');
 
-  ['fill', 'mistake', 'match', 'writing', 'speaking'].forEach(m => document.getElementById('game-' + m).classList.add('hidden'));
-  document.getElementById('game-' + mode).classList.remove('hidden');
-  document.getElementById('arcade-completed-msg').classList.add('hidden');
+      ['fill', 'mistake', 'match', 'writing', 'speaking'].forEach(m => document.getElementById('game-' + m).classList.add('hidden'));
+      document.getElementById('game-' + mode).classList.remove('hidden');
+      document.getElementById('arcade-completed-msg').classList.add('hidden');
 
-  const titleEl = document.getElementById('arcade-play-title');
-  const descEl = document.getElementById('arcade-play-desc');
+      const titleEl = document.getElementById('arcade-play-title');
+      const descEl = document.getElementById('arcade-play-desc');
 
-  if(mode === 'fill') {
-     titleEl.innerText = "Điền từ vào ngữ cảnh";
-     descEl.innerText = "Dựa vào các bài đã học, hãy chọn từ phù hợp để điền vào chỗ trống.";
-  } else if (mode === 'mistake') {
-     titleEl.innerText = "Tìm lỗi sai";
-     descEl.innerText = "Tìm các lỗi sai về cấu trúc hoặc ngữ pháp sau đó sửa lại.";
-  } else if (mode === 'match') {
-     titleEl.innerText = "Ghép đôi cụm từ";
-     descEl.innerText = "Nối các mảnh ghép ở hai cột lại để tạo thành Collocation/Idiom có nghĩa.";
-  } else if (mode === 'writing') {
-     titleEl.innerText = "Viết câu ứng dụng";
-     descEl.innerText = "Sử dụng từ vựng đã học để đặt câu riêng cho bạn.";
-  } else if (mode === 'speaking') {
-     titleEl.innerText = "Shadowing (Nhại lại)";
-     descEl.innerText = "Luyện phản xạ và ngữ điệu giống người bản xứ.";
-  }
+      if(mode === 'fill') {
+         titleEl.innerText = "Điền từ vào ngữ cảnh";
+         descEl.innerText = "Dựa vào các bài đã học, hãy chọn từ phù hợp để điền vào chỗ trống.";
+      } else if (mode === 'mistake') {
+         titleEl.innerText = "Tìm lỗi sai";
+         descEl.innerText = "Tìm các lỗi sai về cấu trúc hoặc ngữ pháp sau đó sửa lại.";
+      } else if (mode === 'match') {
+         titleEl.innerText = "Ghép đôi cụm từ";
+         descEl.innerText = "Nối các mảnh ghép ở hai cột lại để tạo thành Collocation/Idiom có nghĩa.";
+      } else if (mode === 'writing') {
+         titleEl.innerText = "Viết câu ứng dụng";
+         descEl.innerText = "Sử dụng từ vựng đã học để đặt câu riêng cho bạn.";
+      } else if (mode === 'speaking') {
+         titleEl.innerText = "Shadowing (Nói)";
+         descEl.innerText = "Luyện phản xạ và ngữ điệu giống người bản xứ.";
+      }
 
-  let pool = allPracticeSentences.filter(s => s.type === mode);
-  if (!isVip) {
-      pool = pool.filter(s => {
-          const lesson = cinemaData.find(c => c.id === s.cinemaId);
-          return lesson && !lesson.locked;
-      });
-  }
-  remainingSentences = [...pool];
+      let pool = allPracticeSentences.filter(s => s.type === mode);
+      if (!isVip) {
+          pool = pool.filter(s => {
+              const lesson = cinemaData.find(c => c.id === s.cinemaId);
+              return lesson && !lesson.locked;
+          });
+      }
+      remainingSentences = [...pool];
+      currentPractice = null; // Reset tránh kẹt trạng thái cũ
 
-  window.loadNextExercise();
-};
+      window.loadNextExercise();
+    };
 
-window.backToArcadeMenu = function() {
-   document.getElementById('arcade-menu').classList.remove('hidden');
-   document.getElementById('arcade-play-area').classList.add('hidden');
-};
+    window.backToArcadeMenu = function() {
+       document.getElementById('arcade-menu').classList.remove('hidden');
+       document.getElementById('arcade-play-area').classList.add('hidden');
+    };
 
-window.restartArcadeMode = function() {
-   let pool = allPracticeSentences.filter(s => s.type === currentArcadeMode);
-   if (!isVip) {
-       pool = pool.filter(s => {
-           const lesson = cinemaData.find(c => c.id === s.cinemaId);
-           return lesson && !lesson.locked;
-       });
-   }
-   remainingSentences = [...pool];
-   document.getElementById('arcade-completed-msg').classList.add('hidden');
-   document.getElementById('game-' + currentArcadeMode).classList.remove('hidden');
-   window.loadNextExercise();
-};
+    // ĐÃ SỬA LỖI NÚT LÀM LẠI TỪ ĐẦU (RESTART)
+    window.restartArcadeMode = function() {
+       if(cinemaData.length === 0) { alert("Đang tải dữ liệu, chờ chút nhé..."); return; }
+       let pool = allPracticeSentences.filter(s => s.type === currentArcadeMode);
+       if (!isVip) {
+           pool = pool.filter(s => {
+               const lesson = cinemaData.find(c => c.id === s.cinemaId);
+               return lesson && !lesson.locked;
+           });
+       }
+       if (pool.length === 0) { alert("Không tìm thấy bài tập cho phần này."); return; }
+       
+       remainingSentences = [...pool];
+       currentPractice = null; // Reset triệt để để load lại từ đầu không bị hụt câu
+       
+       document.getElementById('arcade-completed-msg').classList.add('hidden');
+       document.getElementById('game-' + currentArcadeMode).classList.remove('hidden');
+       window.loadNextExercise();
+    };
 
-window.skipArcadeExercise = function() {
-  if (currentPractice) {
-    remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
-    window.loadNextExercise();
-  }
-};
+    window.skipArcadeExercise = function() {
+      if (currentPractice) {
+        remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
+        window.loadNextExercise();
+      }
+    };
 
-window.loadNextExercise = function() {
-  if (remainingSentences.length === 0) {
-    document.getElementById('game-' + currentArcadeMode).classList.add('hidden');
-    document.getElementById('arcade-completed-msg').classList.remove('hidden');
-    
-    const msgDesc = document.getElementById('arcade-completed-desc');
-    if (isVip) {
-        msgDesc.innerText = "Bạn đã hoàn thành xuất sắc toàn bộ thử thách! Hãy thử sức với dạng bài khác hoặc làm lại nhé.";
-    } else {
-        msgDesc.innerText = "Hãy thử thách bản thân với dạng bài khác hoặc nâng cấp VIP để mở khóa thêm nhiều câu hỏi nhé!";
-    }
-    return;
-  }
-  
-  const randomIndex = Math.floor(Math.random() * remainingSentences.length);
-  currentPractice = remainingSentences[randomIndex];
+    // Chống lặp câu hỏi
+    window.loadNextExercise = function() {
+      if (currentPractice) {
+        remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
+      }
 
-  if(currentArcadeMode === 'fill') window.initFillGameUI();
-  else if(currentArcadeMode === 'mistake') window.initMistakeGameUI();
-  else if(currentArcadeMode === 'match') window.initMatchGameUI();
-  else if(currentArcadeMode === 'writing') window.initWritingGameUI();
-  else if(currentArcadeMode === 'speaking') window.initSpeakingGameUI();
-};
-    
+      if (remainingSentences.length === 0) {
+        document.getElementById('game-' + currentArcadeMode).classList.add('hidden');
+        document.getElementById('arcade-completed-msg').classList.remove('hidden');
+        
+        const msgDesc = document.getElementById('arcade-completed-desc');
+        if (isVip) {
+            msgDesc.innerText = "Bạn đã hoàn thành xuất sắc toàn bộ thử thách! Hãy thử sức với dạng bài khác hoặc làm lại nhé.";
+        } else {
+            msgDesc.innerText = "Hãy thử thách bản thân với dạng bài khác hoặc nâng cấp VIP để mở khóa thêm nhiều câu hỏi nhé!";
+        }
+        return;
+      }
+      
+      const randomIndex = Math.floor(Math.random() * remainingSentences.length);
+      currentPractice = remainingSentences[randomIndex];
+
+      if(currentArcadeMode === 'fill') window.initFillGameUI();
+      else if(currentArcadeMode === 'mistake') window.initMistakeGameUI();
+      else if(currentArcadeMode === 'match') window.initMatchGameUI();
+      else if(currentArcadeMode === 'writing') window.initWritingGameUI();
+      else if(currentArcadeMode === 'speaking') window.initSpeakingGameUI();
+    };
+        
     // --- WRITING GAME ---
     window.initWritingGameUI = function() {
+        if (!currentPractice) return;
         document.getElementById('writing-prompt').innerText = currentPractice.prompt;
         document.getElementById('writing-textarea').value = '';
         document.getElementById('writing-feedback').classList.add('hidden');
@@ -1467,13 +1476,112 @@ window.loadNextExercise = function() {
         document.getElementById('writing-feedback').classList.remove('hidden');
     };
 
-    // --- SPEAKING GAME ---
+    // --- GAME 5: SPEAKING & SHADOWING (GIỌNG NỮ TRONG TRẺO, KHÔNG TRẦM) ---
     window.initSpeakingGameUI = function() {
+        if (!currentPractice) return;
         document.getElementById('speaking-quote').innerText = '"' + currentPractice.quote + '"';
+        document.getElementById('speaking-status').innerText = "Nhấn nút dưới và đọc to câu thoại bằng tiếng Anh...";
+        document.getElementById('speaking-status').className = "text-xs font-bold text-cottage-brownLight text-center";
+        document.getElementById('speaking-feedback').classList.add('hidden');
+        document.getElementById('btn-mic').disabled = false;
+        document.getElementById('btn-mic').classList.remove('opacity-50');
     };
+
+    // Hàm chọn giọng đọc mượt mà, trong trẻo (Ưu tiên Google US English hoặc giọng nữ sáng)
+    function getBestVoice() {
+        const voices = window.speechSynthesis.getVoices();
+        return voices.find(v => v.name.includes('Google US English') || v.name.includes('Samantha') || (v.lang === 'en-US' && v.name.toLowerCase().includes('female'))) || voices.find(v => v.lang === 'en-US') || voices[0];
+    }
+
+    window.speakQuote = function() {
+        if (!currentPractice) return;
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(currentPractice.quote);
+            utterance.voice = getBestVoice();
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9; // Tốc độ chuẩn chậm vừa phải để học sinh nhại lại
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Trình duyệt của bạn không hỗ trợ tính năng đọc mẫu.");
+        }
+    };
+
+    window.startPronunciationCheck = function() {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        
+        if (!SpeechRecognition) {
+            alert("Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Hãy mở bằng Google Chrome hoặc Microsoft Edge nhé! 🌷");
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        const statusEl = document.getElementById('speaking-status');
+        const feedbackEl = document.getElementById('speaking-feedback');
+        const micBtn = document.getElementById('btn-mic');
+
+        statusEl.innerText = "🎙️ Đang nghe... Hãy đọc to câu thoại lên nhé!";
+        statusEl.className = "text-xs font-bold text-cottage-roseDark animate-pulse text-center";
+        micBtn.disabled = true;
+        micBtn.classList.add('opacity-50');
+        feedbackEl.classList.add('hidden');
+
+        recognition.start();
+
+        recognition.onresult = function(event) {
+            const userSaid = event.results[0][0].transcript.toLowerCase().trim();
+            
+            const targetQuote = currentPractice.quote.toLowerCase().replace(/[^a-z0-9\s]/gi, '').trim();
+            const userSaidClean = userSaid.replace(/[^a-z0-9\s]/gi, '').trim();
+
+            statusEl.innerText = `🗣️ Bạn vừa đọc: "${userSaid}"`;
+            statusEl.className = "text-xs font-bold text-cottage-brown text-center";
+            
+            feedbackEl.classList.remove('hidden');
+
+            if (userSaidClean === targetQuote || targetQuote.includes(userSaidClean) || calculateWordMatch(targetQuote, userSaidClean) >= 0.7) {
+                feedbackEl.className = "p-4 rounded-2xl text-sm bg-cottage-greenLight border-2 border-cottage-green/30 text-cottage-greenDark text-center shadow-sm";
+                feedbackEl.innerHTML = `✨ <b>Xuất sắc!</b> Phát âm rất chuẩn xác và rõ ràng. Bạn có thể bấm sang câu tiếp theo nhé! 🎉`;
+            } else {
+                feedbackEl.className = "p-4 rounded-2xl text-sm bg-cottage-roseLight border-2 border-cottage-rose/30 text-cottage-roseDark text-center shadow-sm";
+                feedbackEl.innerHTML = `🤔 Gần đúng rồi! Hệ thống nghe thành: <i>"${userSaid}"</i>.<br>👉 Hãy bấm <b>"Nghe mẫu"</b> và thử đọc lại to, rõ âm cuối hơn nhé!`;
+            }
+
+            micBtn.disabled = false;
+            micBtn.classList.remove('opacity-50');
+        };
+
+        recognition.onerror = function() {
+            statusEl.innerText = "❌ Không nghe rõ giọng đọc. Bạn thử bấm lại nút ghi âm nhé!";
+            statusEl.className = "text-xs font-bold text-cottage-brownLight text-center";
+            micBtn.disabled = false;
+            micBtn.classList.remove('opacity-50');
+        };
+
+        recognition.onspeechend = function() {
+            recognition.stop();
+        };
+    };
+
+    function calculateWordMatch(target, spoken) {
+        const targetWords = target.split(/\s+/);
+        const spokenWords = spoken.split(/\s+/);
+        let matchedCount = 0;
+        
+        targetWords.forEach(w => {
+            if (spokenWords.includes(w)) matchedCount++;
+        });
+        
+        return matchedCount / targetWords.length;
+    }
     
-    // --- GAME 1: FILL (ĐIỀN TỪ TỰ ĐỘNG CHECK) ---
+    // --- GAME 1: FILL (ĐIỀN TỪ) ---
     window.initFillGameUI = function() {
+      if (!currentPractice) return;
       fillSelectedAnswers = {};
       const promptContainer = document.getElementById('fill-prompt');
       promptContainer.innerHTML = '';
@@ -1524,7 +1632,6 @@ window.loadNextExercise = function() {
         blankEl.classList.add('border-solid', 'bg-cottage-roseLight/30', 'rounded-t-md');
         document.getElementById(`pool-word-${word.replace(/\s+/g, '-')}`).style.display = 'none';
         
-        // AUTO CHECK SAU KHI CHỌN TỪ
         let isFull = true;
         currentPractice.parts.forEach((part, idx) => {
           if (part.isBlank && !fillSelectedAnswers[idx]) isFull = false;
@@ -1546,19 +1653,8 @@ window.loadNextExercise = function() {
         blankEl.innerText = '';
         blankEl.classList.remove('border-solid', 'bg-cottage-roseLight/30', 'rounded-t-md');
         document.getElementById(`pool-word-${word.replace(/\s+/g, '-')}`).style.display = 'inline-block';
-        document.getElementById('fill-feedback').classList.add('hidden'); // Ẩn lỗi nếu người dùng lấy lại từ
+        document.getElementById('fill-feedback').classList.add('hidden');
       }
-    };
-
-    window.resetFillGame = function() { 
-      for (const [blankIndex, word] of Object.entries(fillSelectedAnswers)) {
-        const blankEl = document.getElementById(`blank-${blankIndex}`);
-        blankEl.innerText = '';
-        blankEl.classList.remove('border-solid', 'bg-cottage-roseLight/30', 'rounded-t-md');
-        document.getElementById(`pool-word-${word.replace(/\s+/g, '-')}`).style.display = 'inline-block';
-      }
-      fillSelectedAnswers = {};
-      document.getElementById('fill-feedback').classList.add('hidden');
     };
     
     window.checkFillGame = function() {
@@ -1578,7 +1674,6 @@ window.loadNextExercise = function() {
         fb.innerText = "✨ Chính xác! Đang chuyển sang câu tiếp theo...";
         remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
         
-        // Khóa các ô trống không cho bấm trả từ lại khi đang chuẩn bị chuyển câu
         currentPractice.parts.forEach((part, idx) => {
            if(part.isBlank) {
                const b = document.getElementById(`blank-${idx}`);
@@ -1595,6 +1690,7 @@ window.loadNextExercise = function() {
 
     // --- GAME 2: MISTAKE (TÌM LỖI SAI) ---
     window.initMistakeGameUI = function() {
+      if (!currentPractice) return;
       const promptBox = document.getElementById('mistake-prompt');
       document.getElementById('mistake-options-box').classList.add('hidden');
       document.getElementById('mistake-feedback').classList.add('hidden');
@@ -1614,7 +1710,6 @@ window.loadNextExercise = function() {
       const feedback = document.getElementById('mistake-feedback');
       const optBox = document.getElementById('mistake-options-box');
       
-      // Xóa highlight của tất cả các nút
       document.querySelectorAll('#mistake-prompt button').forEach(b => {
           b.classList.remove('bg-cottage-amber/30', 'ring-2', 'ring-cottage-amber');
       });
@@ -1653,6 +1748,7 @@ window.loadNextExercise = function() {
 
     // --- GAME 3: MATCH (GHÉP ĐÔI) ---
     window.initMatchGameUI = function() {
+       if (!currentPractice) return;
        matchState = { left: null, right: null, completed: [] };
        document.getElementById('match-feedback').classList.add('hidden');
        document.getElementById('btn-next-match').classList.add('hidden');
@@ -1661,7 +1757,6 @@ window.loadNextExercise = function() {
        const leftCol = document.getElementById('match-left-col');
        const rightCol = document.getElementById('match-right-col');
 
-       // Tạo danh sách trộn
        const leftItems = currentPractice.pairs.map((p, i) => ({text: p.left, id: i})).sort(() => Math.random() - 0.5);
        const rightItems = currentPractice.pairs.map((p, i) => ({text: p.right, id: i})).sort(() => Math.random() - 0.5);
 
@@ -1675,17 +1770,14 @@ window.loadNextExercise = function() {
     };
 
     window.selectMatch = function(side, id) {
-       // Bỏ qua nếu đã completed
        if (matchState.completed.includes(id)) return;
 
        const btnId = `match-${side}-${id}`;
        const btn = document.getElementById(btnId);
 
-       // Deselect current if click again
        if (side === 'L' && matchState.left === id) { matchState.left = null; btn.classList.remove('bg-cottage-greenLight', 'border-cottage-green'); return; }
        if (side === 'R' && matchState.right === id) { matchState.right = null; btn.classList.remove('bg-cottage-greenLight', 'border-cottage-green'); return; }
 
-       // Reset previous selection on same side
        if (side === 'L') {
            if(matchState.left !== null) document.getElementById(`match-L-${matchState.left}`).classList.remove('bg-cottage-greenLight', 'border-cottage-green');
            matchState.left = id;
@@ -1696,10 +1788,8 @@ window.loadNextExercise = function() {
        
        btn.classList.add('bg-cottage-greenLight', 'border-cottage-green');
 
-       // Check Match
        if (matchState.left !== null && matchState.right !== null) {
            if (matchState.left === matchState.right) {
-               // Correct Match
                const correctId = matchState.left;
                const btnL = document.getElementById(`match-L-${correctId}`);
                const btnR = document.getElementById(`match-R-${correctId}`);
@@ -1720,7 +1810,6 @@ window.loadNextExercise = function() {
                    remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
                }
            } else {
-               // Wrong Match
                const bL = document.getElementById(`match-L-${matchState.left}`);
                const bR = document.getElementById(`match-R-${matchState.right}`);
                
@@ -1739,7 +1828,6 @@ window.loadNextExercise = function() {
            }
        }
     };
-
 
     // ================= 9. KHỞI CHẠY =================
     window.addEventListener('DOMContentLoaded', () => {
