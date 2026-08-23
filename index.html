@@ -338,7 +338,7 @@
         <!-- KHUNG GAME 5: SHADOWING & CHẤM ĐIỂM PHÁT ÂM (GIỌNG NỮ TRONG TRẺO) -->
         <div id="game-speaking" class="hidden w-full space-y-4">
            <div class="p-6 bg-cottage-amber/10 rounded-2xl border-2 border-dashed border-cottage-amber/30 text-center">
-             <p id="speaking-quote" class="text-lg font-serif italic text-cottage-brown mb-4"></p>
+             <p id="speaking-quote" class="text-lg font-display font-bold text-cottage-brown mb-4"></p>
              <button onclick="speakQuote()" class="px-4 py-2 bg-cottage-amber text-white text-xs font-bold rounded-xl hover:bg-cottage-amberDark transition">Nghe mẫu 🔈</button>
            </div>
            
@@ -455,10 +455,19 @@
           <p class="text-xs text-cottage-brown text-center mt-2 italic font-medium"><i class="fa-solid fa-headphones text-[10px] mr-1"></i> Nghe kỹ và làm bài tập bên dưới để đoán nghĩa của từ nhé!</p>
         </div>
 
+        <!-- BỐI CẢNH & NHÂN VẬT (CONTEXT CONTAINER) -->
+        <div id="cinema-context-box" class="p-4 md:p-5 bg-white/90 rounded-2xl border-2 border-cottage-rose/30 shadow-sm space-y-1.5 hidden">
+          <div id="cinema-context-title" class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-cottage-roseDark">
+            <i class="fa-solid fa-book-open"></i> Bối cảnh & Nhân vật trong đoạn phim:
+          </div>
+          <p id="cinema-context-desc" class="text-xs md:text-sm text-cottage-brown leading-relaxed font-medium"></p>
+        </div>
+
+        <!-- CÂU QUOTE VỚI FONT DỄ NHÌN VÀ RÕ RÀNG HƠN -->
         <div id="cinema-quote-box" class="p-5 md:p-6 bg-white/60 rounded-3xl border-2 border-cottage-rose/30 relative mt-4 shadow-sm">
           <div class="absolute -top-3 -left-2 text-2xl">📝</div>
           <div id="cinema-quote-container" class="mt-1">
-             <p id="cinema-quote" class="italic text-base md:text-lg text-cottage-brown font-serif leading-relaxed"></p>
+             <p id="cinema-quote" class="font-display font-bold text-base md:text-lg text-cottage-brown leading-relaxed tracking-wide"></p>
           </div>
           <div class="w-12 h-0.5 bg-cottage-brown/20 my-4 mx-auto rounded-full"></div>
           <p id="cinema-translation" class="text-xs text-cottage-brown font-medium text-center"></p>
@@ -597,10 +606,11 @@
     let cinemaData = [];
     let allPracticeSentences = [];
 
-    // ================= 3. DỮ LIỆU KHỞI TẠO BẢN FULL QUY MÔ LỚN =================
+    // ================= 3. DỮ LIỆU KHỞI TẠO BẢN FULL QUY MÔ LỚN (ĐÃ THÊM CONTEXT NHÂN VẬT & CÂU CHUYỆN) =================
     const SEED_CINEMA_DATA = [
       {
         id: 1, genre: "Drama", format: "movie", title: "The Devil Wears Prada (2006)", level: "B2", thumbnail: "https://stylerepublik.vn/uploads/2021/06/the-devil-wears-prada-1.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/-rDTRuCOs9g?rel=0", locked: false,
+        characterContext: "Miranda Priestly là tổng biên tập sắc sảo, quyền lực của tạp chí thời trang danh tiếng Runway. Andy Sachs là trợ lý mới có phần tự phụ, xem nhẹ thời trang. Trong phân cảnh này, Miranda lạnh lùng bóc trần sự ngây thơ của Andy khi cô tưởng mình đứng ngoài thế giới thời trang, trong khi chiếc áo len cô đang mặc thực chất là sản phẩm của một chuỗi dây chuyền thiết kế triệu đô.",
         quote: "You go to your closet and you select... I don't know... that lumpy blue sweater, for instance, because you're trying to tell the world that you take yourself too seriously to care about what you put on your back.",
         translation: "Cô đi đến tủ quần áo và chọn... tôi không biết... cái áo len xanh sần sùi kia chẳng hạn, bởi vì cô đang muốn nói với thế giới rằng cô coi trọng bản thân mình đến mức không thèm bận tâm đến những thứ mình khoác lên người.",
         vocabAnalysis: [
@@ -608,134 +618,143 @@
           { word: "Take oneself too seriously", ipa: "(Idiom)", meaning: "Quá tự cao, nghĩ mình luôn quan trọng.", context: "Ám chỉ việc Andy nghĩ bản thân mình quá thông minh, quá bận rộn với lý tưởng cao cả để phải quan tâm đến thời trang." }
         ],
         quizzes: [
-          { q: "Trong video, Miranda nói rằng Andy đang <b>'blithely unaware'</b> (không nhận thức được) về lịch sử của màu xanh Cerulean. Từ 'blithely' ở đây mang sắc thái gì?", options: ["A. Tức giận, phẫn nộ", "B. Cẩn thận, tỉ mỉ", "C. Thản nhiên, vô tư lự", "D. Rất lo lắng"], correct: 2, explanation: "<b>'Blithely'</b> diễn tả thái độ vô tư, không bận tâm." },
-          { q: "Miranda châm biếm Andy vì cô nghĩ rằng sự lựa chọn áo len đã <b>'exempts'</b> cô khỏi ngành công nghiệp thời trang. Từ 'exempt' có nghĩa là gì?", options: ["A. Trói buộc cô vào", "B. Miễn trừ, tách biệt, cho phép cô đứng ngoài cuộc", "C. Làm cho cô nổi bật hơn", "D. Phá hủy sự nghiệp của cô"], correct: 1, explanation: "<b>'Exempt'</b> có nghĩa là được miễn trừ hoặc không chịu tác động." },
-          { q: "Miranda nhắc đến việc màu xanh Cerulean sau đó đã được <b>'filtered down'</b> tới các trung tâm thương mại. Từ này diễn tả quá trình nào?", options: ["A. Bị loại bỏ hoàn toàn", "B. Được lọc sạch vi khuẩn", "C. Lan truyền dần từ tầng lớp cao xuống đại chúng", "D. Bị đẩy giá lên cao"], correct: 2, explanation: "<b>'Filter down'</b> (lọc xuống) ám chỉ việc một xu hướng thời trang lan tới các cửa hàng bình dân." },
-          { q: "Miranda mỉa mai việc Andy lấy chiếc áo đó từ một <b>'clearance bin'</b>. Bạn thường thấy 'clearance bin' ở đâu?", options: ["A. Khu vực trưng bày đồ mới ra mắt", "B. Nơi chứa đồ giảm giá, đồ xả kho", "C. Thùng rác", "D. Khu vực bán đồ bị may lỗi"], correct: 1, explanation: "<b>'Clearance bin'</b> là những thùng đổ đống quần áo xả hàng, bán với giá rất rẻ." },
-          { q: "Cuối cùng, Miranda kết luận: 'It's sort of <b>comical</b> how you think that you've made a choice...'. Từ 'comical' mang sắc thái gì?", options: ["A. Buồn bã, đáng thương", "B. Tức giận, phẫn nộ", "C. Buồn cười, nực cười", "D. Rất logic, hợp lý"], correct: 2, explanation: "<b>'Comical'</b> có nghĩa là buồn cười. Miranda cười nhạo sự ngây thơ của Andy." }
+          { q: "Trong video, Miranda nói rằng Andy đang <b>'blithely unaware'</b> về lịch sử của màu xanh Cerulean. Từ 'blithely' ở đây mang sắc thái gì trong ngữ cảnh nhân vật?", options: ["A. Tức giận, phẫn nộ", "B. Cẩn thận, tỉ mỉ", "C. Thản nhiên, vô tư lự không để ý", "D. Rất lo lắng"], correct: 2, explanation: "<b>'Blithely'</b> diễn tả thái độ vô tư, không bận tâm của Andy trước công sức của ngành thời trang." },
+          { q: "Miranda châm biếm Andy vì cô ngây thơ nghĩ rằng sự lựa chọn áo len đã <b>'exempts'</b> cô khỏi ngành công nghiệp thời trang. Từ 'exempt' có nghĩa là gì?", options: ["A. Trói buộc cô vào", "B. Miễn trừ, tách biệt, cho phép cô đứng ngoài cuộc", "C. Làm cho cô nổi bật hơn", "D. Phá hủy sự nghiệp của cô"], correct: 1, explanation: "<b>'Exempt'</b> có nghĩa là được miễn trừ khỏi ảnh hưởng." },
+          { q: "Miranda nhắc đến việc màu xanh Cerulean sau đó đã được <b>'filtered down'</b> tới các trung tâm thương mại bình dân. Từ này diễn tả quá trình nào?", options: ["A. Bị loại bỏ hoàn toàn", "B. Được lọc sạch vi khuẩn", "C. Lan truyền dần từ tầng lớp cao xuống đại chúng", "D. Bị đẩy giá lên cao"], correct: 2, explanation: "<b>'Filter down'</b> ám chỉ xu hướng thời trang lan tỏa từ các nhà mốt lớn xuống cửa hàng bình dân." },
+          { q: "Miranda mỉa mai việc Andy lấy chiếc áo đó từ một <b>'clearance bin'</b>. Bạn thường thấy thùng này ở đâu?", options: ["A. Khu vực trưng bày đồ mới ra mắt", "B. Nơi chứa đồ giảm giá, đồ xả kho giá rẻ", "C. Thùng rác", "D. Khu vực bán đồ bị may lỗi"], correct: 1, explanation: "<b>'Clearance bin'</b> là thùng đổ đống bán đồ giảm giá xả kho." },
+          { q: "Cuối cùng, Miranda kết luận: 'It's sort of <b>comical</b> how you think that you've made a choice...'. Từ 'comical' mang sắc thái châm biếm gì?", options: ["A. Buồn bã, đáng thương", "B. Tức giận, phẫn nộ", "C. Nực cười, buồn cười", "D. Rất logic, hợp lý"], correct: 2, explanation: "<b>'Comical'</b> mang ý cười nhạo sự ngây ngô của Andy." }
         ]
       },
       {
         id: 2, genre: "Comedy", format: "movie", title: "The Intern (2015)", level: "B2", thumbnail: "https://spoilertown.com/wp-content/uploads/2025/08/the-intern-2015.webp", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/1uRBxyPqkh0?rel=0", locked: false,
+        characterContext: "Ben Whittaker là một ông lão 70 tuổi điềm đạm, ấm áp, tham gia chương trình thực tập sinh lớn tuổi tại một công ty thời trang trực tuyến do Jules Ostin sáng lập. Trong phân cảnh này, Ben đưa ra những lời khuyên sâu sắc, nhẹ nhàng xoa dịu áp lực và căng thẳng đè nặng lên vai nữ giám đốc trẻ.",
         quote: "You're never wrong to do the right thing.", translation: "Bạn sẽ không bao giờ sai khi làm điều đúng đắn.",
         vocabAnalysis: [
           { word: "Diversion (n)", ipa: "/dɪˈvɜːr.ʒən/", meaning: "Sự giải trí, thú vui tiêu khiển.", context: "Khi Jules nói cô ấy có nhiều việc phải làm, Ben đáp lại rằng anh ấy cần một 'diversion' để giải trí." },
           { word: "Brownnose (v)", ipa: "/ˈbraʊn.noʊz/", meaning: "Nịnh bợ, xu nịnh (mang nghĩa tiêu cực).", context: "Ben khẳng định anh không cố ý 'nịnh nọt' sếp." }
         ],
         quizzes: [
-          { q: "Khi sếp Jules tỏ vẻ bận rộn, Ben nói rằng ông cần một <b>'diversion'</b>. 'Diversion' nghĩa là gì?", options: ["A. Sự thăng chức", "B. Một cuộc họp", "C. Sự giải trí/tiêu khiển", "D. Một ly cà phê"], correct: 2, explanation: "<b>'Diversion'</b> là thú vui tiêu khiển lấp đầy thời gian trống." },
-          { q: "Khi Ben lập tài khoản mạng xã hội, ông bảo Jules: <i>'You're <b>never wrong to</b> do the right thing'</i>. Chọn cụm đúng ngữ pháp nhất:", options: ["A. never wrong to lying", "B. never wrong to apologize", "C. never wrong to ignored them", "D. never wrong to rude"], correct: 1, explanation: "Cấu trúc <b>'never wrong to + Verb nguyên mẫu'</b>. 'Apologize' là hợp lý nhất." },
-          { q: "Khi khen ngợi Jules, Ben rào trước: <i>'I'm not trying to <b>brownnose</b> you...'</i>. Từ này có nghĩa gì?", options: ["A. Đe dọa, uy hiếp", "B. Nịnh bợ, xu nịnh để lấy lòng", "C. Che giấu sự thật", "D. Làm bạn xấu hổ"], correct: 1, explanation: "<b>'Brownnose'</b> là một từ lóng chỉ hành động nịnh nọt sếp quá mức." },
-          { q: "Jules nói: <i>'A woman with a glass of wine and a laptop had real shopping <b>potential</b>'</i>. Từ 'potential' chỉ điều gì?", options: ["A. Khả năng, tiềm năng", "B. Sự nguy hiểm", "C. Thói quen xấu", "D. Vấn đề tài chính"], correct: 0, explanation: "<b>'Potential'</b> (tiềm năng). Jules nhận ra cơ hội chốt đơn mua hàng rất cao." },
-          { q: "Khi Ben mới tham gia mạng xã hội, Jules nói đùa: <i>'Better <b>late</b> than never'</i>. Thành ngữ này khuyên chúng ta điều gì?", options: ["A. Đã trễ thì không nên làm nữa", "B. Thà trễ hẹn còn hơn không đến", "C. Muộn màng bắt đầu vẫn tốt hơn là không bao giờ làm", "D. Phải luôn luôn đúng giờ"], correct: 2, explanation: "<b>'Better late than never'</b> là thành ngữ ý nói việc bắt đầu muộn vẫn tốt hơn là bỏ cuộc hoàn toàn." }
+          { q: "Khi sếp Jules tỏ vẻ bận rộn, Ben nói rằng ông cần một <b>'diversion'</b> để giải tỏa. 'Diversion' nghĩa là gì trong ngữ cảnh này?", options: ["A. Sự thăng chức", "B. Một cuộc họp", "C. Sự giải trí/tiêu khiển xả stress", "D. Một ly cà phê"], correct: 2, explanation: "<b>'Diversion'</b> là thú vui tiêu khiển giúp lấp đầy thời gian." },
+          { q: "Khi Ben lập tài khoản mạng xã hội, ông bảo Jules: <i>'You're <b>never wrong to</b> do the right thing'</i>. Chọn cấu trúc đúng ngữ pháp:", options: ["A. never wrong to lying", "B. never wrong to apologize", "C. never wrong to ignored them", "D. never wrong to rude"], correct: 1, explanation: "Cấu trúc <b>'never wrong to + Verb nguyên mẫu'</b>." },
+          { q: "Khi khen ngợi Jules, Ben rào trước: <i>'I'm not trying to <b>brownnose</b> you...'</i>. Từ này có nghĩa là gì?", options: ["A. Đe dọa, uy hiếp", "B. Nịnh bợ, xu nịnh để lấy lòng", "C. Che giấu sự thật", "D. Làm bạn xấu hổ"], correct: 1, explanation: "<b>'Brownnose'</b> là từ lóng chỉ hành động nịnh nọt." },
+          { q: "Jules nhận định: <i>'A woman with a glass of wine and a laptop had real shopping <b>potential</b>'</i>. Từ 'potential' chỉ điều gì?", options: ["A. Khả năng mua sắm tiềm năng", "B. Sự nguy hiểm", "C. Thói quen xấu", "D. Vấn đề tài chính"], correct: 0, explanation: "<b>'Potential'</b> nghĩa là tiềm năng." },
+          { q: "Khi Ben mới tham gia mạng xã hội, Jules nói đùa: <i>'Better <b>late</b> than never'</i>. Thành ngữ này khuyên điều gì?", options: ["A. Trễ thì không nên làm nữa", "B. Thà trễ hẹn còn hơn không đến", "C. Muộn màng bắt đầu vẫn tốt hơn là bỏ cuộc hoàn toàn", "D. Phải luôn đúng giờ"], correct: 2, explanation: "<b>'Better late than never'</b> ý chỉ việc bắt đầu muộn còn hơn không." }
         ]
       },
       {
         id: 3, genre: "Musical", format: "movie", title: "La La Land (2016)", level: "B2", thumbnail: "https://cdn.tgdd.vn/Files/2020/12/28/1316589/review-phim-la-la-land-nhung-ke-kho-mong-mo-2016-cau-chuyen-tinh-de-lai-nhieu-tiec-nuoi-202012281430401884.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b65C_muXajk?rel=0", locked: true, 
+        characterContext: "Mia Dolan là một nữ phục vụ bàn ôm ấp giấc mơ diễn xuất nhưng liên tục nhận những lời từ chối phũ phàng ở các buổi thử vai. Sebastian là nghệ sĩ piano jazz đam mê. Phân cảnh này ghi lại khoảnh khắc Mia hoàn toàn suy sụp, tự ti và gọi ước mơ của mình là một giấc mơ viển vông (pipe dream).",
         quote: "Maybe I'm one of those people that has always wanted to do it, but it's like a pipe dream for me.", translation: "Có lẽ em là một trong những người luôn khao khát điều đó, nhưng nó chỉ là một giấc mơ hão huyền đối với em.",
         vocabAnalysis: [
           { word: "Pipe dream (Idiom)", ipa: "/ˈpaɪp ˌdriːm/", meaning: "Giấc mơ viển vông, hão huyền.", context: "Mia dùng cụm từ này để diễn tả sự tuyệt vọng, cho rằng ước mơ trở thành diễn viên của mình là không thể thành hiện thực." }
         ],
         quizzes: [
-          { q: "Khi Mia quá chán nản vì liên tục thất bại ở các buổi thử vai, cô nói: <i>'Maybe I'm not <b>good enough</b>'</i>. Cụm từ này diễn tả cảm xúc gì?", options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân", "C. Sự tức giận", "D. Sự mệt mỏi về thể chất"], correct: 1, explanation: "<b>'Not good enough'</b> diễn tả sự tự ti (insecurity) khi ai đó đối mặt với sự từ chối quá nhiều lần." },
-          { q: "Mia kể lại: <i>'I get <b>interrupted</b> because someone wants to get a sandwich'</i>. Hành động 'interrupt' gây ra cảm giác gì?", options: ["A. Vui vẻ", "B. Thiếu tôn trọng, bị ngắt lời giữa chừng", "C. Hào hứng", "D. Không cảm xúc"], correct: 1, explanation: "<b>'Interrupt'</b> nghĩa là ngắt lời/cắt ngang. Nó cho thấy sự thiếu tôn trọng nghiêm trọng." },
-          { q: "Mia tự nhận định giấc mơ diễn xuất của mình có thể chỉ là một <b>'pipe dream'</b>. Từ này có nghĩa là gì?", options: ["A. Một giấc mơ đẹp", "B. Kế hoạch chắc chắn", "C. Một giấc mơ viển vông, hão huyền", "D. Giấc mơ sửa ống nước"], correct: 2, explanation: "<b>'Pipe dream'</b> là một thành ngữ chỉ những hi vọng, ảo tưởng không có cơ sở." },
-          { q: "Sebastian cố gắng thuyết phục Mia đi thử vai: <i>'If you want me, then you have to <b>make sense</b>'</i>. Anh ấy yêu cầu Mia điều gì?", options: ["A. Phải nói chuyện có lý, có logic", "B. Phải kiếm nhiều tiền", "C. Phải từ bỏ ngay lập tức", "D. Phải diễn kịch"], correct: 0, explanation: "<b>'Make sense'</b> nghĩa là có ý nghĩa, có lý. Sebastian muốn Mia đưa ra một lý do từ chối hợp lý." },
-          { q: "Cuối cùng, Sebastian chốt hạ: <i>'I'll be out front at 8:00 a.m. You'll be out front <b>or not</b>'</i>. Câu này thể hiện thái độ gì?", options: ["A. Năn nỉ, cầu xin", "B. Không quan tâm", "C. Ép buộc", "D. Đặt cô ấy vào thế phải tự quyết định"], correct: 3, explanation: "<b>'...or not'</b> (hoặc không). Sebastian không ép buộc, anh chỉ trao cơ hội và để Mia tự quyết định." }
+          { q: "Khi Mia quá chán nản vì liên tục thất bại ở các buổi thử vai, cô nói: <i>'Maybe I'm not <b>good enough</b>'</i>. Cụm từ này diễn tả cảm xúc gì của nhân vật?", options: ["A. Sự kiêu ngạo", "B. Sự tự ti, mặc cảm về bản thân", "C. Sự tức giận", "D. Sự mệt mỏi về thể chất"], correct: 1, explanation: "<b>'Not good enough'</b> diễn tả sự tự ti sâu sắc." },
+          { q: "Mia kể lại việc bị cắt ngang: <i>'I get <b>interrupted</b> because someone wants to get a sandwich'</i>. Hành động này mang lại cảm giác gì?", options: ["A. Vui vẻ", "B. Thiếu tôn trọng, bị ngắt lời giữa chừng", "C. Hào hứng", "D. Không cảm xúc"], correct: 1, explanation: "<b>'Interrupt'</b> nghĩa là ngắt lời thô bạo." },
+          { q: "Mia tự nhận định giấc mơ diễn xuất của mình có thể chỉ là một <b>'pipe dream'</b>. Từ này có nghĩa là gì?", options: ["A. Một giấc mơ đẹp", "B. Kế hoạch chắc chắn", "C. Một giấc mơ viển vông, hão huyền không thực tế", "D. Giấc mơ sửa ống nước"], correct: 2, explanation: "<b>'Pipe dream'</b> là ảo tưởng không có cơ sở." },
+          { q: "Sebastian cố gắng vực dậy tinh thần Mia: <i>'If you want me, then you have to <b>make sense</b>'</i>. Anh ấy yêu cầu Mia điều gì?", options: ["A. Phải nói chuyện có lý, có logic", "B. Phải kiếm nhiều tiền", "C. Phải từ bỏ ngay lập tức", "D. Phải diễn kịch"], correct: 0, explanation: "<b>'Make sense'</b> nghĩa là có lý." },
+          { q: "Cuối cùng, Sebastian chốt hạ: <i>'I'll be out front at 8:00 a.m. You'll be out front <b>or not</b>'</i>. Câu này thể hiện thái độ gì?", options: ["A. Năn nỉ, cầu xin", "B. Không quan tâm", "C. Ép buộc", "D. Tôn trọng quyết định và để Mia tự lựa chọn"], correct: 3, explanation: "<b>'...or not'</b> để Mia tự quyết định số phận." }
         ]
       },
       {
         id: 4, genre: "Musical", format: "movie", title: "The Greatest Showman (2017)", level: "B2", thumbnail: "https://discover.ticketmaster.co.uk/wp-content/uploads/2024/09/The-Greatest-Showman-Best-Songs-738x415.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/DMpdg2iByes?rel=0", locked: true,
+        characterContext: "P.T. Barnum là nhà tổ chức biểu diễn tiên phong, người quy tụ những con người có ngoại hình khác biệt bị xã hội xem thường (outcast) để tạo nên một gánh xiếc kỳ diệu. Phân cảnh này ca ngợi sức mạnh của sự khác biệt và nghệ thuật đích thực.",
         quote: "No one ever made a difference by being like everyone else.", translation: "Chưa từng có ai tạo ra sự khác biệt bằng cách sống giống như những người khác.",
         vocabAnalysis: [
           { word: "Noble (adj)", ipa: "/ˈnoʊ.bəl/", meaning: "Cao quý, đáng kính.", context: "Bộ phim trích dẫn câu nói của P.T. Barnum: 'Nghệ thuật cao quý nhất là làm cho người khác hạnh phúc'." }
         ],
         quizzes: [
-          { q: "Barnum nhắc đến từ <b>'spectacle'</b> để mô tả rạp xiếc của mình. Theo bạn, 'spectacle' mang đến cảm giác gì?", options: ["A. Nhàm chán", "B. Buồn ngủ", "C. Mãn nhãn, hoành tráng", "D. Đáng sợ"], correct: 2, explanation: "<b>'Spectacle'</b> chỉ một màn trình diễn hoành tráng, mãn nhãn." },
-          { q: "Các diễn viên thường hát rằng họ từng là những kẻ <b>'outcasts'</b>. 'Outcast' là những người như thế nào?", options: ["A. Được xã hội tôn vinh", "B. Bị xã hội ruồng rẫy, xa lánh", "C. Rất giàu có", "D. Nổi tiếng từ nhỏ"], correct: 1, explanation: "<b>'Outcast'</b> là kẻ bị ruồng bỏ." },
-          { q: "Barnum được xem là một <b>'visionary'</b>. 'Visionary' ám chỉ người có đặc điểm gì?", options: ["A. Sống hoài niệm", "B. Không có ý chí", "C. Có tầm nhìn xa trông rộng, đột phá", "D. Bảo thủ"], correct: 2, explanation: "<b>'Visionary'</b> là người nhìn xa trông rộng, tiên phong." },
-          { q: "Sự mới lạ của rạp xiếc phải chịu sự <b>'scrutiny'</b> gắt gao. Từ này có nghĩa là gì?", options: ["A. Sự ủng hộ", "B. Sự tài trợ", "C. Sự thờ ơ", "D. Sự soi xét, đánh giá khắt khe"], correct: 3, explanation: "<b>'Scrutiny'</b> là sự soi mói, giám sát kỹ lưỡng." },
-          { q: "Xuyên suốt bài hát, từ <b>'noble'</b> được sử dụng để miêu tả nghệ thuật. 'Noble' nghĩa là gì?", options: ["A. Cao quý, đáng kính trọng", "B. Thấp hèn, rẻ mạt", "C. Rất nhàm chán", "D. Bạo lực"], correct: 0, explanation: "<b>'Noble'</b> mang nghĩa cao quý." }
+          { q: "Barnum nhắc đến từ <b>'spectacle'</b> để mô tả quy mô rạp xiếc của mình. Từ này gợi lên cảm giác gì cho khán giả?", options: ["A. Nhàm chán", "B. Buồn ngủ", "C. Mãn nháng, hoành tráng, kỳ vĩ", "D. Đáng sợ"], correct: 2, explanation: "<b>'Spectacle'</b> chỉ màn trình diễn hoành tráng." },
+          { q: "Các diễn viên trong đoàn hát từng là những kẻ <b>'outcasts'</b>. 'Outcast' là những người như thế nào trong xã hội?", options: ["A. Được xã hội tôn vinh", "B. Bị xã hội ruồng rẫy, xa lánh vì khác biệt", "C. Rất giàu có", "D. Nổi tiếng từ nhỏ"], correct: 1, explanation: "<b>'Outcast'</b> là kẻ bị ruồng bỏ." },
+          { q: "Barnum được xem là một <b>'visionary'</b>. 'Visionary' ám chỉ người có đặc điểm gì?", options: ["A. Sống hoài niệm", "B. Không có ý chí", "C. Có tầm nhìn xa trông rộng, đi đầu xu hướng", "D. Bảo thủ"], correct: 2, explanation: "<b>'Visionary'</b> là người có tầm nhìn chiến lược." },
+          { q: "Sự mới lạ của rạp xiếc phải chịu sự <b>'scrutiny'</b> gắt gao từ giới thượng lưu. Từ này có nghĩa là gì?", options: ["A. Sự ủng hộ", "B. Sự tài trợ", "C. Sự thờ ơ", "D. Sự soi xét, đánh giá khắt khe"], correct: 3, explanation: "<b>'Scrutiny'</b> là sự giám sát, soi mói khắt khe." },
+          { q: "Từ <b>'noble'</b> được sử dụng để miêu tả sứ mệnh nghệ thuật. 'Noble' nghĩa là gì?", options: ["A. Cao quý, đáng kính trọng", "B. Thấp hèn, rẻ mạt", "C. Rất nhàm chán", "D. Bạo lực"], correct: 0, explanation: "<b>'Noble'</b> mang nghĩa cao quý." }
         ]
       },
       {
         id: 5, genre: "Fantasy", format: "movie", title: "Harry Potter and the Half-Blood Prince (2009)", level: "B2", thumbnail: "https://media.themoviedb.org/t/p/w780/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/8DbzvqOPUIk?rel=0", locked: true,
+        characterContext: "Harry Potter đối đầu với Giáo sư Severus Snape sau khi sử dụng một câu thần chú đen tối trong cuốn sách cũ. Sự thật hé lộ Snape chính là 'Hoàng tử Lai' (Half-Blood Prince), tạo nên bước ngoặt cảm xúc đầy bi tráng.",
         quote: "You dare use my own spells against me, Potter? Yes... I'm the Half-Blood Prince.", translation: "Ngươi dám dùng bùa chú của chính ta để chống lại ta sao, Potter? Đúng vậy... Ta chính là Hoàng tử Lai.",
         vocabAnalysis: [
           { word: "Coward (n)", ipa: "/ˈkaʊ.ərd/", meaning: "Kẻ hèn nhát.", context: "Harry đã dùng từ này để hét vào mặt Snape." }
         ],
         quizzes: [
-          { q: "Khi Snape bỏ chạy, Harry hét lên: <i>'You <b>coward</b>!'</i>. Từ 'coward' dùng để chửi người như thế nào?", options: ["A. Kẻ phản bội", "B. Kẻ nói dối", "C. Kẻ hèn nhát, không dám đối mặt", "D. Kẻ độc ác"], correct: 2, explanation: "<b>'Coward'</b> là kẻ hèn nhát, một hành động cực kỳ hèn hạ." },
-          { q: "Cụm từ <b>'Fight back'</b> mà Harry nhắc lại nhiều lần có nghĩa là gì?", options: ["A. Bỏ vũ khí xuống", "B. Đánh trả, phản công", "C. Làm hòa", "D. Bỏ đi"], correct: 1, explanation: "<b>'Fight back'</b> (chống trả/phản công)." },
-          { q: "Snape nói: <i>'He <b>belongs to</b> the Dark Lord'</i>. Cụm 'belong to' mang hàm ý gì?", options: ["A. Harry là tài sản/thuộc quyền định đoạt của Chúa tể Hắc ám", "B. Harry là họ hàng của Voldemort", "C. Harry làm việc cho Voldemort", "D. Harry cần được bảo vệ"], correct: 0, explanation: "<b>'Belong to'</b> nghĩa là thuộc về. Mạng sống của Harry thuộc quyền xử lý của Voldemort." },
-          { q: "Snape nói: <i>'You dare use my own spells <b>against</b> me, Potter?'</i>. Từ 'against' mang ý nghĩa gì?", options: ["A. Cùng phe", "B. Chống lại, nghịch lại", "C. Bên cạnh", "D. Nhờ vào"], correct: 1, explanation: "<b>'Against'</b> nghĩa là chống lại." },
-          { q: "Cuối cùng, Snape nói: <i>'I'm the <b>Half-Blood</b> Prince'</i>. Từ 'Half-Blood' mang ý nghĩa gì?", options: ["A. Dòng máu hoàng gia", "B. Bệnh về máu", "C. Pháp sư Lai (Bố/mẹ là phù thủy, người kia là Muggle)", "D. Sinh vật nửa người nửa thú"], correct: 2, explanation: "<b>'Half-Blood'</b> (Máu lai) chỉ phù thủy mang dòng máu pha trộn." }
+          { q: "Khi Snape bỏ chạy, Harry phẫn nộ hét lên: <i>'You <b>coward</b>!'</i>. Từ 'coward' dùng để chỉ người có tính cách thế nào?", options: ["A. Kẻ phản bội", "B. Kẻ nói dối", "C. Kẻ hèn nhát, trốn tránh đối mặt", "D. Kẻ độc ác"], correct: 2, explanation: "<b>'Coward'</b> là kẻ hèn nhát." },
+          { q: "Cụm từ <b>'Fight back'</b> mà Harry nhắc lại thể hiện hành động gì?", options: ["A. Bỏ vũ khí xuống", "B. Chống trả, phản công quyết liệt", "C. Làm hòa", "D. Bỏ đi"], correct: 1, explanation: "<b>'Fight back'</b> là phản công." },
+          { q: "Snape nói: <i>'He <b>belongs to</b> the Dark Lord'</i>. Cụm 'belong to' mang hàm ý gì trong cốt truyện?", options: ["A. Harry thuộc quyền định đoạt sự sống chết của Chúa tể Hắc ám", "B. Harry là họ hàng của Voldemort", "C. Harry làm việc cho Voldemort", "D. Harry cần được bảo vệ"], correct: 0, explanation: "<b>'Belong to'</b> nghĩa là thuộc quyền xử lý của Voldemort." },
+          { q: "Snape nói: <i>'You dare use my own spells <b>against</b> me'</i>. Từ 'against' mang ý nghĩa gì?", options: ["A. Cùng phe", "B. Chống lại, nghịch lại", "C. Bên cạnh", "D. Nhờ vào"], correct: 1, explanation: "<b>'Against'</b> nghĩa là chống lại." },
+          { q: "Snape tuyên bố: <i>'I'm the <b>Half-Blood</b> Prince'</i>. 'Half-Blood' chỉ đối tượng nào trong thế giới phép thuật?", options: ["A. Dòng máu hoàng gia", "B. Bệnh về máu", "C. Phù thủy lai (bố hoặc mẹ là Muggle)", "D. Sinh vật nửa người nửa thú"], correct: 2, explanation: "<b>'Half-Blood'</b> là máu lai." }
         ]
       },
       {
         id: 6, genre: "Fantasy", format: "movie", title: "Alice in Wonderland (2010)", level: "B2", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTMwNjAxMTc0Nl5BMl5BanBnXkFtZTcwODc3ODk5Mg@@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/dyVXM2gwKFA?rel=0", locked: false,
+        characterContext: "Alice lạc vào xứ sở thần tiên kỳ lạ. Sau khi ăn chiếc bánh phép thuật khiến cơ thể phình to khổng lồ, cô phải đối mặt với Nữ hoàng Đỏ tàn bạo, độc tài trong một phiên tòa vô lý.",
         quote: "Anyone with a head that large is welcome in my court.", translation: "Bất kỳ ai với một cái đầu to như vậy đều được hoan nghênh tại triều đình của ta.",
         vocabAnalysis: [
           { word: "Outgrow (v)", ipa: "/ˌaʊtˈɡroʊ/", meaning: "Lớn vượt quá kích cỡ (của quần áo).", context: "Alice giải thích rằng do ăn bánh phép thuật nên cơ thể cô đã phình to, khiến cô 'mặc không vừa' những bộ quần áo cũ nữa." },
           { word: "Enormous (adj)", ipa: "/ɪˈnɔːr.məs/", meaning: "To lớn khổng lồ.", context: "Nữ hoàng Đỏ ra lệnh cho lính hầu phải tìm vải may đồ cho cô gái 'khổng lồ' này." }
         ],
         quizzes: [
-          { q: "Alice giải thích: <i>'I <b>outgrew</b> them'</i>. Từ 'outgrow' mang nghĩa gì?", options: ["A. Quần áo bị co rút", "B. Tôi lớn nhanh quá nên mặc không còn vừa nữa", "C. Quần áo lỗi thời", "D. Cố tình xé rách"], correct: 1, explanation: "Alice phình to khổng lồ nên cơ thể cô đã 'phát triển vượt kích cỡ' (outgrew) quần áo." },
-          { q: "Nữ hoàng Đỏ ra lệnh: <i>'clothe this <b>enormous</b> girl'</i>. Từ 'enormous' mang sắc thái nào?", options: ["A. Nhỏ bé", "B. Xấu xí", "C. Vô cùng to lớn, khổng lồ", "D. Xinh đẹp"], correct: 2, explanation: "<b>'Enormous'</b> (khổng lồ, to lớn) miêu tả kích thước của Alice." },
-          { q: "Wonderland là một nơi rất <b>'peculiar'</b>. 'Peculiar' có nghĩa là gì?", options: ["A. Bình thường, quen thuộc", "B. Lộng lẫy, xa hoa", "C. Kỳ lạ, khác thường, có phần hơi lập dị", "D. Nhàm chán"], correct: 2, explanation: "Mọi thứ ở Wonderland đều không tuân theo logic thông thường, chúng rất 'kỳ lạ' ('peculiar')." },
-          { q: "Sự phán xét của Nữ hoàng Đỏ rất <b>'tyrannical'</b>. Bạn hiểu từ này như thế nào?", options: ["A. Công bằng", "B. Độc tài, tàn bạo, lạm dụng quyền lực", "C. Hiền từ", "D. Không có tiếng nói"], correct: 1, explanation: "Nữ hoàng Đỏ cai trị một cách 'độc tài, bạo chúa' ('tyrannical')." },
-          { q: "Alice có một sự tò mò <b>'insatiable'</b>. Cụm từ diễn tả điều gì?", options: ["A. Không thể thỏa mãn, khát khao vô tận", "B. Dễ chán nản", "C. Luôn mệt mỏi", "D. Không có mục tiêu"], correct: 0, explanation: "Sự tò mò 'không đáy' ('insatiable') đã thôi thúc Alice rơi xuống hang thỏ." }
+          { q: "Alice giải thích về cơ thể thay đổi: <i>'I <b>outgrew</b> them'</i>. Từ 'outgrow' mang nghĩa gì?", options: ["A. Quần áo bị co rút", "B. Cơ thể lớn nhanh quá nên mặc không còn vừa nữa", "C. Quần áo lỗi thời", "D. Cố tình xé rách"], correct: 1, explanation: "Alice phình to nên đã 'vượt quá kích cỡ' quần áo." },
+          { q: "Nữ hoàng Đỏ ra lệnh: <i>'clothe this <b>enormous</b> girl'</i>. 'Enormous' miêu tả đặc điểm gì của Alice?", options: ["A. Nhỏ bé", "B. Xấu xí", "C. Vô cùng to lớn, khổng lồ", "D. Xinh đẹp"], correct: 2, explanation: "<b>'Enormous'</b> nghĩa là khổng lồ." },
+          { q: "Wonderland là một nơi rất <b>'peculiar'</b>. Từ này miêu tả tính chất gì?", options: ["A. Bình thường, quen thuộc", "B. Lộng lẫy, xa hoa", "C. Kỳ lạ, khác thường, có phần lập dị", "D. Nhàm chán"], correct: 2, explanation: "<b>'Peculiar'</b> mang nghĩa kỳ lạ." },
+          { q: "Cách cai trị của Nữ hoàng Đỏ mang tính <b>'tyrannical'</b>. Bạn hiểu từ này như thế nào?", options: ["A. Công bằng", "B. Độc tài, tàn bạo, lạm dụng quyền lực", "C. Hiền từ", "D. Dân chủ"], correct: 1, explanation: "Nữ hoàng Đỏ cai trị theo lối 'độc tài' (<b>tyrannical</b>)." },
+          { q: "Sự tò mò của Alice được miêu tả là <b>'insatiable'</b>. Nó diễn tả điều gì?", options: ["A. Không thể thỏa mãn, khát khao vô tận", "B. Dễ chán nản", "C. Luôn mệt mỏi", "D. Không có mục tiêu"], correct: 0, explanation: "<b>'Insatiable'</b> là sự tò mò không bao giờ đủ." }
         ]
       },
       {
         id: 7, genre: "Action", format: "movie", title: "John Wick (2014)", level: "C1", thumbnail: "https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_FMjpg_UX1000_.jpg", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/C0BMx-qxsP4?rel=0", locked: true,
+        characterContext: "John Wick là cựu sát thủ khét tiếng đã giải nghệ. Khi thế giới bình yên bị phá vỡ bởi những kẻ coi thường quá khứ của anh, John tái xuất với ý chí thép và sự chính xác chí mạng để báo thù.",
         quote: "People keep asking if I'm back, and I haven't really had an answer. But now, yeah, Im thinking I'm back.", translation: "Mọi người cứ hỏi tôi đã trở lại chưa, và tôi chưa bao giờ thực sự có câu trả lời. Nhưng bây giờ, ừ, tôi nghĩ tôi đã trở lại.",
         vocabAnalysis: [
           { word: "Vengeance (n)", ipa: "/ˈven.dʒəns/", meaning: "Sự báo thù, trả thù.", context: "Khao khát 'báo thù' (vengeance) trong John Wick." }
         ],
         quizzes: [
-          { q: "Kẻ thù miêu tả John Wick có sự tập trung <b>'sheer'</b>. 'Sheer' ở đây mang ý nghĩa gì?", options: ["A. Mỏng manh", "B. Hoàn toàn, tuyệt đối", "C. Tàn nhẫn", "D. Thiếu quyết đoán"], correct: 1, explanation: "<b>'Sheer will'</b> nghĩa là một ý chí 'tuyệt đối'." },
-          { q: "Danh tiếng của John Wick là <b>'unparalleled'</b>. Từ này có nghĩa là gì?", options: ["A. Không ai biết", "B. Vô song, không có đối thủ", "C. Bình thường", "D. Dễ bị đánh bại"], correct: 1, explanation: "Khả năng của John Wick là 'không thể sánh kịp' (<b>unparalleled</b>)." },
-          { q: "Kẻ thù đã làm một hành động <b>'foolhardy'</b>. 'Foolhardy' ám chỉ hành động như thế nào?", options: ["A. Dũng cảm", "B. Thông minh", "C. Liều lĩnh một cách ngu ngốc", "D. Hèn nhát"], correct: 2, explanation: "Việc chọc giận John Wick là một quyết định 'liều lĩnh điên rồ' (<b>foolhardy</b>)." },
-          { q: "Màn trả thù của John Wick cực kỳ <b>'lethal'</b>. Từ 'lethal' mang nghĩa gì?", options: ["A. Gây chết người, sát thương cao", "B. Ồn ào", "C. Chậm chạp", "D. Buồn cười"], correct: 0, explanation: "Chí mạng, gây chết người." },
-          { q: "Anh ta hạ gục kẻ thù bằng sự <b>'precision'</b> đáng kinh ngạc. 'Precision' là gì?", options: ["A. Hoảng loạn", "B. May mắn", "C. Tàn nhẫn", "D. Độ chính xác, chuẩn xác"], correct: 3, explanation: "Kỹ năng bắn súng 'bách phát bách trúng' (<b>precision</b>)." }
+          { q: "Kẻ thù miêu tả John Wick có sự tập trung mang tính <b>'sheer'</b>. Từ này bổ nghĩa cho ý gì?", options: ["A. Mỏng manh", "B. Hoàn toàn, tuyệt đối", "C. Tàn nhẫn", "D. Thiếu quyết đoán"], correct: 1, explanation: "<b>'Sheer will'</b> là ý chí tuyệt đối." },
+          { q: "Danh tiếng của John Wick trong thế giới ngầm là <b>'unparalleled'</b>. Nghĩa của từ này là gì?", options: ["A. Không ai biết đến", "B. Vô song, không có đối thủ sánh kịp", "C. Bình thường", "D. Dễ bị đánh bại"], correct: 1, explanation: "<b>'Unparalleled'</b> là vô song." },
+          { q: "Kẻ thù đã làm một hành động <b>'foolhardy'</b> khi chọc giận anh. 'Foolhardy' chỉ hành động như thế nào?", options: ["A. Dũng cảm", "B. Thông minh", "C. Liều lĩnh một cách ngu ngốc", "D. Hèn nhát"], correct: 2, explanation: "<b>'Foolhardy'</b> là liều lĩnh thiếu suy nghĩ." },
+          { q: "Màn trả thù của John Wick cực kỳ <b>'lethal'</b> đối với đối thủ. 'Lethal' nghĩa là gì?", options: ["A. Gây chết người, sát thương chí mạng", "B. Ồn ào", "C. Chậm chạp", "D. Buồn cười"], correct: 0, explanation: "<b>'Lethal'</b> là gây tử vong." },
+          { q: "Anh ta hạ gục kẻ thù với độ <b>'precision'</b> tuyệt đối. 'Precision' chỉ điều gì?", options: ["A. Hoảng loạn", "B. May mắn", "C. Tàn nhẫn", "D. Độ chính xác chuẩn xác từng chi tiết"], correct: 3, explanation: "<b>'Precision'</b> là sự chuẩn xác." }
         ]
       },
       {
         id: 8, genre: "Sci-Fi", format: "movie", title: "Interstellar (2014)", level: "C1", thumbnail: "https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/8a7dd34b09c9c25336a3d850d4c431455e1aaaf0.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/zSWdZVtXT7E?rel=0", locked: true,
+        characterContext: "Joseph Cooper là cựu phi công NASA sống trong thời kỳ Trái Đất cạn kiệt lương thực, đối mặt với thảm họa diệt vong. Anh buộc phải dấn thân vào hành trình vượt không gian hiểm nguy tìm hành tinh mới cho nhân loại.",
         quote: "Mankind was born on Earth. It was never meant to die here.", translation: "Nhân loại được sinh ra trên Trái Đất. Nhưng không có nghĩa là chúng ta phải chết ở đây.",
         vocabAnalysis: [
           { word: "Endurance (n)", ipa: "/ɪnˈdʊr.əns/", meaning: "Sự chịu đựng, sức chịu đựng.", context: "Tàu vũ trụ mang tên 'Endurance'." }
         ],
         quizzes: [
-          { q: "Tình trạng thiếu lương thực đã đạt đến mức <b>'catastrophic'</b>. Nghĩa là gì?", options: ["A. Khả quan", "B. Có thể giải quyết", "C. Thảm khốc, gây thiệt hại nặng", "D. Từ từ"], correct: 2, explanation: "Mang tính 'thảm họa toàn cầu' (<b>catastrophic</b>)." },
-          { q: "Mục tiêu là tìm kiếm một hành tinh <b>'habitable'</b>. 'Habitable' có nghĩa là?", options: ["A. Có thể ở được, đủ điều kiện sống", "B. Lạnh giá", "C. Gần Trái đất", "D. Bằng nước"], correct: 0, explanation: "Có thể sinh sống được." },
-          { q: "Vũ trụ là một môi trường vô cùng <b>'hostile'</b>. Từ 'hostile' mang ý nghĩa gì?", options: ["A. Thân thiện", "B. Khắc nghiệt, thù địch", "C. Trống rỗng", "D. Ấm áp"], correct: 1, explanation: "Vũ trụ đầy hiểm nguy và 'khắc nghiệt' (<b>hostile</b>)." },
-          { q: "Thời gian có thể bị <b>'dilated'</b>. Nghĩa của từ này là gì?", options: ["A. Dừng lại", "B. Chạy ngược", "C. Bị giãn nở, kéo dài ra", "D. Trôi nhanh hơn"], correct: 2, explanation: "Thời gian bị 'giãn nở' (<b>dilated</b>)." },
-          { q: "Hố đen có sức hút <b>'inescapable'</b>. 'Inescapable' là gì?", options: ["A. Dễ thoát ra", "B. Không thể trốn thoát", "C. Yếu ớt", "D. Nhìn thấy được"], correct: 1, explanation: "Không thể thoát ra (<b>inescapable</b>)." }
+          { q: "Tình trạng thiếu lương thực toàn cầu đã đạt đến mức <b>'catastrophic'</b>. Nghĩa là gì?", options: ["A. Khả quan", "B. Có thể giải quyết", "C. Thảm khốc, gây hủy diệt nặng nề", "D. Từ từ"], correct: 2, explanation: "<b>'Catastrophic'</b> mang tính thảm họa hủy diệt." },
+          { q: "Mục tiêu của phi hành đoàn là tìm kiếm một hành tinh <b>'habitable'</b>. 'Habitable' nghĩa là?", options: ["A. Có thể sinh sống, đủ điều kiện duy trì sự sống", "B. Lạnh giá", "C. Gần Trái đất", "D. Toàn nước"], correct: 0, explanation: "<b>'Habitable'</b> là có thể ở được." },
+          { q: "Vũ trụ ngoài kia là một môi trường vô cùng <b>'hostile'</b>. Từ này mang ý nghĩa gì?", options: ["A. Thân thiện", "B. Khắc nghiệt, thù địch với sự sống", "C. Trống rỗng", "D. Ấm áp"], correct: 1, explanation: "<b>'Hostile'</b> là khắc nghiệt, thù địch." },
+          { q: "Thời gian khi tiếp cận hố đen có thể bị <b>'dilated'</b>. Nghĩa của từ này là gì?", options: ["A. Dừng lại", "B. Chạy ngược", "C. Bị giãn nở, kéo dài ra", "D. Trôi nhanh hơn"], correct: 2, explanation: "<b>'Dilated'</b> là bị giãn nở." },
+          { q: "Hố đen sở hữu lực hút <b>'inescapable'</b>. 'Inescapable' mô tả đặc điểm gì?", options: ["A. Dễ thoát ra", "B. Không thể trốn thoát", "C. Yếu ớt", "D. Nhìn thấy được"], correct: 1, explanation: "<b>'Inescapable'</b> nghĩa là không thể thoát khỏi." }
         ]
       },
       {
         id: 9, genre: "Pop", format: "music", title: "Anti-Hero - Taylor Swift", level: "B2", thumbnail: "https://i.scdn.co/image/ab67616d0000b273bb54dde68cd23e2a268ae0f5", mediaType: "youtube", mediaUrl: "https://www.youtube.com/embed/b1kbLwvqugk?rel=0", locked: false,
+        characterContext: "Taylor Swift giãi bày những suy nghĩ nội tâm sâu kín, sự bất an và những khuyết điểm của bản thân qua giai điệu Pop bắt tai nhưng đầy tự sự trong ca khúc Anti-Hero.",
         quote: "I should not be left to my own devices\nThey come with prices and vices\nI end up in crisis\n(Tale as old as time)", translation: "Lẽ ra tôi không nên được để mặc cho tự hành động theo ý mình\nChúng mang theo những cái giá phải trả và những thói hư tật xấu\nĐể rồi tôi rơi vào khủng hoảng\n(Một câu chuyện đã quá đỗi quen thuộc)",
         vocabAnalysis: [
           { word: "Left to one's own devices", ipa: "(Idiom)", meaning: "Để mặc ai đó tự làm theo ý mình.", context: "Tự do làm theo ý mình, thiếu kiểm soát." }
         ],
         quizzes: [
-          { q: "Thành ngữ <b>'Tale as old as time'</b> mang ý nghĩa gì?", options: ["A. Rất nhàm chán", "B. Truyện cổ tích", "C. Lặp đi lặp lại, quá quen thuộc", "D. Không có thật"], correct: 2, explanation: "<b>'Tale as old as time'</b> ngụ ý một câu chuyện lặp đi lặp lại như quy luật." },
-          { q: "Từ <b>'Crisis'</b> trong câu diễn tả trạng thái nào?", options: ["A. Hạnh phúc", "B. Tức giận", "C. Khủng hoảng, tình thế khó khăn", "D. Buồn ngủ"], correct: 2, explanation: "<b>'Crisis'</b> là trạng thái khủng hoảng." }
+          { q: "Thành ngữ <b>'Tale as old as time'</b> trong bài hát mang ý nghĩa gì?", options: ["A. Rất nhàm chán", "B. Truyện cổ tích", "C. Lặp đi lặp lại từ xưa đến nay, quá quen thuộc", "D. Không có thật"], correct: 2, explanation: "<b>'Tale as old as time'</b> ngụ ý câu chuyện muôn thuở." },
+          { q: "Từ <b>'Crisis'</b> trong lời bài hát diễn tả trạng thái tâm lý nào?", options: ["A. Hạnh phúc", "B. Tức giận", "C. Khủng hoảng tinh thần", "D. Buồn ngủ"], correct: 2, explanation: "<b>'Crisis'</b> là tình trạng khủng hoảng." }
         ]
       },
       {
         id: 10, genre: "Interview", format: "youtube", title: "Taylor Swift - 73 Questions with Vogue", level: "C1", thumbnail: "https://i.ytimg.com/vi/XnbCSboujF4/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGDsgXihlMA8=&rs=AOn4CLBB2xZf9YnXZsXW2vFzP4Y8Y_X7Jw", mediaType: "youtube", 
         mediaUrl: "https://www.youtube.com/embed/XnbCSboujF4?rel=0", locked: false,
+        characterContext: "Taylor Swift chia sẻ góc nhìn sâu sắc về cuộc sống, sự nghiệp và cách cô đối diện với dư luận trong buổi phỏng vấn đặc biệt 73 Questions cùng tạp chí Vogue.",
         quote: "I think it's important to be self-aware about what people are saying about you, but even more important to shrug it off.", translation: "Tôi nghĩ việc tự nhận thức được người ta đang bàn tán gì về mình là điều quan trọng, nhưng quan trọng hơn nữa là biết cách mặc kệ nó.",
         vocabAnalysis: [
           { word: "Shrug off (Phrasal Verb)", ipa: "/ʃrʌɡ ɑːf/", meaning: "Rũ bỏ, mặc kệ, không thèm bận tâm.", context: "Nhún vai rũ bỏ chỉ trích." }
         ],
         quizzes: [
-          { q: "Từ <b>'Self-aware'</b> có nghĩa là gì?", options: ["A. Tự ti", "B. Ích kỷ", "C. Tự nhận thức, hiểu rõ bản thân", "D. Tự tin"], correct: 2, explanation: "<b>'Self-aware'</b> là sự hiểu rõ về bản thân." },
-          { q: "Khi gặp một lời chỉ trích, bạn nên <b>'shrug it off'</b>. Hành động này có nghĩa là:", options: ["A. Khóc lóc", "B. Mặc kệ, rũ bỏ", "C. Cãi lại", "D. Giấu đi"], correct: 1, explanation: "<b>'Shrug off'</b> là phớt lờ, coi như không quan trọng." }
+          { q: "Từ <b>'Self-aware'</b> có nghĩa là gì trong cách ứng xử?", options: ["A. Tự ti", "B. Ích kỷ", "C. Tự nhận thức, thấu hiểu rõ bản thân mình", "D. Tự tin"], correct: 2, explanation: "<b>'Self-aware'</b> là sự thấu hiểu chính mình." },
+          { q: "Khi gặp lời chỉ trích, Taylor khuyên nên <b>'shrug it off'</b>. Hành động này có nghĩa là:", options: ["A. Khóc lóc", "B. Phớt lờ, rũ bỏ, không bận tâm", "C. Cãi lại đến cùng", "D. Giấu đi"], correct: 1, explanation: "<b>'Shrug off'</b> là phớt lờ những điều tiêu cực." }
         ]
       }
     ];
@@ -1246,6 +1265,19 @@
       mediaContainer.className = `w-full rounded-2xl overflow-hidden border-2 ${tBorder} shadow-sm bg-white relative`;
       mediaContainer.innerHTML = `<div class="relative pb-[56.25%] h-0"><iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="${item.mediaUrl}" title="Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
 
+      // RENDER CONTEXT NHÂN VẬT & CÂU CHUYỆN
+      const contextBox = document.getElementById('cinema-context-box');
+      const contextDesc = document.getElementById('cinema-context-desc');
+      const contextTitle = document.getElementById('cinema-context-title');
+      if (item.characterContext) {
+        contextBox.classList.remove('hidden');
+        contextBox.className = `p-4 md:p-5 bg-white/90 rounded-2xl border-2 ${tBorder} shadow-sm space-y-1.5`;
+        contextTitle.className = `flex items-center gap-2 text-xs font-black uppercase tracking-wider ${tText}`;
+        contextDesc.innerText = item.characterContext;
+      } else {
+        contextBox.classList.add('hidden');
+      }
+
       document.getElementById('cinema-quote-box').className = `p-5 md:p-6 bg-white/60 rounded-3xl border-2 ${tBorder} relative mt-4 shadow-sm`;
       
       const quoteEl = document.getElementById('cinema-quote');
@@ -1398,7 +1430,7 @@
           });
       }
       remainingSentences = [...pool];
-      currentPractice = null; // Reset tránh kẹt trạng thái cũ
+      currentPractice = null;
 
       window.loadNextExercise();
     };
@@ -1408,7 +1440,6 @@
        document.getElementById('arcade-play-area').classList.add('hidden');
     };
 
-    // ĐÃ SỬA LỖI NÚT LÀM LẠI TỪ ĐẦU (RESTART)
     window.restartArcadeMode = function() {
        if(cinemaData.length === 0) { alert("Đang tải dữ liệu, chờ chút nhé..."); return; }
        let pool = allPracticeSentences.filter(s => s.type === currentArcadeMode);
@@ -1421,7 +1452,7 @@
        if (pool.length === 0) { alert("Không tìm thấy bài tập cho phần này."); return; }
        
        remainingSentences = [...pool];
-       currentPractice = null; // Reset triệt để để load lại từ đầu không bị hụt câu
+       currentPractice = null; 
        
        document.getElementById('arcade-completed-msg').classList.add('hidden');
        document.getElementById('game-' + currentArcadeMode).classList.remove('hidden');
@@ -1435,7 +1466,6 @@
       }
     };
 
-    // Chống lặp câu hỏi
     window.loadNextExercise = function() {
       if (currentPractice) {
         remainingSentences = remainingSentences.filter(s => s.id !== currentPractice.id);
@@ -1476,7 +1506,7 @@
         document.getElementById('writing-feedback').classList.remove('hidden');
     };
 
-    // --- GAME 5: SPEAKING & SHADOWING (GIỌNG NỮ TRONG TRẺO, KHÔNG TRẦM) ---
+    // --- GAME 5: SPEAKING & SHADOWING ---
     window.initSpeakingGameUI = function() {
         if (!currentPractice) return;
         document.getElementById('speaking-quote').innerText = '"' + currentPractice.quote + '"';
@@ -1487,7 +1517,6 @@
         document.getElementById('btn-mic').classList.remove('opacity-50');
     };
 
-    // Hàm chọn giọng đọc mượt mà, trong trẻo (Ưu tiên Google US English hoặc giọng nữ sáng)
     function getBestVoice() {
         const voices = window.speechSynthesis.getVoices();
         return voices.find(v => v.name.includes('Google US English') || v.name.includes('Samantha') || (v.lang === 'en-US' && v.name.toLowerCase().includes('female'))) || voices.find(v => v.lang === 'en-US') || voices[0];
@@ -1500,7 +1529,7 @@
             const utterance = new SpeechSynthesisUtterance(currentPractice.quote);
             utterance.voice = getBestVoice();
             utterance.lang = 'en-US';
-            utterance.rate = 0.9; // Tốc độ chuẩn chậm vừa phải để học sinh nhại lại
+            utterance.rate = 0.9;
             window.speechSynthesis.speak(utterance);
         } else {
             alert("Trình duyệt của bạn không hỗ trợ tính năng đọc mẫu.");
