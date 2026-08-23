@@ -1127,24 +1127,22 @@
       
       feedback.classList.remove('hidden'); 
 
+      const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
+      allBtns.forEach(b => b.disabled = true);
+
       if (chosenIdx === quiz.correct) {
-        const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
-        allBtns.forEach(b => b.disabled = true);
-          
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
-      feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
+        feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-greenLight text-cottage-greenDark border-2 border-cottage-green/30 block mt-3 relative z-10";
         feedback.innerHTML = `🎉 <b>Chính xác!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       } else {
-        const allBtns = document.getElementById('modal-quiz-options').querySelectorAll('button');
-          
         btn.className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-roseLight border-2 border-cottage-rose/40 text-cottage-roseDark";
         allBtns[quiz.correct].className = "w-full text-left p-4 rounded-2xl text-sm font-bold flex items-center justify-between bg-cottage-greenLight border-2 border-cottage-green/40 text-cottage-greenDark";
         feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed bg-cottage-roseLight text-cottage-roseDark border-2 border-cottage-rose/30 block mt-3 relative z-10";
         feedback.innerHTML = `📝 <b>Khoan đã, hãy xem lại video để đoán nghĩa nhé!</b><br><span class="text-xs font-normal mt-1 block">${quiz.explanation}</span>`;
       }
       
-      nextBtn.className = `flex-1 w-full py-3.5 text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 mt-4 ${tMain} ${tHover}`;
-      nextBtn.classList.add('hidden');
+      nextBtn.className = `w-full py-3.5 text-white font-bold text-sm rounded-2xl shadow-sm transition transform active:scale-95 mt-4 ${tMain} ${tHover} block`;
+      nextBtn.classList.remove('hidden');
 
       if (activeQuizIndex === item.quizzes.length - 1) {
         nextBtn.innerHTML = "Tuyệt vời! Đóng bài học";
@@ -1154,7 +1152,10 @@
         };
       } else {
         nextBtn.innerHTML = "Câu tiếp theo ⏭️";
-        nextBtn.onclick = () => { activeQuizIndex++; window.renderCinemaQuiz(); };
+        nextBtn.onclick = () => { 
+          activeQuizIndex++; 
+          window.renderCinemaQuiz(); 
+        };
       }
     };
 
@@ -1524,7 +1525,7 @@
           feedback.classList.add('hidden');
           optBox.classList.remove('hidden');
           document.getElementById('mistake-options').innerHTML = part.fixOptions.map(opt => 
-             `<button onclick="submitMistakeFix('${opt}')" class="px-5 py-2.5 bg-white border-2 border-cottage-amber hover:bg-cottage-amber/20 text-cottage-brown rounded-xl text-sm font-bold shadow-sm transition active:scale-95 m-1">${opt}</button>`
+               `<button onclick="submitMistakeFix('${opt}')" class="px-5 py-2.5 bg-white border-2 border-cottage-amber hover:bg-cottage-amber/20 text-cottage-brown rounded-xl text-sm font-bold shadow-sm transition active:scale-95 m-1">${opt}</button>`
           ).join('');
       }
     };
