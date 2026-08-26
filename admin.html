@@ -197,7 +197,29 @@
 
   </div>
 
-  <!-- FIREBASE LOGIC SCRIPT -->
+  <!-- SCRIPT XỬ LÝ GIAO DIỆN (ĐỘC LẬP) -->
+  <script>
+    const tabFormBtn = document.getElementById('tab-form-btn');
+    const tabJsonBtn = document.getElementById('tab-json-btn');
+    const sectionForm = document.getElementById('section-form');
+    const sectionJson = document.getElementById('section-json');
+
+    tabFormBtn.addEventListener('click', () => {
+      tabFormBtn.className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
+      tabJsonBtn.className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
+      sectionForm.classList.remove('hidden');
+      sectionJson.classList.add('hidden');
+    });
+
+    tabJsonBtn.addEventListener('click', () => {
+      tabJsonBtn.className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
+      tabFormBtn.className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
+      sectionJson.classList.remove('hidden');
+      sectionForm.classList.add('hidden');
+    });
+  </script>
+
+  <!-- SCRIPT FIREBASE LOGIC -->
   <script type="module">
     import { initializeApp } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js)";
     import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js)";
@@ -214,21 +236,6 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-
-    // Xử lý chuyển Tab an toàn bằng addEventListener
-    document.getElementById('tab-form-btn').addEventListener('click', () => {
-      document.getElementById('tab-form-btn').className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
-      document.getElementById('tab-json-btn').className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
-      document.getElementById('section-form').classList.remove('hidden');
-      document.getElementById('section-json').classList.add('hidden');
-    });
-
-    document.getElementById('tab-json-btn').addEventListener('click', () => {
-      document.getElementById('tab-json-btn').className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
-      document.getElementById('tab-form-btn').className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
-      document.getElementById('section-json').classList.remove('hidden');
-      document.getElementById('section-form').classList.add('hidden');
-    });
 
     // Tự động quét và cấp ID bài học tiếp theo
     async function autoDetectNextLessonId() {
@@ -293,7 +300,6 @@
     loadFirebaseLessons();
     document.getElementById('btn-reload-list').addEventListener('click', loadFirebaseLessons);
 
-    // Gắn hàm xóa vào window để nút gọi được
     window.deleteLesson = async function(id, docId) {
       if (!confirm(`Bạn có chắc chắn muốn xóa bài học ID ${id} và toàn bộ 5 bài tập liên quan không?`)) return;
       try {
@@ -341,58 +347,21 @@
       }
 
       const lessonData = {
-        id: id,
-        title: title,
+        id: id, title: title,
         genre: genre || (format === 'movie' ? 'Sci-Fi / Drama' : format === 'music' ? 'Pop Ballad' : 'TED Talk'),
-        format: format,
-        level: level,
+        format: format, level: level,
         thumbnail: thumbnail || "[https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600](https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600)",
-        mediaType: "youtube",
-        mediaUrl: mediaUrl || "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)",
-        locked: locked,
-        quote: quote,
-        translation: translation || "Bản dịch đang được cập nhật.",
-        vocabAnalysis: [
-          { word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }
-        ],
-        quizzes: [
-          { q: `Ý nghĩa cốt lõi của nội dung trong "${title}" là gì?`, options: ["A. Rất quan trọng và có chiều sâu", "B. Bình thường không đáng chú ý", "C. Không liên quan đến bài học", "D. Tiêu cực và bi quan"], correct: 0, explanation: "Câu trả lời phản ánh đúng thông điệp chính của bài học." }
-        ]
+        mediaType: "youtube", mediaUrl: mediaUrl || "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)",
+        locked: locked, quote: quote, translation: translation || "Bản dịch đang được cập nhật.",
+        vocabAnalysis: [{ word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }],
+        quizzes: [{ q: `Ý nghĩa cốt lõi của nội dung trong "${title}" là gì?`, options: ["A. Rất quan trọng và có chiều sâu", "B. Bình thường không đáng chú ý", "C. Không liên quan đến bài học", "D. Tiêu cực và bi quan"], correct: 0, explanation: "Câu trả lời phản ánh đúng thông điệp chính của bài học." }]
       };
 
-      const pFill = {
-        id: `fill_${id}`, type: "fill", cinemaId: id,
-        parts: [{ text: "The core message presented here is truly ", isBlank: false }, { text: fillWord, expectedWord: fillWord, isBlank: true }, { text: " for our understanding.", isBlank: false }],
-        wordsToPick: [fillWord, "temporary", "superficial", "redundant"]
-      };
-
-      const pMistake = {
-        id: `mistake_${id}`, type: "mistake", cinemaId: id,
-        parts: [{ text: "It is " }, { text: "essential", isTarget: true, isError: true, fixOptions: ["essentially", "essence", "essentials"], correctFix: "essentially" }, { text: " to grasp this context accurately." }],
-        explanation: "Cần trạng từ để bổ nghĩa cho động từ hoặc cấu trúc câu."
-      };
-
-      const pMatch = {
-        id: `match_${id}`, type: "match", cinemaId: id,
-        pairs: [
-          { left: "Core", right: "concept" },
-          { left: "Deep", right: "understanding" },
-          { left: "Key", right: "element" },
-          { left: "Real", right: "context" }
-        ]
-      };
-
-      const pWriting = {
-        id: `write_${id}`, type: "writing", cinemaId: id,
-        prompt: `Hãy viết lại một câu ngắn gọn nêu cảm nhận của bạn về chủ đề trong: "${title}".`,
-        refAnswer: writeRef
-      };
-
-      const pSpeaking = {
-        id: `speak_${id}`, type: "speaking", cinemaId: id,
-        quote: quote,
-        instructions: "Luyện phát âm theo ngữ điệu gốc và kiểm tra độ trôi chảy."
-      };
+      const pFill = { id: `fill_${id}`, type: "fill", cinemaId: id, parts: [{ text: "The core message presented here is truly ", isBlank: false }, { text: fillWord, expectedWord: fillWord, isBlank: true }, { text: " for our understanding.", isBlank: false }], wordsToPick: [fillWord, "temporary", "superficial", "redundant"] };
+      const pMistake = { id: `mistake_${id}`, type: "mistake", cinemaId: id, parts: [{ text: "It is " }, { text: "essential", isTarget: true, isError: true, fixOptions: ["essentially", "essence", "essentials"], correctFix: "essentially" }, { text: " to grasp this context accurately." }], explanation: "Cần trạng từ để bổ nghĩa cho động từ hoặc cấu trúc câu." };
+      const pMatch = { id: `match_${id}`, type: "match", cinemaId: id, pairs: [{ left: "Core", right: "concept" }, { left: "Deep", right: "understanding" }, { left: "Key", right: "element" }, { left: "Real", right: "context" }] };
+      const pWriting = { id: `write_${id}`, type: "writing", cinemaId: id, prompt: `Hãy viết lại một câu ngắn gọn nêu cảm nhận của bạn về chủ đề trong: "${title}".`, refAnswer: writeRef };
+      const pSpeaking = { id: `speak_${id}`, type: "speaking", cinemaId: id, quote: quote, instructions: "Luyện phát âm theo ngữ điệu gốc và kiểm tra độ trôi chảy." };
 
       const btn = document.getElementById('btn-submit-form');
       btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Đang đẩy lên Firebase...';
@@ -407,7 +376,6 @@
         await setDoc(doc(db, "practice_sentences", `speak_${id}`), pSpeaking);
 
         alert(`✨ Thành công! Đã đăng bài "${title}" VÀ tự động tạo trọn gói 5 dạng bài tập lên Firebase! 🌷🌿`);
-        
         document.getElementById('lesson-title').value = '';
         document.getElementById('lesson-quote').value = '';
         document.getElementById('lesson-translation').value = '';
@@ -447,7 +415,6 @@
         }
 
         const id = lesson.id;
-
         await setDoc(doc(db, "lessons", `lesson_${id}`), lesson);
         
         if (practices) {
