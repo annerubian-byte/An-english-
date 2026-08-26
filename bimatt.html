@@ -80,7 +80,7 @@
 
     <!-- MAIN FORM CONTAINER -->
     <div class="bg-white border-2 border-cottage-butter rounded-[2rem] p-6 md:p-8 shadow-sm space-y-6">
-      
+
       <!-- MODE SELECTOR TAB -->
       <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b-2 border-cottage-butter">
         <div class="flex items-center gap-2">
@@ -164,7 +164,7 @@
             </h3>
             <span class="text-[11px] text-cottage-brownLight bg-white px-2.5 py-1 rounded-lg border border-cottage-butter">Hệ thống tự sinh nếu để trống</span>
           </div>
-          
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold text-cottage-brown mb-1">Từ trọng tâm cho dạng Điền từ (Fill Word):</label>
@@ -219,7 +219,7 @@
           <i class="fa-solid fa-rotate"></i> Tải lại danh sách
         </button>
       </div>
-      
+
       <div id="firebase-lessons-list" class="divide-y-2 divide-cottage-cream max-h-72 overflow-y-auto custom-scrollbar pr-2">
         <p class="text-xs text-cottage-brownLight py-4 text-center">Đang kết nối cơ sở dữ liệu Firebase...</p>
       </div>
@@ -335,7 +335,7 @@
     async function loadFirebaseLessons() {
       const container = document.getElementById('firebase-lessons-list');
       container.innerHTML = '<p class="text-xs text-cottage-brownLight py-4 text-center animate-pulse">Đang tải danh sách bài học...</p>';
-      
+
       try {
         const snap = await getDocs(collection(db, "lessons"));
         if (snap.empty) {
@@ -386,7 +386,7 @@
         await deleteDoc(doc(db, "practice_sentences", `match_${id}`));
         await deleteDoc(doc(db, "practice_sentences", `write_${id}`));
         await deleteDoc(doc(db, "practice_sentences", `speak_${id}`));
-        
+
         alert(`Đã xóa thành công bài học ID ${id}!`);
         loadFirebaseLessons();
         autoDetectNextLessonId();
@@ -406,7 +406,7 @@
       const quote = document.getElementById('lesson-quote').value.trim();
       const translation = document.getElementById('lesson-translation').value.trim();
       const locked = document.getElementById('lesson-locked').checked;
-      
+
       const fillWord = document.getElementById('cfg-fillword').value.trim() || "essential";
       const writeRef = document.getElementById('cfg-writeref').value.trim() || `This is an example sentence using the quote from ${title}.`;
 
@@ -491,7 +491,7 @@
 
         const id = lesson.id;
         await setDoc(doc(db, "lessons", `lesson_${id}`), lesson);
-        
+
         if (practices) {
           if (practices.fill) await setDoc(doc(db, "practice_sentences", `fill_${id}`), practices.fill);
           if (practices.mistake) await setDoc(doc(db, "practice_sentences", `mistake_${id}`), practices.mistake);
