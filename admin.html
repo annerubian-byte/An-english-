@@ -346,4 +346,129 @@
         genre: genre || (format === 'movie' ? 'Sci-Fi / Drama' : format === 'music' ? 'Pop Ballad' : 'TED Talk'),
         format: format,
         level: level,
-        thumbnail: thumbnail
+        thumbnail: thumbnail || "[https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600](https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600)",
+        mediaType: "youtube",
+        mediaUrl: mediaUrl || "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)",
+        locked: locked,
+        quote: quote,
+        translation: translation || "Bản dịch đang được cập nhật.",
+        vocabAnalysis: [
+          { word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }
+        ],
+        quizzes: [
+          { q: `Ý nghĩa cốt lõi của nội dung trong "${title}" là gì?`, options: ["A. Rất quan trọng và có chiều sâu", "B. Bình thường không đáng chú ý", "C. Không liên quan đến bài học", "D. Tiêu cực và bi quan"], correct: 0, explanation: "Câu trả lời phản ánh đúng thông điệp chính của bài học." }
+        ]
+      };
+
+      const pFill = {
+        id: `fill_${id}`, type: "fill", cinemaId: id,
+        parts: [{ text: "The core message presented here is truly ", isBlank: false }, { text: fillWord, expectedWord: fillWord, isBlank: true }, { text: " for our understanding.", isBlank: false }],
+        wordsToPick: [fillWord, "temporary", "superficial", "redundant"]
+      };
+
+      const pMistake = {
+        id: `mistake_${id}`, type: "mistake", cinemaId: id,
+        parts: [{ text: "It is " }, { text: "essential", isTarget: true, isError: true, fixOptions: ["essentially", "essence", "essentials"], correctFix: "essentially" }, { text: " to grasp this context accurately." }],
+        explanation: "Cần trạng từ để bổ nghĩa cho động từ hoặc cấu trúc câu."
+      };
+
+      const pMatch = {
+        id: `match_${id}`, type: "match", cinemaId: id,
+        pairs: [
+          { left: "Core", right: "concept" },
+          { left: "Deep", right: "understanding" },
+          { left: "Key", right: "element" },
+          { left: "Real", right: "context" }
+        ]
+      };
+
+      const pWriting = {
+        id: `write_${id}`, type: "writing", cinemaId: id,
+        prompt: `Hãy viết lại một câu ngắn gọn nêu cảm nhận của bạn về chủ đề trong: "${title}".`,
+        refAnswer: writeRef
+      };
+
+      const pSpeaking = {
+        id: `speak_${id}`, type: "speaking", cinemaId: id,
+        quote: quote,
+        instructions: "Luyện phát âm theo ngữ điệu gốc và kiểm tra độ trôi chảy."
+      };
+
+      const btn = document.getElementById('btn-submit-form');
+      btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Đang đẩy lên Firebase...';
+      btn.disabled = true;
+
+      try {
+        await setDoc(doc(db, "lessons", `lesson_${id}`), lessonData);
+        await setDoc(doc(db, "practice_sentences", `fill_${id}`), pFill);
+        await setDoc(doc(db, "practice_sentences", `mistake_${id}`), pMistake);
+        await setDoc(doc(db, "practice_sentences", `match_${id}`), pMatch);
+        await setDoc(doc(db, "practice_sentences", `write_${id}`), pWriting);
+        await setDoc(doc(db, "practice_sentences", `speak_${id}`), pSpeaking);
+
+        alert(`✨ Thành công! Đã đăng bài "${title}" VÀ tự động tạo trọn gói 5 dạng bài tập lên Firebase! 🌷🌿`);
+        
+        document.getElementById('lesson-title').value = '';
+        document.getElementById('lesson-quote').value = '';
+        document.getElementById('lesson-translation').value = '';
+        document.getElementById('cfg-fillword').value = '';
+        document.getElementById('cfg-writeref').value = '';
+        autoDetectNextLessonId();
+        loadFirebaseLessons();
+      } catch (error) {
+        alert("❌ Lỗi khi đẩy lên Firebase: " + error.message);
+      } finally {
+        btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Đăng bài học & Tự động tạo học liệu trọn gói lên Firebase';
+        btn.disabled = false;
+      }
+    });
+
+    // Đẩy JSON từ AI
+    document.getElementById('btn-submit-json').addEventListener('click', async () => {
+      let rawJson = document.getElementById('json-input-box').value.trim();
+      if (!rawJson) {
+        alert("Vui lòng nhập nội dung JSON!");
+        return;
+      }
+
+      rawJson = rawJson.replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/\s*```$/, "");
+
+      const btn = document.getElementById('btn-submit-json');
+      btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Đang đẩy JSON lên Firebase...';
+      btn.disabled = true;
+
+      try {
+        const parsed = JSON.parse(rawJson);
+        const lesson = parsed.lesson;
+        const practices = parsed.practices;
+
+        if (!lesson || !lesson.id || !lesson.title) {
+          throw new Error("Cấu trúc JSON thiếu đối tượng 'lesson' hoặc thiếu id/title!");
+        }
+
+        const id = lesson.id;
+
+        await setDoc(doc(db, "lessons", `lesson_${id}`), lesson);
+        
+        if (practices) {
+          if (practices.fill) await setDoc(doc(db, "practice_sentences", `fill_${id}`), practices.fill);
+          if (practices.mistake) await setDoc(doc(db, "practice_sentences", `mistake_${id}`), practices.mistake);
+          if (practices.match) await setDoc(doc(db, "practice_sentences", `match_${id}`), practices.match);
+          if (practices.writing) await setDoc(doc(db, "practice_sentences", `write_${id}`), practices.writing);
+          if (practices.speaking) await setDoc(doc(db, "practice_sentences", `speak_${id}`), practices.speaking);
+        }
+
+        alert(`✨ Đẩy JSON bài học "${lesson.title}" lên Firebase Cloud thành công! 🌷🌿`);
+        document.getElementById('json-input-box').value = '';
+        autoDetectNextLessonId();
+        loadFirebaseLessons();
+      } catch (e) {
+        alert("❌ Lỗi cú pháp JSON: " + e.message);
+      } finally {
+        btn.innerHTML = '<i class="fa-solid fa-code-merge"></i> Đẩy JSON trực tiếp lên Firebase Cloud';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
