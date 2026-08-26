@@ -57,10 +57,10 @@
           <h2 class="text-lg md:text-xl font-display font-black text-cottage-roseDark">Đăng Tải Học Liệu Toàn Diện</h2>
         </div>
         <div class="flex bg-cottage-cream p-1.5 rounded-2xl border-2 border-cottage-butter text-xs font-bold">
-          <button type="button" id="tab-form-btn" onclick="switchTab('form')" class="px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm">
+          <button type="button" id="tab-form-btn" class="px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm">
             <i class="fa-solid fa-pen-to-square mr-1"></i> Form Nhập Nhanh
           </button>
-          <button type="button" id="tab-json-btn" onclick="switchTab('json')" class="px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark">
+          <button type="button" id="tab-json-btn" class="px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark">
             <i class="fa-solid fa-code mr-1"></i> Dán JSON từ AI
           </button>
         </div>
@@ -72,11 +72,11 @@
         <!-- THÔNG TIN CHUNG -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label class="block text-xs font-bold text-cottage-brown mb-1">ID bài học (Tự động cấp):</label>
+            <label class="block text-xs font-bold text-cottage-brown mb-1">ID bài học <span class="text-rose-505 text-rose-500">*</span>:</label>
             <input type="number" id="lesson-id" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none">
           </div>
           <div>
-            <label class="block text-xs font-bold text-cottage-brown mb-1">Kho / Định dạng (Format):</label>
+            <label class="block text-xs font-bold text-cottage-brown mb-1">Kho / Định dạng <span class="text-rose-500">*</span>:</label>
             <select id="lesson-format" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none">
               <option value="movie">🎬 Kho Phim (Movie)</option>
               <option value="music">🎵 Kho Nhạc (Music)</option>
@@ -96,12 +96,12 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-bold text-cottage-brown mb-1">Tiêu đề bài học:</label>
-            <input type="text" id="lesson-title" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Interstellar (2014) hoặc Shape of You">
+            <label class="block text-xs font-bold text-cottage-brown mb-1">Tiêu đề bài học <span class="text-rose-500">*</span>:</label>
+            <input type="text" id="lesson-title" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Interstellar (2014)">
           </div>
           <div>
             <label class="block text-xs font-bold text-cottage-brown mb-1">Thể loại (Genre):</label>
-            <input type="text" id="lesson-genre" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Sci-Fi, Pop Ballad, TED Talk">
+            <input type="text" id="lesson-genre" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: Sci-Fi, Pop Ballad">
           </div>
         </div>
 
@@ -117,7 +117,7 @@
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-cottage-brown mb-1">Câu thoại / Lời bài hát trích dẫn (Quote chính):</label>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Câu thoại / Lời bài hát trích dẫn (Quote chính) <span class="text-rose-500">*</span>:</label>
           <textarea id="lesson-quote" rows="2" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="Nhập câu thoại hoặc lời bài hát tiếng Anh..."></textarea>
         </div>
 
@@ -132,17 +132,17 @@
             <h3 class="font-display font-bold text-sm text-cottage-roseDark flex items-center gap-1.5">
               <i class="fa-solid fa-puzzle-piece"></i> Cấu hình 5 dạng bài tập cho Trạm tổng hợp:
             </h3>
-            <span class="text-[11px] text-cottage-brownLight bg-white px-2.5 py-1 rounded-lg border border-cottage-butter">Hệ thống sẽ sinh tự động nếu để trống</span>
+            <span class="text-[11px] text-cottage-brownLight bg-white px-2.5 py-1 rounded-lg border border-cottage-butter">Hệ thống tự sinh nếu để trống</span>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold text-cottage-brown mb-1">Từ trọng tâm cho dạng Điền từ (Fill Word):</label>
-              <input type="text" id="cfg-fillword" class="w-full p-2.5 rounded-xl border-2 border-cottage-butter bg-white text-xs font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: habitable, melody, inspire">
+              <input type="text" id="cfg-fillword" class="w-full p-2.5 rounded-xl border-2 border-cottage-butter bg-white text-xs font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: essential">
             </div>
             <div>
               <label class="block text-xs font-bold text-cottage-brown mb-1">Đáp án mẫu cho dạng Viết câu (Writing Ref):</label>
-              <input type="text" id="cfg-writeref" class="w-full p-2.5 rounded-xl border-2 border-cottage-butter bg-white text-xs font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: We must protect our environment...">
+              <input type="text" id="cfg-writeref" class="w-full p-2.5 rounded-xl border-2 border-cottage-butter bg-white text-xs font-bold focus:border-cottage-rose focus:outline-none" placeholder="ví dụ: We must protect...">
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@
           <label for="lesson-locked" class="text-xs font-bold text-cottage-brown cursor-pointer">Khóa bài học này thành bài VIP 🗝️</label>
         </div>
 
-        <button onclick="pushFormLesson()" class="w-full py-4 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95 flex items-center justify-center gap-2">
+        <button type="button" id="btn-submit-form" class="w-full py-4 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95 flex items-center justify-center gap-2">
           <i class="fa-solid fa-cloud-arrow-up"></i> Đăng bài học & Tự động tạo học liệu trọn gói lên Firebase
         </button>
       </div>
@@ -161,51 +161,31 @@
       <div id="section-json" class="space-y-4 hidden">
         <div class="bg-cottage-cream p-4 rounded-2xl border-2 border-cottage-butter text-xs text-cottage-brown space-y-2">
           <p class="font-bold text-cottage-roseDark"><i class="fa-solid fa-circle-info mr-1"></i> Hướng dẫn sử dụng JSON:</p>
-          <p>Nhờ AI soạn cấu trúc JSON gồm <code>lesson</code> và <code>practices</code>, sau đó dán trực tiếp vào khung dưới đây. Hệ thống sẽ tự động lọc bỏ các thẻ bọc code markdown (như ```json) nếu có.</p>
+          <p>Dán trực tiếp đoạn mã JSON vào khung dưới đây. Hệ thống sẽ tự động loại bỏ các thẻ bọc markdown (như ```json) nếu có.</p>
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-cottage-brown mb-1">Nội dung JSON bài học & Bài tập:</label>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Nội dung JSON bài học & Bài tập <span class="text-rose-500">*</span>:</label>
           <textarea id="json-input-box" rows="12" class="w-full p-4 rounded-xl border-2 border-cottage-butter bg-cottage-cream font-mono text-xs focus:border-cottage-rose focus:outline-none custom-scrollbar" placeholder='{
-  "lesson": {
-    "id": 11,
-    "title": "Interstellar (2014)",
-    "genre": "Sci-Fi",
-    "format": "movie",
-    "level": "B2",
-    "thumbnail": "https://...",
-    "mediaType": "youtube",
-    "mediaUrl": "[https://www.youtube.com/embed/](https://www.youtube.com/embed/)...",
-    "locked": false,
-    "quote": "Love is the one thing...",
-    "translation": "Tình yêu là thứ duy nhất...",
-    "vocabAnalysis": [{"word": "perceiving", "ipa": "/.../", "meaning": "...", "context": "..."}],
-    "quizzes": [{"q": "...", "options": ["A", "B", "C", "D"], "correct": 0, "explanation": "..."}]
-  },
-  "practices": {
-    "fill": { "id": "fill_11", "type": "fill", "cinemaId": 11, "parts": [...], "wordsToPick": [...] },
-    "mistake": { "id": "mistake_11", "type": "mistake", "cinemaId": 11, "parts": [...], "explanation": "..." },
-    "match": { "id": "match_11", "type": "match", "cinemaId": 11, "pairs": [...] },
-    "writing": { "id": "write_11", "type": "writing", "cinemaId": 11, "prompt": "...", "refAnswer": "..." },
-    "speaking": { "id": "speak_11", "type": "speaking", "cinemaId": 11, "quote": "...", "instructions": "..." }
-  }
+  "lesson": { "id": 11, "title": "...", ... },
+  "practices": { ... }
 }'></textarea>
         </div>
 
-        <button onclick="pushJsonLesson()" class="w-full py-4 bg-cottage-green hover:bg-cottage-greenDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95 flex items-center justify-center gap-2">
+        <button type="button" id="btn-submit-json" class="w-full py-4 bg-cottage-green hover:bg-cottage-greenDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95 flex items-center justify-center gap-2">
           <i class="fa-solid fa-code-merge"></i> Đẩy JSON trực tiếp lên Firebase Cloud
         </button>
       </div>
 
     </div>
 
-    <!-- DANH SÁCH BÀI HỌC ĐÃ CÓ TRÊN FIREBASE (XÓA / KIỂM TRA NHANH) -->
+    <!-- DANH SÁCH BÀI HỌC TRÊN FIREBASE -->
     <div class="bg-white border-2 border-cottage-butter rounded-[2rem] p-6 md:p-8 shadow-sm space-y-4">
       <div class="flex items-center justify-between">
         <h3 class="font-display font-bold text-base text-cottage-brown flex items-center gap-2">
           <i class="fa-solid fa-database text-cottage-amber"></i> Danh sách bài học hiện có trên Firebase
         </h3>
-        <button onclick="loadFirebaseLessons()" class="px-3 py-1.5 bg-cottage-amberLight hover:bg-cottage-amber text-cottage-brown font-bold text-xs rounded-xl transition flex items-center gap-1.5">
+        <button type="button" id="btn-reload-list" class="px-3 py-1.5 bg-cottage-amberLight hover:bg-cottage-amber text-cottage-brown font-bold text-xs rounded-xl transition flex items-center gap-1.5">
           <i class="fa-solid fa-rotate"></i> Tải lại danh sách
         </button>
       </div>
@@ -235,25 +215,20 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // Tab switcher
-    window.switchTab = function(tab) {
-      const formBtn = document.getElementById('tab-form-btn');
-      const jsonBtn = document.getElementById('tab-json-btn');
-      const formSec = document.getElementById('section-form');
-      const jsonSec = document.getElementById('section-json');
+    // Xử lý chuyển Tab an toàn bằng addEventListener
+    document.getElementById('tab-form-btn').addEventListener('click', () => {
+      document.getElementById('tab-form-btn').className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
+      document.getElementById('tab-json-btn').className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
+      document.getElementById('section-form').classList.remove('hidden');
+      document.getElementById('section-json').classList.add('hidden');
+    });
 
-      if (tab === 'form') {
-        formBtn.className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
-        jsonBtn.className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
-        formSec.classList.remove('hidden');
-        jsonSec.classList.add('hidden');
-      } else {
-        jsonBtn.className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
-        formBtn.className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
-        jsonSec.classList.remove('hidden');
-        formSec.classList.add('hidden');
-      }
-    };
+    document.getElementById('tab-json-btn').addEventListener('click', () => {
+      document.getElementById('tab-json-btn').className = "px-4 py-2 rounded-xl transition bg-cottage-rose text-white shadow-sm";
+      document.getElementById('tab-form-btn').className = "px-4 py-2 rounded-xl transition text-cottage-brown hover:text-cottage-roseDark";
+      document.getElementById('section-json').classList.remove('hidden');
+      document.getElementById('section-form').classList.add('hidden');
+    });
 
     // Tự động quét và cấp ID bài học tiếp theo
     async function autoDetectNextLessonId() {
@@ -271,8 +246,8 @@
     }
     autoDetectNextLessonId();
 
-    // Tải danh sách bài học trên Firebase hiển thị bên dưới
-    window.loadFirebaseLessons = async function() {
+    // Tải danh sách bài học trên Firebase
+    async function loadFirebaseLessons() {
       const container = document.getElementById('firebase-lessons-list');
       container.innerHTML = '<p class="text-xs text-cottage-brownLight py-4 text-center animate-pulse">Đang tải danh sách bài học...</p>';
       
@@ -304,7 +279,7 @@
                   <p class="text-[11px] text-cottage-brownLight">Thể loại: ${l.genre || 'General'} • Level: ${l.level || 'B2'}</p>
                 </div>
               </div>
-              <button onclick="deleteLesson(${l.id}, '${l.docId}')" class="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs rounded-xl transition flex items-center gap-1">
+              <button type="button" onclick="window.deleteLesson(${l.id}, '${l.docId}')" class="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs rounded-xl transition flex items-center gap-1">
                 <i class="fa-solid fa-trash-can"></i> Xóa
               </button>
             </div>
@@ -314,10 +289,11 @@
       } catch (e) {
         container.innerHTML = `<p class="text-xs text-red-500 py-4 text-center">Lỗi tải dữ liệu: ${e.message}</p>`;
       }
-    };
+    }
     loadFirebaseLessons();
+    document.getElementById('btn-reload-list').addEventListener('click', loadFirebaseLessons);
 
-    // Xóa bài học và 5 bài tập liên quan trên Firebase
+    // Gắn hàm xóa vào window để nút gọi được
     window.deleteLesson = async function(id, docId) {
       if (!confirm(`Bạn có chắc chắn muốn xóa bài học ID ${id} và toàn bộ 5 bài tập liên quan không?`)) return;
       try {
@@ -337,7 +313,7 @@
     };
 
     // Đẩy bài học từ Form nhanh
-    window.pushFormLesson = async function() {
+    document.getElementById('btn-submit-form').addEventListener('click', async () => {
       const id = parseInt(document.getElementById('lesson-id').value);
       const title = document.getElementById('lesson-title').value.trim();
       const genre = document.getElementById('lesson-genre').value.trim();
@@ -353,7 +329,7 @@
       const writeRef = document.getElementById('cfg-writeref').value.trim() || `This is an example sentence using the quote from ${title}.`;
 
       if (!id || !title || !quote) {
-        alert("Vui lòng điền tối thiểu ID, Tiêu đề và Câu thoại (Quote)!");
+        alert("Vui lòng điền đầy đủ các trường bắt buộc có dấu sao đỏ (*): ID, Tiêu đề và Câu thoại (Quote)!");
         return;
       }
 
@@ -370,116 +346,4 @@
         genre: genre || (format === 'movie' ? 'Sci-Fi / Drama' : format === 'music' ? 'Pop Ballad' : 'TED Talk'),
         format: format,
         level: level,
-        thumbnail: thumbnail || "[https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600](https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600)",
-        mediaType: "youtube",
-        mediaUrl: mediaUrl || "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)",
-        locked: locked,
-        quote: quote,
-        translation: translation || "Bản dịch đang được cập nhật.",
-        vocabAnalysis: [
-          { word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }
-        ],
-        quizzes: [
-          { q: `Ý nghĩa cốt lõi của nội dung trong "${title}" là gì?`, options: ["A. Rất quan trọng và có chiều sâu", "B. Bình thường không đáng chú ý", "C. Không liên quan đến bài học", "D. Tiêu cực và bi quan"], correct: 0, explanation: "Câu trả lời phản ánh đúng thông điệp chính của bài học." }
-        ]
-      };
-
-      const pFill = {
-        id: `fill_${id}`, type: "fill", cinemaId: id,
-        parts: [{ text: "The core message presented here is truly ", isBlank: false }, { text: fillWord, expectedWord: fillWord, isBlank: true }, { text: " for our understanding.", isBlank: false }],
-        wordsToPick: [fillWord, "temporary", "superficial", "redundant"]
-      };
-
-      const pMistake = {
-        id: `mistake_${id}`, type: "mistake", cinemaId: id,
-        parts: [{ text: "It is " }, { text: "essential", isTarget: true, isError: true, fixOptions: ["essentially", "essence", "essentials"], correctFix: "essentially" }, { text: " to grasp this context accurately." }],
-        explanation: "Cần trạng từ để bổ nghĩa cho động từ hoặc cấu trúc câu."
-      };
-
-      const pMatch = {
-        id: `match_${id}`, type: "match", cinemaId: id,
-        pairs: [
-          { left: "Core", right: "concept" },
-          { left: "Deep", right: "understanding" },
-          { left: "Key", right: "element" },
-          { left: "Real", right: "context" }
-        ]
-      };
-
-      const pWriting = {
-        id: `write_${id}`, type: "writing", cinemaId: id,
-        prompt: `Hãy viết lại một câu ngắn gọn nêu cảm nhận của bạn về chủ đề trong: "${title}".`,
-        refAnswer: writeRef
-      };
-
-      const pSpeaking = {
-        id: `speak_${id}`, type: "speaking", cinemaId: id,
-        quote: quote,
-        instructions: "Luyện phát âm theo ngữ điệu gốc và kiểm tra độ trôi chảy."
-      };
-
-      try {
-        await setDoc(doc(db, "lessons", `lesson_${id}`), lessonData);
-        await setDoc(doc(db, "practice_sentences", `fill_${id}`), pFill);
-        await setDoc(doc(db, "practice_sentences", `mistake_${id}`), pMistake);
-        await setDoc(doc(db, "practice_sentences", `match_${id}`), pMatch);
-        await setDoc(doc(db, "practice_sentences", `write_${id}`), pWriting);
-        await setDoc(doc(db, "practice_sentences", `speak_${id}`), pSpeaking);
-
-        alert(`✨ Thành công! Đã đăng bài "${title}" VÀ tự động tạo trọn gói 5 dạng bài tập lên Firebase! 🌷🌿`);
-        
-        document.getElementById('lesson-title').value = '';
-        document.getElementById('lesson-quote').value = '';
-        document.getElementById('lesson-translation').value = '';
-        document.getElementById('cfg-fillword').value = '';
-        document.getElementById('cfg-writeref').value = '';
-        autoDetectNextLessonId();
-        loadFirebaseLessons();
-      } catch (error) {
-        alert("❌ Lỗi khi đẩy lên Firebase: " + error.message);
-      }
-    };
-
-    // Đẩy JSON từ AI (Đã được tối ưu làm sạch Markdown formatting)
-    window.pushJsonLesson = async function() {
-      let rawJson = document.getElementById('json-input-box').value.trim();
-      if (!rawJson) {
-        alert("Vui lòng nhập nội dung JSON!");
-        return;
-      }
-
-      // Tự động loại bỏ các thẻ bọc code markdown nếu AI trả về dạng ```json ... ```
-      rawJson = rawJson.replace(/^```json\s*/i, "").replace(/^```\s*/i, "").replace(/\s*```$/, "");
-
-      try {
-        const parsed = JSON.parse(rawJson);
-        const lesson = parsed.lesson;
-        const practices = parsed.practices;
-
-        if (!lesson || !lesson.id || !lesson.title) {
-          throw new Error("Cấu trúc JSON thiếu đối tượng 'lesson' hoặc thiếu id/title!");
-        }
-
-        const id = lesson.id;
-
-        await setDoc(doc(db, "lessons", `lesson_${id}`), lesson);
-        
-        if (practices) {
-          if (practices.fill) await setDoc(doc(db, "practice_sentences", `fill_${id}`), practices.fill);
-          if (practices.mistake) await setDoc(doc(db, "practice_sentences", `mistake_${id}`), practices.mistake);
-          if (practices.match) await setDoc(doc(db, "practice_sentences", `match_${id}`), practices.match);
-          if (practices.writing) await setDoc(doc(db, "practice_sentences", `write_${id}`), practices.writing);
-          if (practices.speaking) await setDoc(doc(db, "practice_sentences", `speak_${id}`), practices.speaking);
-        }
-
-        alert(`✨ Đẩy JSON bài học "${lesson.title}" lên Firebase Cloud thành công! 🌷🌿`);
-        document.getElementById('json-input-box').value = '';
-        autoDetectNextLessonId();
-        loadFirebaseLessons();
-      } catch (e) {
-        alert("❌ Lỗi cú pháp JSON: " + e.message + "\n\n(Mẹo: Hãy kiểm tra kỹ dấu phẩy thừa hoặc dấu ngoặc nhọn thiếu trong đoạn JSON bạn dán).");
-      }
-    };
-  </script>
-</body>
-</html>
+        thumbnail: thumbnail
