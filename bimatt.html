@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cozy Garden Admin - Đăng tải học liệu toàn diện</title>
+  <title>Cozy Garden Admin - Trạm Quản Trị Xác Thực Bảo Mật</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,13 +36,46 @@
 </head>
 <body class="bg-cottage-cream text-cottage-brown min-h-screen font-sans p-3 md:p-6 pb-20">
 
-  <div class="max-w-4xl mx-auto space-y-6">
+  <!-- MÀN HÌNH ĐĂNG NHẬP FIREBASE AUTH -->
+  <div id="auth-screen" class="fixed inset-0 bg-cottage-cream/95 z-50 flex items-center justify-center p-4">
+    <div class="bg-white border-2 border-cottage-butter rounded-[2rem] p-8 max-w-md w-full shadow-lg text-center space-y-6">
+      <div class="w-16 h-16 bg-cottage-roseLight text-cottage-roseDark rounded-2xl mx-auto flex items-center justify-center text-2xl">
+        🔐
+      </div>
+      <div>
+        <h2 class="text-xl font-display font-black text-cottage-brown">Đăng Nhập Quản Trị Admin</h2>
+        <p class="text-xs text-cottage-brownLight mt-1">Sử dụng tài khoản Google/Email được cấp quyền quản lý Cozy Garden.</p>
+      </div>
+      <div class="space-y-3 text-left">
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Email quản trị:</label>
+          <input type="email" id="auth-email" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="admin@gmail.com">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-cottage-brown mb-1">Mật khẩu tài khoản:</label>
+          <input type="password" id="auth-password" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="••••••••">
+        </div>
+        <p id="auth-error" class="text-xs text-rose-500 font-bold hidden text-center"></p>
+      </div>
+      <button type="button" id="btn-firebase-login" class="w-full py-3.5 bg-cottage-rose hover:bg-cottage-roseDark text-white font-black text-sm rounded-2xl shadow-md transition transform active:scale-95">
+        Đăng Nhập Hệ Thống 🌷
+      </button>
+    </div>
+  </div>
+
+  <!-- NỘI DUNG CHÍNH ADMIN (ẨN CHO ĐẾN KHI LOGIN THÀNH CÔNG) -->
+  <div id="admin-main-content" class="max-w-4xl mx-auto space-y-6 hidden">
     <!-- Header -->
     <div class="bg-cottage-card border-2 border-dashed border-cottage-rose/40 rounded-[2rem] p-6 md:p-8 text-center shadow-sm relative overflow-hidden">
       <div class="absolute top-4 left-6 text-2xl animate-bounce">🌷</div>
       <div class="absolute top-4 right-6 text-2xl animate-pulse">✨</div>
+      <div class="absolute top-4 right-16">
+        <button type="button" id="btn-logout" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold text-xs rounded-xl transition">
+          <i class="fa-solid fa-right-from-bracket mr-1"></i> Đăng xuất
+        </button>
+      </div>
       <h1 class="text-2xl md:text-3xl font-display font-black text-cottage-brown">Cozy Garden - Trạm Quản Trị Học Liệu</h1>
-      <p class="text-xs md:text-sm text-cottage-brownLight mt-2">Dán cấu trúc JSON hoặc nhập nhanh để đẩy lên Firebase (Hỗ trợ Phim 🎬, Nhạc 🎵, YouTube 📺 & Trạm tổng hợp 🧩)</p>
+      <p class="text-xs md:text-sm text-cottage-brownLight mt-2">Đã xác thực tài khoản an toàn qua Firebase Auth 🛡️</p>
     </div>
 
     <!-- MAIN FORM CONTAINER -->
@@ -68,8 +101,6 @@
 
       <!-- TAB 1: FORM NHẬP NHANH -->
       <div id="section-form" class="space-y-6">
-        
-        <!-- THÔNG TIN CHUNG -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="block text-xs font-bold text-cottage-brown mb-1">ID bài học <span class="text-rose-500">*</span>:</label>
@@ -126,7 +157,6 @@
           <input type="text" id="lesson-translation" class="w-full p-3 rounded-xl border-2 border-cottage-butter bg-cottage-cream text-sm font-bold focus:border-cottage-rose focus:outline-none" placeholder="Nhập bản dịch tiếng Việt...">
         </div>
 
-        <!-- CẤU HÌNH TỰ ĐỘNG TRẠM LUYỆN TẬP TỔNG HỢP -->
         <div class="p-5 bg-cottage-roseLight/20 rounded-2xl border-2 border-dashed border-cottage-rose/40 space-y-4">
           <div class="flex items-center justify-between">
             <h3 class="font-display font-bold text-sm text-cottage-roseDark flex items-center gap-1.5">
@@ -197,7 +227,7 @@
 
   </div>
 
-  <!-- SCRIPT XỬ LÝ GIAO DIỆN (ĐỘC LẬP) -->
+  <!-- SCRIPT XỬ LÝ GIAO DIỆN CHUYỂN TAB -->
   <script>
     const tabFormBtn = document.getElementById('tab-form-btn');
     const tabJsonBtn = document.getElementById('tab-json-btn');
@@ -219,9 +249,10 @@
     });
   </script>
 
-  <!-- SCRIPT FIREBASE LOGIC -->
+  <!-- SCRIPT FIREBASE AUTH & DATABASE LOGIC -->
   <script type="module">
     import { initializeApp } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js)";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js)";
     import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js)";
 
     const firebaseConfig = {
@@ -235,9 +266,58 @@
     };
 
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // Tự động quét và cấp ID bài học tiếp theo
+    const authScreen = document.getElementById('auth-screen');
+    const adminMainContent = document.getElementById('admin-main-content');
+    const emailInput = document.getElementById('auth-email');
+    const passwordInput = document.getElementById('auth-password');
+    const loginBtn = document.getElementById('btn-firebase-login');
+    const logoutBtn = document.getElementById('btn-logout');
+    const authError = document.getElementById('auth-error');
+
+    // Kiểm tra trạng thái đăng nhập tự động
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        authScreen.classList.add('hidden');
+        adminMainContent.classList.remove('hidden');
+        autoDetectNextLessonId();
+        loadFirebaseLessons();
+      } else {
+        authScreen.classList.remove('hidden');
+        adminMainContent.classList.add('hidden');
+      }
+    });
+
+    // Xử lý nút Đăng nhập
+    loginBtn.addEventListener('click', async () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+      if (!email || !password) {
+        authError.innerText = "Vui lòng nhập đầy đủ Email và Mật khẩu!";
+        authError.classList.remove('hidden');
+        return;
+      }
+
+      try {
+        loginBtn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Đang đăng nhập...';
+        loginBtn.disabled = true;
+        await signInWithEmailAndPassword(auth, email, password);
+        authError.classList.add('hidden');
+      } catch (error) {
+        authError.innerText = "Sai tài khoản hoặc mật khẩu quản trị!";
+        authError.classList.remove('hidden');
+        loginBtn.innerHTML = 'Đăng Nhập Hệ Thống 🌷';
+        loginBtn.disabled = false;
+      }
+    });
+
+    // Xử lý nút Đăng xuất
+    logoutBtn.addEventListener('click', async () => {
+      await signOut(auth);
+    });
+
     async function autoDetectNextLessonId() {
       try {
         const snap = await getDocs(collection(db, "lessons"));
@@ -251,9 +331,7 @@
         document.getElementById('lesson-id').value = 11;
       }
     }
-    autoDetectNextLessonId();
 
-    // Tải danh sách bài học trên Firebase
     async function loadFirebaseLessons() {
       const container = document.getElementById('firebase-lessons-list');
       container.innerHTML = '<p class="text-xs text-cottage-brownLight py-4 text-center animate-pulse">Đang tải danh sách bài học...</p>';
@@ -297,7 +375,6 @@
         container.innerHTML = `<p class="text-xs text-red-500 py-4 text-center">Lỗi tải dữ liệu: ${e.message}</p>`;
       }
     }
-    loadFirebaseLessons();
     document.getElementById('btn-reload-list').addEventListener('click', loadFirebaseLessons);
 
     window.deleteLesson = async function(id, docId) {
@@ -318,7 +395,6 @@
       }
     };
 
-    // Đẩy bài học từ Form nhanh
     document.getElementById('btn-submit-form').addEventListener('click', async () => {
       const id = parseInt(document.getElementById('lesson-id').value);
       const title = document.getElementById('lesson-title').value.trim();
@@ -391,7 +467,6 @@
       }
     });
 
-    // Đẩy JSON từ AI
     document.getElementById('btn-submit-json').addEventListener('click', async () => {
       let rawJson = document.getElementById('json-input-box').value.trim();
       if (!rawJson) {
