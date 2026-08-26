@@ -250,10 +250,11 @@
   </script>
 
   <!-- SCRIPT FIREBASE AUTH & DATABASE LOGIC -->
+ <!-- SCRIPT FIREBASE AUTH & DATABASE LOGIC -->
   <script type="module">
-    import { initializeApp } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js)";
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js)";
-    import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js)";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBFRmVKt6DxNojHXoOp_qy2VfdEL9LYeFQ",
@@ -419,15 +420,15 @@
         mediaUrl = mediaUrl.replace("watch?v=", "embed/");
       } else if (mediaUrl.includes("youtu.be/")) {
         const videoId = mediaUrl.split("youtu.be/")[1]?.split("?")[0];
-        if (videoId) mediaUrl = `[https://www.youtube.com/embed/$](https://www.youtube.com/embed/$){videoId}`;
+        if (videoId) mediaUrl = `https://www.youtube.com/embed/${videoId}`;
       }
 
       const lessonData = {
         id: id, title: title,
         genre: genre || (format === 'movie' ? 'Sci-Fi / Drama' : format === 'music' ? 'Pop Ballad' : 'TED Talk'),
         format: format, level: level,
-        thumbnail: thumbnail || "[https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600](https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600)",
-        mediaType: "youtube", mediaUrl: mediaUrl || "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)",
+        thumbnail: thumbnail || "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600",
+        mediaType: "youtube", mediaUrl: mediaUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0",
         locked: locked, quote: quote, translation: translation || "Bản dịch đang được cập nhật.",
         vocabAnalysis: [{ word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }],
         quizzes: [{ q: `Ý nghĩa cốt lõi của nội dung trong "${title}" là gì?`, options: ["A. Rất quan trọng và có chiều sâu", "B. Bình thường không đáng chú ý", "C. Không liên quan đến bài học", "D. Tiêu cực và bi quan"], correct: 0, explanation: "Câu trả lời phản ánh đúng thông điệp chính của bài học." }]
