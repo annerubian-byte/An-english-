@@ -249,11 +249,10 @@
   </script>
 
   <!-- SCRIPT FIREBASE AUTH & DATABASE LOGIC -->
- <!-- SCRIPT FIREBASE AUTH & DATABASE LOGIC -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { initializeApp } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js)";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js)";
+    import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js)";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBFRmVKt6DxNojHXoOp_qy2VfdEL9LYeFQ",
@@ -395,6 +394,21 @@
       }
     };
 
+    // Hàm chuẩn hóa link YouTube để không bị lỗi kết nối iframe
+    function sanitizeYouTubeUrl(url) {
+      if (!url) return "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)";
+      let cleanUrl = url.trim();
+      if (cleanUrl.includes("watch?v=")) {
+        cleanUrl = cleanUrl.replace("watch?v=", "embed/").split("&")[0];
+      } else if (cleanUrl.includes("youtu.be/")) {
+        const videoId = cleanUrl.split("youtu.be/")[1]?.split("?")[0];
+        if (videoId) cleanUrl = `[https://www.youtube.com/embed/$](https://www.youtube.com/embed/$){videoId}`;
+      } else if (cleanUrl.includes("embed/")) {
+        cleanUrl = cleanUrl.split("?")[0];
+      }
+      return cleanUrl;
+    }
+
     document.getElementById('btn-submit-form').addEventListener('click', async () => {
       const id = parseInt(document.getElementById('lesson-id').value);
       const title = document.getElementById('lesson-title').value.trim();
@@ -402,7 +416,7 @@
       const format = document.getElementById('lesson-format').value;
       const level = document.getElementById('lesson-level').value;
       const thumbnail = document.getElementById('lesson-thumbnail').value.trim();
-      let mediaUrl = document.getElementById('lesson-mediaurl').value.trim();
+      let mediaUrl = sanitizeYouTubeUrl(document.getElementById('lesson-mediaurl').value);
       const quote = document.getElementById('lesson-quote').value.trim();
       const translation = document.getElementById('lesson-translation').value.trim();
       const locked = document.getElementById('lesson-locked').checked;
@@ -415,19 +429,12 @@
         return;
       }
 
-      if (mediaUrl.includes("watch?v=")) {
-        mediaUrl = mediaUrl.replace("watch?v=", "embed/");
-      } else if (mediaUrl.includes("youtu.be/")) {
-        const videoId = mediaUrl.split("youtu.be/")[1]?.split("?")[0];
-        if (videoId) mediaUrl = `https://www.youtube.com/embed/${videoId}`;
-      }
-
       const lessonData = {
         id: id, title: title,
         genre: genre || (format === 'movie' ? 'Sci-Fi / Drama' : format === 'music' ? 'Pop Ballad' : 'TED Talk'),
         format: format, level: level,
-        thumbnail: thumbnail || "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600",
-        mediaType: "youtube", mediaUrl: mediaUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0",
+        thumbnail: thumbnail || "[https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600](https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600)",
+        mediaType: "youtube", mediaUrl: mediaUrl,
         locked: locked, quote: quote, translation: translation || "Bản dịch đang được cập nhật.",
         vocabAnalysis: [{ word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }],
         quizzes: [{ q: `Ý nghĩa cốt lõi của nội dung trong "${title}" là gì?`, options: ["A. Rất quan trọng và có chiều sâu", "B. Bình thường không đáng chú ý", "C. Không liên quan đến bài học", "D. Tiêu cực và bi quan"], correct: 0, explanation: "Câu trả lời phản ánh đúng thông điệp chính của bài học." }]
@@ -487,6 +494,13 @@
 
         if (!lesson || !lesson.id || !lesson.title) {
           throw new Error("Cấu trúc JSON thiếu đối tượng 'lesson' hoặc thiếu id/title!");
+        }
+
+        // Tự động chuẩn hóa link mediaUrl trong JSON nếu lỡ dán link có tham số ?si=
+        if (lesson.media_url) {
+          lesson.mediaUrl = sanitizeYouTubeUrl(lesson.media_url);
+        } else if (lesson.mediaUrl) {
+          lesson.mediaUrl = sanitizeYouTubeUrl(lesson.mediaUrl);
         }
 
         const id = lesson.id;
