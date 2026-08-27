@@ -380,8 +380,8 @@
         const deletePromises = types.map(type => 
           deleteDoc(doc(db, "practice_sentences", `${type}_${id}`))
         );
-        deletePromises.push(doc(db, "lessons", docId));
-
+        deletePromises.push(deleteDoc(doc(db, "lessons", docId)));
+        
         await Promise.all(deletePromises);
 
         alert(`Đã xóa thành công bài học ID ${id}!`);
@@ -399,7 +399,7 @@
         cleanUrl = cleanUrl.replace("watch?v=", "embed/").split("&")[0];
       } else if (cleanUrl.includes("youtu.be/")) {
         const videoId = cleanUrl.split("youtu.be/")[1]?.split("?")[0];
-        if (videoId) cleanUrl = "https://www.youtube.com/embed/${videoId}";
+        if (videoId) cleanUrl = `https://www.youtube.com/embed/${videoId}`;
       } else if (cleanUrl.includes("embed/")) {
         cleanUrl = cleanUrl.split("?")[0];
       }
