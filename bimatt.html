@@ -394,7 +394,6 @@
       }
     };
 
-    // Hàm chuẩn hóa link YouTube để không bị lỗi kết nối iframe
     function sanitizeYouTubeUrl(url) {
       if (!url) return "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)";
       let cleanUrl = url.trim();
@@ -496,7 +495,6 @@
           throw new Error("Cấu trúc JSON thiếu đối tượng 'lesson' hoặc thiếu id/title!");
         }
 
-        // Tự động chuẩn hóa link mediaUrl trong JSON nếu lỡ dán link có tham số ?si=
         if (lesson.media_url) {
           lesson.mediaUrl = sanitizeYouTubeUrl(lesson.media_url);
         } else if (lesson.mediaUrl) {
