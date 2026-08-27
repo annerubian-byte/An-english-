@@ -250,9 +250,9 @@
 
   <!-- SCRIPT FIREBASE AUTH & DATABASE LOGIC -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { initializeApp } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js)";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js)";
+    import { getFirestore, doc, setDoc, collection, getDocs, deleteDoc } from "[https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js](https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js)";
     
     const firebaseConfig = {
       apiKey: "AIzaSyBFRmVKt6DxNojHXoOp_qy2VfdEL9LYeFQ",
@@ -376,12 +376,13 @@
     window.deleteLesson = async function(id, docId) {
       if (!confirm(`Bạn có chắc chắn muốn xóa bài học ID ${id} và toàn bộ 5 bài tập liên quan không?`)) return;
       try {
-        await deleteDoc(doc(db, "lessons", docId));
-        await deleteDoc(doc(db, "practice_sentences", `fill_${id}`));
-        await deleteDoc(doc(db, "practice_sentences", `mistake_${id}`));
-        await deleteDoc(doc(db, "practice_sentences", `match_${id}`));
-        await deleteDoc(doc(db, "practice_sentences", `write_${id}`));
-        await deleteDoc(doc(db, "practice_sentences", `speak_${id}`));
+        const types = ['fill', 'mistake', 'match', 'write', 'speak'];
+        const deletePromises = types.map(type => 
+          deleteDoc(doc(db, "practice_sentences", `${type}_${id}`))
+        );
+        deletePromises.push(deleteDoc(doc(db, "lessons", docId)));
+
+        await Promise.all(deletePromises);
 
         alert(`Đã xóa thành công bài học ID ${id}!`);
         loadFirebaseLessons();
@@ -392,17 +393,28 @@
     };
 
     function sanitizeYouTubeUrl(url) {
-      if (!url) return "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0";
+      if (!url) return "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)";
       let cleanUrl = url.trim();
       if (cleanUrl.includes("watch?v=")) {
         cleanUrl = cleanUrl.replace("watch?v=", "embed/").split("&")[0];
       } else if (cleanUrl.includes("youtu.be/")) {
         const videoId = cleanUrl.split("youtu.be/")[1]?.split("?")[0];
-        if (videoId) cleanUrl = `https://www.youtube.com/embed/`;
+        if (videoId) cleanUrl = `[https://www.youtube.com/embed/$](https://www.youtube.com/embed/$){videoId}`;
       } else if (cleanUrl.includes("embed/")) {
         cleanUrl = cleanUrl.split("?")[0];
       }
       return cleanUrl;
+    }
+
+    async function savePracticesToFirebase(id, practicesObj) {
+      const types = ['fill', 'mistake', 'match', 'write', 'speak'];
+      const promises = types.map(type => {
+        const data = practicesObj[type];
+        if (data) {
+          return setDoc(doc(db, "practice_sentences", `${type}_${id}`), data);
+        }
+      }).filter(Boolean);
+      await Promise.all(promises);
     }
 
     document.getElementById('btn-submit-form').addEventListener('click', async () => {
@@ -429,18 +441,20 @@
         id: id, title: title,
         genre: genre || (format === 'movie' ? 'Sci-Fi / Drama' : format === 'music' ? 'Pop Ballad' : 'TED Talk'),
         format: format, level: level,
-        thumbnail: thumbnail || "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600",
+        thumbnail: thumbnail || "[https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600](https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600)",
         mediaType: "youtube", mediaUrl: mediaUrl,
         locked: locked, quote: quote, translation: translation || "Bản dịch đang được cập nhật.",
         vocabAnalysis: [{ word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }],
         quizzes: [{ q: `Ý nghĩa cốt lõi của nội dung trong "${title}" là gì?`, options: ["A. Rất quan trọng và có chiều sâu", "B. Bình thường không đáng chú ý", "C. Không liên quan đến bài học", "D. Tiêu cực và bi quan"], correct: 0, explanation: "Câu trả lời phản ánh đúng thông điệp chính của bài học." }]
       };
 
-      const pFill = { id: `fill_${id}`, type: "fill", cinemaId: id, parts: [{ text: "The core message presented here is truly ", isBlank: false }, { text: fillWord, expectedWord: fillWord, isBlank: true }, { text: " for our understanding.", isBlank: false }], wordsToPick: [fillWord, "temporary", "superficial", "redundant"] };
-      const pMistake = { id: `mistake_${id}`, type: "mistake", cinemaId: id, parts: [{ text: "It is " }, { text: "essential", isTarget: true, isError: true, fixOptions: ["essentially", "essence", "essentials"], correctFix: "essentially" }, { text: " to grasp this context accurately." }], explanation: "Cần trạng từ để bổ nghĩa cho động từ hoặc cấu trúc câu." };
-      const pMatch = { id: `match_${id}`, type: "match", cinemaId: id, pairs: [{ left: "Core", right: "concept" }, { left: "Deep", right: "understanding" }, { left: "Key", right: "element" }, { left: "Real", right: "context" }] };
-      const pWriting = { id: `write_${id}`, type: "writing", cinemaId: id, prompt: `Hãy viết lại một câu ngắn gọn nêu cảm nhận của bạn về chủ đề trong: "${title}".`, refAnswer: writeRef };
-      const pSpeaking = { id: `speak_${id}`, type: "speaking", cinemaId: id, quote: quote, instructions: "Luyện phát âm theo ngữ điệu gốc và kiểm tra độ trôi chảy." };
+      const practicesData = {
+        fill: { id: `fill_${id}`, type: "fill", cinemaId: id, parts: [{ text: "The core message presented here is truly ", isBlank: false }, { text: fillWord, expectedWord: fillWord, isBlank: true }, { text: " for our understanding.", isBlank: false }], wordsToPick: [fillWord, "temporary", "superficial", "redundant"] },
+        mistake: { id: `mistake_${id}`, type: "mistake", cinemaId: id, parts: [{ text: "It is " }, { text: "essential", isTarget: true, isError: true, fixOptions: ["essentially", "essence", "essentials"], correctFix: "essentially" }, { text: " to grasp this context accurately." }], explanation: "Cần trạng từ để bổ nghĩa cho động từ hoặc cấu trúc câu." },
+        match: { id: `match_${id}`, type: "match", cinemaId: id, pairs: [{ left: "Core", right: "concept" }, { left: "Deep", right: "understanding" }, { left: "Key", right: "element" }, { left: "Real", right: "context" }] },
+        writing: { id: `write_${id}`, type: "writing", cinemaId: id, prompt: `Hãy viết lại một câu ngắn gọn nêu cảm nhận của bạn về chủ đề trong: "${title}".`, refAnswer: writeRef },
+        speaking: { id: `speak_${id}`, type: "speaking", cinemaId: id, quote: quote, instructions: "Luyện phát âm theo ngữ điệu gốc và kiểm tra độ trôi chảy." }
+      };
 
       const btn = document.getElementById('btn-submit-form');
       btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Đang đẩy lên Firebase...';
@@ -448,11 +462,7 @@
 
       try {
         await setDoc(doc(db, "lessons", `lesson_${id}`), lessonData);
-        await setDoc(doc(db, "practice_sentences", `fill_${id}`), pFill);
-        await setDoc(doc(db, "practice_sentences", `mistake_${id}`), pMistake);
-        await setDoc(doc(db, "practice_sentences", `match_${id}`), pMatch);
-        await setDoc(doc(db, "practice_sentences", `write_${id}`), pWriting);
-        await setDoc(doc(db, "practice_sentences", `speak_${id}`), pSpeaking);
+        await savePracticesToFirebase(id, practicesData);
 
         alert(`✨ Thành công! Đã đăng bài "${title}" VÀ tự động tạo trọn gói 5 dạng bài tập lên Firebase! 🌷🌿`);
         document.getElementById('lesson-title').value = '';
@@ -492,21 +502,16 @@
           throw new Error("Cấu trúc JSON thiếu đối tượng 'lesson' hoặc thiếu id/title!");
         }
 
-        if (lesson.media_url) {
-          lesson.mediaUrl = sanitizeYouTubeUrl(lesson.media_url);
-        } else if (lesson.mediaUrl) {
-          lesson.mediaUrl = sanitizeYouTubeUrl(lesson.mediaUrl);
+        const rawMediaUrl = lesson.mediaUrl || lesson.media_url;
+        if (rawMediaUrl) {
+          lesson.mediaUrl = sanitizeYouTubeUrl(rawMediaUrl);
         }
 
         const id = lesson.id;
         await setDoc(doc(db, "lessons", `lesson_${id}`), lesson);
 
         if (practices) {
-          if (practices.fill) await setDoc(doc(db, "practice_sentences", `fill_${id}`), practices.fill);
-          if (practices.mistake) await setDoc(doc(db, "practice_sentences", `mistake_${id}`), practices.mistake);
-          if (practices.match) await setDoc(doc(db, "practice_sentences", `match_${id}`), practices.match);
-          if (practices.writing) await setDoc(doc(db, "practice_sentences", `write_${id}`), practices.writing);
-          if (practices.speaking) await setDoc(doc(db, "practice_sentences", `speak_${id}`), practices.speaking);
+          await savePracticesToFirebase(id, practices);
         }
 
         alert(`✨ Đẩy JSON bài học "${lesson.title}" lên Firebase Cloud thành công! 🌷🌿`);
