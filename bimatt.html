@@ -276,7 +276,6 @@
     const logoutBtn = document.getElementById('btn-logout');
     const authError = document.getElementById('auth-error');
 
-    // Kiểm tra trạng thái đăng nhập tự động
     onAuthStateChanged(auth, (user) => {
       if (user) {
         authScreen.classList.add('hidden');
@@ -289,7 +288,6 @@
       }
     });
 
-    // Xử lý nút Đăng nhập
     loginBtn.addEventListener('click', async () => {
       const email = emailInput.value.trim();
       const password = passwordInput.value.trim();
@@ -312,7 +310,6 @@
       }
     });
 
-    // Xử lý nút Đăng xuất
     logoutBtn.addEventListener('click', async () => {
       await signOut(auth);
     });
