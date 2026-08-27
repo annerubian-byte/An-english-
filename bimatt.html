@@ -398,7 +398,7 @@
         cleanUrl = cleanUrl.replace("watch?v=", "embed/").split("&")[0];
       } else if (cleanUrl.includes("youtu.be/")) {
         const videoId = cleanUrl.split("youtu.be/")[1]?.split("?")[0];
-        if (videoId) cleanUrl = `https://www.youtube.com/embed/$ {videoId}`;
+        if (videoId) cleanUrl = `https://www.youtube.com/embed/`;
       } else if (cleanUrl.includes("embed/")) {
         cleanUrl = cleanUrl.split("?")[0];
       }
@@ -429,7 +429,7 @@
         id: id, title: title,
         genre: genre || (format === 'movie' ? 'Sci-Fi / Drama' : format === 'music' ? 'Pop Ballad' : 'TED Talk'),
         format: format, level: level,
-        thumbnail: thumbnail || "[https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600](https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600)",
+        thumbnail: thumbnail || "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=600",
         mediaType: "youtube", mediaUrl: mediaUrl,
         locked: locked, quote: quote, translation: translation || "Bản dịch đang được cập nhật.",
         vocabAnalysis: [{ word: fillWord, ipa: "/ɪˈsen.ʃəl/", meaning: "Cần thiết, cốt lõi trong ngữ cảnh bài học.", context: quote }],
