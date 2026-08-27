@@ -392,13 +392,13 @@
     };
 
     function sanitizeYouTubeUrl(url) {
-      if (!url) return "[https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0](https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0)";
+      if (!url) return "https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0";
       let cleanUrl = url.trim();
       if (cleanUrl.includes("watch?v=")) {
         cleanUrl = cleanUrl.replace("watch?v=", "embed/").split("&")[0];
       } else if (cleanUrl.includes("youtu.be/")) {
         const videoId = cleanUrl.split("youtu.be/")[1]?.split("?")[0];
-        if (videoId) cleanUrl = `[https://www.youtube.com/embed/$](https://www.youtube.com/embed/$){videoId}`;
+        if (videoId) cleanUrl = `https://www.youtube.com/embed/$ {videoId}`;
       } else if (cleanUrl.includes("embed/")) {
         cleanUrl = cleanUrl.split("?")[0];
       }
